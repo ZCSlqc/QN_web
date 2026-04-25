@@ -1,0 +1,134 @@
+/*
+ * qiqi & nini 情侣网页 - 全局主题
+ * 现代设计系统：CSS变量 + 毛玻璃 + 柔和渐变
+ */
+
+/* ── CSS Variables ─────────────────────────────────────── */
+:root {
+  --color-rose:         #d4788f;
+  --color-rose-light:   #f0c8d4;
+  --color-rose-dark:    #b85d73;
+  --color-rose-soft:    #fef0f3;
+
+  --color-gold:         #c9a96e;
+  --color-gold-light:   #ede0cc;
+
+  --color-cream:        #fdf6f0;
+  --color-cream-dark:   #f5e6d8;
+
+  --color-text:         #3d2c2c;
+  --color-text-light:   #8a7a7a;
+  --color-text-white:   #fefefe;
+
+  --color-surface:      rgba(255,255,255,0.72);
+  --color-surface-solid:#ffffff;
+
+  --color-overlay:      rgba(60, 30, 35, 0.45);
+
+  --shadow-sm:          0 2px 8px rgba(180, 100, 120, 0.10);
+  --shadow-md:          0 8px 30px rgba(180, 100, 120, 0.14);
+  --shadow-lg:          0 16px 48px rgba(180, 100, 120, 0.18);
+  --shadow-button:      0 4px 16px rgba(212, 120, 143, 0.30);
+
+  --radius-sm:          8px;
+  --radius-md:          16px;
+  --radius-lg:          24px;
+  --radius-full:        9999px;
+
+  --font-display:       'Georgia', 'Times New Roman', serif;
+  --font-body:          'Lato', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+
+  --transition-fast:    0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth:  0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Reset & Base ──────────────────────────────────────── */
+*,
+*::before,
+*::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--color-cream);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+button {
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* ── Glassmorphism Card ────────────────────────────────── */
+.glass-card {
+  background: var(--color-surface);
+  backdrop-filter: blur(20px) saturate(120%);
+  -webkit-backdrop-filter: blur(20px) saturate(120%);
+  border: 1px solid rgba(255,255,255,0.45);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+/* ── Gradient Backgrounds ──────────────────────────────── */
+.bg-romantic {
+  background: linear-gradient(135deg, #fef5f5 0%, #fdf0e6 30%, #fef0f3 60%, #fdf6f0 100%);
+}
+.bg-rose-gradient {
+  background: linear-gradient(135deg, var(--color-rose-light), var(--color-rose));
+}
+
+/* ── Typography ────────────────────────────────────────── */
+.text-display {
+  font-family: var(--font-display);
+  font-weight: 400;
+}
+.text-rose    { color: var(--color-rose); }
+.text-gold    { color: var(--color-gold); }
+.text-center  { text-align: center; }
+
+/* ── Animations ────────────────────────────────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-20px) rotate(6deg); }
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.06); }
+}
+@keyframes spin-music {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes petal-fall {
+  0%   { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0.2; }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.7s ease-out both;
+}
+
+/* ── Element Plus 消息层级修复 ────────────────────────────── */
+.el-message,
+.el-message-box__wrapper {
+  z-index: 20000 !important;
+}
