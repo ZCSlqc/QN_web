@@ -27,6 +27,14 @@
 - Node.js 18+
 - [uv](https://docs.astral.sh/uv/)（Python 包管理器）
 
+```
+pkill -f uvicorn
+pkill -f vite
+
+cd QN_web/backend && source ../.venv/bin/activate && nohup uvicorn main:app --host 0.0.0.0 --port 8000 --reload > /root/web-fastapi.log 2>&1 &
+cd QN_web/frontend && nohup npm run dev -- --host 0.0.0.0 --port 7721 > /root/web-vue.log 2>&1 &
+```
+
 ### 1. 启动后端
 
 ```bash
