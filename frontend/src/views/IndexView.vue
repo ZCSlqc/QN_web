@@ -164,41 +164,7 @@
     </section>
 
     <!-- ============================================================
-      Section 3：纪念日计时器
-      ============================================================ -->
-    <section class="date-section" id="date">
-      <img class="date-bg" src="/background/2.jpg" alt="" />
-      <div class="date-overlay"></div>
-      <div class="date-content">
-        <p class="date-eyebrow">Waiting for Wedding</p>
-        <h2 class="date-title">Save the date</h2>
-        <div class="countdown">
-          <div class="countdown__item">
-            <span class="countdown__num">{{ elapsedTime.days }}</span>
-            <span class="countdown__label">天</span>
-          </div>
-          <div class="countdown__sep">:</div>
-          <div class="countdown__item">
-            <span class="countdown__num">{{ elapsedTime.hours }}</span>
-            <span class="countdown__label">时</span>
-          </div>
-          <div class="countdown__sep">:</div>
-          <div class="countdown__item">
-            <span class="countdown__num">{{ elapsedTime.minutes }}</span>
-            <span class="countdown__label">分</span>
-          </div>
-          <div class="countdown__sep">:</div>
-          <div class="countdown__item">
-            <span class="countdown__num">{{ elapsedTime.seconds }}</span>
-            <span class="countdown__label">秒</span>
-          </div>
-        </div>
-        <p class="date-since">自 2021年6月24日 起</p>
-      </div>
-    </section>
-
-    <!-- ============================================================
-      Section 4：爱的相册（3×3 九宫格 + 右下四格角滚动）
+      Section 3：爱的相册（3×3 九宫格 + 右下四格角滚动）
       ============================================================ -->
     <section class="album-section" id="album">
       <div class="container">
@@ -268,14 +234,40 @@
     </section>
 
     <!-- ============================================================
-      Section 5：浪漫文案横幅
+      Section 4：纪念日计时器
       ============================================================ -->
-    <section class="banner-section">
-      <img class="banner-bg" src="/background/3.jpg" alt="" />
-      <div class="banner-overlay"></div>
-      <div class="banner-content">
-        <span class="banner-heart" style="color: #e53e3e;">❤</span>
-        <h2 class="banner-quote">有你，我的旅程便不会中止</h2>
+    <section class="date-section" id="date">
+      <img class="date-bg" src="/background/2.jpg" alt="" />
+      <div class="date-overlay"></div>
+      <div class="date-content">
+        <p class="date-eyebrow">Waiting for Wedding</p>
+        <h2 class="date-title">Save the date</h2>
+        <div class="countdown">
+          <div class="countdown__item">
+            <span class="countdown__num">{{ elapsedTime.days }}</span>
+            <span class="countdown__label">天</span>
+          </div>
+          <div class="countdown__sep">:</div>
+          <div class="countdown__item">
+            <span class="countdown__num">{{ elapsedTime.hours }}</span>
+            <span class="countdown__label">时</span>
+          </div>
+          <div class="countdown__sep">:</div>
+          <div class="countdown__item">
+            <span class="countdown__num">{{ elapsedTime.minutes }}</span>
+            <span class="countdown__label">分</span>
+          </div>
+          <div class="countdown__sep">:</div>
+          <div class="countdown__item">
+            <span class="countdown__num">{{ elapsedTime.seconds }}</span>
+            <span class="countdown__label">秒</span>
+          </div>
+        </div>
+        <p class="date-since">自 2021年6月24日 起</p>
+        <div class="date-heart">
+          <span class="banner-heart" style="color: #e53e3e;">❤</span>
+          <h2 class="banner-quote">有你，我的旅程便不会中止</h2>
+        </div>
       </div>
     </section>
 
