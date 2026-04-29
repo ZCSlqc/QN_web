@@ -9,7 +9,7 @@ node_modules/
 dist/
 
 # Database
-*.db
+# *.db
 
 # IDE
 .idea/
