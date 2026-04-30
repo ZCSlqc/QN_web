@@ -120,6 +120,17 @@ def init_db():
                 author     TEXT    NOT NULL,
                 created_at TEXT    NOT NULL
             );
+            CREATE TABLE IF NOT EXISTS journeys (
+                id             INTEGER PRIMARY KEY AUTOINCREMENT,
+                adcode         TEXT    NOT NULL,
+                name           TEXT    NOT NULL,
+                departure_date TEXT,
+                return_date    TEXT,
+                impression     TEXT,
+                notes          TEXT,
+                created_at     TEXT    NOT NULL,
+                updated_at     TEXT    NOT NULL
+            );
         """)
         # 迁移：为旧表添加 login_count 列
         try:
@@ -302,6 +313,72 @@ async def add_blessing(
             "INSERT INTO blessings (content, author, created_at) VALUES (?, ?, ?)",
             (content.strip(), author, bj_time()),
         )
+    return JSONResponse({"status": "success"})
+
+
+# ── 旅程记录 ────────────────────────────────────────────────
+
+
+@app.get("/journeys")
+async def get_journeys():
+    with get_db() as conn:
+        rows = conn.execute(
+            "SELECT id, adcode, name, departure_date, return_date, impression, notes, created_at, updated_at FROM journeys ORDER BY id DESC"
+        ).fetchall()
+    return JSONResponse({
+        "data": [
+            {
+                "id": r["id"], "adcode": r["adcode"], "name": r["name"],
+                "departure_date": r["departure_date"], "return_date": r["return_date"],
+                "impression": r["impression"], "notes": r["notes"],
+                "created_at": r["created_at"], "updated_at": r["updated_at"],
+            }
+            for r in rows
+        ],
+    })
+
+
+@app.post("/journeys")
+async def add_journey(
+    adcode: str = Form(...),
+    name: str = Form(...),
+    departure_date: str = Form(""),
+    return_date: str = Form(""),
+    impression: str = Form(""),
+    notes: str = Form(""),
+):
+    now = bj_time()
+    with get_db() as conn:
+        conn.execute(
+            "INSERT INTO journeys (adcode, name, departure_date, return_date, impression, notes, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+            (adcode, name, departure_date, return_date, impression, notes, now, now),
+        )
+    return JSONResponse({"status": "success"})
+
+
+@app.put("/journeys/{journey_id}")
+async def update_journey(
+    journey_id: int,
+    adcode: str = Form(...),
+    name: str = Form(...),
+    departure_date: str = Form(""),
+    return_date: str = Form(""),
+    impression: str = Form(""),
+    notes: str = Form(""),
+):
+    now = bj_time()
+    with get_db() as conn:
+        conn.execute(
+            "UPDATE journeys SET adcode=?, name=?, departure_date=?, return_date=?, impression=?, notes=?, updated_at=? WHERE id=?",
+            (adcode, name, departure_date, return_date, impression, notes, now, journey_id),
+        )
+    return JSONResponse({"status": "success"})
+
+
+@app.delete("/journeys/{journey_id}")
+async def delete_journey(journey_id: int):
+    with get_db() as conn:
+        conn.execute("DELETE FROM journeys WHERE id=?", (journey_id,))
     return JSONResponse({"status": "success"})
 
 

@@ -1,6 +1,6 @@
 # qiqi & nini 情侣网页
 
-基于 **FastAPI** + **Vue 3** 的全栈情侣空间，包含祝福留言、待办清单、纪念日计时器、相册轮播、背景音乐等功能。
+基于 **FastAPI** + **Vue 3** 的全栈情侣空间，包含祝福留言、待办清单、纪念日计时器、相册轮播、背景音乐、中国地图点亮旅程等功能。
 
 ---
 
@@ -72,6 +72,7 @@ npm run dev
 | `/login` | 登录 | 用户名 + 密码，无需授权码 |
 | `/register` | 注册 | 用户名 + 密码 + 授权码 |
 | `/index` | 主页 | Hero、祝福、待办、计时器、相册、音乐 |
+| `/journey` | 爱的旅程 | Leaflet 中国地图，点亮省份/城市，记录旅行印记 |
 | `/admin` | 管理 | 仅管理员可见，用户/祝福/待办管理 |
 
 ### 主页区块
@@ -80,6 +81,7 @@ npm run dev
 - **爱的故事** — qiqi & nini 头像 + 祝福寄语字幕（垂直滚动，点击可留言）+ 爱情故事文案 + 待办卡片 + 已完成列表
 - **爱的相册** — 3×3 九宫格布局，左上大图合并，右下四格自动轮播
 - **纪念日计时器** — 自 2021-06-24 起的天/时/分/秒实时倒计时 + 浪漫横幅文案
+- **爱的旅程** — Leaflet 交互式中国地图，市级区块 hover 高亮 + 点击弹出旅行记录弹窗（去程/返程时间、旅途印象、备注），已标记城市永久红色常亮，支持修改/删除，数据持久化到 SQLite
 - **音乐播放器** — 本地 `City_Of_Stars.mp3`，右上角悬浮按钮
 
 ### 祝福弹窗
@@ -127,6 +129,7 @@ QN_web/
 │   │   ├── img/             ← 头像 (qiqi.png, nini.png)
 │   │   ├── background/      ← 页面背景图
 │   │   ├── album/           ← 相册图片
+│   │   ├── svg/             ← 中国地图 GeoJSON (省份/城市边界)
 │   │   └── audio/           ← 背景音乐
 │   └── src/
 │       ├── main.js          ← Vue 入口
@@ -137,6 +140,7 @@ QN_web/
 │       │   ├── LoginView.vue
 │       │   ├── RegisterView.vue
 │       │   ├── IndexView.vue    ← 主页（核心页面）
+│       │   ├── JourneyView.vue  ← 爱的旅程（Leaflet 地图）
 │       │   └── AdminView.vue    ← 管理后台
 │       └── assets/
 │           └── css/
@@ -166,6 +170,10 @@ QN_web/
 | `/table_change` | POST | 管理员 | 修改待办（支持改名） |
 | `/table_delete` | POST | 管理员 | 真删除待办（从数据库移除） |
 | `/table_done` | POST | 管理员 | 标记完成（保留数据库，移至已完成列表） |
+| `/journeys` | GET | 无 | 获取全部旅程记录 |
+| `/journeys` | POST | 无 | 新增旅程记录（adcode, name, 日期, 印象, 备注） |
+| `/journeys/{id}` | PUT | 无 | 修改旅程记录 |
+| `/journeys/{id}` | DELETE | 无 | 删除旅程记录 |
 | `/admin/users` | GET | 管理员 | 用户列表（含注册时间、登录次数） |
 | `/admin/users/delete` | POST | 管理员 | 删除用户 |
 | `/admin/blessings` | GET | 管理员 | 全部祝福列表 |
@@ -197,6 +205,7 @@ SQLite 文件数据库，路径 `backend/couple.db`，首次启动自动建表�
 - **user** — `id`, `username`, `userpwd` (bcrypt), `userdate`, `login_count`
 - **things** — `id`, `entry` (名称), `types` (类型), `user` (贡献人), `start_date`, `end_date`, `done`
 - **blessings** — `id`, `content`, `author`, `created_at`
+- **journeys** — `id`, `adcode` (行政区划代码), `name` (城市名), `departure_date`, `return_date`, `impression`, `notes`, `created_at`, `updated_at`
 
 ---
 
@@ -311,6 +320,7 @@ server {
     location /me               { proxy_pass http://127.0.0.1:8000; }
     location /blessings        { proxy_pass http://127.0.0.1:8000; }
     location /health           { proxy_pass http://127.0.0.1:8000; }
+    location /journeys         { proxy_pass http://127.0.0.1:8000; }
     location /admin            { proxy_pass http://127.0.0.1:8000; }
 }
 ```

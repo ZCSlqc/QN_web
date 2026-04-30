@@ -1,7 +1,8 @@
 {
   "name": "qiqi-nini-web",
   "version": "1.0.0",
-  "description": "qiqi & nini 情侣网页 - Vue3 前端",
+  "private": true,
+  "description": "qiqi & nini 情侣空间 — Vue3 前端：祝福留言、待办清单、纪念日计时、相册轮播、中国地图旅程点亮",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
