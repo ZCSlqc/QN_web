@@ -27,12 +27,12 @@
 - Node.js 18+
 - [uv](https://docs.astral.sh/uv/)（Python 包管理器）
 
-```
-pkill -f uvicorn
-pkill -f vite
+### 一键启动（推荐）
 
-cd QN_web/backend && source ../.venv/bin/activate && nohup uvicorn main:app --host 0.0.0.0 --port 8000 --reload > /root/web-fastapi.log 2>&1 &
-cd QN_web/frontend && nohup npm run dev -- --host 0.0.0.0 --port 7721 > /root/web-vue.log 2>&1 &
+```bash
+# 在项目根目录下执行
+chmod +x start.sh
+./start.sh
 ```
 
 ### 1. 启动后端
@@ -77,10 +77,9 @@ npm run dev
 ### 主页区块
 
 - **Hero 首页** — 花瓣飘落动画 + 导航栏 + 音乐播放器入口
-- **爱的故事** — qiqi & nini 头像摇头动画 + 祝福寄语字幕（垂直滚动，点击可留言）+ 爱情故事文案 + 待办卡片 + 已完成列表
-- **纪念日计时器** — 自 2021-06-24 起的天/时/分/秒实时倒计时
+- **爱的故事** — qiqi & nini 头像 + 祝福寄语字幕（垂直滚动，点击可留言）+ 爱情故事文案 + 待办卡片 + 已完成列表
 - **爱的相册** — 3×3 九宫格布局，左上大图合并，右下四格自动轮播
-- **横幅** — 浪漫文案
+- **纪念日计时器** — 自 2021-06-24 起的天/时/分/秒实时倒计时 + 浪漫横幅文案
 - **音乐播放器** — 本地 `City_Of_Stars.mp3`，右上角悬浮按钮
 
 ### 祝福弹窗
@@ -323,4 +322,3 @@ sudo nginx -t && sudo nginx -s reload
 ---
 
 © 2021 qiqi & nini
-# QN_web
