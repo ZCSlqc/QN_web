@@ -10,12 +10,14 @@ const Login    = () => import('../views/LoginView.vue')
 const Register = () => import('../views/RegisterView.vue')
 const Index    = () => import('../views/IndexView.vue')
 const Admin    = () => import('../views/AdminView.vue')
+const Journey  = () => import('../views/JourneyView.vue')
 
 const routes = [
   { path: '/',         redirect: '/login' },
   { path: '/login',    name: 'Login',    component: Login },
   { path: '/register', name: 'Register', component: Register },
   { path: '/index',    name: 'Index',    component: Index },
+  { path: '/journey',  name: 'Journey',  component: Journey },
   { path: '/admin',    name: 'Admin',    component: Admin },
 ]
 

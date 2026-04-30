@@ -39,6 +39,7 @@
           <a href="#home" @click.prevent="scrollTo('home')">爱的首页</a>
           <a href="#story" @click.prevent="scrollTo('story')">爱的故事</a>
           <a href="#album" @click.prevent="scrollTo('album')">爱的相册</a>
+          <router-link to="/journey" class="journey-nav-link">爱的旅程</router-link>
           <router-link v-if="isAdmin" to="/admin" class="admin-nav-link">管理</router-link>
         </nav>
         <button class="nav-toggle" @click="mobileNavOpen = !mobileNavOpen">
@@ -49,6 +50,7 @@
         <a href="#home" @click.prevent="scrollTo('home'); mobileNavOpen = false">爱的首页</a>
         <a href="#story" @click.prevent="scrollTo('story'); mobileNavOpen = false">爱的故事</a>
         <a href="#album" @click.prevent="scrollTo('album'); mobileNavOpen = false">爱的相册</a>
+        <router-link to="/journey" @click="mobileNavOpen = false" class="journey-mobile-link">爱的旅程</router-link>
         <router-link v-if="isAdmin" to="/admin" @click="mobileNavOpen = false" class="admin-mobile-link">管理后台</router-link>
       </div>
 
@@ -753,11 +755,13 @@ onUnmounted(() => {
 .nav-bar.scrolled .nav-logo { color: var(--color-rose); }
 .nav-links { display: flex; }
 .nav-links a { font-size: 14px; color: rgba(255,255,255,0.85); letter-spacing: 1px; transition: color var(--transition-fast); margin-right: 32px;}
-.nav-links a:hover, .nav-links .admin-nav-link:hover { color: #fff; }
+.nav-links a:hover, .nav-links .admin-nav-link:hover, .nav-links .journey-nav-link:hover { color: #fff; }
 .admin-nav-link { color: var(--color-gold) !important; }
+.journey-nav-link { font-size: 14px; color: rgba(255,255,255,0.85); letter-spacing: 1px; transition: color var(--transition-fast); margin-right: 32px; }
 .nav-bar.scrolled .nav-links a { color: var(--color-text-light); }
-.nav-bar.scrolled .nav-links a:hover, .nav-bar.scrolled .admin-nav-link:hover { color: var(--color-rose); }
+.nav-bar.scrolled .nav-links a:hover, .nav-bar.scrolled .admin-nav-link:hover, .nav-bar.scrolled .journey-nav-link:hover { color: var(--color-rose); }
 .nav-bar.scrolled .admin-nav-link { color: var(--color-gold) !important; }
+.nav-bar.scrolled .journey-nav-link { color: var(--color-text-light); }
 .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; padding: 4px; }
 .nav-toggle span { width: 24px; height: 2px; background: #fff; border-radius: 1px; transition: all var(--transition-fast); }
 .nav-bar.scrolled .nav-toggle span { background: var(--color-text); }
