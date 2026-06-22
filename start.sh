@@ -1,21 +1,23 @@
 #!/bin/bash
+
 # ============================================================
 # qiqi & nini 情侣网页 — 一键启动脚本
 # 后端 FastAPI :8000  |  前端 Vite :7721
 # ============================================================
-set -e
 
 ROOT_DIR="$(cd "$(dirname "$0")" && pwd)"
 BACKEND_DIR="$ROOT_DIR/backend"
 FRONTEND_DIR="$ROOT_DIR/frontend"
 VENV_DIR="$ROOT_DIR/.venv"
+BACKEND_PID_FILE="$ROOT_DIR/.backend.pid"
+FRONTEND_PID_FILE="$ROOT_DIR/.frontend.pid"
 
 echo "========================================"
 echo "  qiqi & nini 情侣网页"
 echo "========================================"
 
 # ── 停止旧进程 ──────────────────────────────────────────
-echo "[1/4] 清理旧进程..."
+echo "[1/5] 清理旧进程..."
 pkill -f "uvicorn main:app" 2>/dev/null || true
 pkill -f "vite" 2>/dev/null || true
 sleep 1
@@ -35,15 +37,17 @@ if [ ! -d "$FRONTEND_DIR/node_modules" ]; then
 fi
 
 # ── 启动后端 ────────────────────────────────────────────
-echo "[2/4] 启动后端 FastAPI (端口 8000)..."
+echo "[2/5] 启动后端 FastAPI (端口 8000)..."
 cd "$BACKEND_DIR"
 source "$VENV_DIR/bin/activate"
 nohup uvicorn main:app --host 0.0.0.0 --port 8000 --reload > "$ROOT_DIR/web-fastapi.log" 2>&1 &
-echo "      后端 PID: $!"
+BACKEND_PID=$!
+echo "$BACKEND_PID" > "$BACKEND_PID_FILE"
+echo "      后端 PID: $BACKEND_PID"
 
 # ── 等待后端就绪 ────────────────────────────────────────
-echo "[3/4] 等待后端就绪..."
-for i in $(seq 1 10); do
+echo "[3/5] 等待后端就绪..."
+for i in $(seq 1 15); do
   if curl -s http://localhost:8000/health > /dev/null 2>&1; then
     echo "      后端已就绪 ✓"
     break
@@ -52,10 +56,21 @@ for i in $(seq 1 10); do
 done
 
 # ── 启动前端 ────────────────────────────────────────────
-echo "[4/4] 启动前端 Vite (端口 7721)..."
+echo "[4/5] 启动前端 Vite (端口 7721)..."
 cd "$FRONTEND_DIR"
 nohup npm run dev -- --host 0.0.0.0 --port 7721 < /dev/null > "$ROOT_DIR/web-vue.log" 2>&1 &
-echo "      前端 PID: $!"
+FRONTEND_PID=$!
+echo "$FRONTEND_PID" > "$FRONTEND_PID_FILE"
+echo "      前端 PID: $FRONTEND_PID"
+
+echo "[5/5] 等待前端就绪..."
+for i in $(seq 1 15); do
+  if curl -s http://localhost:7721 > /dev/null 2>&1; then
+    echo "      前端已就绪 ✓"
+    break
+  fi
+  sleep 1
+done
 
 echo ""
 echo "========================================"
@@ -72,4 +87,6 @@ echo "    /register  — 注册"
 echo "    /index     — 主页 (故事/相册/计时器)"
 echo "    /journey   — 爱的旅程 (地图点亮)"
 echo "    /admin     — 管理后台"
+echo ""
+echo "  停止服务: ./stop.sh"
 echo ""
