@@ -93,10 +93,10 @@ def test_three_activity_sources_reward_once(pet_pair):
     client, _, auth = pet_pair
     headers = auth['养猫甲']
     raw = photo_bytes()
-    for expected in [1, 0]:
-        response = client.post('/photos', files={'file': ('same.png', raw, 'image/png')}, headers=headers)
-        assert response.status_code == 201
-        assert response.json()['food_reward'] == {'food': 'treat', 'amount': expected}
+    response = client.post('/photos', files={'file': ('same.png', raw, 'image/png')}, headers=headers)
+    assert response.status_code == 201
+    assert response.json()['food_reward'] == {'food': 'treat', 'amount': 1}
+    assert client.post('/photos', files={'file': ('same.png', raw, 'image/png')}, headers=headers).status_code == 409
     assert client.get('/pet', headers=headers).json()['inventory']['treat'] == 1
     todo_id = client.post('/admin/todos', data={'entry': '一起完成', 'type': '日常', 'user': '养猫甲'}, headers=headers).json()['id']
     for done, expected in [(True, 1), (False, 0), (True, 0)]:
@@ -114,17 +114,6 @@ def test_three_activity_sources_reward_once(pet_pair):
     future = journey_data(departure_date='2099-01-01', return_date='2099-01-02')
     client.post('/journeys', data=future, headers=headers)
     assert client.get('/pet', headers=headers).json()['inventory']['can'] == 1
-
-
-def test_legacy_balance_preserved_and_not_reissued(pet_pair):
-    client, module, auth = pet_pair
-    with module.get_db() as conn:
-        conn.execute("UPDATE pet_inventory SET amount=5 WHERE food='treat'")
-    first = client.get('/pet', headers=auth['养猫甲']).json()
-    assert first['inventory']['treat'] == 5
-    assert sorted([first['own_inventory']['treat'], first['partner_inventory']['treat']]) == [2, 3]
-    module.init_db()
-    assert client.get('/pet', headers=auth['养猫甲']).json()['inventory']['treat'] == 5
 
 
 def test_invalid_food_does_not_change_inventory(pet_pair):

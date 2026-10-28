@@ -55,7 +55,7 @@ export function useCatLife({ scene, action, pose, walk, reset, react, moveToy, f
     if (toy === 'mouse') {
       action.value = 'play'; chase()
       endTimer = setTimeout(wake, 12000)
-    } else react('play')
+    } else react('play', window.matchMedia('(pointer: coarse)').matches)
   }
   function pointerMove(event) {
     if (event.target.closest('.weather-control, .scene-tools, .room-topline')) { leave(); return }

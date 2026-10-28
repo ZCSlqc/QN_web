@@ -12,7 +12,7 @@ from app.core.settings import settings, ENV_PATH, BASE_DIR
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--output', type=Path, default=BASE_DIR.parent / 'artifacts/backups')
+    parser.add_argument('--output', type=Path, default=BASE_DIR.parent.parent / 'QN_web_backups')
     args = parser.parse_args()
     destination = args.output / datetime.datetime.now().strftime('%Y%m%d-%H%M%S-%f')
     destination.mkdir(parents=True)

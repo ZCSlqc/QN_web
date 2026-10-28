@@ -25,7 +25,6 @@ def replenish_startup_food():
     from app.core.database import get_db, bj_time
     with get_db() as conn:
         conn.execute('BEGIN IMMEDIATE')
-        prepare_wallets(conn, bj_time())
         for username in settings.ADMIN_USERS:
             owner = conn.execute('SELECT id FROM user WHERE username=?', (username,)).fetchone()
             if not owner:
@@ -35,7 +34,7 @@ def replenish_startup_food():
 
 
 def grant_letter_treat(conn, username, letter_id, now):
-    members = prepare_wallets(conn, now)
+    members = caretakers(conn)
     actor = next((member for member in members if member['username'] == username), None)
     if not actor:
         return 0
@@ -48,35 +47,8 @@ def grant_letter_treat(conn, username, letter_id, now):
     return 0
 
 
-def prepare_wallets(conn, now):
-    members = caretakers(conn)
-    if not members:
-        return []
-    if not conn.execute("SELECT 1 FROM pet_wallet_versions WHERE version='shared-to-owned-v1'").fetchone():
-        # Preserve the old shared balance, split evenly; the older account gets an odd remainder.
-        for row in conn.execute("SELECT food,amount FROM pet_inventory WHERE pet_id='3673107b-6c7d-4c37-9b5b-47519076cd31'").fetchall():
-            for index, member in enumerate(members):
-                amount = row['amount'] // 2 + (row['amount'] % 2 if index == 0 else 0)
-                if amount:
-                    add_credit(conn, member['id'], row['food'], amount)
-                    conn.execute('INSERT INTO pet_activity_rewards(source_kind,source_key,source_id,owner_id,food,amount,created_at) VALUES (?,?,?,?,?,?,?)',
-                                 ('legacy_shared', f"{member['id']}:{row['food']}", SYSTEM_ID, member['id'], row['food'], amount, now))
-        conn.execute("UPDATE pet_inventory SET amount=0 WHERE pet_id='3673107b-6c7d-4c37-9b5b-47519076cd31'")
-        conn.execute("INSERT INTO pet_wallet_versions(version) VALUES ('shared-to-owned-v1')")
-    # An administrator's previously earned visitor treats are preserved, not earned again.
-    for member in members:
-        row = conn.execute('SELECT treats FROM pet_user_inventory WHERE user_id=?', (member['id'],)).fetchone()
-        if row and row['treats']:
-            amount = row['treats']
-            add_credit(conn, member['id'], 'treat', amount)
-            conn.execute('INSERT INTO pet_activity_rewards(source_kind,source_key,source_id,owner_id,food,amount,created_at) VALUES (?,?,?,?,?,?,?) ON CONFLICT(source_kind,source_key) DO UPDATE SET amount=amount+excluded.amount',
-                         ('legacy_personal', str(member['id']), SYSTEM_ID, member['id'], 'treat', amount, now))
-            conn.execute('UPDATE pet_user_inventory SET treats=0 WHERE user_id=?', (member['id'],))
-    return members
-
-
 def grant_activity_food(conn, username, kind, source_id, now, source_key=None):
-    members = prepare_wallets(conn, now)
+    members = caretakers(conn)
     actor = next((member for member in members if member['username'] == username), None)
     if kind not in FOOD_FOR_ACTIVITY:
         return 0

@@ -22,9 +22,9 @@ def test_photo_file_failure_is_hidden_and_retryable(api):
     assert response.status_code == 200 and response.json()['cleanup_pending'] is True
     assert client.get('/photos').json()['data'] == []
     assert client.get(photo['url'].removeprefix('/api')).status_code == 404
-    assert len(list(module.settings.UPLOAD_DIR.iterdir())) == 2
+    assert len([path for path in module.settings.UPLOAD_DIR.rglob('*') if path.is_file()]) == 2
     assert client.delete(f"/photos/{photo['id']}", headers=headers).json()['cleanup_pending'] is False
-    assert not list(module.settings.UPLOAD_DIR.iterdir())
+    assert not [path for path in module.settings.UPLOAD_DIR.rglob('*') if path.is_file()]
 
 
 def test_home_and_admin_share_todo_validation(api):

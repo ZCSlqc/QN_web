@@ -31,16 +31,16 @@
       <AlbumCorner v-if="cornerPhotos.length" :key="cornerPhotos.map(photo => photo.id).join('-')" class="grid-corner"
         :images="cornerPhotos.map(photo => photo.thumbnail_url)" :paused="previewVisible" @preview="index => previewPhoto(cornerPhotos[index])" />
     </div>
-    <ElImageViewer v-if="previewVisible" :url-list="orderedPhotos.map(photo => photo.url)" :initial-index="previewIndex"
+    <ElImageViewer v-if="previewVisible" :url-list="orderedPhotos.map(photo => photo.display_url || photo.url)" :initial-index="previewIndex"
       hide-on-click-modal @close="previewVisible = false" />
 
     <AppDialog v-model="showUpload" title="上传照片" :busy="uploading">
-      <div class="upload-dialog">
+      <div class="upload-dialog" :class="{ dragging }" @dragover.prevent="dragging = !uploading && canEdit" @dragleave="leaveDrop" @drop.prevent.stop="onDrop">
         <header><h3>上传新的回忆</h3><button class="upload-close" aria-label="关闭上传窗口" :disabled="uploading" @click="showUpload = false">✕</button></header>
-        <p class="upload-hint">支持 JPG、PNG、WebP，每张最多 15MB，一次最多 10 张。</p>
+        <p class="upload-hint">可将图片拖入此窗口。支持 JPG、PNG、WebP，每张最多 15MB，一次最多 10 张。</p>
         <input ref="fileInput" class="file-input" type="file" multiple accept="image/jpeg,image/png,image/webp" :disabled="uploading" aria-label="选择照片" @change="onSelect" />
         <button class="drop-zone" :class="{ dragging }" :disabled="uploading" @click="fileInput?.click()"
-          @dragover.prevent="dragging = true" @dragleave.prevent="dragging = false" @drop.prevent="onDrop">
+          >
           <span aria-hidden="true">＋</span><strong>选择照片</strong><small>也可以把照片拖到这里</small>
         </button>
         <div v-if="queue.length" class="upload-queue">
@@ -134,6 +134,7 @@ function selectFiles(files) {
   }
 }
 function onSelect(event) { selectFiles(Array.from(event.target.files || [])); event.target.value = '' }
+function leaveDrop(event) { if (!event.currentTarget.contains(event.relatedTarget)) dragging.value = false }
 function onDrop(event) { dragging.value = false; selectFiles(Array.from(event.dataTransfer.files || [])) }
 function removeFile(index) { URL.revokeObjectURL(queue.value[index].preview); queue.value.splice(index, 1) }
 function resetQueue() {
@@ -185,7 +186,7 @@ async function deletePhoto(photo) {
   if (deleting.value !== null || uploading.value || !canEdit.value) return
   deleting.value = photo.id
   try {
-    await ElMessageBox.confirm(photo.source === 'bundled' ? '确定从相册移除这张照片吗？' : '删除后无法恢复，确定移除这张照片吗？', '删除照片', { type: 'warning', confirmButtonText: '删除', cancelButtonText: '取消' })
+    await ElMessageBox.confirm('删除会清理这张照片及其预览文件，确定移除吗？', '删除照片', { type: 'warning', confirmButtonText: '删除', cancelButtonText: '取消' })
     await request.delete(`/photos/${photo.id}`, { signal: controller.signal })
     if (!disposed) photos.value = photos.value.filter(item => item.id !== photo.id)
   } catch (error) {
@@ -213,6 +214,7 @@ onUnmounted(() => { disposed = true; controller.abort(); resetQueue() })
 .photo-delete, .upload-close { background: none; color: var(--color-text-light); padding: 8px; flex-shrink: 0; }
 .photo-delete:hover { color: var(--color-rose-dark); }
 .upload-dialog { padding: 24px; }
+.upload-dialog.dragging { box-shadow: inset 0 0 0 2px var(--color-rose); background: var(--color-rose-soft); }
 .upload-dialog header, .upload-dialog footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .upload-dialog h3 { font-size: 20px; }
 .upload-hint { line-height: 1.7; margin: 12px 0 16px; }

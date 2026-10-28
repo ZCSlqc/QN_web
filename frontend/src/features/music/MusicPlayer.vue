@@ -16,7 +16,7 @@ import { ElMessage } from 'element-plus'
 const audio = ref(null)
 const playing = ref(false)
 const pending = ref(false)
-const musicSrc = `${import.meta.env.BASE_URL}audio/City_Of_Stars.mp3`
+const musicSrc = `${import.meta.env.BASE_URL}audio/city-of-stars.mp3`
 let disposed = false
 let errorReported = false
 function reportError(error) {

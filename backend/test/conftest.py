@@ -12,16 +12,11 @@ from fastapi.testclient import TestClient
 @pytest.fixture
 def api(tmp_path, monkeypatch):
     db = tmp_path / 'test.db'
-    with closing(sqlite3.connect(db)) as conn:
-        with conn:
-            conn.execute("CREATE TABLE user (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT UNIQUE NOT NULL, userpwd TEXT NOT NULL, userdate TEXT NOT NULL)")
-            conn.execute("INSERT INTO user (username,userpwd,userdate) VALUES (?,?,?)", ('李琪淳', 'owner-password', '2021-06-24'))
     values = {
         'QN_DB_PATH': str(db), 'QN_ENV_FILE': str(tmp_path / 'missing.env'),
         'QN_ADMIN_USERS': json.dumps(['李琪淳']), 'QN_CHECK_CODE': 'test-registration-code',
         'QN_USER_PAGE_ALLOWLIST': '["/index"]',
         'QN_SECRET_KEY': 'isolated-test-signing-key', 'QN_UPLOAD_DIR': str(tmp_path / 'uploads'),
-        'QN_PHOTO_ASSETS_DIR': str(tmp_path / 'assets'),
     }
     for key, value in values.items():
         monkeypatch.setenv(key, value)
@@ -35,6 +30,9 @@ def api(tmp_path, monkeypatch):
     database = importlib.import_module('app.core.database')
     module = SimpleNamespace(app=main.app, settings=main.settings, get_db=database.get_db, init_db=database.init_db)
     with TestClient(module.app) as client:
+        from app.core.security import hash_password
+        with module.get_db() as conn:
+            conn.execute('INSERT INTO user(username,userpwd,userdate,nickname) VALUES (?,?,?,?)', ('李琪淳', hash_password('owner-password'), '2021-06-24', '琪琪'))
         yield client, module
 
 

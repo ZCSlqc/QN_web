@@ -7,7 +7,7 @@ from fastapi import APIRouter, Depends, Form, HTTPException
 from fastapi.responses import JSONResponse
 from app.core.settings import settings
 from app.core.database import get_db, bj_time
-from app.core.security import get_current_user, hash_password, verify_password, is_old_password, create_token
+from app.core.security import get_current_user, hash_password, verify_password, create_token
 from app.services.registration import registration_code
 from app.core.security import security
 from app.core.rate_limit import limit
@@ -59,14 +59,6 @@ def login_process(
         return JSONResponse({"status": "failed", "flag": -1, "msg": "用户名不存在"})
     if not verify_password(userpwd, row["userpwd"]):
         return JSONResponse({"status": "failed", "flag": -2, "msg": "密码错误"})
-
-    # 旧明文密码自动升级为 bcrypt
-    if is_old_password(row["userpwd"]):
-        with get_db() as conn:
-            conn.execute(
-                "UPDATE user SET userpwd=? WHERE username=?",
-                (hash_password(userpwd), username),
-            )
 
     login_count_before = row["login_count"] or 0
 

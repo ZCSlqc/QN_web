@@ -5,7 +5,7 @@ import re
 from app.core.database import get_db, bj_time
 from app.core.settings import settings
 from app.services.profiles import display_name
-from app.services.pet_wallets import prepare_wallets, balances
+from app.services.pet_wallets import caretakers, balances
 
 PET_ID = '3673107b-6c7d-4c37-9b5b-47519076cd31'
 FOODS = {
@@ -22,7 +22,7 @@ def can_feed(username):
 def state(conn, username, activity_limit=20):
     environment = conn.execute('SELECT weather FROM pet_environment WHERE pet_id=?', (PET_ID,)).fetchone()
     profile = conn.execute('SELECT name,created_at FROM pets WHERE id=?', (PET_ID,)).fetchone()
-    members = prepare_wallets(conn, bj_time())
+    members = caretakers(conn)
     viewer = conn.execute('SELECT id,nickname FROM user WHERE username=?', (username,)).fetchone() if username else None
     viewer_id = viewer['id'] if viewer else None
     is_admin = bool(username and username in settings.ADMIN_USERS)
@@ -77,7 +77,7 @@ def feed(username, food, request_key, personal=False):
             raise HTTPException(401, '请重新登录')
         if personal and username in settings.ADMIN_USERS:
             raise HTTPException(403, '主人使用共同背包，不领取或使用访客留言猫条')
-        members = prepare_wallets(conn, bj_time())
+        members = caretakers(conn)
         kind = 'reward_feed' if personal else 'feed'
         existing = conn.execute('SELECT id,food,kind FROM pet_ledger WHERE pet_id=? AND actor_id=? AND request_key=?', (PET_ID, actor['id'], request_key)).fetchone()
         if existing:

@@ -11,6 +11,11 @@ from app.services.idempotency import lookup, remember
 from app.services.journeys import normalize_cities, journey_payload
 from app.api.photos import store_photo, photo_payload
 from app.services.photo_cleanup import cleanup_photo
+from pydantic import BaseModel
+
+class PhotoOrder(BaseModel):
+    ids: list[str]
+    original_ids: list[str]
 
 router = APIRouter(dependencies=[Depends(require_page_access('/journey'))])
 
@@ -32,11 +37,11 @@ def validate_journey(adcodes, name, departure_date, return_date, notes):
 def get_journeys():
     with get_db() as conn:
         rows = conn.execute("SELECT * FROM journeys ORDER BY created_at DESC, rowid DESC").fetchall()
-        photos = conn.execute('SELECT * FROM photos WHERE journey_id IS NOT NULL AND removed=0 ORDER BY created_at ASC,rowid ASC').fetchall()
+        photos = conn.execute('SELECT * FROM photos WHERE journey_id IS NOT NULL AND removed=0 ORDER BY display_order ASC,created_at ASC,rowid ASC').fetchall()
         grouped = {}
         for photo in photos:
             grouped.setdefault(photo['journey_id'], []).append(photo_payload(photo))
-    return {"data": [journey_payload(row) | {'photo_count': len(grouped.get(row['id'], [])), 'cover': next(iter(grouped.get(row['id'], [])), None)} for row in rows]}
+    return {"data": [journey_payload(row) | {'photo_count': len(grouped.get(row['id'], [])), 'cover': next(iter(grouped.get(row['id'], [])), None), 'cover_photos': grouped.get(row['id'], [])[:2]} for row in rows]}
 
 
 @router.get('/journeys/{journey_id}/photos')
@@ -44,13 +49,28 @@ def list_journey_photos(journey_id: str):
     with get_db() as conn:
         if not conn.execute('SELECT 1 FROM journeys WHERE id=?', (journey_id,)).fetchone():
             raise HTTPException(404, '旅程记录不存在')
-        rows = conn.execute('SELECT * FROM photos WHERE journey_id=? AND removed=0 ORDER BY created_at ASC,rowid ASC', (journey_id,)).fetchall()
+        rows = conn.execute('SELECT * FROM photos WHERE journey_id=? AND removed=0 ORDER BY display_order ASC,created_at ASC,rowid ASC', (journey_id,)).fetchall()
     return {'data': [photo_payload(row) for row in rows]}
 
 
 @router.post('/journeys/{journey_id}/photos', status_code=201)
 def upload_journey_photo(journey_id: str, file: UploadFile = File(...), caption: str = Form(''), request_key: str = Form(''), current_user: str = Depends(require_admin)):
     return store_photo(file, caption, request_key, current_user, journey_id)
+
+
+@router.put('/journeys/{journey_id}/photo-order')
+def reorder_photos(journey_id: str, order: PhotoOrder, current_user: str = Depends(require_admin)):
+    with get_db() as conn:
+        conn.execute('BEGIN IMMEDIATE')
+        if not conn.execute('SELECT 1 FROM journeys WHERE id=?', (journey_id,)).fetchone():
+            raise HTTPException(404, '旅程不存在')
+        current = [row['id'] for row in conn.execute('SELECT id FROM photos WHERE journey_id=? AND removed=0 ORDER BY display_order,created_at,rowid', (journey_id,))]
+        if current != order.original_ids:
+            raise HTTPException(409, '照片列表已变化，请取消排序并刷新后重试')
+        if len(order.ids) != len(set(order.ids)) or set(order.ids) != set(current):
+            raise HTTPException(400, '排序必须包含这段旅程的全部照片且不能重复')
+        conn.executemany('UPDATE photos SET display_order=? WHERE id=? AND journey_id=?', [(index, photo_id, journey_id) for index, photo_id in enumerate(order.ids)])
+    return {'status': 'success'}
 
 
 @router.put('/journeys/{journey_id}/photos/{photo_id}')

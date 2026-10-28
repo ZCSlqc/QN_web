@@ -53,7 +53,6 @@ class Settings:
     # 数据库
     DB_PATH = Path(os.environ.get("QN_DB_PATH", BASE_DIR / "couple.db"))
     UPLOAD_DIR = Path(os.environ.get("QN_UPLOAD_DIR", BASE_DIR / "uploads"))
-    PHOTO_ASSETS_DIR = Path(os.environ.get("QN_PHOTO_ASSETS_DIR", BASE_DIR.parent / "frontend/public"))
     MAX_PHOTO_BYTES = 15 * 1024 * 1024
 
     # 授权码

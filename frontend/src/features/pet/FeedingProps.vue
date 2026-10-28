@@ -12,18 +12,21 @@
   </div>
 </template>
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed, watch, onUnmounted } from 'vue'
 const props = defineProps({ action: { type: String, default: 'idle' } })
-const paths = { empty: '/pet/food/bowl-empty.webp', full: '/pet/food/bowl-full.webp', can: '/pet/food/can-open.webp', treat: '/pet/food/treat-open.webp' }
+const paths = { empty: '/pets/liuyi/food/bowl-empty.webp', full: '/pets/liuyi/food/bowl-full.webp', can: '/pets/liuyi/food/can-open.webp', treat: '/pets/liuyi/food/treat-open.webp' }
 const ready = ref(new Set()), failed = ref(new Set())
 const floorSource = computed(() => props.action === 'kibble' ? paths.full : props.action === 'can' ? paths.can : paths.empty)
 let disposed = false
-onMounted(() => {
-  for (const path of Object.values(paths)) {
+const pending = new Set()
+watch([floorSource, () => props.action], ([floor, action]) => {
+  for (const path of action === 'treat' ? [floor, paths.treat] : [floor]) {
+    if (pending.has(path) || ready.value.has(path)) continue
+    pending.add(path)
     const image = new Image(); image.src = path
-    image.decode().then(() => { if (!disposed) ready.value.add(path) }, () => { if (!disposed) failed.value.add(path) })
+    image.decode().then(() => { if (!disposed) { ready.value.add(path); failed.value.delete(path) } }, () => { if (!disposed) failed.value.add(path) }).finally(() => pending.delete(path))
   }
-})
+}, { immediate: true })
 onUnmounted(() => { disposed = true })
 </script>
 <style scoped>

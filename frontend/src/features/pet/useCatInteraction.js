@@ -29,7 +29,7 @@ export function useCatInteraction() {
     }, 10000 + Math.random() * 6000)
   }
   function finish() { action.value = 'idle'; pose.value = 0; scheduleIdle() }
-  function interact(kind) {
+  function interact(kind, persistent = false) {
     if (eating.value || action.value === kind) return
     revealScene()
     clearAction(); action.value = kind
@@ -41,7 +41,7 @@ export function useCatInteraction() {
       later(() => { pose.value = 2 }, 650)
       later(() => { pose.value = 0 }, 2400)
       const settle = () => { if (Date.now() - lastToyMove < 1500) later(settle, 1500); else finish() }
-      later(settle, 4300)
+      if (!persistent) later(settle, 4300)
     }
   }
   function feedReaction(food, replayed) {

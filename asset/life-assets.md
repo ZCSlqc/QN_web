@@ -1,6 +1,8 @@
+本目录已按用途整理，原图与发布路径详见 [README.md](README.md) 和 `manifest.json`。
+
 # 六一日常素材
 
-使用内置 imagegen 生成，原图保存在本目录；发布文件位于 `frontend/public/pet/`，经 `frontend/scripts/prepare-cat-life.cjs` 保留透明通道并等比缩小为 WebP。
+使用内置 imagegen 生成，原图保存在本目录；发布文件位于 `frontend/public/pets/liuyi/`，经 `frontend/scripts/prepare-cat-life.cjs` 保留透明通道并等比缩小为 WebP。
 
 | 原图 | 发布文件 | 提示词要点 |
 | --- | --- | --- |

@@ -8,7 +8,7 @@ export const foodTypes = [
   { id: 'can', name: '猫罐头', unit: '罐', description: '值得蹭蹭你的加餐', reply: '是罐罐！这就过来蹭蹭你。' },
 ]
 
-export function usePet(onFed) {
+export function usePet(onFed, scene = null) {
   const pet = ref(null), loading = ref(true), refreshing = ref(false), error = ref(''), feedError = ref('')
   const feeding = ref(false), pendingFood = ref(null)
   const weatherSaving = ref(false), weatherError = ref('')
@@ -25,6 +25,7 @@ export function usePet(onFed) {
   const showAllActivity = ref(false)
   const controller = new AbortController()
   let disposed = false, pollTimer, key = '', generation = 0
+  let sceneVisible = !scene, sceneObserver
   let restoredFor = null
   function restorePending(userId) {
     if (restoredFor === userId) return
@@ -84,17 +85,25 @@ export function usePet(onFed) {
   }
   async function poll() {
     clearTimeout(pollTimer)
-    if (!document.hidden) await load(true)
+    if (!document.hidden && sceneVisible) await load(true)
     if (!disposed) pollTimer = setTimeout(poll, 30000)
   }
   function visibility() { if (!document.hidden) void poll() }
   onMounted(() => {
-    void poll()
+    void load()
+    if (scene?.value) {
+      sceneObserver = new IntersectionObserver(([entry]) => {
+        const wasVisible = sceneVisible; sceneVisible = entry.isIntersecting
+        if (sceneVisible && !wasVisible) void poll()
+      }, { threshold: 0.1 })
+      sceneObserver.observe(scene.value)
+    } else void poll()
     document.addEventListener('visibilitychange', visibility)
     window.addEventListener('auth-expired', clearAuth)
     window.addEventListener('profile-updated', visibility)
   })
   onUnmounted(() => {
+    sceneObserver?.disconnect()
     disposed = true; generation++; clearTimeout(pollTimer); controller.abort()
     document.removeEventListener('visibilitychange', visibility)
     window.removeEventListener('auth-expired', clearAuth)

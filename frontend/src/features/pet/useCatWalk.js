@@ -97,12 +97,16 @@ export function useCatWalk(scene, styleName, action) {
     else resume()
   }
   watch(action, value => { if (value === 'idle') rest(); else clearTimeout(idleTimer) })
-  onMounted(() => {
-    for (const style of ['realistic', 'illustrated']) {
+  const loadingStyles = new Set()
+  watch(styleName, style => {
+    if (!loadingStyles.has(style) && !ready.value[style]) {
+      loadingStyles.add(style)
       Promise.all(Array.from({ length: 4 }, (_, i) => {
-        const img = new Image(); img.src = `/pet/liuyi-${style}-walk-${i}.webp`; return img.decode()
-      })).then(() => { if (!disposed) { ready.value[style] = true; rest() } }, () => {})
+        const img = new Image(); img.src = `/pets/liuyi/${style}/walk-${i}.webp`; return img.decode()
+      })).then(() => { if (!disposed) { ready.value[style] = true; rest() } }, () => {}).finally(() => loadingStyles.delete(style))
     }
+  }, { immediate: true })
+  onMounted(() => {
     observer = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; if (!visible) pause(); else resume() }, { threshold: 0.2 })
     if (scene.value) observer.observe(scene.value)
     resizeObserver = new ResizeObserver(resized)

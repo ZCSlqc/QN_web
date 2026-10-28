@@ -18,7 +18,7 @@ def main():
             'QN_DB_PATH': str(root / 'integration.db'), 'QN_ENV_FILE': str(root / '.env'),
             'QN_SECRET_KEY': 'isolated-integration-key-not-for-deployment',
             'QN_ADMIN_USERS': json.dumps(['集成测试甲', '集成测试乙']),
-            'QN_UPLOAD_DIR': str(root / 'uploads'), 'QN_PHOTO_ASSETS_DIR': str(root / 'assets'),
+            'QN_UPLOAD_DIR': str(root / 'uploads'),
         })
         os.environ.pop('QN_CHECK_CODE', None)
         (root / '.env').write_text('QN_CHECK_CODE=integration-share-code\n', encoding='utf-8')

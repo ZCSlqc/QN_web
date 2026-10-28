@@ -37,7 +37,7 @@ def test_trip_photos_are_private_separate_retryable_and_removed_with_trip(api, m
     assert client.get(image_url, headers=headers).status_code == 404
     from app.services.photo_cleanup import retry_photo_cleanup
     assert retry_photo_cleanup() == 0
-    assert list(module.settings.UPLOAD_DIR.iterdir()) == []
+    assert not [path for path in module.settings.UPLOAD_DIR.rglob('*') if path.is_file()]
 
 
 def test_photo_delete_wrong_trip_and_invalid_upload(api):

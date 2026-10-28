@@ -25,7 +25,7 @@
       ============================================================ -->
     <section class="hero" id="home">
       <canvas ref="petalCanvas" class="petal-canvas" aria-hidden="true"></canvas>
-      <img fetchpriority="high" decoding="async" class="hero-bg" src="/optimized/background/bg-flower.webp" alt="" />
+      <img fetchpriority="high" decoding="async" class="hero-bg" src="/backgrounds/home-cover.webp" alt="" />
       <div class="hero-overlay"></div>
 
       <SiteNavigation :light="scrollTop > 300" :is-admin="isAdmin" :has-mailbox="hasMailbox" :current-username="currentUsername" @mailbox-unavailable="hasMailbox = false" />
@@ -56,13 +56,13 @@
       <div class="container">
         <div class="section-header">
           <div class="header-avatars">
-            <img src="/optimized/img/qiqi.webp" alt="qiqi" class="avatar avatar-left" />
+            <img src="/avatars/qiqi.webp" alt="qiqi" class="avatar avatar-left" />
             <div class="header-text">
               <p class="section-eyebrow">The Story of our love</p>
               <h2 class="section-title section-title-script">Our Love Story</h2>
               <div class="section-line"></div>
             </div>
-            <img src="/optimized/img/nini.webp" alt="nini" class="avatar avatar-right" />
+            <img src="/avatars/nini.webp" alt="nini" class="avatar avatar-right" />
           </div>
         </div>
 
@@ -146,7 +146,7 @@
       Section 4：纪念日计时器
       ============================================================ -->
     <section class="date-section" id="date">
-      <img loading="lazy" decoding="async" class="date-bg" src="/optimized/background/2.webp" alt="" />
+      <img loading="lazy" decoding="async" class="date-bg" src="/backgrounds/anniversary.webp" alt="" />
       <div class="date-overlay"></div>
       <div class="date-content">
         <p class="date-eyebrow">Waiting for Wedding</p>
@@ -241,6 +241,7 @@
 </template>
 
 <script setup>
+import { recentProfile } from '../features/auth/pageAccess'
 import { ref, reactive, watch, onMounted, onUnmounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import axios from '../utils/request'
@@ -281,7 +282,7 @@ async function fetchUserInfo() {
   try {
     const token = localStorage.getItem('token')
     if (!token) return
-    const res = await axios.get('/me', { headers: { Authorization: `Bearer ${token}` } })
+    const res = (recentProfile() ? { data: recentProfile() } : await axios.get('/me', { headers: { Authorization: `Bearer ${token}` } }))
     isAdmin.value = res.data.is_admin
     hasMailbox.value = res.data.has_mailbox === true
     currentUsername.value = res.data.display_name || res.data.username || ''

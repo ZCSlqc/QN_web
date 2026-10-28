@@ -8,7 +8,7 @@ from shapely.geometry import shape, mapping, MultiLineString
 from shapely.ops import unary_union
 from shapely import make_valid
 
-root = Path(__file__).resolve().parents[1] / 'public/svg'
+root = Path(__file__).resolve().parents[2] / 'asset/maps/china'
 data = json.loads((root / 'province.geojson').read_text(encoding='utf-8'))
 regions = [make_valid(shape(f['geometry'])) for f in data['features']]
 merged = unary_union(regions)
@@ -18,3 +18,7 @@ outline = MultiLineString([polygon.exterior.coords for polygon in polygons])
 result = {'type': 'Feature', 'properties': {'name': '全国外轮廓'}, 'geometry': mapping(outline)}
 (root / 'outline.geojson').write_text(json.dumps(result, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
 print(f'Generated outline from {len(regions)} existing regions; {len(polygons)} outer rings.')
+
+output = Path(__file__).resolve().parents[1] / 'public/maps/china/outline.geojson'
+output.parent.mkdir(parents=True, exist_ok=True)
+output.write_bytes((root / 'outline.geojson').read_bytes())

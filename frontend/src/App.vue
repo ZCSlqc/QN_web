@@ -5,13 +5,15 @@
 <template>
   <!-- 路由视图出口：根据当前路由渲染对应页面组件 -->
   <router-view />
-  <MusicPlayer />
+  <MusicPlayer v-if="route.path !== '/login'" />
   <FoodRewardFlight />
 </template>
 
 <script setup>
+import { useRoute } from 'vue-router'
 import MusicPlayer from './features/music/MusicPlayer.vue'
 import FoodRewardFlight from './features/pet/FoodRewardFlight.vue'
+const route = useRoute()
 </script>
 
 <style>

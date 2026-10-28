@@ -85,6 +85,10 @@ def replace_records(database, records, backup_dir):
         with closing(sqlite3.connect(backup)) as dest:
             conn.backup(dest)
         conn.execute('BEGIN IMMEDIATE')
+        if conn.execute('SELECT 1 FROM photos WHERE journey_id IS NOT NULL LIMIT 1').fetchone():
+            raise ValueError('Existing journey photos must be handled before replacing journeys; nothing was replaced')
+        if conn.execute('SELECT 1 FROM journey_plans WHERE converted_journey_id IS NOT NULL LIMIT 1').fetchone():
+            raise ValueError('Converted plans reference existing journeys; refusing to replace them')
         before = snapshot_other_tables(conn)
         old_count = conn.execute('SELECT count(*) FROM journeys').fetchone()[0]
         conn.execute('DELETE FROM journeys')
@@ -124,13 +128,13 @@ if __name__ == '__main__':
     parser.add_argument('--database', type=Path, default=ROOT / 'backend/couple.db')
     parser.add_argument('--replace', action='store_true')
     args = parser.parse_args()
-    records = parse_records(args.source, ROOT / 'frontend/public/svg')
+    records = parse_records(args.source, ROOT / 'frontend/public/maps/china')
     report = dict(source=str(args.source), source_sha256=hashlib.sha256(args.source.read_bytes()).hexdigest(),
                   count=len(records), city_count=len({code for r in records for code in r['adcodes']}), records=records)
     output = ROOT / 'artifacts/journey-import-report.json'
     output.parent.mkdir(parents=True, exist_ok=True)
     if args.replace:
-        report['result'] = replace_records(args.database, records, ROOT / 'artifacts')
+        report['result'] = replace_records(args.database, records, ROOT.parent / 'QN_web_backups')
     output.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding='utf-8')
     print(json.dumps({key: report[key] for key in ('count', 'city_count')}))
     if args.replace:

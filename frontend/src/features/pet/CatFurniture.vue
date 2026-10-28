@@ -22,7 +22,7 @@ defineProps({ drinking: Boolean })
 .platform-high span { position: absolute; inset: 3px; border-radius: 50%; background: #d8c1a5; }
 .tree-rope { position: absolute; left: 87px; top: 34px; height: 48px; border-left: 1px solid #947654; }
 .tree-rope i { position: absolute; left: -10px; bottom: -10px; width: 19px; height: 19px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #ebdfce, #b29a7c); }
-.water-bowl { position: absolute; left: 28%; bottom: 81px; transform: translateX(-50%); width: 82px; height: 42px; border-radius: 10% 10% 45% 45%; background: linear-gradient(100deg, #c5ad91, #f1e7d8 45%, #dfcbb2 75%, #b69b7e); box-shadow: 0 5px 5px #75604a2b; z-index: 5; pointer-events: none; }
+.water-bowl { position: absolute; left: 28%; bottom: 81px; transform: translateX(-50%); width: 82px; height: 42px; border-radius: 10% 10% 45% 45%; background: linear-gradient(100deg, #c5ad91, #f1e7d8 45%, #dfcbb2 75%, #b69b7e); box-shadow: 0 5px 5px #75604a2b; z-index: 4; pointer-events: none; }
 .water-rim { position: absolute; top: -5px; left: 0; width: 100%; height: 27px; border: 5px solid #f0e5d5; border-radius: 50%; background: #a59f8f; overflow: hidden; }
 .water-surface { position: absolute; inset: 3px 1px 0; border-radius: 50%; background: linear-gradient(165deg, #bec9c4, #e0e6dc); box-shadow: inset 0 2px 3px #7e897b40; }
 .water-surface::after { content: ''; position: absolute; width: 27px; height: 3px; top: 3px; right: 8px; background: #f1fcf6a0; border-radius: 50%; }

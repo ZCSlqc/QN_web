@@ -1,35 +1,65 @@
-# Python
-__pycache__/
-*.pyc
-*.pyo
-.venv/
+# Local configuration and secrets (keep shareable examples)
+.env
+.env.*
+!.env.example
+!.env.*.example
+!.env.template
+/backend/.secret_key
 
-# Node
+# Python environments, bytecode and tool caches
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Node dependencies, Vite output and caches
 node_modules/
 dist/
+.vite/
+.vite-temp/
+*.tsbuildinfo
 
-# Database
+# Local backups; the requested database and uploaded photos are versioned
+/backend/backups/
+/backups/
 *.db
 *.db-wal
 *.db-shm
 *.db-journal
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+*.sqlite-journal
+*.sqlite3
+*.sqlite3-wal
+*.sqlite3-shm
+*.sqlite3-journal
+!/backend/couple.db
 
-# IDE
-.idea/
-.vscode/
+# Generated test reports and development artifacts; keep test source/fixtures
+/artifacts/
+playwright-report/
+test-results/
+coverage/
 
-# OS
-.DS_Store
-Thumbs.db
-
-# Claude
-.claude/
-
+# Runtime logs and process markers
 *.log
 *.pid
-backend/.secret_key
-backend/uploads/
-.env
-artifacts/
+*.pid.lock
 
-.pytest_cache/
+# Local editor / agent state
+.idea/
+.vscode/
+.claude/
+
+# Operating system metadata
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# asset/, frontend/public/, lockfiles and test fixtures are intentionally tracked.

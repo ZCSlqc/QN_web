@@ -30,7 +30,7 @@ test('receipts aggregate while a dialog is open, then fly after it closes', asyn
   await expect(page.locator('.food-reward-flight')).toHaveCount(0)
   await page.evaluate(() => document.querySelector('#reward-test-dialog').remove())
   await expect(page.locator('.food-reward-flight strong')).toHaveText('+3')
-  await expect(page.locator('.food-reward-flight img')).toHaveAttribute('src', '/pet/icons/cat-treat.png')
+  await expect(page.locator('.food-reward-flight img')).toHaveAttribute('src', '/pets/liuyi/icons/cat-treat.png')
   await expect(page.locator('.pet-nav-link')).toHaveClass(/pet-reward-arrived/)
   await expect(page.locator('.food-reward-flight')).toHaveCount(0)
 })

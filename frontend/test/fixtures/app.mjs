@@ -1,7 +1,7 @@
 import { test as base, expect } from '@playwright/test'
 import { fileURLToPath } from 'node:url'
 
-const imagePath = fileURLToPath(new URL('../../public/optimized/album/college (1).webp', import.meta.url))
+const imagePath = fileURLToPath(new URL('./images/photo-one.webp', import.meta.url))
 export const test = base.extend({
   app: async ({ page }, use) => {
     const state = {

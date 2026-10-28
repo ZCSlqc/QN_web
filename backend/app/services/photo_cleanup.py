@@ -2,27 +2,35 @@
 import logging
 from app.core.database import get_db
 from app.core.settings import settings
+from app.services.photo_storage import managed_directory, photo_path
 
 log = logging.getLogger(__name__)
 
 
 def cleanup_photo(photo_id):
     with get_db() as conn:
-        row = conn.execute("SELECT * FROM photos WHERE id=? AND source='upload' AND removed=1", (photo_id,)).fetchone()
+        row = conn.execute("SELECT * FROM photos WHERE id=? AND removed=1", (photo_id,)).fetchone()
     if row is None:
         return True
     try:
-        for filename in (row['filename'], row['thumbnail']):
-            (settings.UPLOAD_DIR / filename).unlink(missing_ok=True)
+        folder = managed_directory(row)
+        if folder.exists():
+            for path in folder.iterdir():
+                if not path.is_file() or path.is_symlink():
+                    raise OSError('Unexpected entry in photo directory')
+                path.unlink()
+            folder.rmdir()
+        if row['journey_id'] and folder.parent.exists() and not any(folder.parent.iterdir()):
+            folder.parent.rmdir()
     except OSError:
         log.warning('Photo %s hidden; file cleanup pending', photo_id)
         return False
     with get_db() as conn:
-        conn.execute("DELETE FROM photos WHERE id=? AND source='upload' AND removed=1", (photo_id,))
+        conn.execute("DELETE FROM photos WHERE id=? AND removed=1", (photo_id,))
     return True
 
 
 def retry_photo_cleanup():
     with get_db() as conn:
-        ids = [row['id'] for row in conn.execute("SELECT id FROM photos WHERE source='upload' AND removed=1")]
+        ids = [row['id'] for row in conn.execute("SELECT id FROM photos WHERE removed=1")]
     return sum(not cleanup_photo(photo_id) for photo_id in ids)

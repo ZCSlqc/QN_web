@@ -77,6 +77,7 @@
 </template>
 
 <script setup>
+import { recentProfile } from '../features/auth/pageAccess'
 import { ref, reactive, computed, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { ElMessage, ElMessageBox } from 'element-plus'
@@ -121,7 +122,7 @@ function checkAuth(error) { if ([401, 403].includes(error.response?.status)) lea
 async function initialize() {
   checking.value = true; authError.value = false
   try {
-    const res = await request.get('/me', { signal: controller.signal })
+    const res = (recentProfile() ? { data: recentProfile() } : await request.get('/me', { signal: controller.signal }))
     if (disposed) return
     if (!res.data.is_admin) { leaveAdmin(); return }
     authorized.value = true; currentUsername.value = res.data.display_name || res.data.username; hasMailbox.value = res.data.has_mailbox === true
@@ -201,7 +202,7 @@ async function saveTodo() {
   finally { busy.value = false }
 }
 async function refreshProfile() {
-  try { const res = await request.get('/me', { signal: controller.signal }); currentUsername.value = res.data.display_name || res.data.username; if (tab.value === 'users') await loadTab('users') }
+  try { const res = (recentProfile() ? { data: recentProfile() } : await request.get('/me', { signal: controller.signal })); currentUsername.value = res.data.display_name || res.data.username; if (tab.value === 'users') await loadTab('users') }
   catch (error) { checkAuth(error) }
 }
 onMounted(() => { window.addEventListener('auth-expired', leaveAdmin); window.addEventListener('profile-updated', refreshProfile); void initialize() })

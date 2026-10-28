@@ -337,3 +337,12 @@
 .cat-toy.toy-teaser { transition: none; }
 .cat-sound-toggle { width: 30px; height: 30px; padding: 0; background: #fff8ed85; border-radius: 50%; color: #806750; font-size: 19px; cursor: pointer; }
 .cat-sound-toggle[aria-pressed="false"] { opacity: .5; }
+
+/* Page scrolling remains available outside the cat and explicit teaser mode. */
+@media (pointer: coarse) {
+ .cat-touch { touch-action: none; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+ .pet-room.is-teasing { touch-action: none; }
+ .pet-room.is-teasing .cat-touch { touch-action: none; }
+ .petting-hand { width: 105px; height: 105px; }
+ .scene-tools button { min-width: 44px; min-height: 44px; }
+}

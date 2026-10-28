@@ -20,7 +20,7 @@ test('wheel zoom advances by half a level and leaves page scrolling outside the 
 test('local fallback, layered municipalities and complete Chinese date ranges', async ({ page, app }) => {
   app.allowedPages = ['/index', '/journey']
   await page.goto('/journey')
-  await expect(page.getByText('当前显示本地足迹地图', { exact: true })).toBeVisible()
+  await expect(page.getByRole('switch', { name: '详细底图' })).toHaveAttribute('aria-checked', 'false')
   await page.waitForFunction(() => !!document.querySelector('.map-container')?.__vueParentComponent?.setupState.provinceGroup)
   await page.evaluate(() => { document.querySelector('.map-container').__vueParentComponent.setupState.map.setView([31.23, 121.47], 7, { animate: false }) })
   await page.waitForFunction(() => document.querySelector('.map-container').__vueParentComponent.setupState.visitedLayers.has('310000'))

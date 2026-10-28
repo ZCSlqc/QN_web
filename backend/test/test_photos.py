@@ -20,7 +20,8 @@ def test_photo_upload_preview_persistence_and_delete(api):
     assert photo in client.get("/photos").json()["data"]
     with module.get_db() as conn:
         row = conn.execute("SELECT * FROM photos WHERE id=?", (photo["id"],)).fetchone()
-        assert "/" not in row["filename"] and ".." not in row["filename"]
+        assert row['filename'] == f"albums/{photo['id']}/original.png"
+        assert row['original_name'] == 'outside.png'
     original = client.get(photo["url"].removeprefix("/api"))
     assert original.content == data
     assert original.headers["content-type"] == "image/png"
@@ -68,3 +69,11 @@ def test_corrupt_photo_and_missing_photo(api):
     assert client.post("/photos", files={"file": ("broken.jpg", image[:100], "image/jpeg")}, headers=owner_headers(client)).status_code == 400
     assert client.get("/photos/999999/image").status_code == 404
     assert client.get("/photos/1/unknown").status_code == 404
+
+
+def test_misnamed_picture_reports_actual_format(api):
+    client, _ = api
+    response = client.post('/photos', files={'file': ('wechat.jpg', photo_bytes('BMP'), 'image/jpeg')}, headers=owner_headers(client))
+    assert response.status_code == 400
+    assert 'BMP' in response.json()['detail']
+    assert '仅修改文件名无效' in response.json()['detail']

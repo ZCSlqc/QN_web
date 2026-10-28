@@ -16,18 +16,12 @@ def hash_password(password: str) -> str:
 
 
 def verify_password(plain: str, hashed: str) -> bool:
-    """验证密码，兼容旧版明文密码"""
-    if len(plain.encode()) > 72:
+    if len(plain.encode()) > 72 or not hashed.startswith('$2'):
         return False
-    if hashed.startswith("$2"):
+    try:
         return bcrypt.checkpw(plain.encode(), hashed.encode())
-    # 兼容旧明文密码
-    return plain == hashed
-
-
-def is_old_password(hashed: str) -> bool:
-    """判断密码是否为旧版明文"""
-    return not hashed.startswith("$2")
+    except ValueError:
+        return False
 
 
 def create_token(username: str) -> str:

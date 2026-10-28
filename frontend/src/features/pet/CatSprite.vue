@@ -1,6 +1,6 @@
 <template>
   <div class="cat-sprite" :data-pose="pose" :data-walking="walking" :aria-label="label" role="img">
-    <img v-if="failed || !loaded" :src="fallback" alt="" class="cat-fallback" />
+    <img v-if="failed || !loaded" :src="failed ? fallback : source" alt="" class="cat-fallback" />
     <Transition name="cat-pose" :css="!walking">
       <img v-if="loaded && !failed" :key="frameSource" class="cat-frame" :src="frameSource" alt="" />
     </Transition>
@@ -13,8 +13,8 @@ const loaded = ref(false), failed = ref(false)
 const frameSource = ref('')
 const decoded = new Map()
 let version = 0
-const source = computed(() => props.walking ? `/pet/liuyi-${props.styleName}-walk-${props.walkFrame}.webp` : `/pet/liuyi-${props.styleName}-pose-${props.pose}.webp`)
-const fallback = computed(() => `/pet/liuyi-${props.styleName}.webp`)
+const source = computed(() => props.walking ? `/pets/liuyi/${props.styleName}/walk-${props.walkFrame}.webp` : `/pets/liuyi/${props.styleName}/pose-${props.pose}.webp`)
+const fallback = computed(() => `/pets/liuyi/${props.styleName}/portrait.webp`)
 const label = computed(() => `六一${props.styleName === 'realistic' ? '写实' : '插画'}形象 · ${props.walking ? '走路' : ['安静坐着', '眯眼', '伸爪', '低头进食'][props.pose] || '安静坐着'}`)
 watch(source, async url => {
   const current = ++version; failed.value = false
@@ -25,10 +25,6 @@ function preload(url) {
   if (!decoded.has(url)) { const img = new Image(); img.src = url; decoded.set(url, img.decode().catch(error => { decoded.delete(url); throw error })) }
   return decoded.get(url)
 }
-watch(() => props.styleName, value => {
-  for (let i = 0; i < 4; i++) void preload(`/pet/liuyi-${value}-pose-${i}.webp`).catch(() => {})
-  for (let i = 0; i < 4; i++) void preload(`/pet/liuyi-${value}-walk-${i}.webp`).catch(() => {})
-}, { immediate: true })
 onUnmounted(() => { version++ })
 </script>
 <style scoped>

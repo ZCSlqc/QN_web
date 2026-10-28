@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
+    "serve": "node scripts/serve.mjs",
     "assets:optimize": "node scripts/optimize-images.cjs",
     "test:e2e": "playwright test --config test/playwright.config.mjs",
     "test:integration": "playwright test --config test/playwright.integration.config.mjs"

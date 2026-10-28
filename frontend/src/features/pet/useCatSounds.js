@@ -9,7 +9,7 @@ export function useCatSounds(scene, action) {
   function play(name) {
     if (disposed || !enabled.value || !unlocked || !visible || document.hidden || Date.now() - lastPlayed < 8000 || (voice && !voice.ended)) return
     stop()
-    const audio = new Audio(`/pet/sounds/${name}.mp3`)
+    const audio = new Audio(`/pets/liuyi/sounds/${name}.mp3`)
     voice = audio; audio.volume = .28; audio.preload = 'none'
     lastPlayed = Date.now()
     void audio.play().catch(() => { if (voice === audio) voice = null })

@@ -99,7 +99,6 @@ uv run python run.py
 | `QN_SECRET_KEY` | JWT 密钥；未配置时使用持久化 `.secret_key` |
 | `QN_DB_PATH` | 数据库路径，默认 `backend/couple.db` |
 | `QN_UPLOAD_DIR` | 上传照片目录，默认 `backend/uploads` |
-| `QN_PHOTO_ASSETS_DIR` | 原有照片资源目录，默认 `frontend/public` |
 | `QN_ENV_FILE` | 外部配置文件路径 |
 | `QN_BACKEND_PORT` | 后端端口，默认 `1277` |
 | `QN_FRONTEND_PORT` | 前端端口，默认 `7721` |
@@ -132,6 +131,27 @@ npm run test:integration
 
 ## 部署
 
+### 本地电脑通过 Sakura Frp 提供正式构建版
+
+停止原来的开发前后端后，分别启动两个终端：
+
+```bash
+cd backend
+uv run python run.py --production
+```
+
+```bash
+cd frontend
+npm run build
+npm run serve
+```
+
+两端继续读取根目录 `.env` 中的 `QN_BACKEND_PORT=1277` 和 `QN_FRONTEND_PORT=7721`。前端正式服务要求 Node.js 20.12+。
+Sakura Frp 本地目标保持 `127.0.0.1:7721`，自动HTTPS负责外部TLS；`QN_ALLOWED_HOSTS` 填实际外部域名，不含协议或端口。
+正式入口仅提供构建目录、支持页面刷新、压缩、缓存和音频分段请求；不启动 Vite 开发服务。修改页面后需重新执行 `npm run build`。
+
+### 云服务器
+
 前端 `npm run build` 输出 `frontend/dist`；后端使用 uvicorn 或进程管理器，不带 `--reload`。配置 HTTPS 并反向代理 `/api/`：
 
 ```nginx
@@ -147,7 +167,7 @@ location /api/ {
 }
 ```
 
-只信任实际反向代理的转发头，不要让公网客户端伪造来源。登录每IP每分钟20次，注册和祝福每分钟10次；多进程共用SQLite计数。部署应保证原有照片 `album/`、缩略图 `optimized/album/` 可由后端读取，地图 Worker 随整个 dist 一起发布。
+只信任实际反向代理的转发头，不要让公网客户端伪造来源。登录每IP每分钟20次，注册和祝福每分钟10次；多进程共用SQLite计数。相册及旅程照片统一保存在后端上传目录，部署需同时恢复数据库和 `backend/uploads/`，不能只复制前端代码。地图 Worker 随整个 dist 一起发布。
 
 后端接口文档：`http://localhost:1277/docs`。
 
@@ -175,7 +195,7 @@ location /api/ {
 - 普通用户导航遵循现有 `QN_USER_PAGE_ALLOWLIST`，需要允许 `/cat` 才显示入口；本次未擅自扩大原有页面白名单。
 - 摸头/逗猫是本地互动；投喂事务性扣除一份食物并写流水，幂等标识避免超时重试重复扣除。最近20条投喂显示在“小日常”。
 - 不因离线扣分、不惩罚；当前已接入新照片、首次完成心愿和已完成旅程的奖励，历史数据不批量结算。
-- 数据表：`pets`、`pet_inventory`、`pet_ledger`。无需第三方API、无需额外Python依赖。
+- 数据表：`pets`、`pet_member_inventory`、`pet_user_inventory`、`pet_ledger`。无需第三方API、无需额外Python依赖。
 
 详见 [宠物模块说明](frontend/src/features/pet/README.md) 和 [猫咪素材说明](docs/pet-assets.md)。测试分别为 `backend/test/test_pet.py`、`frontend/test/e2e/test_pet.mjs`。
 
@@ -194,7 +214,7 @@ location /api/ {
 
 宠物页已按爱的旅程统一版式，并使用独立的安静、眯眼、伸爪、低头姿态；取消整图抖动。食物图标分别为猫条包装、猫粮碗和拉环罐头。动作逻辑、姿态组件和样式集中在 `frontend/src/features/pet/`。
 
-宠物界面图标已替换为 `docs/` 提供的三张原图，并以 `cat-treat.png`、`cat-food.png`、`cat-can.png` 放入 `frontend/public/pet/icons/`。投喂场景另用写实空碗、满粮碗、开罐罐头和猫条，图片位于 `frontend/public/pet/food/`。
+宠物界面图标已替换为 `docs/` 提供的三张原图，并以 `cat-treat.png`、`cat-food.png`、`cat-can.png` 放入 `frontend/public/pets/liuyi/icons/`。投喂场景另用写实空碗、满粮碗、开罐罐头和猫条，图片位于 `frontend/public/pets/liuyi/food/`。
 
 六一支持闲置散步、点击地面移动、回窝枕爪睡觉（zzZ）、第一人称真实手摸摸、手持逗猫棒和地面玩具老鼠。不提供休息按钮，清醒60–90秒后自主回窝，睡60–90秒后自动醒来；点击睡猫或互动可唤醒。两种形象共享位置与动作节奏，切换不重置；移动端限制活动范围，离开视口或隐藏页面暂停动态行为。实现集中在宠物模块，浏览器验证见 `frontend/test/e2e/test_pet_life.mjs`，素材与生成说明见 `docs/pet-assets.md`。
 

@@ -56,7 +56,17 @@ test('upload and original photos use the same editable album', async ({ page, ap
   await page.goto('/index')
   await page.locator('.album-actions').getByRole('button', { name: '编辑', exact: true }).click()
   await page.getByRole('button', { name: '＋ 上传照片', exact: true }).click()
-  await page.locator('input[type=file]').setInputFiles(fileURLToPath(new URL('../../public/optimized/album/college (1).webp', import.meta.url)))
+  const { readFileSync } = await import('node:fs')
+  const bytes = [...readFileSync(fileURLToPath(new URL('../fixtures/images/photo-one.webp', import.meta.url)))]
+  const transfer = await page.evaluateHandle(bytes => {
+    const data = new DataTransfer()
+    data.items.add(new File([new Uint8Array(bytes)], 'memory.webp', { type: 'image/webp' }))
+    return data
+  }, bytes)
+  await page.locator('.upload-dialog').dispatchEvent('dragover', { dataTransfer: transfer })
+  await expect(page.locator('.upload-dialog')).toHaveClass(/dragging/)
+  await page.locator('.upload-dialog').dispatchEvent('drop', { dataTransfer: transfer })
+  await transfer.dispose()
   await page.locator('#photo-caption').fill('新的回忆')
   await page.getByRole('button', { name: '上传 1 张', exact: true }).click()
   await expect(page.locator('.upload-summary')).toContainText('已上传 1 张')

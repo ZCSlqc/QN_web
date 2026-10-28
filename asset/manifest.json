@@ -1,0 +1,310 @@
+[
+  {
+    "source": "backgrounds/home-cover.jpg",
+    "public": "backgrounds/home-cover.webp",
+    "mode": "webp",
+    "width": 1600,
+    "quality": 82
+  },
+  {
+    "source": "backgrounds/anniversary.jpg",
+    "public": "backgrounds/anniversary.webp",
+    "mode": "webp",
+    "width": 1600,
+    "quality": 82
+  },
+  {
+    "source": "backgrounds/wedding-boutonniere.jpg",
+    "public": "backgrounds/wedding-boutonniere.webp",
+    "mode": "webp",
+    "width": 1600,
+    "quality": 82
+  },
+  {
+    "source": "avatars/qiqi.png",
+    "public": "avatars/qiqi.webp",
+    "mode": "webp",
+    "width": 160,
+    "quality": 82
+  },
+  {
+    "source": "avatars/nini.png",
+    "public": "avatars/nini.webp",
+    "mode": "webp",
+    "width": 160,
+    "quality": 82
+  },
+  {
+    "source": "pets/liuyi/illustrated/pose-0.webp",
+    "public": "pets/liuyi/illustrated/pose-0.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "pets/liuyi/illustrated/pose-1.webp",
+    "public": "pets/liuyi/illustrated/pose-1.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "pets/liuyi/illustrated/pose-2.webp",
+    "public": "pets/liuyi/illustrated/pose-2.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "pets/liuyi/illustrated/pose-3.webp",
+    "public": "pets/liuyi/illustrated/pose-3.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "pets/liuyi/illustrated/sleep.webp",
+    "public": "pets/liuyi/illustrated/sleep.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "pets/liuyi/illustrated/walk-0.webp",
+    "public": "pets/liuyi/illustrated/walk-0.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "pets/liuyi/illustrated/walk-1.webp",
+    "public": "pets/liuyi/illustrated/walk-1.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "pets/liuyi/illustrated/walk-2.webp",
+    "public": "pets/liuyi/illustrated/walk-2.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "pets/liuyi/illustrated/walk-3.webp",
+    "public": "pets/liuyi/illustrated/walk-3.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "pets/liuyi/illustrated/portrait.webp",
+    "public": "pets/liuyi/illustrated/portrait.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "pets/liuyi/realistic/pose-0.webp",
+    "public": "pets/liuyi/realistic/pose-0.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "pets/liuyi/realistic/pose-1.webp",
+    "public": "pets/liuyi/realistic/pose-1.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "pets/liuyi/realistic/pose-2.webp",
+    "public": "pets/liuyi/realistic/pose-2.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "pets/liuyi/realistic/pose-3.webp",
+    "public": "pets/liuyi/realistic/pose-3.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "pets/liuyi/realistic/sleep.webp",
+    "public": "pets/liuyi/realistic/sleep.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "pets/liuyi/realistic/walk-0.webp",
+    "public": "pets/liuyi/realistic/walk-0.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "pets/liuyi/realistic/walk-1.webp",
+    "public": "pets/liuyi/realistic/walk-1.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "pets/liuyi/realistic/walk-2.webp",
+    "public": "pets/liuyi/realistic/walk-2.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "pets/liuyi/realistic/walk-3.webp",
+    "public": "pets/liuyi/realistic/walk-3.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "pets/liuyi/realistic/portrait.webp",
+    "public": "pets/liuyi/realistic/portrait.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "pets/liuyi/emotions/heart.png",
+    "public": "pets/liuyi/emotions/heart.png",
+    "mode": "copy"
+  },
+  {
+    "source": "pets/liuyi/emotions/idea.png",
+    "public": "pets/liuyi/emotions/idea.png",
+    "mode": "copy"
+  },
+  {
+    "source": "pets/liuyi/emotions/stars.png",
+    "public": "pets/liuyi/emotions/stars.png",
+    "mode": "copy"
+  },
+  {
+    "source": "pets/liuyi/food/bowl-empty.webp",
+    "public": "pets/liuyi/food/bowl-empty.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "pets/liuyi/food/bowl-full.webp",
+    "public": "pets/liuyi/food/bowl-full.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "pets/liuyi/food/can-open.webp",
+    "public": "pets/liuyi/food/can-open.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "pets/liuyi/food/treat-open.webp",
+    "public": "pets/liuyi/food/treat-open.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "pets/liuyi/friends/anan.png",
+    "public": "pets/liuyi/friends/anan.webp",
+    "mode": "webp",
+    "height": 480,
+    "quality": 82
+  },
+  {
+    "source": "pets/liuyi/friends/guagua.png",
+    "public": "pets/liuyi/friends/guagua.webp",
+    "mode": "webp",
+    "height": 480,
+    "quality": 82
+  },
+  {
+    "source": "pets/liuyi/friends/heihei.png",
+    "public": "pets/liuyi/friends/heihei.webp",
+    "mode": "webp",
+    "height": 480,
+    "quality": 82
+  },
+  {
+    "source": "pets/liuyi/friends/huahua.png",
+    "public": "pets/liuyi/friends/huahua.webp",
+    "mode": "webp",
+    "height": 480,
+    "quality": 82
+  },
+  {
+    "source": "pets/liuyi/icons/cat-can.png",
+    "public": "pets/liuyi/icons/cat-can.png",
+    "mode": "copy"
+  },
+  {
+    "source": "pets/liuyi/icons/cat-food.png",
+    "public": "pets/liuyi/icons/cat-food.png",
+    "mode": "copy"
+  },
+  {
+    "source": "pets/liuyi/icons/cat-teaser.png",
+    "public": "pets/liuyi/icons/cat-teaser.png",
+    "mode": "copy"
+  },
+  {
+    "source": "pets/liuyi/icons/cat-treat.png",
+    "public": "pets/liuyi/icons/cat-treat.png",
+    "mode": "copy"
+  },
+  {
+    "source": "pets/liuyi/icons/toy-mouse.png",
+    "public": "pets/liuyi/icons/toy-mouse.png",
+    "mode": "copy"
+  },
+  {
+    "source": "pets/liuyi/interaction/hand-pet.webp",
+    "public": "pets/liuyi/interaction/hand-pet.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "pets/liuyi/interaction/hand-teaser.webp",
+    "public": "pets/liuyi/interaction/hand-teaser.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "pets/liuyi/sounds/content.mp3",
+    "public": "pets/liuyi/sounds/content.mp3",
+    "mode": "copy"
+  },
+  {
+    "source": "pets/liuyi/sounds/hungry.mp3",
+    "public": "pets/liuyi/sounds/hungry.mp3",
+    "mode": "copy"
+  },
+  {
+    "source": "pets/liuyi/sounds/meow.mp3",
+    "public": "pets/liuyi/sounds/meow.mp3",
+    "mode": "copy"
+  },
+  {
+    "source": "pets/liuyi/sounds/pet.mp3",
+    "public": "pets/liuyi/sounds/pet.mp3",
+    "mode": "copy"
+  },
+  {
+    "source": "pets/liuyi/sounds/play.mp3",
+    "public": "pets/liuyi/sounds/play.mp3",
+    "mode": "copy"
+  },
+  {
+    "source": "pets/liuyi/weather/cloudy.png",
+    "public": "pets/liuyi/weather/cloudy.png",
+    "mode": "copy"
+  },
+  {
+    "source": "pets/liuyi/weather/rainy.png",
+    "public": "pets/liuyi/weather/rainy.png",
+    "mode": "copy"
+  },
+  {
+    "source": "pets/liuyi/weather/sunny.png",
+    "public": "pets/liuyi/weather/sunny.png",
+    "mode": "copy"
+  },
+  {
+    "source": "feedback/blessing-sent.png",
+    "public": "feedback/blessing-sent.png",
+    "mode": "copy"
+  },
+  {
+    "source": "feedback/letter-sent.png",
+    "public": "feedback/letter-sent.png",
+    "mode": "copy"
+  },
+  {
+    "source": "maps/china/city.geojson",
+    "public": "maps/china/city.geojson",
+    "mode": "copy"
+  },
+  {
+    "source": "maps/china/outline.geojson",
+    "public": "maps/china/outline.geojson",
+    "mode": "copy"
+  },
+  {
+    "source": "maps/china/province.geojson",
+    "public": "maps/china/province.geojson",
+    "mode": "copy"
+  },
+  {
+    "source": "audio/city-of-stars.mp3",
+    "public": "audio/city-of-stars.mp3",
+    "mode": "copy"
+  },
+  {
+    "source": "branding/favicon.ico",
+    "public": "branding/favicon.ico",
+    "mode": "copy"
+  }
+]

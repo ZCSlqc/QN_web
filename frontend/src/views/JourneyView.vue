@@ -15,17 +15,16 @@
       </div>
       <p v-if="mapError" class="journey-status" role="alert">地图暂时无法加载，仍可浏览下方记录。<button class="btn-cancel" @click="retryMap">重试地图</button></p>
       <p v-if="outlineError" class="journey-status" role="alert">外轮廓暂未加载，城市地图仍可使用。<button class="btn-cancel" @click="loadOutline">重试轮廓</button></p>
-      <div ref="mapEl" class="map-container" aria-label="旅行足迹地图"></div>
-      <div class="basemap-status" role="status">
-        <span v-if="basemapStatus === 'loading'">正在加载详细底图，省市足迹可先查看…</span>
-        <template v-else-if="basemapStatus === 'local'">
-          <span>当前显示本地足迹地图</span>
-          <button class="btn-cancel" @click="startBasemap">重试详细底图</button>
-        </template>
-        <span v-else>详细底图 · <span class="visited-key"></span> 到访越多，颜色越深（省份 30%–50%，城市 40%–70%）</span>
+      <div class="map-frame">
+        <div ref="mapEl" class="map-container" aria-label="旅行足迹地图"></div>
+        <div class="basemap-control">
+          <span v-if="basemapStatus === 'loading'" class="basemap-spinner" role="status" aria-label="正在加载底图"></span>
+          <span id="basemap-label">详细底图</span>
+          <button class="basemap-switch" role="switch" aria-labelledby="basemap-label" :aria-checked="basemapEnabled" @click="toggleBasemap"><span></span></button>
+        </div>
+        <button v-if="basemapEnabled && basemapStatus === 'error'" class="basemap-retry" @click="startBasemap">底图加载失败，点击重试</button>
       </div>
-      <p class="planned-legend"><span></span> 黄色：预定旅程（40%） · 点击省市查看或预定</p>
-      <p class="map-hint">地图内滚轮缩放，拖动探索 · 点击城市查看回忆{{ isAdmin ? ' · 可新增旅行记录' : '' }}</p>
+      <div class="map-legend"><span><i class="visited-swatch"></i>已到访</span><span><i class="planned-swatch"></i>预定</span></div>
       <div class="journey-list-head">
         <h3>一路上的回忆</h3>
         <input v-model="search" type="search" aria-label="搜索城市或旅途印象" placeholder="搜索城市或旅途印象…" />
@@ -34,12 +33,17 @@
       <p v-else-if="loadError" class="journey-status" role="alert">记录暂时未能加载。<button class="btn-cancel" @click="fetchJourneys">重试</button></p>
       <div v-else class="journey-records">
         <article v-for="record in visibleJourneys" :key="record.id" class="journey-record" @click="openRecord(record)">
-          <div v-if="record.cover" class="record-cover"><JourneyPhoto :src="record.cover.thumbnail_url" :alt="record.cover.caption || '旅程封面'" /><span>{{ record.photo_count }} 张照片</span></div>
+          <div v-if="record.cover" class="record-cover" :class="{ 'split-cover': record.cover.height > record.cover.width }">
+            <div v-for="photo in (record.cover.height > record.cover.width ? (record.cover_photos || [record.cover]).slice(0, 2) : [record.cover])" :key="photo.id" class="record-cover-cell"><JourneyPhoto :src="photo.cover_url || photo.thumbnail_url" :alt="photo.caption || '旅程封面'" /></div>
+            <button v-if="record.cover.height > record.cover.width && (record.cover_photos || [record.cover]).length < 2 && isAdmin" class="record-cover-add" aria-label="添加旅程照片" @click.stop="addMemoryPhoto(record)"><strong>＋</strong><span>待添加</span></button>
+            <div v-else-if="record.cover.height > record.cover.width && (record.cover_photos || [record.cover]).length < 2" class="record-cover-add"><strong>＋</strong><span>待添加</span></div>
+            <span class="record-photo-count">{{ record.photo_count }} 张照片</span>
+          </div>
           <span class="record-place">{{ journeyNames(record).join("、") }}</span>
           <time>{{ formatJourneyDate(record.departure_date) || '日期待补充' }} — {{ formatJourneyDate(record.return_date) || '未填写' }}</time>
           <p v-if="record.checkin_points" class="record-detail">📍 {{ record.checkin_points }}</p>
           <p v-if="record.event" class="record-detail">✨ {{ record.event }}</p>
-          <p class="record-notes">{{ record.notes || '每一段同行，都值得珍藏。' }}</p>
+          <p class="record-notes" :class="{ 'is-empty': !record.notes }">{{ record.notes || '等待你的心声。' }}</p>
           <div class="record-actions"><button class="record-link" @click.stop="openRecord(record)">翻开这段回忆 →</button><button v-if="isAdmin" class="record-edit" @click.stop="editRecord(record)">编辑</button></div>
         </article>
         <p v-if="!filteredJourneys.length" class="journey-status">{{ search ? '没有找到相关旅程，换个关键词试试。' : '还没有旅行记录，下一站的故事等我们一起写。' }}</p>
@@ -47,7 +51,7 @@
       <button v-if="filteredJourneys.length > collapsedCount" class="btn-cancel records-toggle" @click="showAll = !showAll">{{ showAll ? '收起' : `显示全部（共 ${filteredJourneys.length} 段回忆）` }}</button>
     </div>
 
-    <JourneyMemory v-if="memoryRecord" :key="memoryRecord.id" :record="memoryRecord" :related="cityRecords" :is-admin="isAdmin" @close="memoryRecord = null" @view="openRecord" @edit="editRecord" @new="memoryNewVisit" @plan="memoryNewPlan" @photos-updated="fetchJourneys" />
+    <JourneyMemory v-if="memoryRecord" :key="memoryRecord.id" :record="memoryRecord" :related="cityRecords" :is-admin="isAdmin" :choose-on-open="chooseMemoryPhoto" @close="memoryRecord = null" @view="openRecord" @edit="editRecord" @new="memoryNewVisit" @plan="memoryNewPlan" @photos-updated="fetchJourneys" />
     <AppDialog v-model="modalVisible" :title="modalTitle" :busy="saving">
       <div class="journey-modal-card">
         <div class="journey-modal__head">
@@ -149,6 +153,7 @@
 </template>
 
 <script setup>
+import { recentProfile } from '../features/auth/pageAccess'
 import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
 import axios from '../utils/request'
 import { ElMessage, ElMessageBox } from 'element-plus'
@@ -164,6 +169,7 @@ import 'leaflet/dist/leaflet.css'
 const mapEl = ref(null)
 const journeys = ref([])
 const memoryRecord = ref(null)
+const chooseMemoryPhoto = ref(false)
 const plans = ref([])
 const planning = ref(false)
 const editingPlanId = ref(null)
@@ -185,7 +191,8 @@ const currentUsername = ref('')
 const loading = ref(true)
 const loadError = ref(false)
 const mapError = ref(false)
-const basemapStatus = ref('loading')
+const basemapEnabled = ref(false)
+const basemapStatus = ref('off')
 const saving = ref(false)
 function newRequestKey() { return Array.from(crypto.getRandomValues(new Uint8Array(16)), b => b.toString(16).padStart(2, '0')).join('') }
 let journeyRequestKey = newRequestKey()
@@ -225,7 +232,7 @@ async function loadCityOptions() {
   if (citiesLoading.value) return
   citiesLoading.value = true; citiesError.value = false
   try {
-    const [cities, provinces] = await Promise.all([readGeo('/svg/city.geojson'), readGeo('/svg/province.geojson')])
+    const [cities, provinces] = await Promise.all([readGeo('/maps/china/city.geojson'), readGeo('/maps/china/province.geojson')])
     if (disposed) return
     const options = new Map()
     provinceOptions.value = provinces.features.filter(f => /^\d{6}$/.test(String(f.properties.adcode)))
@@ -306,7 +313,7 @@ const WHOLE_REGION_ADCODES = new Set(['110000', '120000', '310000', '500000', '8
 const WHOLE_REGION_PREFIXES = new Set(['11', '12', '31', '50', '81', '82'])
 
 async function startBasemap() {
-  if (disposed || !map) return
+  if (disposed || !map || !basemapEnabled.value) return
   const attempt = ++basemapAttempt
   clearTimeout(basemapTimer)
   removeBasemap?.(); removeBasemap = null
@@ -316,7 +323,7 @@ async function startBasemap() {
     basemapAttempt++
     clearTimeout(basemapTimer)
     removeBasemap?.(); removeBasemap = null
-    basemapStatus.value = 'local'
+    basemapStatus.value = 'error'
   }
   basemapTimer = setTimeout(fallback, 12000)
   try {
@@ -330,12 +337,23 @@ async function startBasemap() {
   } catch { fallback() }
 }
 
+function toggleBasemap() {
+  basemapEnabled.value = !basemapEnabled.value
+  if (basemapEnabled.value) { void startBasemap(); return }
+  basemapAttempt++
+  clearTimeout(basemapTimer)
+  removeBasemap?.(); removeBasemap = null
+  basemapStatus.value = 'off'
+}
+
 function clearAuth() { isAdmin.value = false; hasMailbox.value = false; currentUsername.value = ''; modalVisible.value = false; memoryRecord.value = null }
 function openRecord(record) {
+  chooseMemoryPhoto.value = false
   if (!matchesClicked(record)) { currentAdcode.value = journeyCodes(record)[0]; clickedName.value = record.name[0] }
   modalVisible.value = false
   memoryRecord.value = record
 }
+function addMemoryPhoto(record) { openRecord(record); chooseMemoryPhoto.value = true }
 function memoryNewVisit(record) {
   if (!matchesClicked(record)) { currentAdcode.value = journeyCodes(record)[0]; clickedName.value = record.name[0] }
   memoryRecord.value = null; newVisit(); void loadCityOptions(); modalVisible.value = true
@@ -491,8 +509,8 @@ async function loadCities() {
   if (disposed || cityPending || cityGroup || !map) return
   cityPending = true
   try {
-    const data = await readGeo('/svg/city.geojson')
-    if (!provinceData) provinceData = await readGeo('/svg/province.geojson')
+    const data = await readGeo('/maps/china/city.geojson')
+    if (!provinceData) provinceData = await readGeo('/maps/china/province.geojson')
     if (disposed) return
     // The city file splits municipalities and Hong Kong/Macao into districts; replace those
     // with the whole-region province shapes so each region is one click.
@@ -554,7 +572,7 @@ function syncMapLayers() {
 }
 async function loadProvinces() {
   try {
-    const data = await readGeo('/svg/province.geojson')
+    const data = await readGeo('/maps/china/province.geojson')
     if (disposed) return
     provinceData = data
     provinceGroup = L.geoJSON(data, { pane: 'provinces', style: defaultStyle,
@@ -575,7 +593,7 @@ async function loadProvinces() {
 async function loadOutline() {
   outlineError.value = false
   try {
-    const data = await readGeo('/svg/outline.geojson')
+    const data = await readGeo('/maps/china/outline.geojson')
     if (disposed) return
     outlineGroup = L.geoJSON(data, {
       pane: 'countryOutline', interactive: false,
@@ -591,7 +609,7 @@ onMounted(() => {
   updateScreen(); screenQuery.addEventListener('change', updateScreen)
   window.addEventListener('auth-expired', clearAuth)
   void fetchJourneys()
-  if (localStorage.getItem('token')) axios.get('/me', { signal: controller.signal }).then(res => { if (!disposed) { isAdmin.value = res.data.is_admin; hasMailbox.value = res.data.has_mailbox === true; currentUsername.value = res.data.username || '' } }).catch(() => {})
+  if (localStorage.getItem('token')) (recentProfile() ? Promise.resolve({ data: recentProfile() }) : axios.get('/me', { signal: controller.signal })).then(res => { if (!disposed) { isAdmin.value = res.data.is_admin; hasMailbox.value = res.data.has_mailbox === true; currentUsername.value = res.data.username || '' } }).catch(() => {})
   map = L.map(mapEl.value, {
     center: [35.86, 104.19], zoom: 4, maxZoom: 18, preferCanvas: true,
     // Leaflet consumes wheel events inside the map, leaving page scrolling outside intact.
@@ -608,7 +626,6 @@ onMounted(() => {
   map.on('zoomend', syncMapLayers)
   void loadProvinces()
   void loadOutline()
-  void startBasemap()
 })
 onUnmounted(() => {
   screenQuery.removeEventListener('change', updateScreen)
@@ -785,6 +802,7 @@ onUnmounted(() => {
 .planned-legend span { width: 16px; height: 16px; background: rgba(242,201,76,.4); border: 1px solid #bb8b19; border-radius: 4px; }
 .records-toggle { display: block; margin: 24px auto 0; }
 .record-notes { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }
+.record-notes.is-empty { color: var(--color-text-light); text-align: center; }
 .journey-tabs { display: flex; gap: 8px; margin-bottom: 20px; }
 .journey-tabs button { flex: 1; border-radius: 20px; padding: 10px; background: #f5f0f1; color: var(--color-text); }
 .journey-tabs button[aria-pressed="true"] { background: var(--color-rose-soft); color: var(--color-rose-dark); box-shadow: inset 0 0 0 1px var(--color-rose-light); }
@@ -796,7 +814,32 @@ onUnmounted(() => {
 .record-actions { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: auto; padding-top: 16px; }
 .record-actions button { background: transparent; padding: 6px 0; font-size: 13px; color: var(--color-rose-dark); }
 .record-actions .record-edit { padding: 6px 14px; border-radius: 16px; background: var(--color-rose-soft); }
-.record-cover { position: relative; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 10px; margin-bottom: 14px; }
-.record-cover span { position: absolute; right: 10px; bottom: 8px; background: rgba(0,0,0,.5); color: white; padding: 2px 8px; border-radius: 10px; font-size: 12px; }
+.record-cover { position: relative; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 10px; margin-bottom: 14px; display: grid; grid-template-columns: minmax(0, 1fr); background: #faf5f6; }
+.record-cover.split-cover { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; background: transparent; }
+.record-cover-cell { min-width: 0; min-height: 0; overflow: hidden; border-radius: 10px; }
+.split-cover :deep(img) { object-fit: cover; }
+.record-cover-add { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; min-width: 0; min-height: 0; border: 1px dashed var(--color-rose-light); border-radius: 10px; background: #faf5f6; color: var(--color-text-light); }
+.record-cover-add strong { font-size: 30px; font-weight: 400; line-height: 1; }
+.record-cover-add span { font-size: 12px; }
+button.record-cover-add:hover { background: var(--color-rose-soft); color: var(--color-rose-dark); }
+.record-cover > .record-photo-count { position: absolute; right: 10px; bottom: 8px; background: rgba(0,0,0,.5); color: white; padding: 2px 8px; border-radius: 10px; font-size: 12px; }
 .journey-record { cursor: pointer; display: flex; flex-direction: column; }
+</style>
+
+<style scoped>
+.map-frame { position: relative; }
+.basemap-control { position: absolute; top: 14px; right: 14px; z-index: 800; display: flex; align-items: center; gap: 9px; background: rgba(255,255,255,.94); border-radius: 22px; padding: 8px 12px; box-shadow: 0 2px 10px #3d2c2c12; color: var(--color-text); font-size: 13px; }
+.basemap-switch { width: 42px; height: 24px; padding: 3px; border-radius: 20px; background: #d7d4d5; transition: background .2s; }
+.basemap-switch > span { display: block; width: 18px; height: 18px; border-radius: 50%; background: #fff; box-shadow: 0 1px 4px #0002; transition: transform .2s; }
+.basemap-switch[aria-checked="true"] { background: var(--color-rose); }
+.basemap-switch[aria-checked="true"] > span { transform: translateX(18px); }
+.basemap-spinner { width: 13px; height: 13px; border: 2px solid #eedde3; border-top-color: var(--color-rose); border-radius: 50%; animation: basemap-spin .8s linear infinite; }
+.basemap-retry { position: absolute; top: 60px; right: 14px; z-index: 800; padding: 7px 12px; border-radius: 12px; background: #fff; color: var(--color-rose-dark); font-size: 12px; }
+.map-legend { display: flex; justify-content: center; gap: 20px; margin: 16px 0 28px; font-size: 12px; color: var(--color-text-light); }
+.map-legend > span { display: flex; align-items: center; gap: 6px; }
+.map-legend i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; }
+.visited-swatch { background: #d4788f; opacity: .6; }
+.planned-swatch { background: #f2c94c; opacity: .6; }
+@keyframes basemap-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .basemap-switch, .basemap-switch > span { transition: none; } }
 </style>

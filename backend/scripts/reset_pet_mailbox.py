@@ -12,7 +12,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from app.core.settings import settings
 
 CHANGED = {'mailbox_reads', 'mailbox_comments', 'mailbox_letters', 'pet_ledger',
-           'pet_member_inventory', 'pet_user_inventory', 'pet_inventory', 'pet_activity_rewards'}
+           'pet_member_inventory', 'pet_user_inventory', 'pet_activity_rewards'}
 
 
 def fingerprint(conn, tables):
@@ -45,7 +45,6 @@ def reset_database(path, backup_dir):
             removed['letter_rewards'] = conn.execute("DELETE FROM pet_activity_rewards WHERE source_kind='letter_daily'").rowcount
             conn.execute('UPDATE pet_member_inventory SET amount=0')
             conn.execute('UPDATE pet_user_inventory SET treats=0')
-            conn.execute('UPDATE pet_inventory SET amount=0')
             assert fingerprint(conn, tables - CHANGED) == before, 'Unrelated data changed'
             assert conn.execute("SELECT * FROM pet_activity_rewards WHERE source_kind<>'letter_daily'").fetchall() == markers
             assert not conn.execute('PRAGMA foreign_key_check').fetchall()
@@ -57,7 +56,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--apply', action='store_true', help='Perform the reset after creating a verified backup')
     parser.add_argument('--database', type=Path, default=settings.DB_PATH)
-    parser.add_argument('--backup-dir', type=Path, default=Path(__file__).resolve().parents[1] / 'backups')
+    parser.add_argument('--backup-dir', type=Path, default=Path(__file__).resolve().parents[3] / 'QN_web_backups')
     args = parser.parse_args()
     if not args.apply:
         parser.error('Use --apply to back up and reset the specified database')

@@ -7,7 +7,7 @@ from pathlib import Path
 import pytest
 from .helpers import owner_headers, journey_data, photo_bytes
 
-def test_existing_owner_migrates_and_password_upgrades(api):
+def test_owner_login_uses_hashed_password(api):
     client, module = api
     headers = owner_headers(client)
     assert client.get("/me", headers=headers).json()["is_admin"] is True
@@ -39,11 +39,9 @@ def test_oversized_password_does_not_crash(api):
     assert response.json()["flag"] == -2
 
 
-def test_environment_admin_list_overrides_database_role(api, monkeypatch):
+def test_environment_is_the_only_owner_authority(api, monkeypatch):
     client, module = api
     headers = owner_headers(client)
-    with module.get_db() as conn:
-        conn.execute("UPDATE user SET role='admin' WHERE username='李琪淳'")
     monkeypatch.setattr(module.settings, 'ADMIN_USERS', frozenset())
     assert client.get('/me', headers=headers).json()['is_admin'] is False
     assert client.post('/journeys', data=journey_data(), headers=headers).status_code == 403

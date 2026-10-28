@@ -4,28 +4,28 @@
     <main class="pet-main">
       <header class="pet-heading"><p class="eyebrow">A LITTLE HOME, A LOT OF LOVE</p><h1>爱的小窝</h1><div class="section-line"></div><p>生活慢一点，陪六一待一会儿。</p></header>
       <div class="pet-layout">
-        <section ref="scene" class="pet-room" @pointermove="life.pointerMove" @pointerleave="life.leave" @click="walk.floorClick" :class="{ 'realistic-room': style === 'realistic', 'night-room': night, 'rainy-room': pet?.weather === 'rainy', 'cloudy-room': pet?.weather === 'cloudy', 'is-playing': action === 'play', 'is-teasing': action === 'play' && activeToy === 'teaser', 'is-stroking': stroking, 'has-petting-hand': life.hand.value.visible }" aria-label="六一的房间">
+        <section ref="scene" class="pet-room" @pointerdown="touch.start" @pointermove="roomPointerMove" @pointerup="touch.end" @pointercancel="touch.end" @lostpointercapture="touch.end" @pointerleave="!touch.active() && life.leave()" @click="roomClick" :class="{ 'realistic-room': style === 'realistic', 'night-room': night, 'rainy-room': pet?.weather === 'rainy', 'cloudy-room': pet?.weather === 'cloudy', 'is-playing': action === 'play', 'is-teasing': action === 'play' && activeToy === 'teaser', 'is-stroking': stroking, 'has-petting-hand': life.hand.value.visible }" aria-label="六一的房间">
           <div class="room-topline"><button class="cat-sound-toggle" :aria-label="sounds.enabled.value ? '关闭猫咪音效' : '开启猫咪音效'" :aria-pressed="sounds.enabled.value" @click.stop="sounds.toggle">{{ sounds.enabled.value ? '♪' : '♩' }}</button><div class="style-switch" aria-label="六一形象风格"><button :aria-pressed="style === 'illustrated'" :class="{ active: style === 'illustrated' }" @click="setStyle('illustrated')">插画</button><button :aria-pressed="style === 'realistic'" :class="{ active: style === 'realistic' }" @click="setStyle('realistic')">写实</button></div></div>
           <div class="room-window" aria-hidden="true"><span class="window-sun"></span><span class="window-cloud"></span><span class="window-cloud cloud-far"></span><div v-if="pet?.weather === 'rainy'" class="window-rain"><i v-for="n in 18" :key="n" :style="{ left: ((n * 37) % 113) + '%', height: (9 + n % 5 * 4) + 'px', opacity: .22 + n % 4 * .12, animationDuration: (.65 + n % 6 * .19) + 's', animationDelay: (-n * .31) + 's' }"></i><b v-for="n in 4" :key="'drop' + n" :style="{ left: (n * 23 - 10) + '%', animationDelay: (-n * 2.7) + 's', animationDuration: (8 + n * 2) + 's' }"></b></div></div>
-          <div class="weather-control" role="group" aria-label="窗外天气"><div class="weather-icons" aria-hidden="true"><span v-for="option in weatherOptions" :key="option.id" :class="{ selected: (pet?.weather || 'sunny') === option.id }"><img :src="`/pet/weather/${option.id}.png`" alt="" /></span></div><button v-for="option in weatherOptions" :key="option.id" :aria-label="option.label" :title="option.label" :aria-pressed="(pet?.weather || 'sunny') === option.id" :disabled="!pet?.is_admin || weatherSaving" @click.stop="setWeather(option.id)"><img :src="`/pet/weather/${option.id}.png`" alt="" /></button><p v-if="weatherError" role="alert">{{ weatherError }}</p></div>
+          <div class="weather-control" role="group" aria-label="窗外天气"><div class="weather-icons" aria-hidden="true"><span v-for="option in weatherOptions" :key="option.id" :class="{ selected: (pet?.weather || 'sunny') === option.id }"><img :src="`/pets/liuyi/weather/${option.id}.png`" alt="" /></span></div><button v-for="option in weatherOptions" :key="option.id" :aria-label="option.label" :title="option.label" :aria-pressed="(pet?.weather || 'sunny') === option.id" :disabled="!pet?.is_admin || weatherSaving" @click.stop="setWeather(option.id)"><img :src="`/pets/liuyi/weather/${option.id}.png`" alt="" /></button><p v-if="weatherError" role="alert">{{ weatherError }}</p></div>
           <div class="wall-note" aria-hidden="true"><span>今日待办</span><strong>{{ wallNote[0] }}<br/>{{ wallNote[1] }}</strong><i>♡</i></div>
           <div class="room-floor" aria-hidden="true"></div>
           <div class="cat-rug" aria-hidden="true"></div>
-          <div class="cat-home"><div></div><span>61</span><button v-if="life.sleeping.value" class="sleeping-cat" aria-label="轻轻叫醒六一" @click.stop="life.wake"><img :src="`/pet/liuyi-${style}-sleep.webp`" alt="六一闭眼枕着爪子睡觉" /><span class="sleep-zzz" aria-hidden="true">zzZ</span></button></div>
+          <div class="cat-home"><div></div><span>61</span><button v-if="life.sleeping.value" class="sleeping-cat" aria-label="轻轻叫醒六一" @click.stop="life.wake"><img :src="`/pets/liuyi/${style}/sleep.webp`" alt="六一闭眼枕着爪子睡觉" /><span class="sleep-zzz" aria-hidden="true">zzZ</span></button></div>
           <Transition name="speech"><div v-if="bubbleVisible && !life.sleeping.value && action !== 'bathroom'" class="speech-bubble" :style="{ left: Math.max(38, Math.min(62, walk.x.value)) + '%' }" role="status" aria-live="polite">{{ speech }}</div></Transition>
           <div v-show="!life.sleeping.value && action !== 'bathroom'" class="cat-wrap" :class="[style, action, { 'walking-left': walk.walking.value && walk.facing.value < 0 }]" :style="walk.spriteStyle.value" :data-x="walk.x.value">
-            <button class="cat-touch" aria-label="摸摸六一" :disabled="feeding || away" @click="interact('pet')" @pointerdown="startStroke" @pointermove="moveStroke" @pointerup="stopStroke" @pointercancel="stopStroke" @pointerleave="stopStroke">
+            <button class="cat-touch" aria-label="摸摸六一" :disabled="feeding || away" @click="catClick" @pointerdown="startStroke" @pointermove="moveStroke" @pointerup="stopStroke" @pointercancel="stopStroke" @pointerleave="stopStroke">
               <CatSprite :style-name="style" :pose="pose" :walking="walk.walking.value" :walk-frame="walk.frame.value" />
             </button>
-            <img v-if="moments.emotion.value" :key="moments.emotion.value" class="cat-emotion" :class="moments.emotion.value" :src="`/pet/emotions/${moments.emotion.value}.png`" alt="" aria-hidden="true" />
+            <img v-if="moments.emotion.value" :key="moments.emotion.value" class="cat-emotion" :class="moments.emotion.value" :src="`/pets/liuyi/emotions/${moments.emotion.value}.png`" alt="" aria-hidden="true" />
           </div>
           <FeedingProps :action="action" />
           <CatFurniture :drinking="action === 'drinking'" />
-          <div v-if="action === 'play'" class="cat-toy" :class="{ 'toy-mouse': activeToy === 'mouse', 'toy-teaser': activeToy === 'teaser', 'mouse-left': life.mouse.value.left }" :style="activeToy === 'mouse' ? { left: life.mouse.value.x + '%' } : { left: toyPoint.x + '%', top: toyPoint.y + '%' }" aria-hidden="true"><img :src="activeToy === 'mouse' ? '/pet/icons/toy-mouse.png' : '/pet/interaction/hand-teaser.webp'" alt="" /></div>
-          <img v-if="life.hand.value.visible" class="petting-hand" :class="{ stroking }" src="/pet/interaction/hand-pet.webp" :style="{ left: life.hand.value.x + 'px', top: life.hand.value.y + 'px' }" alt="" aria-hidden="true" />
+          <div v-if="action === 'play'" class="cat-toy" :class="{ 'toy-mouse': activeToy === 'mouse', 'toy-teaser': activeToy === 'teaser', 'mouse-left': life.mouse.value.left }" :style="activeToy === 'mouse' ? { left: life.mouse.value.x + '%' } : { left: toyPoint.x + '%', top: toyPoint.y + '%' }" aria-hidden="true"><img :src="activeToy === 'mouse' ? '/pets/liuyi/icons/toy-mouse.png' : '/pets/liuyi/interaction/hand-teaser.webp'" alt="" /></div>
+          <img v-if="life.hand.value.visible" class="petting-hand" :class="{ stroking }" src="/pets/liuyi/interaction/hand-pet.webp" :style="{ left: life.hand.value.x + 'px', top: life.hand.value.y + 'px' }" alt="" aria-hidden="true" />
           <div class="scene-tools" role="group" aria-label="陪六一玩">
-            <button :disabled="away || feeding || eating || action === 'approaching-food'" :aria-pressed="action === 'play' && activeToy === 'teaser'" aria-label="逗猫棒" title="逗猫棒" @click.stop="playWith('teaser')"><img src="/pet/icons/cat-teaser.png" alt="" /><span>逗猫棒</span></button>
-            <button :disabled="away || feeding || eating || action === 'approaching-food'" :aria-pressed="action === 'play' && activeToy === 'mouse'" aria-label="玩具老鼠" title="玩具老鼠" @click.stop="playWith('mouse')"><img src="/pet/icons/toy-mouse.png" alt="" /><span>玩具老鼠</span></button>
+            <button :disabled="away || feeding || eating || action === 'approaching-food'" :aria-pressed="action === 'play' && activeToy === 'teaser'" aria-label="逗猫棒" title="逗猫棒" @click.stop="playWith('teaser')"><img src="/pets/liuyi/icons/cat-teaser.png" alt="" /><span>逗猫棒</span></button>
+            <button :disabled="away || feeding || eating || action === 'approaching-food'" :aria-pressed="action === 'play' && activeToy === 'mouse'" aria-label="玩具老鼠" title="玩具老鼠" @click.stop="playWith('mouse')"><img src="/pets/liuyi/icons/toy-mouse.png" alt="" /><span>玩具老鼠</span></button>
             <button v-for="food in foodTypes" :key="food.id" :aria-label="`画面内投喂${food.name}`" :title="food.name" :disabled="!canSceneFeed(food.id)" @click.stop="sceneFeed(food.id)"><FoodIcon :kind="food.id" /><span>{{ food.name }}</span><small>{{ sceneFoodCount(food.id) }}</small></button>
           </div>
           <div class="room-caption"><span>六一小朋友·{{ currentState }}</span></div>
@@ -76,6 +76,7 @@
 </template>
 
 <script setup>
+import { recentProfile } from '../features/auth/pageAccess'
 import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
 import { usePet, foodTypes } from '../features/pet/usePet'
 import FoodIcon from '../features/pet/FoodIcon.vue'
@@ -89,13 +90,14 @@ import CatFriends from '../features/pet/CatFriends.vue'
 import { useCatInteraction } from '../features/pet/useCatInteraction'
 import { useRoomTime } from '../features/pet/useRoomTime'
 import { useCatLife } from '../features/pet/useCatLife'
+import { useTouchCat } from '../features/pet/useTouchCat'
 import { useCatWalk } from '../features/pet/useCatWalk'
 import SiteNavigation from '../components/shared/SiteNavigation.vue'
 import request from '../utils/request'
 const isAdmin = ref(false), hasMailbox = ref(false), currentUsername = ref('')
 const authController = new AbortController()
 onMounted(async () => {
-  try { const { data } = await request.get('/me', { signal: authController.signal }); isAdmin.value = data.is_admin === true; hasMailbox.value = data.has_mailbox === true; currentUsername.value = data.display_name || data.username || '' } catch { /* route guard handles login expiry */ }
+  try { const { data } = (recentProfile() ? { data: recentProfile() } : await request.get('/me', { signal: authController.signal })); isAdmin.value = data.is_admin === true; hasMailbox.value = data.has_mailbox === true; currentUsername.value = data.display_name || data.username || '' } catch { /* route guard handles login expiry */ }
 })
 onUnmounted(() => authController.abort())
 const { night } = useRoomTime()
@@ -108,7 +110,7 @@ const { weatherSaving, weatherError, setWeather, pet, loading, refreshing, error
   life.wake(); action.value = 'approaching-food'
   if (!walk.walking.value) scene.value?.scrollIntoView({ block: 'center', behavior: 'auto' })
   walk.go(50, () => feedReaction(food, replayed))
-})
+}, scene)
 const life = useCatLife({ scene, action, pose, walk, reset, react, moveToy, feeding, eating, say })
 useCatWater({ scene, action, pose, walk, reset, say, feeding })
 const moments = useCatMoments({ scene, action, walk, reset, say, feeding })
@@ -123,10 +125,18 @@ function interact(kind) {
   walk.stop(); react(kind)
 }
 function startStroke(event) {
+  if (event.pointerType === 'touch') return
   if (away.value || feeding.value || eating.value || action.value === 'approaching-food') return
   if (['sleep', 'going-home', 'play', 'approaching-water', 'drinking'].includes(action.value)) life.wake()
   walk.stop(); beginStroke(event)
 }
+const touch = useTouchCat({ scene, action, activeToy, hand: life.hand, moveToy,
+  busy: computed(() => away.value || feeding.value || eating.value || action.value === 'approaching-food'),
+  pet: () => interact('pet'),
+})
+function roomPointerMove(event) { if (event.pointerType === 'touch') touch.move(event); else life.pointerMove(event) }
+function catClick() { if (!touch.ignoreClick()) interact('pet') }
+function roomClick(event) { if (!touch.ignoreClick()) walk.floorClick(event) }
 const visibleActivity = computed(() => showAllActivity.value ? pet.value?.activity || [] : (pet.value?.activity || []).slice(0, 3))
 async function toggleActivity() { showAllActivity.value = !showAllActivity.value; if (showAllActivity.value) await load() }
 function sceneFoodCount(food) { return pet.value?.is_admin ? pet.value.inventory?.[food] || 0 : food === 'treat' ? pet.value?.personal_treats || 0 : 0 }
