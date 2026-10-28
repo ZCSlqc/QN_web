@@ -1,7 +1,8 @@
 import axios from 'axios'
+import { announceFoodReward } from '../features/pet/rewardFeedback'
 
 const request = axios.create({
-  baseURL: '',
+  baseURL: '/api',
   timeout: 15000,
 })
 
@@ -14,9 +15,14 @@ request.interceptors.request.use((config) => {
 })
 
 request.interceptors.response.use(
-  (response) => response.data,
+  (response) => { announceFoodReward(response); return response },
   (error) => {
-    console.error('请求出错：', error)
+    const activeToken = localStorage.getItem('token')
+    if (error.response?.status === 401 && error.config?.headers?.Authorization === `Bearer ${activeToken}`) {
+      localStorage.removeItem('token')
+      localStorage.removeItem('username')
+      window.dispatchEvent(new Event('auth-expired'))
+    }
     return Promise.reject(error)
   },
 )

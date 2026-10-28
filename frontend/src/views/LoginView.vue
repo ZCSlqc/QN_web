@@ -14,12 +14,12 @@
       <div class="auth-form">
         <div class="input-group">
           <span class="input-icon">👤</span>
-          <input v-model="form.username" type="text" placeholder="请输入你的名字" @keyup.enter="handleLogin" />
+          <input v-model="form.username" type="text" autocomplete="username" aria-label="名字" maxlength="50" placeholder="请输入你的名字" @keyup.enter="handleLogin" />
         </div>
 
         <div class="input-group">
           <span class="input-icon">🔒</span>
-          <input v-model="form.userpwd" type="password" placeholder="请输入密码" @keyup.enter="handleLogin" />
+          <input v-model="form.userpwd" type="password" autocomplete="current-password" aria-label="密码" placeholder="请输入密码" @keyup.enter="handleLogin" />
         </div>
 
         <button class="btn-rose" :disabled="loading" @click="handleLogin">
@@ -37,13 +37,15 @@
 import { ref, reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
-import axios from 'axios'
+import axios from '../utils/request'
 
 const router = useRouter()
 const form = reactive({ username: '', userpwd: '' })
 const loading = ref(false)
 
-function heartStyle(n) {
+const heartStyles = Array.from({ length: 8 }, (_, i) => makeHeartStyle(i + 1))
+function heartStyle(n) { return heartStyles[n - 1] }
+function makeHeartStyle(n) {
   const left = (n / 8) * 100
   return {
     left: `${left + (Math.random() - 0.5) * 15}%`,
@@ -55,6 +57,7 @@ function heartStyle(n) {
 }
 
 async function handleLogin() {
+  if (loading.value) return
   if (!form.username) { ElMessage.warning('请输入名字'); return }
   if (!form.userpwd)  { ElMessage.warning('请输入密码'); return }
 
@@ -81,7 +84,7 @@ async function handleLogin() {
       ElMessage.error('密码错误')
     }
   } catch (e) {
-    ElMessage.error('服务器连接失败，请检查后端是否启动')
+    ElMessage.error('暂时无法连接，请稍后重试')
   } finally {
     loading.value = false
   }

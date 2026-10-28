@@ -35,8 +35,10 @@
   --radius-lg:          24px;
   --radius-full:        9999px;
 
-  --font-display:       'Georgia', 'Times New Roman', serif;
-  --font-body:          'Lato', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-script:        'Great Vibes', 'Segoe Script', cursive;
+  --font-display:       'Georgia', 'Times New Roman', 'Songti SC', 'SimSun', 'Noto Serif CJK SC', serif;
+  --font-literary:      'Songti SC', 'SimSun', 'Noto Serif CJK SC', serif;
+  --font-body:          'Lato', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
 
   --transition-fast:    0.2s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-smooth:  0.35s cubic-bezier(0.4, 0, 0.2, 1);
@@ -131,4 +133,24 @@ button {
 .el-message,
 .el-message-box__wrapper {
   z-index: 20000 !important;
+}
+
+/* Shared layout, replacing the unused Bootstrap bundle. */
+.container { width: 100%; max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+input, textarea, select { font: inherit; max-width: 100%; }
+button:disabled { cursor: not-allowed; opacity: 0.55; }
+:focus-visible { outline: 2px solid var(--color-rose-dark); outline-offset: 4px; }
+section[id] { scroll-margin-top: 80px; }
+.auth-page { padding: 24px 0; }
+.auth-form input { min-width: 0; }
+.el-overlay-dialog { padding: 16px 0; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-delay: 0s !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

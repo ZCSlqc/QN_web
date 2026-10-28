@@ -9,7 +9,10 @@ node_modules/
 dist/
 
 # Database
-# *.db
+*.db
+*.db-wal
+*.db-shm
+*.db-journal
 
 # IDE
 .idea/
@@ -24,3 +27,9 @@ Thumbs.db
 
 *.log
 *.pid
+backend/.secret_key
+backend/uploads/
+.env
+artifacts/
+
+.pytest_cache/

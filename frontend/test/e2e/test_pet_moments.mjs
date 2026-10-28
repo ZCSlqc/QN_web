@@ -1,0 +1,43 @@
+import { test, expect } from '../fixtures/app.mjs'
+
+test('heart and stars use the supplied icons, never together', async ({ page, app }) => {
+  app.allowedPages = ['/cat']
+  await page.addInitScript(() => { Math.random = () => .5 })
+  await page.emulateMedia({ reducedMotion: 'reduce' })
+  await page.clock.install()
+  await page.goto('/cat')
+  await page.locator('.pet-room').scrollIntoViewIfNeeded()
+  await page.clock.runFor(11500)
+  await expect(page.locator('.cat-emotion')).toHaveAttribute('src', '/pet/emotions/stars.png')
+  await page.locator('.cat-touch').click()
+  await expect(page.locator('.cat-emotion')).toHaveCount(1)
+  await expect(page.locator('.cat-emotion')).toHaveAttribute('src', '/pet/emotions/heart.png')
+  await page.clock.runFor(3000)
+  await expect(page.locator('.cat-emotion')).toHaveCount(0)
+})
+
+test('autonomous bathroom trip locks feeding, pauses offscreen and returns once', async ({ page, app }) => {
+  app.admin = true; app.petCanFeed = true
+  await page.addInitScript(() => { Math.random = () => .5 })
+  await page.emulateMedia({ reducedMotion: 'reduce' })
+  await page.clock.install()
+  await page.goto('/cat')
+  await page.locator('.pet-room').scrollIntoViewIfNeeded()
+  await page.clock.runFor(235000)
+  for (let second = 0; second < 180 && !(await page.locator('.room-caption').textContent()).includes('上厕所去了'); second++) await page.clock.runFor(1000)
+  await expect(page.locator('.room-caption')).toHaveText('六一小朋友·上厕所去了')
+  await expect(page.locator('.cat-wrap')).toBeHidden()
+  await expect(page.getByRole('button', { name: '画面内投喂猫条', exact: true })).toBeDisabled()
+  await expect(page.getByRole('button', { name: '投喂猫粮', exact: true })).toBeDisabled()
+  await expect(page.getByRole('button', { name: '摸摸头', exact: true })).toBeDisabled()
+  await page.locator('.pet-footer').scrollIntoViewIfNeeded()
+  await page.waitForTimeout(200)
+  await page.clock.runFor(30000)
+  await page.locator('.pet-room').scrollIntoViewIfNeeded()
+  await page.waitForTimeout(200)
+  await expect(page.locator('.cat-wrap')).toBeHidden()
+  await page.clock.runFor(10000)
+  await expect(page.locator('.cat-wrap')).toBeVisible()
+  await expect(page.getByRole('button', { name: '画面内投喂猫条', exact: true })).toBeEnabled()
+  expect(app.petFeeds).toHaveLength(0)
+})

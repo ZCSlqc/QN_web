@@ -1,334 +1,203 @@
-# qiqi & nini 情侣网页
+# qiqi & nini 情侣空间
 
-基于 **FastAPI** + **Vue 3** 的全栈情侣空间，包含祝福留言、待办清单、纪念日计时器、相册轮播、背景音乐、中国地图点亮旅程等功能。
+FastAPI + SQLite + Vue 3，包含爱情故事、祝福、相册、心愿、旅行足迹、私密信箱和管理后台。
 
----
+## 目录
 
-## 技术栈
-
-| 层 | 技术 | 说明 |
-| --- | --- | --- |
-| 后端框架 | FastAPI | Python 异步 Web 框架 |
-| 数据库 | SQLite | 文件数据库，零配置 |
-| 鉴权 | JWT (python-jose) | Bearer Token，默认 7 天有效期 |
-| 密码 | bcrypt | 哈希存储，兼容旧明文密码自动升级 |
-| 前端框架 | Vue 3 | Composition API |
-| UI 库 | Element Plus | 弹窗、消息提示 |
-| 构建工具 | Vite | 开发服务器 + 代理 |
-| 包管理 | uv (Python) / npm (Node) | — |
-
----
-
-## 快速启动
-
-### 环境要求
-
-- Python 3.10+
-- Node.js 18+
-- [uv](https://docs.astral.sh/uv/)（Python 包管理器）
-
-### 一键启动（推荐）
-
-```bash
-# 在项目根目录下执行
-chmod +x start.sh
-./start.sh
+```text
+backend/
+  main.py                # 应用装配与生命周期，不放业务实现
+  app/core/              # 配置、数据库、身份认证、限流
+  app/api/               # 按业务拆分的 HTTP 路由
+  app/services/          # 业务规则、数据校验、文件清理
+  scripts/               # 初始化账号、导入、清理、备份
+  test/                  # 后端测试，test_<业务>.py
+  .env                   # 本地配置，不提交 Git
+  couple.db              # 真实数据，不提交 Git
+frontend/
+  src/views/             # 路由页面
+  src/features/          # 按业务归类的组件和逻辑
+  src/components/shared/ # 通用弹窗等跨业务组件
+  src/composables/        # 通用生命周期逻辑
+  src/utils/             # 请求等基础工具
+  test/e2e/              # 模拟 API 的交互测试，test_<业务>.mjs
+  test/integration/      # 真实临时后端端到端测试
+  test/fixtures/         # 测试数据及请求拦截
+scripts/dev.py           # 跨平台开发启动器
+artifacts/               # 测试报告、临时文件、备份，不提交 Git
+旅行记录.md              # 旅行记录来源文档
 ```
 
-### 1. 启动后端
+各目录 README 描述模块边界和运行方式，重构记录见 [docs/REFACTOR.md](docs/REFACTOR.md)。
+
+## 本地启动
+
+要求 Python 3.10+、Node.js 20.9+、uv。
+
+```bash
+uv venv .venv
+uv pip install --python .venv/Scripts/python.exe -r backend/requirements.txt -r backend/requirements-dev.txt
+cd frontend
+npm ci
+cd ..
+```
+
+Linux/macOS 将 Python 路径改为 `.venv/bin/python`。
+
+已有本地 `.env` 不要覆盖；新环境复制 `.env.example` 为 `.env` 并填写配置。
+
+```dotenv
+QN_ADMIN_USERS='["管理员用户名1", "管理员用户名2"]'
+QN_CHECK_CODE=your-registration-share-code
+QN_BACKEND_PORT=1277
+QN_FRONTEND_PORT=7721
+```
+
+预留的管理员/情侣账号不能在公开注册页注册。首次部署通过本地命令创建，密码通过交互输入：
 
 ```bash
 cd backend
-
-# 首次安装依赖
-uv pip install -r requirements.txt
-
-# 启动开发服务器（端口 8000，热重载）
-uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+uv run python scripts/create_account.py "管理员用户名1"
+uv run python run.py
 ```
 
-后端启动后访问 <http://localhost:8000>，接口文档在 <http://localhost:8000/docs>。
+另一个终端运行 `cd frontend && npm run dev`，访问 `http://localhost:7721`。
 
-### 2. 启动前端
+也可以在根目录执行 `python scripts/dev.py`（使用项目 `.venv` 启动后端）；Linux/macOS 可执行 `./start.sh`。启动器在前台运行，Ctrl+C 只停止自己创建的后端和前端进程。端口被占用时直接退出，不杀其他项目进程。支持 `--backend-port`、`--frontend-port`。旧 `stop.sh` 仅提示操作方式，不再按进程名称批量停止服务。
+
+## 页面
+
+| 地址 | 功能 |
+| --- | --- |
+| `/login`、`/register` | 登录、用分享码注册 |
+| `/index` | 故事、祝福、心愿、相册、纪念日、首屏樱花 |
+| `/journey` | 足迹地图、到访记录、预定旅程 |
+| `/admin` | 用户、祝福、待办、分享码管理 |
+
+账号入口在首页 LOVE 旁，支持退出登录和修改密码。退出会撤销当前令牌；改密后所有旧令牌失效。已有账号密码不受本次重构影响。
+
+## 业务规则
+
+- **旅程**：一条记录对应一次行程，`name` 和 `adcodes` 是顺序一致的数组；`checkin_points` 为景点/地区，`event` 为大事件，`notes` 为唯一备注字段。无单数 `adcode`、无 `impression`。
+- **地图**：OpenFreeMap 详细底图，失败自动切换本地 GeoJSON；城市填充从40%起，每多一次加3个百分点，最高70%。省级底色保留，直辖市/港澳同样绘制省和市两层。全国外轮廓为 `#987080`、0.7px。桌面750px、手机540px；滚轮200灵敏度、半级缩放。
+- **省市选择**：先省后市，可跨省添加多个城市；直辖市、香港和澳门两级同名。取消编辑不修改原数据。
+- **照片**：所有原有和新上传照片统一编辑。原有照片仅从相册移除，保留素材；上传照片先隐藏，再清理文件，清理失败可重试。启动自动重试，亦可运行 `backend/scripts/cleanup_photos.py`。新增旅程和上传支持 request_key 防止超时重试重复写入。
+- **祝福**：无边框，上下渐隐，每条停留5秒，悬停/后台暂停，单条保持静态。
+- **字体**：英文花体保留；“爱的相册”“爱的旅程”等栏目中文标题用系统宋体风格，故事标题和正文用普通中文字体。大体积中文装饰字体不再加载。
+- **心愿**：首页与后台统一按 ID 增删改和切换完成状态，共用校验。旧名称接口仅作适配，同样校验且不存在时返回404。
+- **私密信箱**：只对 `QN_ADMIN_USERS` 中两位主人开放，与管理权限使用同一身份来源。打开正文才算已读，留言提醒独立；离页/刷新有草稿提醒，失败重试不重复投递。每30秒刷新状态。
+- **分享码**：后台“网站设置”可查看、复制、生成和修改；文件模式保存立即生效，进程环境变量管理时只读。未设置分享码时关闭注册。
+
+## 配置与数据
+
+后端配置位于 `backend/app/core/settings.py`，读取 `.env`；进程环境变量优先。管理员和信箱名单修改后重启；文件管理的分享码实时读取。
+
+| 变量 | 用途 |
+| --- | --- |
+| `QN_ADMIN_USERS` | 管理员用户名数组或逗号分隔名单 |
+| `QN_CHECK_CODE` | 注册分享码，无硬编码默认值 |
+| `QN_SECRET_KEY` | JWT 密钥；未配置时使用持久化 `.secret_key` |
+| `QN_DB_PATH` | 数据库路径，默认 `backend/couple.db` |
+| `QN_UPLOAD_DIR` | 上传照片目录，默认 `backend/uploads` |
+| `QN_PHOTO_ASSETS_DIR` | 原有照片资源目录，默认 `frontend/public` |
+| `QN_ENV_FILE` | 外部配置文件路径 |
+| `QN_BACKEND_PORT` | 后端端口，默认 `1277` |
+| `QN_FRONTEND_PORT` | 前端端口，默认 `7721` |
+| `QN_API_TARGET` | Vite 开发代理目标，默认 `http://127.0.0.1:1277` |
+
+真实 `.db`、上传文件、密钥和 `.env` 均不进入 Git。Git 显示 `backend/couple.db` 删除表示取消跟踪，磁盘数据仍保留。新机器不能依靠 Git 获取真实数据库，需要从私有备份恢复。
 
 ```bash
-cd frontend
-
-# 首次安装依赖
-npm install
-
-# 启动开发服务器（端口 7721）
-npm run dev
+# 根目录执行，备份包含数据库、上传文件及密钥，务必私密保存
+.venv/Scripts/python.exe backend/scripts/backup_data.py
+# 导入只验证；显式 --replace 才备份并覆盖旅程表
+.venv/Scripts/python.exe backend/scripts/import_journeys.py
+.venv/Scripts/python.exe backend/scripts/import_journeys.py --replace
 ```
 
-前端启动后访问 <http://localhost:7721>。
+SQLite 使用 WAL、外键校验和15秒忙等待。在线备份使用 SQLite backup API；要得到图片和数据库完全一致的备份，暂停上传后再备份。生产恢复时停止服务并恢复数据库、上传目录、密钥及配置。
 
----
-
-## 页面与功能
-
-| 地址 | 页面 | 说明 |
-| --- | --- | --- |
-| `/login` | 登录 | 用户名 + 密码，无需授权码 |
-| `/register` | 注册 | 用户名 + 密码 + 授权码 |
-| `/index` | 主页 | Hero、祝福、待办、计时器、相册、音乐 |
-| `/journey` | 爱的旅程 | Leaflet 中国地图，点亮省份/城市，记录旅行印记 |
-| `/admin` | 管理 | 仅管理员可见，用户/祝福/待办管理 |
-
-### 主页区块
-
-- **Hero 首页** — 花瓣飘落动画 + 导航栏 + 音乐播放器入口
-- **爱的故事** — qiqi & nini 头像 + 祝福寄语字幕（垂直滚动，点击可留言）+ 爱情故事文案 + 待办卡片 + 已完成列表
-- **爱的相册** — 3×3 九宫格布局，左上大图合并，右下四格自动轮播
-- **纪念日计时器** — 自 2021-06-24 起的天/时/分/秒实时倒计时 + 浪漫横幅文案
-- **爱的旅程** — Leaflet 交互式中国地图，市级区块 hover 高亮 + 点击弹出旅行记录弹窗（去程/返程时间、旅途印象、备注），已标记城市永久红色常亮，支持修改/删除，数据持久化到 SQLite
-- **音乐播放器** — 本地 `City_Of_Stars.mp3`，右上角悬浮按钮
-
-### 祝福弹窗
-
-首次登录或注册时，自动弹出祝福寄语框。填写或点击"稍后再说"后不再弹出。包括管理员在内所有用户首次登录都会看到。
-
-点击祝福字幕滚动区域也可以随时留言。
-
-### 待办与已完成
-
-- **待办**：管理员可新增/修改/完成/删除，游客只读
-- **已完成**：标记完成后移至下方已完成列表（保留在数据库中），带垂直滚动条。已完成列表中的"删除"按钮才真正从数据库删除
-
-### 管理员
-
-管理员账号：**李琪淳** / **郑丹妮**
-
-管理员权限：
-- 新增/修改/完成/删除待办事项
-- 导航栏显示"管理"入口
-- 管理后台：用户管理、祝福管理、待办管理（含登录次数统计）
-
-### 相册右下角轮播
-
-四等分格子，每个格子 6 秒完整周期（淡入 1.5s → 停留 3s → 淡出 1.5s），每次跳过 3 张图片（+4），四个格子依次错开 1 秒起步。白色背景与分隔。
-
----
-
-## 项目结构
-
-```text
-QN_web/
-├── backend/
-│   ├── main.py              ← 所有 API 接口（单文件）
-│   ├── requirements.txt     ← Python 依赖
-│   ├── couple.db            ← SQLite 数据库（首次启动自动生成）
-│   └── config/
-│       └── settings.py      ← 密钥、授权码、数据库路径等配置
-├── frontend/
-│   ├── index.html           ← HTML 入口
-│   ├── vite.config.js       ← Vite 配置（含 API 代理）
-│   ├── package.json         ← Node 依赖与脚本
-│   ├── public/              ← 静态资源
-│   │   ├── 网页封面.ico
-│   │   ├── img/             ← 头像 (qiqi.png, nini.png)
-│   │   ├── background/      ← 页面背景图
-│   │   ├── album/           ← 相册图片
-│   │   ├── svg/             ← 中国地图 GeoJSON (省份/城市边界)
-│   │   └── audio/           ← 背景音乐
-│   └── src/
-│       ├── main.js          ← Vue 入口
-│       ├── App.vue          ← 根组件
-│       ├── router/index.js  ← 路由配置
-│       ├── utils/request.js ← Axios 封装
-│       ├── views/
-│       │   ├── LoginView.vue
-│       │   ├── RegisterView.vue
-│       │   ├── IndexView.vue    ← 主页（核心页面）
-│       │   ├── JourneyView.vue  ← 爱的旅程（Leaflet 地图）
-│       │   └── AdminView.vue    ← 管理后台
-│       └── assets/
-│           └── css/
-│               ├── theme.css    ← 全局主题变量与动画
-│               ├── bootstrap.css
-│               └── fonts.css    ← 字体定义
-└── README.md
-```
-
----
-
-## API 接口
-
-所有 POST 接口使用 `Form` 编码（`application/x-www-form-urlencoded`）。
-
-| 接口 | 方法 | 鉴权 | 功能 |
-| --- | --- | --- | --- |
-| `/health` | GET | 无 | 健康检查 |
-| `/login_process` | POST | 无 | 用户登录，返回 JWT + login_count |
-| `/register_process` | POST | 无 | 用户注册，返回 JWT |
-| `/me` | GET | Bearer Token | 当前用户信息、是否管理员、登录次数 |
-| `/blessings` | GET | 无 | 获取祝福列表（最近 50 条） |
-| `/blessings` | POST | 可选 | 提交祝福（未登录显示"匿名"） |
-| `/table_data` | GET | 无 | 获取待办列表 |
-| `/table_done_list` | GET | 无 | 获取已完成列表 |
-| `/table_add` | POST | 管理员 | 新增待办 |
-| `/table_change` | POST | 管理员 | 修改待办（支持改名） |
-| `/table_delete` | POST | 管理员 | 真删除待办（从数据库移除） |
-| `/table_done` | POST | 管理员 | 标记完成（保留数据库，移至已完成列表） |
-| `/journeys` | GET | 无 | 获取全部旅程记录 |
-| `/journeys` | POST | 无 | 新增旅程记录（adcode, name, 日期, 印象, 备注） |
-| `/journeys/{id}` | PUT | 无 | 修改旅程记录 |
-| `/journeys/{id}` | DELETE | 无 | 删除旅程记录 |
-| `/admin/users` | GET | 管理员 | 用户列表（含注册时间、登录次数） |
-| `/admin/users/delete` | POST | 管理员 | 删除用户 |
-| `/admin/blessings` | GET | 管理员 | 全部祝福列表 |
-| `/admin/blessings/delete` | POST | 管理员 | 删除指定祝福 |
-
-### 登录/注册响应字段
-
-```json
-{
-  "status": "success",
-  "flag": 1,
-  "msg": "登录成功",
-  "token": "eyJ...",
-  "login_count": 0
-}
-```
-
-- `flag`：1 成功，-1 用户不存在/已存在，-2 密码错误，-3 授权码错误
-- `login_count`：本次登录之前的登录次数（0 表示首次登录，前端据此弹出祝福弹窗）
-
----
-
-## 数据库
-
-SQLite 文件数据库，路径 `backend/couple.db`，首次启动自动建表与迁移。
-
-### 表结构
-
-- **user** — `id`, `username`, `userpwd` (bcrypt), `userdate`, `login_count`
-- **things** — `id`, `entry` (名称), `types` (类型), `user` (贡献人), `start_date`, `end_date`, `done`
-- **blessings** — `id`, `content`, `author`, `created_at`
-- **journeys** — `id`, `adcode` (行政区划代码), `name` (城市名), `departure_date`, `return_date`, `impression`, `notes`, `created_at`, `updated_at`
-
----
-
-## 配置
-
-所有可配置项集中在 `backend/config/settings.py`：
-
-| 配置项 | 默认值 | 说明 |
-| --- | --- | --- |
-| `SECRET_KEY` | — | JWT 签名密钥 |
-| `CHECK_CODE` | `ZDNlqc` | 注册需要的授权码 |
-| `ACCESS_TOKEN_EXPIRE_HOURS` | `168`（7 天） | Token 有效期 |
-| `SERVER_HOST` | `0.0.0.0` | 后端监听地址 |
-| `SERVER_PORT` | `8000` | 后端监听端口 |
-| `DB_PATH` | `couple.db` | SQLite 数据库文件路径 |
-| `CORS_ORIGINS` | `["*"]` | 允许的跨域来源 |
-
----
-
-## 自定义修改
-
-### 更换背景图
-
-替换 `frontend/public/background/` 目录下的对应文件：
-
-- `bg-flower.jpg` — Hero 首页
-- `1.jpeg` — 故事区块
-- `2.jpg` — 纪念日区块
-- `3.jpg` — 横幅区块
-
-### 更换相册图片
-
-图片放在 `frontend/public/album/`，然后修改 `IndexView.vue` 中 `gridPhotos` 和 `cornerPhotos` 数组。
-
-### 修改纪念日起始日
-
-修改 `IndexView.vue` 中 `TOGETHER_DATE` 变量的值（格式 `YYYY-MM-DD`）。
-
-### 修改爱情故事文案
-
-编辑 `IndexView.vue` 中 `story-image__text` 区块的文本内容。
-
-### 更换音乐
-
-替换 `frontend/public/audio/City_Of_Stars.mp3`，或在 `IndexView.vue` 中修改 `<audio>` 标签的 `src`。
-
-### 修改主题色
-
-编辑 `frontend/src/assets/css/theme.css` 中的 CSS 变量（玫瑰粉/金色/奶油色）。
-
----
-
-## 生产部署
-
-### 1. 前端打包
+## 验证
 
 ```bash
+python -m pytest backend/test -q
 cd frontend
 npm run build
+npx playwright install chromium
+npm run test:e2e
+npm run test:integration
 ```
 
-静态文件输出到 `dist/` 目录。
+测试命名统一 `test_<业务>`，后端扩展名 `.py`，前端扩展名 `.mjs`。单元/交互测试与真实集成测试分别维护，均不修改实际数据库。详见 [backend/test/README.md](backend/test/README.md) 和 [frontend/test/README.md](frontend/test/README.md)。
 
-### 2. 后端服务（systemd）
+## 部署
 
-```ini
-# /etc/systemd/system/qn-web.service
-[Unit]
-Description=qiqi & nini Web API
-After=network.target
-
-[Service]
-Type=simple
-User=www-data
-WorkingDirectory=/path/to/backend
-ExecStart=/path/to/venv/bin/uvicorn main:app --host 127.0.0.1 --port 8000
-Restart=always
-
-[Install]
-WantedBy=multi-user.target
-```
-
-```bash
-sudo systemctl daemon-reload
-sudo systemctl enable --now qn-web.service
-```
-
-### 3. Nginx 反向代理
+前端 `npm run build` 输出 `frontend/dist`；后端使用 uvicorn 或进程管理器，不带 `--reload`。配置 HTTPS 并反向代理 `/api/`：
 
 ```nginx
-server {
-    listen 80;
-    server_name your-domain.com;
-
-    root /path/to/frontend/dist;
-    index index.html;
-
-    # Vue Router history 模式
-    location / {
-        try_files $uri $uri/ /index.html;
-    }
-
-    # API 代理
-    location /login_process    { proxy_pass http://127.0.0.1:8000; }
-    location /register_process { proxy_pass http://127.0.0.1:8000; }
-    location /table_data       { proxy_pass http://127.0.0.1:8000; }
-    location /table_done_list  { proxy_pass http://127.0.0.1:8000; }
-    location /table_add        { proxy_pass http://127.0.0.1:8000; }
-    location /table_change     { proxy_pass http://127.0.0.1:8000; }
-    location /table_delete     { proxy_pass http://127.0.0.1:8000; }
-    location /table_done       { proxy_pass http://127.0.0.1:8000; }
-    location /me               { proxy_pass http://127.0.0.1:8000; }
-    location /blessings        { proxy_pass http://127.0.0.1:8000; }
-    location /health           { proxy_pass http://127.0.0.1:8000; }
-    location /journeys         { proxy_pass http://127.0.0.1:8000; }
-    location /admin            { proxy_pass http://127.0.0.1:8000; }
+root /path/to/frontend/dist;
+index index.html;
+location / { try_files $uri $uri/ /index.html; }
+location /api/ {
+    client_max_body_size 20m;
+    proxy_pass http://127.0.0.1:1277/;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 }
 ```
 
-```bash
-sudo nginx -t && sudo nginx -s reload
-```
+只信任实际反向代理的转发头，不要让公网客户端伪造来源。登录每IP每分钟20次，注册和祝福每分钟10次；多进程共用SQLite计数。部署应保证原有照片 `album/`、缩略图 `optimized/album/` 可由后端读取，地图 Worker 随整个 dist 一起发布。
 
----
+后端接口文档：`http://localhost:1277/docs`。
 
-© 2021 qiqi & nini
+
+## 心愿完成感想
+
+首页 Things To Do 和后台待办的“完成”会打开感想弹窗：选填、最多2000字，可留空直接完成。已完成列表直接显示感想，管理员可点击“写点感想/修改感想”后补或修改；后台已完成列表也能查看、修改。照片仍只在独立相册管理，不与心愿关联，不包含宠物或奖励功能。
+
+数据保存在 `things.reflection`，旧记录自动初始化为空。完成状态与感想在同一次数据库更新中保存；取消不改数据，保存失败保留输入。恢复待办时保留原感想，后续完成可继续修改。单独修改感想不改变原完成时间。
+
+- `POST /admin/todos/{id}/status`：`done`，可选 `reflection`；界面使用 `replace_reflection=true` 明确保存包含空白在内的新感想。未传感想时保留旧内容。
+- `PUT /admin/todos/{id}/reflection`：编辑已完成事项的感想，传空字符串可清空，未完成事项返回409。
+
+相关实现：`backend/app/services/todos.py`、`frontend/src/features/todos/TodoReflectionDialog.vue`。验证见 `backend/test/test_todo_reflection.py` 和 `frontend/test/e2e/test_todo_reflection.mjs`。
+
+相册右下角轮播的四个小格各自可点击，直接预览当前对应的原图；淡入期间以不透明度达到50%的新图为主，否则打开旧图。四格均独立圆角（含中央交汇处），提示标签不拦截点击。已完成心愿保留名称、标签、时间和操作的首行，仅在有感想时另起一行展示。
+
+
+## 爱的小窝 /cat
+
+导航新增“爱的小窝”，独立页面“六一的小窝”。第一版启用六一，写实版按三视图生成，插画版按六一A制作，均为透明背景图片，可在页面切换比选。默认写实，风格选择仅保存在当前浏览器。
+
+- 旧版初始余额按当前规则保留；每次后端启动时，每位管理员的猫条、猫粮、罐头分别补足至1；更多食物由记录活动获得。
+- 情侣双方共用食物，仅 `QN_ADMIN_USERS` 两位现有主人账号可使用共同背包；其他获准访问页面的用户只能摸摸头、逗一逗。
+- 普通用户导航遵循现有 `QN_USER_PAGE_ALLOWLIST`，需要允许 `/cat` 才显示入口；本次未擅自扩大原有页面白名单。
+- 摸头/逗猫是本地互动；投喂事务性扣除一份食物并写流水，幂等标识避免超时重试重复扣除。最近20条投喂显示在“小日常”。
+- 不因离线扣分、不惩罚；当前已接入新照片、首次完成心愿和已完成旅程的奖励，历史数据不批量结算。
+- 数据表：`pets`、`pet_inventory`、`pet_ledger`。无需第三方API、无需额外Python依赖。
+
+详见 [宠物模块说明](frontend/src/features/pet/README.md) 和 [猫咪素材说明](docs/pet-assets.md)。测试分别为 `backend/test/test_pet.py`、`frontend/test/e2e/test_pet.mjs`。
+
+
+## 宠物背包与昵称（当前规则）
+
+“摸摸头、逗一逗、访客领取猫条和投喂”在同一互动区。管理员不参与留言奖励；管理员情侣拥有独立背包，合计展示，内部按人记账，先扣自己、不够再扣另一半。
+
+- 新照片→猫条；首次完成心愿→猫粮；保存已完成旅程→罐头。每个来源只发一次，历史记录不批量补发。
+- 访客每天首条首页祝福获得1根个人猫条，按北京时间计算；“去送祝福”直接打开祝福弹窗。
+- 未确认投喂用账号隔离的 sessionStorage 保存标识，刷新可继续确认，重试不重复扣粮。
+- 旧共用余额和两位管理员以前获得的个人猫条保留并转入对应背包，有调整流水；每次启动时每位管理员三种食物各补足至1（不累加）。
+- 用户可在“账号→个人昵称”设置昵称（最多20字，不填回退用户名）；后台用户名后增加昵称列。昵称只用于展示，不参与鉴权。琪琪/妮妮是两位现有情侣账号的默认昵称。
+
+详情及边界规则见 [宠物模块 README](frontend/src/features/pet/README.md)。`PUT /account/nickname` 更新昵称；业务记录通过原有账号ID/用户名关联展示名，修改昵称不会转移记录或食物。
+
+宠物页已按爱的旅程统一版式，并使用独立的安静、眯眼、伸爪、低头姿态；取消整图抖动。食物图标分别为猫条包装、猫粮碗和拉环罐头。动作逻辑、姿态组件和样式集中在 `frontend/src/features/pet/`。
+
+宠物界面图标已替换为 `docs/` 提供的三张原图，并以 `cat-treat.png`、`cat-food.png`、`cat-can.png` 放入 `frontend/public/pet/icons/`。投喂场景另用写实空碗、满粮碗、开罐罐头和猫条，图片位于 `frontend/public/pet/food/`。
+
+六一支持闲置散步、点击地面移动、回窝枕爪睡觉（zzZ）、第一人称真实手摸摸、手持逗猫棒和地面玩具老鼠。不提供休息按钮，清醒60–90秒后自主回窝，睡60–90秒后自动醒来；点击睡猫或互动可唤醒。两种形象共享位置与动作节奏，切换不重置；移动端限制活动范围，离开视口或隐藏页面暂停动态行为。实现集中在宠物模块，浏览器验证见 `frontend/test/e2e/test_pet_life.mjs`，素材与生成说明见 `docs/pet-assets.md`。
+
+小窝支持管理员在窗边切换共享晴雨天气（数据库持久化，其他页面约30秒内同步），便签随天气与昼夜变化。作息离开场景后保留剩余时间，已扣粮的进食流程回来继续。天气接口为 `PUT /pet/weather`；首次使用需重启后端自动创建设置表，详见宠物模块 README。
+
+食物奖励支持弹窗关闭后飞入导航“爱的小窝”的到账动画，多张照片合并显示+N；访客祝福也使用同一反馈。情侣双方每天首封新信各奖励1根猫条（北京时间），重试、评论与接收不重复奖励，计入共同背包。实现和验证见宠物模块 README。

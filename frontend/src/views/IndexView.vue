@@ -1,60 +1,37 @@
 <template>
-  <!-- 页面加载动画 -->
-  <div v-if="isLoading" class="page-loader">
-    <div class="loader-heart">💕</div>
-    <p>正在加载我们的故事...</p>
-  </div>
-
+  <TodoReflectionDialog v-if="isAdmin" :item="reflectionItem" :completing="completingReflection" @close="reflectionItem = null" @saved="reflectionSaved" />
   <!-- 祝福弹窗 — 在 loading 层之外，确保首次登录即可见 -->
-  <div v-if="showBlessingModal" class="modal-mask">
+  <AppDialog v-model="showBlessingModal" title="留下你的祝福" :busy="saving">
     <div class="modal-card glass-card blessing-modal">
       <div class="modal-card__head">
         <h4>💌 留下你的祝福</h4>
       </div>
       <div class="modal-card__body">
         <p class="blessing-hint">欢迎来到 qiqi &amp; nini 的小世界，请留下一句祝福寄语吧 ✨</p>
-        <textarea v-model="blessingText" placeholder="写下你对我们的祝福..." rows="4" maxlength="300"></textarea>
+        <textarea v-model="blessingText" aria-label="祝福内容" :disabled="saving" placeholder="写下你对我们的祝福..." rows="4" maxlength="300"></textarea>
         <span class="char-count">{{ blessingText.length }}/300</span>
       </div>
       <div class="modal-card__foot">
-        <button class="btn-cancel" @click="skipBlessing">稍后再说</button>
-        <button class="btn-rose" :disabled="!blessingText.trim()" @click="submitBlessing">送出祝福</button>
+        <button class="btn-cancel" :disabled="saving" @click="skipBlessing">稍后再说</button>
+        <button class="btn-rose" :disabled="saving || !blessingText.trim()" @click="submitBlessing">送出祝福</button>
       </div>
     </div>
-  </div>
+  </AppDialog>
 
-  <div v-show="!isLoading" class="page-wrapper">
+  <div class="page-wrapper">
 
     <!-- ============================================================
       Section 1：Hero 首页
       ============================================================ -->
     <section class="hero" id="home">
-      <img class="hero-bg" src="/background/bg-flower.jpg" alt="" />
+      <canvas ref="petalCanvas" class="petal-canvas" aria-hidden="true"></canvas>
+      <img fetchpriority="high" decoding="async" class="hero-bg" src="/optimized/background/bg-flower.webp" alt="" />
       <div class="hero-overlay"></div>
-      <canvas ref="petalCanvas" class="petal-canvas"></canvas>
 
-      <header class="nav-bar" :class="{ scrolled: scrollTop > 300 }">
-        <a class="nav-logo" href="#home" @click.prevent="scrollTo('home')">LOVE</a>
-        <nav class="nav-links">
-          <a href="#home" @click.prevent="scrollTo('home')">爱的首页</a>
-          <a href="#story" @click.prevent="scrollTo('story')">爱的故事</a>
-          <a href="#album" @click.prevent="scrollTo('album')">爱的相册</a>
-          <router-link to="/journey" class="journey-nav-link">爱的旅程</router-link>
-          <router-link v-if="isAdmin" to="/admin" class="admin-nav-link">管理</router-link>
-        </nav>
-        <button class="nav-toggle" @click="mobileNavOpen = !mobileNavOpen">
-          <span></span><span></span><span></span>
-        </button>
-      </header>
-      <div v-if="mobileNavOpen" class="mobile-menu glass-card">
-        <a href="#home" @click.prevent="scrollTo('home'); mobileNavOpen = false">爱的首页</a>
-        <a href="#story" @click.prevent="scrollTo('story'); mobileNavOpen = false">爱的故事</a>
-        <a href="#album" @click.prevent="scrollTo('album'); mobileNavOpen = false">爱的相册</a>
-        <router-link to="/journey" @click="mobileNavOpen = false" class="journey-mobile-link">爱的旅程</router-link>
-        <router-link v-if="isAdmin" to="/admin" @click="mobileNavOpen = false" class="admin-mobile-link">管理后台</router-link>
-      </div>
+      <SiteNavigation :light="scrollTop > 300" :is-admin="isAdmin" :has-mailbox="hasMailbox" :current-username="currentUsername" @mailbox-unavailable="hasMailbox = false" />
 
       <div class="hero-content">
+        <p class="hero-eyebrow animate-fade-in-up">OUR LITTLE LOVE STORY</p>
         <h1 class="hero-title animate-fade-in-up">i love you</h1>
         <div class="hero-names animate-fade-in-up" style="animation-delay: 0.3s">
           <span class="name-item">qiqi</span>
@@ -63,10 +40,12 @@
           </span>
           <span class="name-item">nini</span>
         </div>
-        <div class="scroll-hint" @click="scrollTo('story')">
+        <p class="hero-days">我们已经相伴 {{ elapsedTime.days }} 天</p>
+        <div class="hero-actions"><button @click="scrollTo('album')">翻看回忆</button><router-link v-if="canVisitPage('/journey', isAdmin)" to="/journey">查看足迹 →</router-link></div>
+        <button class="scroll-hint" @click="scrollTo('story')">
           <span>向下探索</span>
           <svg viewBox="0 0 24 24" width="20" height="20"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" fill="currentColor"/></svg>
-        </div>
+        </button>
       </div>
     </section>
 
@@ -77,87 +56,70 @@
       <div class="container">
         <div class="section-header">
           <div class="header-avatars">
-            <img src="/img/qiqi.png" alt="qiqi" class="avatar avatar-left" />
+            <img src="/optimized/img/qiqi.webp" alt="qiqi" class="avatar avatar-left" />
             <div class="header-text">
               <p class="section-eyebrow">The Story of our love</p>
-              <h2 class="section-title">Our Love Story</h2>
+              <h2 class="section-title section-title-script">Our Love Story</h2>
               <div class="section-line"></div>
             </div>
-            <img src="/img/nini.png" alt="nini" class="avatar avatar-right" />
+            <img src="/optimized/img/nini.webp" alt="nini" class="avatar avatar-right" />
           </div>
         </div>
 
-        <!-- 祝福寄语字幕 -->
-        <div class="blessing-lyrics" @click="showBlessingModal = true" title="点击留下祝福">
-          <div class="blessing-lyrics__inner">
-            <div class="lyric-spacer"></div>
-            <div
-              v-for="(b, idx) in allBlessings"
-              :key="idx"
-              class="lyric-line"
-            >
-              <span class="lyric-content">「{{ b.content }}」</span>
-              <span class="lyric-author">—— {{ b.author }}</span>
-            </div>
-            <div v-if="allBlessings.length === 0" class="lyric-line empty">
-              <span class="lyric-content">还没有祝福，来做第一个留言的人吧 💌</span>
-            </div>
-            <div class="lyric-spacer"></div>
-          </div>
-        </div>
+        <div class="blessing-action"><button class="btn-cancel" :disabled="saving" @click="showBlessingModal = true">💌 送上祝福</button></div>
+        <BlessingCarousel :items="allBlessings" :loading="blessingLoading" :error="blessingError" @retry="fetchBlessings" />
 
-        <div class="story-image">
-          <img src="/background/1.jpeg" alt="Our story" />
-          <div class="story-image__text">
-            <p class="story-image__title">这就是我们的爱情故事</p>
-            <p>我们的故事，始于豫章，一见倾心。<br/>相伴奔赴金陵、钱塘，在朝夕相处里，慢慢读懂彼此。</p>
-            <p>我们一起勇敢走向更大的世界：<br/>从江苏周边启程，一路远行；<br/>在锦城，享受过慢悠悠的烟火时光；<br/>在长安，看过千年沉默的兵马俑；<br/>在滨城，漫步过温柔的海边沙滩；<br/>在盛京，吹过凛冽的晚风。</p>
-            <p>一路走过，<br/>三餐烟火，身边有你；<br/>万里山河，眼里有你。<br/>往后的每一段路，都想和你一起走下去。</p>
-          </div>
-        </div>
+        <LoveStory :is-admin="isAdmin" />
 
         <!-- 待办卡片 -->
         <div class="todo-area">
           <div class="todo-header">
             <h3>Things To Do</h3>
-            <button v-if="isAdmin" class="btn-add" @click="showAddModal = true">+ 新增</button>
+            <button v-if="isAdmin" class="btn-add" @click="showAddModal = true">+ 新增心愿</button>
           </div>
 
-          <div v-if="todoList.length === 0" class="todo-empty">
+          <div v-if="todoLoading" class="todo-empty" role="status">正在读取我们的心愿…</div>
+          <div v-else-if="todoError" class="todo-empty" role="alert">心愿暂时未能加载 <button class="btn-cancel" @click="fetchTodoList">重试</button></div>
+          <div v-else-if="todoList.length === 0" class="todo-empty">
             <p>还没有待办事项</p>
             <p class="sub">等着管理员来添加一起想做的事</p>
           </div>
 
           <div class="todo-grid">
-            <div v-for="(item, idx) in todoList" :key="idx" class="todo-card">
+            <div v-for="(item, idx) in todoList" :key="item.id || item.entry" class="todo-card">
               <div class="todo-card__body">
                 <h4>{{ item.entry }}</h4>
                 <div class="todo-card__meta">
                   <span class="tag">{{ item.type }}</span>
-                  <span class="tag user">{{ item.user }}</span>
+                  <span class="tag user">{{ item.user_display || item.user }}</span>
                 </div>
                 <time class="todo-card__date">{{ item.start_date }}</time>
               </div>
               <div v-if="isAdmin" class="todo-card__actions">
                 <button class="btn-action edit" @click="openEditModal(item)">修改</button>
-                <button class="btn-action done" @click="handleDone(item)">完成</button>
-                <button class="btn-action del" @click="handleDelete(item)">删除</button>
+                <button :disabled="saving" class="btn-action done" @click="handleDone(item)">完成</button>
+                <button :disabled="saving" class="btn-action del" @click="handleDelete(item)">删除</button>
               </div>
             </div>
           </div>
 
+          <p v-if="doneError" role="alert">已完成心愿暂时未能加载 <button class="btn-cancel" @click="fetchDoneList">重试</button></p>
           <!-- 已完成列表 -->
           <div v-if="doneList.length > 0" class="done-area">
             <h4 class="done-title">已完成</h4>
             <div class="done-scroll">
-              <div v-for="(item, idx) in doneList" :key="'d'+idx" class="done-item">
+              <div v-for="(item, idx) in doneList" :key="item.id || item.entry" class="done-item">
+                <div class="done-item__row">
                 <span class="done-item__entry">{{ item.entry }}</span>
                 <span class="done-item__meta">
                   <span class="tag done-tag">{{ item.type }}</span>
-                  <span class="tag done-tag-user">{{ item.user }}</span>
+                  <span class="tag done-tag-user">{{ item.user_display || item.user }}</span>
                   <span class="done-item__date">{{ item.end_date }}</span>
                 </span>
+                <button v-if="isAdmin" class="btn-sm" @click="editReflection(item)">{{ item.reflection ? '修改感想' : '写点感想' }}</button>
                 <button v-if="isAdmin" class="btn-sm del" @click="handleDeleteDone(item)">删除</button>
+                </div>
+                <p v-if="item.reflection" class="done-item__reflection">{{ item.reflection }}</p>
               </div>
             </div>
           </div>
@@ -176,70 +138,15 @@
           <div class="section-line"></div>
         </div>
 
-        <div class="album-grid-9">
-          <!-- Row1-2 Col1: 大图合并 -->
-          <div class="album-item grid-tall" @click="previewImage(0)">
-            <img :src="gridPhotos[0]" alt="Photo 1" loading="lazy" />
-            <div class="album-item__overlay"><span class="album-item__icon">🔍</span></div>
-          </div>
-          <!-- Row1 Col2 -->
-          <div class="album-item" @click="previewImage(1)">
-            <img :src="gridPhotos[1]" alt="Photo 2" loading="lazy" />
-            <div class="album-item__overlay"><span class="album-item__icon">🔍</span></div>
-          </div>
-          <!-- Row1 Col3 -->
-          <div class="album-item" @click="previewImage(2)">
-            <img :src="gridPhotos[2]" alt="Photo 3" loading="lazy" />
-            <div class="album-item__overlay"><span class="album-item__icon">🔍</span></div>
-          </div>
-          <!-- Row2 Col2 -->
-          <div class="album-item" @click="previewImage(3)">
-            <img :src="gridPhotos[3]" alt="Photo 4" loading="lazy" />
-            <div class="album-item__overlay"><span class="album-item__icon">🔍</span></div>
-          </div>
-          <!-- Row2 Col3 -->
-          <div class="album-item" @click="previewImage(4)">
-            <img :src="gridPhotos[4]" alt="Photo 5" loading="lazy" />
-            <div class="album-item__overlay"><span class="album-item__icon">🔍</span></div>
-          </div>
-          <!-- Row3 Col1 -->
-          <div class="album-item" @click="previewImage(5)">
-            <img :src="gridPhotos[5]" alt="Photo 6" loading="lazy" />
-            <div class="album-item__overlay"><span class="album-item__icon">🔍</span></div>
-          </div>
-          <!-- Row3 Col2 -->
-          <div class="album-item" @click="previewImage(6)">
-            <img :src="gridPhotos[6]" alt="Photo 7" loading="lazy" />
-            <div class="album-item__overlay"><span class="album-item__icon">🔍</span></div>
-          </div>
-          <!-- Row3 Col3: 右下四格角滚动 -->
-          <div class="album-item album-corner grid-corner">
-            <div class="corner-grid">
-              <div v-for="slot in 4" :key="'s' + slot" class="corner-slot">
-                <img :src="cornerSlotImage(slot)" :class="{ fading: cornerFading[slot - 1] }" class="corner-img" alt="" />
-              </div>
-              <div class="corner-overlay" @click="previewCorner()">
-                <span>+{{ cornerPhotos.length }}</span>
-              </div>
-            </div>
-          </div>
-        </div>
+        <PhotoAlbum :is-admin="isAdmin" />
       </div>
-
-      <el-image-viewer
-        v-if="previewVisible"
-        :url-list="photoUrls"
-        :initial-index="previewIndex"
-        :hide-on-click-modal="true"
-        @close="previewVisible = false"
-      />
     </section>
 
     <!-- ============================================================
       Section 4：纪念日计时器
       ============================================================ -->
     <section class="date-section" id="date">
-      <img class="date-bg" src="/background/2.jpg" alt="" />
+      <img loading="lazy" decoding="async" class="date-bg" src="/optimized/background/2.webp" alt="" />
       <div class="date-overlay"></div>
       <div class="date-content">
         <p class="date-eyebrow">Waiting for Wedding</p>
@@ -281,132 +188,93 @@
     </footer>
 
     <!-- ============================================================
-      音乐播放器
-      ============================================================ -->
-    <div class="music-player">
-      <audio ref="audioRef" autoplay loop preload="auto">
-        <source src="/audio/City_Of_Stars.mp3" type="audio/mpeg" />
-      </audio>
-      <button class="music-btn" :class="{ playing: isPlaying }" @click="togglePlay" title="播放/暂停音乐">
-        <svg viewBox="0 0 24 24" width="20" height="20"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-      </button>
-    </div>
-
-    <!-- ============================================================
       增加待办弹窗
       ============================================================ -->
-    <div v-if="showAddModal" class="modal-mask" @click.self="showAddModal = false">
+    <AppDialog v-model="showAddModal" title="新增心愿" :busy="saving">
       <div class="modal-card glass-card">
         <div class="modal-card__head">
-          <h4>新增待办</h4>
-          <button class="modal-close" @click="showAddModal = false">✕</button>
+          <h4>新增心愿</h4>
+          <button class="modal-close" aria-label="关闭" :disabled="saving" @click="showAddModal = false">✕</button>
         </div>
         <div class="modal-card__body">
           <label>名称</label>
-          <input v-model="addForm.entry" type="text" placeholder="想一起做的事..." />
+          <input v-model="addForm.entry" aria-label="名称" :disabled="saving" type="text" placeholder="想一起做的事..." />
           <label>类型</label>
-          <input v-model="addForm.type" type="text" placeholder="旅行/美食/电影..." />
+          <WishTypeSelect v-model="addForm.type" :disabled="saving" />
           <label>贡献人</label>
-          <input v-model="addForm.user" type="text" placeholder="谁发起的?" />
+          <OwnerSelect v-model="addForm.user" :disabled="saving" default-current />
         </div>
         <div class="modal-card__foot">
-          <button class="btn-rose" @click="handleAdd">确定</button>
-          <button class="btn-cancel" @click="showAddModal = false">取消</button>
+          <button :disabled="saving" class="btn-rose" @click="handleAdd">确定</button>
+          <button class="btn-cancel" :disabled="saving" @click="showAddModal = false">取消</button>
         </div>
       </div>
-    </div>
+    </AppDialog>
 
     <!-- ============================================================
-      修改待办弹窗
+      修改心愿弹窗
       ============================================================ -->
-    <div v-if="showEditModal" class="modal-mask" @click.self="showEditModal = false">
+    <AppDialog v-model="showEditModal" title="修改心愿" :busy="saving">
       <div class="modal-card glass-card">
         <div class="modal-card__head">
-          <h4>修改待办</h4>
-          <button class="modal-close" @click="showEditModal = false">✕</button>
+          <h4>修改心愿</h4>
+          <button class="modal-close" aria-label="关闭" :disabled="saving" @click="showEditModal = false">✕</button>
         </div>
         <div class="modal-card__body">
           <label>名称</label>
-          <input v-model="editForm.entry" type="text" />
+          <input v-model="editForm.entry" aria-label="名称" :disabled="saving" type="text" />
           <label>类型</label>
-          <input v-model="editForm.type" type="text" />
+          <WishTypeSelect v-model="editForm.type" :disabled="saving" />
           <label>贡献人</label>
-          <input v-model="editForm.user" type="text" />
+          <OwnerSelect v-model="editForm.user" :disabled="saving" />
           <label>起始日</label>
-          <input v-model="editForm.start_date" type="text" />
+          <input :value="editForm.start_date" aria-label="创建时间" readonly type="text" />
         </div>
         <div class="modal-card__foot">
-          <button class="btn-rose" @click="handleEdit">确定</button>
-          <button class="btn-cancel" @click="showEditModal = false">取消</button>
+          <button :disabled="saving" class="btn-rose" @click="handleEdit">确定</button>
+          <button class="btn-cancel" :disabled="saving" @click="showEditModal = false">取消</button>
         </div>
       </div>
-    </div>
+    </AppDialog>
 
   </div>
 </template>
 
 <script setup>
-import { ref, reactive, computed, onMounted, onUnmounted, nextTick } from 'vue'
-import axios from 'axios'
-import { ElMessage, ElMessageBox, ElImageViewer } from 'element-plus'
-
-// ── 加载 ──────────────────────────────────────────────────
-const isLoading = ref(true)
-onMounted(() => { setTimeout(() => { isLoading.value = false }, 500) })
+import { ref, reactive, watch, onMounted, onUnmounted } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import axios from '../utils/request'
+import AppDialog from '../components/shared/AppDialog.vue'
+import PhotoAlbum from '../features/album/PhotoAlbum.vue'
+import BlessingCarousel from '../features/blessings/BlessingCarousel.vue'
+import LoveStory from '../features/story/LoveStory.vue'
+import SiteNavigation from '../components/shared/SiteNavigation.vue'
+import { canVisitPage } from '../features/auth/pageAccess'
+import { usePetals } from '../composables/usePetals'
+import { ElMessage } from 'element-plus'
+import { useTodos } from '../features/todos/useTodos'
+import TodoReflectionDialog from '../features/todos/TodoReflectionDialog.vue'
+import WishTypeSelect from '../features/todos/WishTypeSelect.vue'
+import OwnerSelect from '../features/todos/OwnerSelect.vue'
 
 // ── 导航 ──────────────────────────────────────────────────
 const scrollTop = ref(0)
-const mobileNavOpen = ref(false)
 function onScroll() { scrollTop.value = window.scrollY }
 function scrollTo(id) {
   const el = document.getElementById(id)
-  if (el) el.scrollIntoView({ behavior: 'smooth' })
-  mobileNavOpen.value = false
+  if (el) el.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' })
 }
 
 // ── 花瓣动画 ──────────────────────────────────────────────
 const petalCanvas = ref(null)
-let petalTimer = null
-function startPetals() {
-  if (!petalCanvas.value) return
-  const canvas = petalCanvas.value
-  const ctx = canvas.getContext('2d')
-  const resize = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight }
-  resize()
-  window.addEventListener('resize', resize)
-
-  const petals = Array.from({ length: 30 }, () => ({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    r: 4 + Math.random() * 10,
-    vx: (Math.random() - 0.5) * 0.5,
-    vy: 0.5 + Math.random() * 1.8,
-    swing: Math.random() * Math.PI * 2,
-    swingSpeed: 0.01 + Math.random() * 0.02,
-    opacity: 0.18 + Math.random() * 0.35,
-  }))
-
-  function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height)
-    petals.forEach(p => {
-      p.y += p.vy
-      p.swing += p.swingSpeed
-      p.x += p.vx + Math.sin(p.swing) * 0.5
-      if (p.y > canvas.height + 20) { p.y = -20; p.x = Math.random() * canvas.width }
-      if (p.x > canvas.width + 20) p.x = -20
-      if (p.x < -20) p.x = canvas.width + 20
-      ctx.fillStyle = `rgba(240, 185, 195, ${p.opacity})`
-      ctx.beginPath()
-      ctx.ellipse(p.x, p.y, p.r, p.r * 0.6, p.swing * 0.3, 0, Math.PI * 2)
-      ctx.fill()
-    })
-    petalTimer = requestAnimationFrame(draw)
-  }
-  petalTimer = requestAnimationFrame(draw)
-}
+usePetals(petalCanvas)
 
 // ── 管理员 ────────────────────────────────────────────────
+let disposed = false
+const saving = ref(false)
 const isAdmin = ref(false)
+const hasMailbox = ref(false)
+function clearAuth() { isAdmin.value = false; hasMailbox.value = false; currentUsername.value = ''; showAddModal.value = false; showEditModal.value = false }
 const currentUsername = ref('')
 
 async function fetchUserInfo() {
@@ -415,13 +283,23 @@ async function fetchUserInfo() {
     if (!token) return
     const res = await axios.get('/me', { headers: { Authorization: `Bearer ${token}` } })
     isAdmin.value = res.data.is_admin
-    currentUsername.value = res.data.username || ''
+    hasMailbox.value = res.data.has_mailbox === true
+    currentUsername.value = res.data.display_name || res.data.username || ''
   } catch (e) { /* ignore */ }
 }
 
 // ── 祝福寄语弹窗 ──────────────────────────────────────────
 const showBlessingModal = ref(false)
+const route = useRoute()
+const router = useRouter()
+watch(() => route.query.compose, value => {
+  if (value !== 'blessing') return
+  showBlessingModal.value = true
+  const query = { ...route.query }; delete query.compose
+  void router.replace({ path: route.path, query, hash: route.hash })
+}, { immediate: true })
 const blessingText = ref('')
+let blessingRequestKey = '', submittedBlessing = ''
 
 function tryShowBlessing() {
   if (localStorage.getItem('need_blessing') === '1') {
@@ -430,18 +308,33 @@ function tryShowBlessing() {
 }
 
 async function submitBlessing() {
+  if (saving.value) return
   if (!blessingText.value.trim()) return
+  saving.value = true
   try {
     const fd = new FormData()
-    fd.append('content', blessingText.value.trim())
+    if (!blessingRequestKey || submittedBlessing !== blessingText.value.trim()) {
+      blessingRequestKey = Array.from(crypto.getRandomValues(new Uint8Array(16)), b => b.toString(16).padStart(2, '0')).join(''); submittedBlessing = blessingText.value.trim()
+    }
+    fd.append('content', submittedBlessing)
+    fd.append('request_key', blessingRequestKey)
     const token = localStorage.getItem('token')
     const headers = token ? { Authorization: `Bearer ${token}` } : {}
-    await axios.post('/blessings', fd, { headers })
+    const { data } = await axios.post('/blessings', fd, { headers })
+    blessingRequestKey = ''; submittedBlessing = ''
     localStorage.removeItem('need_blessing')
     showBlessingModal.value = false
-    ElMessage.success('祝福已收到！💕')
+    const feedback = {
+      granted: '祝福送到啦，猫条已放进你的口袋。',
+      confirmed: '这条祝福已送到，猫条也已经到账啦。',
+      confirmed_without_reward: '这条祝福已经送到啦。',
+      already_claimed: '祝福收到啦，今天的猫条已经领过了。',
+    }
+    ElMessage.success(feedback[data.reward_status] || (data.replayed ? '这条祝福已经送到啦。' : data.treat_reward === 1 ? feedback.granted : '祝福已收到！💕'))
+    blessingText.value = ''
     await fetchBlessings()
-  } catch (e) { ElMessage.error('送出失败，请稍后重试') }
+  } catch (e) { ElMessage.error('送出失败，请稍后重试') } finally { saving.value = false }
+
 }
 
 function skipBlessing() {
@@ -451,12 +344,16 @@ function skipBlessing() {
 
 // ── 祝福字幕 ──────────────────────────────────────────────
 const allBlessings = ref([])
+const blessingLoading = ref(true)
+const blessingError = ref(false)
 
 async function fetchBlessings() {
+  blessingLoading.value = true; blessingError.value = false
   try {
     const res = await axios.get('/blessings')
     allBlessings.value = res.data.data || []
-  } catch (e) { /* ignore */ }
+  } catch { blessingError.value = true }
+  finally { blessingLoading.value = false }
 }
 
 // ── 纪念日计时器 ──────────────────────────────────────────
@@ -471,213 +368,18 @@ function updateClock() {
 }
 let clockTimer = null
 
-// ── 相册（3×3 九宫格，7张图 + 右下四格角）───────────────
-const gridPhotos = [
-  '/album/IMG_DAZZ_ARG_20250505160350853.jpg',
-  '/album/college (1).jpg',
-  '/album/college (2).jpg',
-  '/album/mmexport1738078414583.jpg',
-  '/album/IMG_DAZZ_ARG_20250505160333542.jpg',
-  '/album/IMG_20250719_150456.jpg',
-  '/album/IMG_20250719_192034.jpg',
-]
-// 四格角滚动图片（循环切换）
-const cornerPhotos = [
-  '/album/IMG_20250719_155502.jpg',
-  '/album/IMG_20250719_155404.jpg',
-  '/album/IMG_20250806_222951.jpg',
-  '/album/IMG_20250921_165512.jpg',
-  '/album/IMG_DAZZ_ARG_20250505160345509.jpg',
-  '/album/IMG_20250705_160216.jpg',
-  '/album/IMG_20250129_104238.jpg',
-]
-const cornerActive = ref([0, 1, 2, 3])  // 每个 slot 当前显示的图片索引
-const cornerFading = ref([false, false, false, false])
-let cornerTimers = []
-let cornerSwitchTimers = []
+const { reflectionItem, completingReflection, editReflection, reflectionSaved, todoLoading, todoError, doneError, todoList, doneList, showAddModal, showEditModal, addForm, editForm, fetchTodoList, fetchDoneList, handleAdd, openEditModal, handleEdit, handleDelete, handleDone, handleDeleteDone } = useTodos(saving)
 
-function cornerSlotImage(slot) {
-  return cornerPhotos[cornerActive.value[slot - 1]]
-}
-
-function rotateCornerSlot(slotIdx) {
-  // 1. 先淡出当前图片
-  cornerFading.value[slotIdx] = true
-  // 清除旧的切换定时器
-  if (cornerSwitchTimers[slotIdx]) clearTimeout(cornerSwitchTimers[slotIdx])
-  // 2. 1.5s 后切换图片并淡入
-  cornerSwitchTimers[slotIdx] = setTimeout(() => {
-    cornerActive.value[slotIdx] = (cornerActive.value[slotIdx] + 4) % cornerPhotos.length
-    // 等 Vue 用新 src + opacity:0 渲染完再触发淡入
-    nextTick(() => {
-      cornerFading.value[slotIdx] = false
-    })
-  }, 1500)
-}
-
-function startCornerRotation() {
-  // 四个格子各 6s 周期（淡入1.5s + 停留3s + 淡出1.5s），间隔1s错开
-  [0, 1, 2, 3].forEach((_, i) => {
-    const doCycle = () => {
-      rotateCornerSlot(i)
-      cornerTimers[i] = setTimeout(doCycle, 6000)
-    }
-    cornerTimers[i] = setTimeout(doCycle, i * 1000)
-  })
-}
-
-const previewVisible = ref(false)
-const previewIndex = ref(0)
-const photoUrls = computed(() => [...gridPhotos, ...cornerPhotos])
-
-function previewImage(idx) {
-  previewIndex.value = idx
-  previewVisible.value = true
-}
-function previewCorner() {
-  previewIndex.value = gridPhotos.length
-  previewVisible.value = true
-}
-
-// ── 音乐 ──────────────────────────────────────────────────
-const audioRef = ref(null)
-const isPlaying = ref(true)
-function togglePlay() {
-  if (!audioRef.value) return
-  if (isPlaying.value) { audioRef.value.pause(); isPlaying.value = false }
-  else { audioRef.value.play(); isPlaying.value = true }
-}
-
-// ── 待办列表 ──────────────────────────────────────────────
-const todoList = ref([])
-const doneList = ref([])
-const showAddModal = ref(false)
-const showEditModal = ref(false)
-const addForm = reactive({ entry: '', type: '', user: '' })
-const editForm = reactive({ entry_old: '', entry: '', type: '', user: '', start_date: '' })
-
-async function fetchTodoList() {
-  try {
-    const res = await axios.get('/table_data')
-    todoList.value = res.data.data || []
-  } catch (e) { console.error('获取待办失败:', e) }
-}
-
-async function fetchDoneList() {
-  try {
-    const res = await axios.get('/table_done_list')
-    doneList.value = res.data.data || []
-  } catch (e) { console.error('获取已完成列表失败:', e) }
-}
-
-function getAuthHeaders() {
-  const token = localStorage.getItem('token')
-  return token ? { Authorization: `Bearer ${token}` } : {}
-}
-
-async function handleAdd() {
-  if (!addForm.entry) { ElMessage.warning('名称不能为空'); return }
-  if (!addForm.type)  { ElMessage.warning('类型不能为空'); return }
-  if (!addForm.user)  { ElMessage.warning('贡献人不能为空'); return }
-  try {
-    const fd = new FormData()
-    fd.append('entry', addForm.entry)
-    fd.append('type', addForm.type)
-    fd.append('user', addForm.user)
-    const res = await axios.post('/table_add', fd, { headers: getAuthHeaders() })
-    if (res.data.data?.[0]?.entry === -1) { ElMessage.error('项目已存在'); return }
-    todoList.value = res.data.data || []
-    addForm.entry = ''; addForm.type = ''; addForm.user = ''
-    showAddModal.value = false
-    ElMessage.success('添加成功!')
-  } catch (e) {
-    if (e.response?.status === 403) ElMessage.error('仅管理员可操作')
-    else ElMessage.error('添加失败')
-  }
-}
-
-function openEditModal(item) {
-  editForm.entry_old  = item.entry
-  editForm.entry      = item.entry
-  editForm.type       = item.type
-  editForm.user       = item.user
-  editForm.start_date = item.start_date
-  showEditModal.value = true
-}
-
-async function handleEdit() {
-  if (!editForm.entry) { ElMessage.warning('名称不能为空'); return }
-  try {
-    const fd = new FormData()
-    fd.append('entry_old', editForm.entry_old)
-    fd.append('entry', editForm.entry)
-    fd.append('type', editForm.type)
-    fd.append('user', editForm.user)
-    fd.append('start_date', editForm.start_date)
-    const res = await axios.post('/table_change', fd, { headers: getAuthHeaders() })
-    if (res.data.data?.[0]?.entry === -1) { ElMessage.error('项目名称已存在'); return }
-    todoList.value = res.data.data || []
-    showEditModal.value = false
-    ElMessage.success('修改成功!')
-  } catch (e) {
-    if (e.response?.status === 403) ElMessage.error('仅管理员可操作')
-    else ElMessage.error('修改失败')
-  }
-}
-
-async function handleDelete(item) {
-  try {
-    await ElMessageBox.confirm(`确定删除「${item.entry}」吗？`, '删除确认', {
-      confirmButtonText: '确定', cancelButtonText: '取消', type: 'warning',
-    })
-    const fd = new FormData(); fd.append('entry', item.entry)
-    await axios.post('/table_delete', fd, { headers: getAuthHeaders() })
-    todoList.value = todoList.value.filter(t => t.entry !== item.entry)
-    ElMessage.success('删除成功!')
-  } catch (e) {
-    if (e.response?.status === 403) ElMessage.error('仅管理员可操作')
-  }
-}
-
-async function handleDone(item) {
-  try {
-    await ElMessageBox.confirm(`确定完成「${item.entry}」吗？`, '完成确认', {
-      confirmButtonText: '确定', cancelButtonText: '取消', type: 'success',
-    })
-    const fd = new FormData(); fd.append('entry', item.entry)
-    await axios.post('/table_done', fd, { headers: getAuthHeaders() })
-    await fetchTodoList()
-    await fetchDoneList()
-    ElMessage.success('太棒了，完成了一项心愿! 🎉')
-  } catch (e) {
-    if (e.response?.status === 403) ElMessage.error('仅管理员可操作')
-  }
-}
-
-async function handleDeleteDone(item) {
-  try {
-    await ElMessageBox.confirm(`确定删除「${item.entry}」？删除后不可恢复。`, '删除确认', {
-      confirmButtonText: '确定', cancelButtonText: '取消', type: 'warning',
-    })
-    const fd = new FormData(); fd.append('entry', item.entry)
-    await axios.post('/table_delete', fd, { headers: getAuthHeaders() })
-    doneList.value = doneList.value.filter(t => t.entry !== item.entry)
-    ElMessage.success('已删除')
-  } catch (e) {
-    if (e.response?.status === 403) ElMessage.error('仅管理员可操作')
-  }
-}
+function refreshNames() { void Promise.allSettled([fetchUserInfo(), fetchBlessings(), fetchTodoList(), fetchDoneList()]) }
 
 // ── 生命周期 ──────────────────────────────────────────────
 onMounted(async () => {
-  window.addEventListener('scroll', onScroll)
-  updateClock(); clockTimer = setInterval(updateClock, 500)
-  await fetchTodoList()
-  await fetchDoneList()
-  await fetchUserInfo()
-  await fetchBlessings()
-  startCornerRotation()
-  await nextTick(); startPetals()
+  window.addEventListener('scroll', onScroll, { passive: true })
+  window.addEventListener('auth-expired', clearAuth)
+  window.addEventListener('profile-updated', refreshNames)
+  updateClock(); clockTimer = setInterval(updateClock, 1000)
+  await Promise.allSettled([fetchTodoList(), fetchDoneList(), fetchUserInfo(), fetchBlessings()])
+  if (disposed) return
   // 首次登录弹出祝福框
   tryShowBlessing()
 })
@@ -685,9 +387,9 @@ onMounted(async () => {
 onUnmounted(() => {
   window.removeEventListener('scroll', onScroll)
   if (clockTimer) clearInterval(clockTimer)
-  if (petalTimer) cancelAnimationFrame(petalTimer)
-  cornerTimers.forEach(t => clearTimeout(t))
-  cornerSwitchTimers.forEach(t => clearTimeout(t))
+  disposed = true
+  window.removeEventListener('auth-expired', clearAuth)
+  window.removeEventListener('profile-updated', refreshNames)
 })
 </script>
 
@@ -695,36 +397,6 @@ onUnmounted(() => {
 /* ═══════════════════════════════════════════════════════════
    主页全部样式
    ═══════════════════════════════════════════════════════════ */
-
-/* ── 加载 ──────────────────────────────────────────────── */
-.page-loader {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  z-index: 99999 !important;
-  background: var(--color-cream) !important;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: center !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-.loader-heart {
-  font-size: 48px !important;
-  animation: pulse 1s ease-in-out infinite !important;
-  margin: 0 !important;
-}
-
-.page-loader p {
-  margin-top: 16px !important;
-  color: var(--color-rose) !important;
-  font-size: 14px !important;
-  text-align: center !important;
-}
 
 /* ── Hero ───────────────────────────────────────────────── */
 .hero {
@@ -737,45 +409,16 @@ onUnmounted(() => {
   background: linear-gradient(180deg, rgba(30,15,18,0.35) 0%, rgba(60,30,35,0.5) 100%);
   z-index: 1; width: 100%; height: 100%;
 }
-.petal-canvas { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+.petal-canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 5; pointer-events: none; }
 
-.nav-bar {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 14px 48px;
-  transition: all var(--transition-smooth);
-}
-.nav-bar.scrolled {
-  background: rgba(255,255,255,0.88);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  box-shadow: 0 1px 0 rgba(0,0,0,0.04);
-}
-.nav-logo { font-family: var(--font-display); font-size: 24px; color: #fff; letter-spacing: 3px; transition: color var(--transition-smooth); }
-.nav-bar.scrolled .nav-logo { color: var(--color-rose); }
-.nav-links { display: flex; }
-.nav-links a { font-size: 14px; color: rgba(255,255,255,0.85); letter-spacing: 1px; transition: color var(--transition-fast); margin-right: 32px;}
-.nav-links a:hover, .nav-links .admin-nav-link:hover, .nav-links .journey-nav-link:hover { color: #fff; }
-.admin-nav-link { color: var(--color-gold) !important; }
-.journey-nav-link { font-size: 14px; color: rgba(255,255,255,0.85); letter-spacing: 1px; transition: color var(--transition-fast); margin-right: 32px; }
-.nav-bar.scrolled .nav-links a { color: var(--color-text-light); }
-.nav-bar.scrolled .nav-links a:hover, .nav-bar.scrolled .admin-nav-link:hover, .nav-bar.scrolled .journey-nav-link:hover { color: var(--color-rose); }
-.nav-bar.scrolled .admin-nav-link { color: var(--color-gold) !important; }
-.nav-bar.scrolled .journey-nav-link { color: var(--color-text-light); }
-.nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; padding: 4px; }
-.nav-toggle span { width: 24px; height: 2px; background: #fff; border-radius: 1px; transition: all var(--transition-fast); }
-.nav-bar.scrolled .nav-toggle span { background: var(--color-text); }
-
-.mobile-menu { display: none; position: fixed; top: 64px; left: 16px; right: 16px; z-index: 999; padding: 20px; background: var(--color-surface-solid); }
-.mobile-menu a { display: block; padding: 12px 0; text-align: center; font-size: 16px; color: var(--color-text); border-bottom: 1px solid #f0e8ea; }
-.mobile-menu a:last-child { border: none; }
-
-.hero-content { position: relative; z-index: 3; flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-.hero-title { font-family: var(--font-display); font-size: clamp(48px, 8vw, 96px); color: #fff; font-weight: 400; letter-spacing: 6px; text-shadow: 0 2px 20px rgba(0,0,0,0.2); margin-bottom: 24px; }
-.hero-names { display: flex; align-items: center; gap: 20px; }
-.name-item { font-family: var(--font-display); font-size: clamp(20px, 3vw, 32px); color: rgba(255,255,255,0.9); letter-spacing: 2px; }
-.name-divider { color: #e53e3e; animation: pulse 2s ease-in-out infinite; }
-.heart-svg { width: 28px; height: 28px; }
+.hero-content { position: relative; z-index: 3; flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 100px 24px 120px; text-align: center; }
+.hero-eyebrow { color: #f5ddd9; font-size: 10px; letter-spacing: .38em; margin-bottom: 20px; }
+.hero-title { font-family: 'Great Vibes', 'Segoe Script', cursive; font-size: clamp(76px, 11vw, 148px); line-height: 1.2; color: #fff7f1; font-weight: 400; letter-spacing: 0; text-shadow: 0 3px 24px rgba(30,10,18,.3); margin-bottom: 28px; }
+.hero-names { display: flex; align-items: center; gap: 24px; }
+.hero-names::before, .hero-names::after { content: ''; width: clamp(24px, 5vw, 64px); height: 1px; background: rgba(255,235,225,.5); }
+.name-item { font-family: var(--font-display); font-size: clamp(22px, 3vw, 32px); font-style: italic; color: #fff0e8; letter-spacing: 3px; }
+.name-divider { color: #edb4bd; animation: pulse 2s ease-in-out infinite; }
+.heart-svg { width: 18px; height: 18px; }
 .scroll-hint { position: absolute; bottom: 40px; display: flex; flex-direction: column; align-items: center; gap: 4px; color: rgba(255,255,255,0.6); font-size: 12px; letter-spacing: 2px; cursor: pointer; animation: float 3s ease-in-out infinite; }
 .scroll-hint:hover { opacity: 1; }
 
@@ -802,43 +445,6 @@ onUnmounted(() => {
   90%      { transform: rotate(2deg); }
 }
 
-/* ── 祝福寄语字幕 ───────────────────────────────────────── */
-.blessing-lyrics {
-  max-width: 600px; margin: 0 auto 48px;
-  height: 120px; overflow: hidden;
-  position: relative; cursor: pointer;
-  mask-image: linear-gradient(180deg, transparent 0%, #000 25%, #000 75%, transparent 100%);
-  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 25%, #000 75%, transparent 100%);
-}
-.blessing-lyrics:hover { opacity: 0.85; }
-.blessing-lyrics__inner {
-  display: flex; flex-direction: column; align-items: center;
-  animation: scroll-lyrics 23s linear infinite;
-}
-.lyric-spacer { height: 130px; flex-shrink: 0; }
-.lyric-line {
-  padding: 12px 0; text-align: center;
-  font-size: 14px; color: var(--color-text);
-  animation: lyric-fade 15s linear infinite;
-  white-space: normal; line-height: 1.7;
-}
-.lyric-content {
-  color: var(--color-rose);
-  font-family: var(--font-display);
-  font-style: italic;
-}
-.lyric-author { color: var(--color-text-light); font-size: 12px; }
-.lyric-line.empty { color: var(--color-text-light); font-style: italic; }
-.lyric-line.empty .lyric-content { color: var(--color-text-light); }
-@keyframes scroll-lyrics {
-  0%   { transform: translateY(0); }
-  100% { transform: translateY(calc(-100% + 120px)); }
-}
-@keyframes lyric-fade {
-  0%, 100% { opacity: 0.7; }
-  50%      { opacity: 1; }
-}
-
 /* ── 故事 (TODO) Section ────────────────────────────────── */
 .story-section { padding: 100px 0; background: linear-gradient(180deg, #fff 0%, var(--color-cream) 100%); }
 .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
@@ -847,30 +453,8 @@ onUnmounted(() => {
 .section-title { font-family: var(--font-display); font-size: clamp(28px, 4vw, 42px); color: var(--color-text); font-weight: 400; margin-bottom: 16px; }
 .section-line { width: 60px; height: 2px; background: linear-gradient(90deg, var(--color-rose-light), var(--color-rose)); margin: 0 auto; border-radius: 1px; }
 
-.story-image { position: relative; border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 56px; }
-.story-image img { width: 100%; height:440px; object-fit: cover; display: block; }
-.story-image__text {
-  position: absolute; left: 0; right: 0; top: 50%; transform: translateY(-50%);
-  display: flex; flex-direction: column; align-items: center;
-  padding: 36px 32px;
-  text-align: center;
-  line-height: 2; font-size: 13px;
-  color: #555;
-  text-shadow: 0 1px 2px rgba(255,255,255,0.8);
-}
-.story-image__title {
-  font-family: var(--font-display);
-  font-size: 22px; color: var(--color-rose);
-  margin-bottom: 16px; letter-spacing: 2px;
-  text-shadow: 0 1px 3px rgba(255,255,255,0.6);
-}
-.story-image__text p {
-  margin-bottom: 8px;
-}
-.story-image__text p:last-child { margin-bottom: 0; }
-
 .todo-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 28px; }
-.todo-header h3 { font-family: var(--font-display); font-size: 24px; color: var(--color-text); }
+.todo-header h3 { font-family: var(--font-script); font-size: clamp(34px, 4vw, 46px); font-weight: 400; line-height: 1.3; color: var(--color-rose-dark); }
 .btn-add { padding: 10px 24px; background: linear-gradient(135deg, var(--color-rose), var(--color-rose-dark)); color: #fff; border-radius: var(--radius-full); font-size: 14px; letter-spacing: 1px; box-shadow: var(--shadow-button); transition: all var(--transition-smooth); }
 .btn-add:hover { transform: translateY(-1px); box-shadow: 0 6px 22px rgba(212,120,143,0.4); }
 .todo-empty { text-align: center; padding: 60px 0; color: var(--color-text-light); }
@@ -902,7 +486,7 @@ onUnmounted(() => {
   background: #fdfbfc;
 }
 .done-item {
-  display: flex; align-items: center; gap: 12px;
+  display: block;
   padding: 10px 16px; border-bottom: 1px solid #f5f0f1;
   font-size: 14px; color: var(--color-text-light);
 }
@@ -929,58 +513,20 @@ onUnmounted(() => {
 
 /* ── 相册 3×3 九宫格 ──────────────────────────────────── */
 .album-section { padding: 100px 0; background: #fff; }
-.album-grid-9 {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 280px 280px 280px;
-  gap: 12px;
-}
-.album-item { position: relative; border-radius: var(--radius-md); overflow: hidden; cursor: pointer; }
-/* 第一列 1-2 行合并 */
-.album-item.grid-tall  { grid-column: 1; grid-row: 1 / 3; }
-/* 右下角四格 */
-.album-item.grid-corner { grid-column: 3; grid-row: 3; }
-.album-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
-.album-item:hover img { transform: scale(1.06); }
-.album-item__overlay { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.35) 100%); display: flex; align-items: flex-end; justify-content: flex-end; padding: 16px; opacity: 0; transition: opacity var(--transition-smooth); }
-.album-item:hover .album-item__overlay { opacity: 1; }
-.album-item__icon { font-size: 20px; }
-
-/* 四格角 */
-.album-corner { background: #fff; }
-.corner-grid { width: 100%; height: 100%; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 2px; position: relative; }
-.corner-slot { position: relative; overflow: hidden; background: #fff; }
-.corner-img { width: 100%; height: 100%; object-fit: cover; transition: opacity 1.5s ease-in-out; opacity: 1; }
-.corner-img.fading { opacity: 0; }
-.corner-overlay {
-  position: absolute; inset: 0;
-  display: flex; align-items: center; justify-content: center;
-  background: rgba(0,0,0,0.25);
-  color: #fff; font-size: 24px; font-weight: 300;
-  opacity: 0; transition: opacity var(--transition-smooth);
-  z-index: 1;
-}
-.album-corner:hover .corner-overlay { opacity: 1; }
-
 /* ── 横幅 ───────────────────────────────────────────────── */
 .banner-section { position: relative; padding: 160px 0; display: flex; align-items: center; justify-content: center; min-height: 400px; }
 .banner-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
 .banner-overlay { position: absolute; inset: 0; background: rgba(40,18,22,0.55); z-index: 1; width: 100%; height: 100%;}
 .banner-content { position: relative; z-index: 2; text-align: center; }
 .banner-heart { font-size: 40px; display: block; margin-bottom: 16px; }
-.banner-quote { font-family: var(--font-display); font-size: clamp(18px, 3vw, 28px); color: #fff; font-weight: 400; letter-spacing: 3px; line-height: 1.6; }
+.banner-quote { font-family: var(--font-display); font-size: clamp(22px, 3.2vw, 36px); color: #fff2e8; font-weight: 400; letter-spacing: .12em; line-height: 1.9; text-shadow: 0 2px 16px rgba(30,10,18,.35); max-width: 90vw; margin: 0 auto; padding: 0 12px; text-wrap: balance; }
 
 /* ── 页脚 ───────────────────────────────────────────────── */
 .page-footer { padding: 40px 0; text-align: center; background: var(--color-cream); font-size: 13px; color: var(--color-text-light); }
 
 /* ── 音乐播放器 ─────────────────────────────────────────── */
-.music-player { position: fixed; top: 80px; right: 24px; z-index: 1001; }
-.music-btn { width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); color: #fff; display: flex; align-items: center; justify-content: center; transition: all var(--transition-smooth); border: 1px solid rgba(255,255,255,0.2); }
-.music-btn:hover { background: rgba(255,255,255,0.25); }
-.music-btn.playing { animation: spin-music 4s linear infinite; }
-
 /* ── 祝福弹窗 ───────────────────────────────────────────── */
-.blessing-modal { max-width: 460px !important; }
+.blessing-modal { max-width: 460px; }
 .blessing-hint { font-size: 14px; color: var(--color-text-light); margin-bottom: 16px; text-align: center; line-height: 1.7; }
 .blessing-modal textarea {
   width: 100%; padding: 14px; border: 1.5px solid #e8dde0; border-radius: var(--radius-md); font-size: 15px; color: var(--color-text); outline: none; resize: vertical; font-family: var(--font-body); line-height: 1.7; transition: border-color var(--transition-fast);
@@ -989,37 +535,19 @@ onUnmounted(() => {
 .char-count { display: block; text-align: right; font-size: 12px; color: var(--color-text-light); margin-top: 4px; }
 
 /* ── 弹窗通用 ────────────────────────────────────────────── */
-.modal-mask {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  z-index: 99999 !important;
-  background: rgba(0, 0, 0, 0.4) !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  border: none !important;
-  outline: none !important;
-  contain: layout paint size !important;
-}
-
 .modal-card {
-  width: 420px !important;
-  max-width: 92vw !important;
-  background: #ffffff !important;
-  border-radius: 16px !important;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15) !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  border: none !important;
-  outline: none !important;
-  overflow: hidden !important;
-  transform: none !important;
-  contain: layout paint !important;
+  width: 100%;
+  max-width: none;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  padding: 0;
+  margin: 0;
+  border: none;
+  outline: none;
+  overflow: hidden;
+  transform: none;
+  contain: layout paint;
 }
 .modal-card__head { display: flex; align-items: center; justify-content: space-between; padding: 18px 24px; border-bottom: 1px solid #f0e8ea; }
 .modal-card__head h4 { font-size: 17px; color: var(--color-text); }
@@ -1039,26 +567,48 @@ onUnmounted(() => {
 
 /* ── 响应式 ─────────────────────────────────────────────── */
 @media (max-width: 768px) {
-  .nav-links { display: none; }
-  .nav-toggle { display: flex; }
-  .mobile-menu { display: block; }
   .countdown { gap: 6px; }
   .countdown__item { min-width: 68px; padding: 12px 14px; }
-  .album-grid-9 { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
-  .album-item.grid-tall { grid-column: auto; grid-row: auto; }
-  .album-item.grid-corner { grid-column: auto; grid-row: auto; }
   .todo-grid { grid-template-columns: 1fr; }
-  .nav-bar { padding: 14px 20px; }
   .story-section, .album-section { padding: 64px 0; }
   .date-section { padding: 100px 0; }
   .avatar { width: 42px; height: 42px; }
-  .blessing-lyrics { height: 100px; }
   .header-avatars { gap: 12px; }
 }
 
 @media (max-width: 480px) {
-  .album-grid-9 { grid-template-columns: 1fr; grid-template-rows: auto; }
-  .album-item.grid-tall, .album-item.grid-corner { grid-column: auto; grid-row: auto; }
-  .hero-title { font-size: 40px; }
+  .hero-title { font-size: clamp(70px, 20vw, 96px); }
+  .hero-names { gap: 14px; }
+  .hero-eyebrow { letter-spacing: .25em; }
 }
+</style>
+
+<style scoped>
+.hero { height: 100svh; min-height: 540px; }
+.hero-title, .section-title-script, .date-title { font-family: var(--font-script); }
+.section-title-script { font-size: clamp(40px, 5vw, 58px); line-height: 1.3; }
+.date-title { font-size: clamp(46px, 6vw, 72px); line-height: 1.3; }
+.hero-days { font-family: var(--font-literary); }
+.blessing-action { text-align: center; margin: -24px 0 16px; }
+.hero-days { margin-top: 24px; color: rgba(255,255,255,0.9); letter-spacing: 2px; font-size: 14px; }
+.hero-actions { display: flex; gap: 12px; margin-top: 24px; }
+.hero-actions button, .hero-actions a { padding: 11px 22px; border: 1px solid rgba(255,255,255,.5); border-radius: 30px; color: #fff; background: rgba(255,255,255,.12); font-size: 14px; }
+.hero-actions button { background: rgba(255,255,255,.92); color: var(--color-rose-dark); }
+.scroll-hint { background: none; }
+.avatar { animation-iteration-count: 2; }
+.modal-card__body input, .blessing-modal textarea { font-size: 16px; }
+@media (max-width: 768px) {
+  .countdown { gap: 4px; }
+  .countdown__item { min-width: 0; padding: 10px 8px; }
+  .countdown__num { font-size: clamp(24px, 7vw, 40px); }
+  .done-item__row { flex-wrap: wrap; gap: 8px; }
+  .done-item__meta { flex-wrap: wrap; }
+}
+</style>
+
+<style scoped>
+.done-item__row { display: flex; align-items: center; gap: 12px; }
+.done-item__entry { min-width: 0; overflow-wrap: anywhere; }
+.done-item__reflection { margin-top: 8px; color: var(--color-text-light); font-size: 14px; line-height: 1.8; white-space: pre-wrap; overflow-wrap: anywhere; text-decoration: none; }
+.done-item .btn-sm { padding: 6px 10px; border-radius: 10px; background: var(--color-rose-soft); color: var(--color-rose-dark); font-size: 12px; white-space: nowrap; }
 </style>

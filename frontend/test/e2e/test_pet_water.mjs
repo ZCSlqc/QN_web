@@ -1,0 +1,27 @@
+import { test, expect } from '../fixtures/app.mjs'
+
+test('foreground furniture and autonomous water drinking spend no food and allow petting', async ({ page, app }, testInfo) => {
+  app.admin = true; app.petCanFeed = true
+  await page.addInitScript(() => { Math.random = () => .5 })
+  await page.emulateMedia({ reducedMotion: 'reduce' })
+  await page.clock.install()
+  await page.goto('/cat')
+  await page.locator('.pet-room').scrollIntoViewIfNeeded()
+  await expect(page.locator('.cat-tree')).toBeVisible()
+  await expect(page.locator('.water-bowl')).toBeVisible()
+  expect(await page.locator('.cat-tree').evaluate(el => +getComputedStyle(el).zIndex)).toBeGreaterThan(await page.locator('.cat-wrap').evaluate(el => +getComputedStyle(el).zIndex))
+  await page.clock.runFor(38000)
+  await expect(page.locator('.room-caption')).toHaveText('六一小朋友·喝水中')
+  await expect(page.locator('.cat-sprite')).toHaveAttribute('data-pose', '3')
+  await expect(page.locator('.water-bowl')).toHaveClass(/drinking/)
+  await page.screenshot({ path: testInfo.outputPath('cat-water-desktop.png') })
+  expect(app.petFeeds).toHaveLength(0)
+  expect(app.petInventory).toEqual({ treat: 5, kibble: 3, can: 2 })
+  await page.getByRole('button', { name: '摸摸头', exact: true }).click()
+  await expect(page.locator('.cat-sprite')).toHaveAttribute('data-pose', '1')
+  await expect(page.locator('.water-bowl')).not.toHaveClass(/drinking/)
+  await page.setViewportSize({ width: 390, height: 844 })
+  await page.locator('.pet-room').scrollIntoViewIfNeeded()
+  await page.screenshot({ path: testInfo.outputPath('cat-furniture-mobile.png') })
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
+})

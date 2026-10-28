@@ -1,14 +1,17 @@
 <!-- ============================================================
   App.vue 根组件
-  只负责渲染路由出口，所有页面内容在各个视图组件中
+  渲染路由页面，并保留跨页面的音乐播放状态
 ============================================================ -->
 <template>
   <!-- 路由视图出口：根据当前路由渲染对应页面组件 -->
   <router-view />
+  <MusicPlayer />
+  <FoodRewardFlight />
 </template>
 
 <script setup>
-// 根组件无需额外逻辑，路由由 router/index.js 控制
+import MusicPlayer from './features/music/MusicPlayer.vue'
+import FoodRewardFlight from './features/pet/FoodRewardFlight.vue'
 </script>
 
 <style>

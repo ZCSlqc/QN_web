@@ -14,12 +14,12 @@
       <div class="auth-form">
         <div class="input-group">
           <span class="input-icon">👤</span>
-          <input v-model="form.username" type="text" placeholder="请输入你的名字" />
+          <input v-model="form.username" type="text" autocomplete="username" aria-label="名字" maxlength="50" placeholder="请输入你的名字" />
         </div>
 
         <div class="input-group">
           <span class="input-icon">🔒</span>
-          <input v-model="form.userpwd" type="password" placeholder="请输入密码" />
+          <input v-model="form.userpwd" type="password" autocomplete="new-password" aria-label="密码" placeholder="请输入密码" />
         </div>
 
         <div class="input-group">
@@ -32,7 +32,8 @@
           <input
             v-model="form.checkcode"
             type="text"
-            placeholder="请输入授权码"
+            placeholder="请输入注册分享码"
+            aria-label="注册分享码"
             @keyup.enter="handleRegister"
           />
         </div>
@@ -52,13 +53,15 @@
 import { ref, reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
-import axios from 'axios'
+import axios from '../utils/request'
 
 const router = useRouter()
 const form = reactive({ username: '', userpwd: '', userpwd2: '', checkcode: '' })
 const loading = ref(false)
 
-function heartStyle(n) {
+const heartStyles = Array.from({ length: 8 }, (_, i) => makeHeartStyle(i + 1))
+function heartStyle(n) { return heartStyles[n - 1] }
+function makeHeartStyle(n) {
   const left = (n / 8) * 100
   return {
     left: `${left + (Math.random() - 0.5) * 15}%`,
@@ -70,21 +73,16 @@ function heartStyle(n) {
 }
 
 async function handleRegister() {
+  if (loading.value) return
   if (!form.username) { ElMessage.warning('请输入名字'); return }
   if (!form.userpwd) { ElMessage.warning('请输入密码'); return }
   if (!form.userpwd2) { ElMessage.warning('请确认密码'); return }
-  if (!form.checkcode) { ElMessage.warning('请输入授权码'); return }
+  if (!form.checkcode) { ElMessage.warning('请输入注册分享码'); return }
 
   if (form.userpwd !== form.userpwd2) {
     ElMessage.error('两次密码输入不一致')
     return
   }
-  if (form.checkcode !== 'ZDNlqc') {
-    ElMessage.error('授权码错误')
-    form.checkcode = ''
-    return
-  }
-
   loading.value = true
   try {
     const fd = new FormData()
@@ -103,9 +101,11 @@ async function handleRegister() {
       router.push('/index')
     } else if (data.flag === -1) {
       ElMessage.error('用户名已存在，换一个试试')
+    } else {
+      ElMessage.error(data.msg || '注册失败，请检查填写内容')
     }
   } catch (e) {
-    ElMessage.error('服务器连接失败，请检查后端是否启动')
+    ElMessage.error(e.response?.data?.detail || '暂时无法连接，请稍后重试')
   } finally {
     loading.value = false
   }
