@@ -15,13 +15,27 @@ def mailbox(api, monkeypatch):
 
 
 def letter_data(**changes):
-    return {'title': '想和你说说话', 'body': '今天很想你。\n明天一起去散步吧。', 'kind': 'secret', 'request_key': uuid.uuid4().hex, **changes}
+    return {'body': '今天很想你。\n明天一起去散步吧。', 'kind': 'secret', 'request_key': uuid.uuid4().hex, **changes}
 
 
 def send(client, headers, **changes):
     response = client.post('/mailbox/letters', data=letter_data(**changes), headers=headers)
     assert response.status_code == 201
     return response.json()['id']
+
+
+def test_body_only_letters_have_content_previews_and_no_title_column(mailbox):
+    client, module, auth = mailbox
+    body = '  今天\n  想你了。  '
+    letter_id = send(client, auth['信箱甲'], body=body)
+    detail = client.get(f'/mailbox/letters/{letter_id}', headers=auth['信箱乙']).json()
+    assert detail['body'] == body.strip()
+    assert detail['preview'] == '今天 想你了。'
+    assert 'title' not in detail
+    listing = client.get('/mailbox/letters', headers=auth['信箱乙']).json()['data'][0]
+    assert listing['preview'] == detail['preview'] and 'body' not in listing
+    with module.get_db() as conn:
+        assert 'title' not in {row[1] for row in conn.execute('PRAGMA table_info(mailbox_letters)')}
 
 
 def test_letter_daily_food_reward_is_per_sender_and_idempotent(mailbox):
@@ -145,7 +159,7 @@ def test_partner_change_and_missing_partner(mailbox, monkeypatch):
     assert client.post('/mailbox/letters', data=letter_data(), headers=auth['信箱甲']).status_code == 409
 
 
-@pytest.mark.parametrize('changes', [{'title': ' '}, {'body': ' '}, {'body': 'x' * 10001}, {'title': 'x' * 101}, {'kind': 'invalid'}, {'request_key': 'short'}])
+@pytest.mark.parametrize('changes', [{'body': ' '}, {'body': 'x' * 10001}, {'kind': 'invalid'}, {'request_key': 'short'}])
 def test_letter_validation(mailbox, changes):
     client, _, auth = mailbox
     assert client.post('/mailbox/letters', data=letter_data(**changes), headers=auth['信箱甲']).status_code == 400
@@ -155,7 +169,7 @@ def test_mailbox_identity_protection_and_pagination(mailbox):
     client, module, auth = mailbox
     assert client.post('/admin/users/delete', data={'username': '信箱甲'}, headers=auth['信箱乙']).status_code == 400
     for number in range(21):
-        send(client, auth['信箱甲'], title=f'第{number}封信')
+        send(client, auth['信箱甲'], body=f'第{number}封信')
     one = client.get('/mailbox/letters?box=inbox&page=1', headers=auth['信箱乙']).json()
     two = client.get('/mailbox/letters?box=inbox&page=2', headers=auth['信箱乙']).json()
     assert one['total'] == 21 and len(one['data']) == 20 and len(two['data']) == 1

@@ -23,3 +23,5 @@
 每只猫的 `*-actions-source.webp` 为同尺寸无损源图：3列2行，依次为四帧右向迈步、闭眼趴卧、举爪。完整提示词保存在 `action-prompts.json`。左右行走通过水平镜像适配；当前没有独立的正背面行走帧，小跑复用迈步帧并按路程加速。
 
 `node frontend/scripts/build-wedding-cat-actions.cjs` 按主体连通区域裁切，排除相邻格碎片，统一脚底基线和行走帧比例，保留透明通道，输出每帧320×256、共六帧的 `*-actions.webp`，并同步发布目录及素材清单。动画按实际行走距离换帧，停下不空转。
+
+资源整理（2026-10-31）：五张透明坐姿 WebP 作为定稿源，五张 `*-actions-source.webp` 供动作图集重建；旧的 lineup 预览和 sitting-transparent 整图已清理，上文对它们的描述仅记录生成来源。提示词保留，后续以五张定稿坐姿为参考。

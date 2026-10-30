@@ -58,7 +58,8 @@ def build_mailbox_router(get_db, get_current_user, settings, now):
         read = conn.execute('SELECT last_comment_id FROM mailbox_reads WHERE letter_id=? AND user_id=?', (row['id'], ctx['id'])).fetchone()
         last_seen = read[0] if read else 0
         replies = conn.execute('SELECT count(*) FROM mailbox_comments WHERE letter_id=? AND author_id<>? AND rowid>COALESCE((SELECT rowid FROM mailbox_comments WHERE id=?),0)', (row['id'], ctx['id'], last_seen)).fetchone()[0]
-        return {key: row[key] for key in ('id', 'kind', 'title', 'sender_name', 'recipient_name', 'created_at', 'recipient_read_at')} | {
+        return {key: row[key] for key in ('id', 'kind', 'sender_name', 'recipient_name', 'created_at', 'recipient_read_at')} | {
+            'preview': ' '.join(row['body'].split())[:80],
             'sender_name': display_name(conn, user_id=row['sender_id'], fallback=row['sender_name']),
             'recipient_name': display_name(conn, user_id=row['recipient_id'], fallback=row['recipient_name']),
             'is_sender': row['sender_id'] == ctx['id'], 'unread': row['recipient_id'] == ctx['id'] and row['recipient_read_at'] is None,
@@ -80,23 +81,23 @@ def build_mailbox_router(get_db, get_current_user, settings, now):
             return private({'data': [metadata(conn, row, ctx) for row in rows], 'total': total, 'page': page, 'page_size': 20})
 
     @router.post('/letters')
-    def send_letter(title: str = Form(...), body: str = Form(...), kind: str = Form('secret'), request_key: str = Form(...), ctx=Depends(context)):
-        title, body = title.strip(), body.replace('\r\n', '\n').strip()
+    def send_letter(body: str = Form(...), kind: str = Form('secret'), request_key: str = Form(...), ctx=Depends(context)):
+        body = body.replace('\r\n', '\n').strip()
         validate_key(request_key)
-        if kind not in KINDS or not title or len(title) > 100 or not body or len(body) > 10000:
-            raise HTTPException(400, '请填写有效分类、1至100字标题和1至10000字正文')
+        if kind not in KINDS or not body or len(body) > 10000:
+            raise HTTPException(400, '请选择有效分类，正文需为1至10000字')
         if ctx['peer_id'] is None:
             raise HTTPException(409, '另一半还没有注册，暂时无法投递')
         with get_db() as conn:
             conn.execute('BEGIN IMMEDIATE')
             existing = conn.execute('SELECT * FROM mailbox_letters WHERE sender_id=? AND request_key=?', (ctx['id'], request_key)).fetchone()
             if existing:
-                if (existing['title'], existing['body'], existing['kind'], existing['recipient_id']) != (title, body, kind, ctx['peer_id']):
+                if (existing['body'], existing['kind'], existing['recipient_id']) != (body, kind, ctx['peer_id']):
                     raise HTTPException(409, '这封信已经发送，请先刷新发件箱确认')
                 return private({'id': existing['id'], 'replayed': True})
             sent_at = now()
-            result = conn.execute('''INSERT INTO mailbox_letters(sender_id,recipient_id,sender_name,recipient_name,kind,title,body,created_at,request_key)
-                VALUES (?,?,?,?,?,?,?,?,?)''', (ctx['id'], ctx['peer_id'], ctx['name'], ctx['peer_name'], kind, title, body, sent_at, request_key))
+            result = conn.execute('''INSERT INTO mailbox_letters(sender_id,recipient_id,sender_name,recipient_name,kind,body,created_at,request_key)
+                VALUES (?,?,?,?,?,?,?,?)''', (ctx['id'], ctx['peer_id'], ctx['name'], ctx['peer_name'], kind, body, sent_at, request_key))
             letter_id = inserted_id(conn, result, 'mailbox_letters')
             awarded = grant_letter_treat(conn, ctx['name'], letter_id, sent_at)
             return private({'id': letter_id, 'food_reward': {'food': 'treat', 'amount': awarded}}, 201)

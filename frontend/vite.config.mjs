@@ -7,6 +7,7 @@ import vue from '@vitejs/plugin-vue'
 import { fileURLToPath } from 'node:url'
 import { staticTransfer } from './scripts/static-transfer.mjs'
 import { publicCache } from './scripts/public-cache.mjs'
+import {localWeddingArea} from './scripts/local-wedding-area.mjs'
 
 export default defineConfig(({ mode }) => {
   // Read server-side configuration without exposing it as VITE_* client variables.
@@ -16,8 +17,9 @@ export default defineConfig(({ mode }) => {
     if (!Number.isInteger(value) || value < 1 || value > 65535) throw new Error(`${name} must be a valid port`)
     return value
   }
+  const apiTarget=process.env.QN_API_TARGET || env.QN_API_TARGET || `http://127.0.0.1:${port('QN_BACKEND_PORT', 1277)}`
   return {
-  plugins: [vue(), staticTransfer(), publicCache()],
+  plugins: [vue(), staticTransfer(), publicCache(),localWeddingArea({apiTarget})],
 
   resolve: {
     alias: {
@@ -37,7 +39,7 @@ export default defineConfig(({ mode }) => {
     // Keep SPA routes such as /admin separate from API requests.
     proxy: {
       '/api': {
-        target: process.env.QN_API_TARGET || env.QN_API_TARGET || `http://127.0.0.1:${port('QN_BACKEND_PORT', 1277)}`,
+        target: apiTarget,
         changeOrigin: true,
         rewrite: path => path.replace(/^\/api/, ''),
       },

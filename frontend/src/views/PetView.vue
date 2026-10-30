@@ -17,7 +17,7 @@
             <button class="cat-touch" aria-label="摸摸六一" :disabled="feeding || away" @click="catClick">
               <CatSprite :style-name="style" :pose="pose" :walking="walk.walking.value" :walk-frame="walk.frame.value" />
             </button>
-            <img v-if="moments.emotion.value" :key="moments.emotion.value" class="cat-emotion" :class="moments.emotion.value" :src="`/pet/liuyi/emotions/${moments.emotion.value}.png`" alt="" aria-hidden="true" />
+            <img v-if="moments.emotion.value" :key="moments.emotion.value" class="cat-emotion" :class="moments.emotion.value" :src="`/shared/icons/${moments.emotion.value}.webp`" alt="" aria-hidden="true" />
           </div>
           <FeedingProps :action="action" />
           <CatFurniture :drinking="action === 'drinking'" />

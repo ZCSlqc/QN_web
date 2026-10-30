@@ -4,15 +4,21 @@ import { loadCats } from "./cats";
 import { personalityNames } from "./catLife";
 import { nearestWalkable, walkingRoute } from "./navigation.js";
 import {actionDuration,danceMoves,characterMotion} from './motions';
+import {danceFor,danceEmojiAt} from './choreography';
+import {dailyMoves} from './dailyMotions';
+import {rouletteDuration,rouletteIndex,rouletteCandidates} from './emojiRoulette';
 import {createAmbientPeople} from './ambientPeople';
 import { loadFloristBackdrop, items, floristPosition, paymentStand } from './amenities';
-import {carryMode} from './heldItems';
+import {carryMode,assignCarryHand,heldSide} from './heldItems';
 import {createWeddingPeople} from './weddingPeople';
 import {loadJugglerProps,jugglerPosition,jugglerSaying} from './juggling';
+import {circularHandFrame} from './circularArm';
+import {upperPoint} from './rigidRig';
+import {withDefaultFace} from './faceLayouts';
 
 const WIDTH = 1600,
   HEIGHT = 900;
-export async function createWeddingScene(host, onLabels, { signal, onPet = () => {}, onLayout = () => {}, role=null,persona='guest',username=null,people=[],playerAppearance=null } = {}) {
+export async function createWeddingScene(host, onLabels, { signal, onPet = () => {},onPetApproach=()=>{}, onLayout = () => {}, onMotion = () => {}, onExpression = () => {}, danceEmoji=true,role=null,persona='guest',username=null,people=[],npcFaces={},playerAppearance=null } = {}) {
   const background = new Image();
   background.src = "/wedding/background/garden-orthographic.webp";
   // Complete static asset loading first so a failed image cannot leak character caches.
@@ -24,8 +30,13 @@ export async function createWeddingScene(host, onLabels, { signal, onPet = () =>
     throw new DOMException("Page closed", "AbortError");
   }
   const canvas = document.createElement("canvas"),
-    ctx = canvas.getContext("2d");
-  if (!ctx) throw new Error("Canvas unavailable");
+    ctx = canvas.getContext("2d"),
+    backdrop = document.createElement("canvas"),
+    backdropCtx = backdrop.getContext("2d");
+  if (!ctx || !backdropCtx) throw new Error("Canvas unavailable");
+  backdrop.className='wedding-backdrop';
+  backdrop.setAttribute('aria-hidden','true');
+  Object.assign(backdrop.style,{position:'absolute',inset:'0',width:'100%',height:'100%',pointerEvents:'none'});
   canvas.tabIndex = 0;
   canvas.setAttribute(
     "aria-label",
@@ -34,10 +45,10 @@ export async function createWeddingScene(host, onLabels, { signal, onPet = () =>
   canvas.dataset.renderer = "2d";
 
   const {actors,player}=createWeddingPeople(people,{username,role,persona,appearance:playerAppearance});
-  actors.push({name:'花礼管家',kind:'florist',npc:true,...floristPosition,direction:'front',appearance:{...makeAppearance(3),formalStyle:'qipao',formalColor:'red',sleeve:'shorter'}});
-  actors.push({name:'招财小哥',kind:'juggler',npc:true,...jugglerPosition,direction:'front',appearance:{...makeAppearance(1),formalStyle:'waistcoat',formalColor:'camel',sleeve:'long',headwear:'top-hat',shirt:findPart('shirt','White',p=>p.name.endsWith('5')).id}});
-  for(const actor of actors)Object.assign(actor,nearestWalkable(actor));
-  actors.find(a=>a.role==='bride').heldItem=items.find(i=>i.id==='bouquet-blush-sticker');
+  actors.push({name:'花礼管家',kind:'florist',npc:true,...floristPosition,direction:'front',appearance:withDefaultFace({...makeAppearance(3),formalStyle:'qipao',formalColor:'red',sleeve:'shorter'},npcFaces.florist)});
+  actors.push({name:'招财小哥',kind:'juggler',npc:true,...jugglerPosition,direction:'front',appearance:withDefaultFace({...makeAppearance(1),formalStyle:'waistcoat',formalColor:'camel',sleeve:'long',headwear:'top-hat',shirt:findPart('shirt','White',p=>p.name.endsWith('5')).id},npcFaces.juggler)});
+  for(const actor of actors)if(!actor.kind)Object.assign(actor,nearestWalkable(actor));
+  actors.find(a=>a.role==='bride').heldItem=assignCarryHand(items.find(i=>i.id==='bouquet-garden'));
   try {
     await Promise.all(
       actors.flatMap(actor => [art.ensureAppearance(actor.appearance),art.ensureHeldItem(actor.heldItem)]),
@@ -51,9 +62,10 @@ export async function createWeddingScene(host, onLabels, { signal, onPet = () =>
     canvas.remove();
     throw new DOMException("Page closed", "AbortError");
   }
+  host.before(backdrop);
   host.append(canvas);
   const hearts = [];
-  let emotion = null, emotionVersion = 0, carryVersion=0;
+  let emotion = null, roulette=null,emotionVersion = 0, carryVersion=0;
   let sceneTime = 0,
     blessingArrivals = 0,
     customizeVersion = 0;
@@ -68,16 +80,28 @@ export async function createWeddingScene(host, onLabels, { signal, onPet = () =>
     locateUntil = 0,
     frame,
     previous = 0,
+    lastTick = 0,
     lastLabels = 0,
     pointerStart,
     disposed = false,
     dirty = true;
+  let backdropCamera=null,lastLayout='',lastLabelValue='',lastMotion='',catLoadTimer;
+  let controls,pendingAfterJump=null,pendingPet=null;
   const motion = matchMedia("(prefers-reduced-motion: reduce)");
-  const ambient=createAmbientPeople(actors.filter(actor=>!actor.npc),player,walkingRoute);
+  const compact = matchMedia('(max-width: 600px), (pointer: coarse)');
+  const ambient=createAmbientPeople(actors.filter(actor=>actor.kind!=='juggler'),player,walkingRoute);
+  let danceEmojiEnabled=danceEmoji,danceHeadVersion=0,danceHeadBase='';const danceHeads=new Map();
+  async function prepareDanceHeads(id){
+    const dance=danceFor(id);if(!danceEmojiEnabled||!dance?.emoji)return;const version=++danceHeadVersion,base=player.appearance,baseKey=JSON.stringify(base);
+    if(baseKey!==danceHeadBase){danceHeads.clear();danceHeadBase=baseKey;}
+    await Promise.all(dance.emoji.map(async head=>{try{const appearance=await art.ensureAppearance({...base,animalHead:head});if(!disposed&&version===danceHeadVersion){danceHeads.set(head,{id:head,appearance,started:player.gestureStarted});dirty=true;}}catch{/* The dance still plays with the original face when an optional head fails. */}}));
+  }
+  function automaticHead(){if(!danceEmojiEnabled||motion.matches||emotion||roulette)return null;const id=danceEmojiAt(player.gesture,Math.max(0,sceneTime/1000-(player.gestureStarted||0)));return danceHeads.get(id)||null;}
   const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
   const worldLeft = () => (width - WIDTH * scale) / 2 + pan;
   const worldTop = () => (height - HEIGHT * scale) / 2;
-  const onScreen=actor=>worldLeft()+(actor.x+90)*scale>0&&worldLeft()+(actor.x-90)*scale<width&&worldTop()+(actor.y+30)*scale>0&&worldTop()+(actor.y-210)*scale<height;
+  const jumping=()=>player.gesture==='jump'&&!motion.matches&&sceneTime<gestureUntil;
+  const onScreen=actor=>worldLeft()+(actor.x+(actor.cat?44:90))*scale>0&&worldLeft()+(actor.x-(actor.cat?44:90))*scale<width&&worldTop()+(actor.y+30)*scale>0&&worldTop()+(actor.y-(actor.cat?80:210))*scale<height;
   function constrainPan() {
     const limit = Math.max(0, (WIDTH * scale - width) / 2);
     pan = clamp(pan, -limit, limit);
@@ -89,15 +113,21 @@ export async function createWeddingScene(host, onLabels, { signal, onPet = () =>
     const dpr = Math.min(devicePixelRatio || 1, 2);
     canvas.width = width * dpr;
     canvas.height = height * dpr;
+    backdrop.width = canvas.width;
+    backdrop.height = canvas.height;
     canvas.style.width = `${width}px`;
     canvas.style.height = `${height}px`;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    backdropCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    backdropCamera=null;
     scale = Math.max(width / WIDTH, height / HEIGHT);
     constrainPan();
     dirty = true;
   }
   function setDestination(x, y) {
+    if(jumping()){pendingAfterJump=()=>setDestination(x,y);return;}
     ambient.interrupt(sceneTime);
+    pendingPet=null;
     const nextRoute = walkingRoute(player, { x, y });
     if (!nextRoute?.length) return;
     route = nextRoute;
@@ -113,11 +143,18 @@ export async function createWeddingScene(host, onLabels, { signal, onPet = () =>
     dirty = true;
   }
   function petCat(id) {
+    if(jumping()){pendingAfterJump=()=>petCat(id);return;}
     ambient.interrupt(sceneTime);
     const cat = cats.find((item) => item.id === id);
     if (!cat || disposed) return;
-    catArt.pet(id, player);
-    onPet(cat.name);
+    const distance=Math.hypot(cat.x-player.x,cat.y-player.y);
+    if(distance>=35&&distance<=76){destination=null;route=[];player.walking=false;catArt.pet(id,player);onPet(cat.name);pendingPet=null;dirty=true;return;}
+    const candidates=[[-58,8],[58,8],[-45,32],[45,32],[0,58]].map(([dx,dy])=>nearestWalkable({x:cat.x+dx,y:cat.y+dy})).filter(p=>Math.hypot(p.x-cat.x,p.y-cat.y)>=40&&Math.hypot(p.x-cat.x,p.y-cat.y)<80&&!actors.some(a=>a!==player&&Math.hypot(p.x-a.x,p.y-a.y)<35)).map(p=>({point:p,route:walkingRoute(player,p)})).filter(p=>p.route?.length);
+    if(!candidates.length)return;
+    const cost=entry=>entry.route.reduce((sum,p,i)=>sum+Math.hypot(p.x-(i?entry.route[i-1].x:player.x),p.y-(i?entry.route[i-1].y:player.y)),0);
+    candidates.sort((a,b)=>cost(a)-cost(b));const goal=candidates[0].point;
+    catArt.reservePet(id,player);setDestination(goal.x,goal.y);pendingPet={id};onPetApproach(cat.name);
+    if(motion.matches){catArt.pet(id,player);onPet(cat.name);pendingPet=null;}
     dirty = true;
   }
   function down(event) {
@@ -194,12 +231,27 @@ export async function createWeddingScene(host, onLabels, { signal, onPet = () =>
   const observer = new ResizeObserver(resize);
   observer.observe(host);
   resize();
+  function drawBackdrop() {
+    const left=worldLeft(),top=worldTop();
+    if(backdropCamera?.left===left&&backdropCamera?.top===top&&backdropCamera?.scale===scale)return;
+    backdropCtx.clearRect(0,0,width,height);
+    backdropCtx.save();backdropCtx.translate(left,top);backdropCtx.scale(scale,scale);
+    backdropCtx.drawImage(background,0,0,WIDTH,HEIGHT);
+    giftArt.drawBackdrop(backdropCtx);backdropCtx.restore();
+    backdropCamera={left,top,scale};
+  }
+  function setData(key,value){if(canvas.dataset[key]!==value)canvas.dataset[key]=value;}
   function labels() {
-    onLayout({ left: worldLeft(), top: worldTop(), scale, playerX: player.x, playerY: player.y });
-    onLabels(
-      [...actors.filter(onScreen), ...cats].map((a, i) => ({
+    const layout={ left: worldLeft(), top: worldTop(), scale, playerX: player.x, playerY: player.y };
+    const layoutValue=JSON.stringify(layout);
+    if(layoutValue!==lastLayout){lastLayout=layoutValue;onLayout(layout);}
+    const nextLabels=
+      [...actors.filter(onScreen), ...cats].map((a, i) => {
+        const frame=a.cat?null:characterMotion(a,sceneTime/1000,motion.matches);
+        return ({
         id: a.cat ? a.id : i,
         cat: !!a.cat,
+        station: a.kind==='florist',
         active: !!a.cat && a.reactingUntil > sceneTime,
         name: a.name,
         username:a.username||null,
@@ -208,51 +260,68 @@ export async function createWeddingScene(host, onLabels, { signal, onPet = () =>
         speechY:worldTop()+(paymentStand.y-paymentStand.height-12)*scale,
         emotion: null,
         personality: a.cat ? personalityNames[a.personality] : "",
-        x: worldLeft() + a.x * scale,
-        y: worldTop() + (a.y - (a.cat ? 65 : 137) - (a.cat?0:characterMotion(a,sceneTime/1000,motion.matches).lift*.25)) * scale,
+        x: worldLeft() + (a.x+(frame?.bodyOffset?.x||0)*.25) * scale,
+        y: worldTop() + (a.y - (a.cat ? 65 : 137) + ((frame?.bodyOffset?.y||0)-(frame?.lift||0))*.25) * scale,
         visible:
           worldLeft() + a.x * scale > 24 &&
           worldLeft() + a.x * scale < width - 24,
-      })),
-    );
-    canvas.dataset.playerX = player.x.toFixed(1);
-    canvas.dataset.playerY = player.y.toFixed(1);
-    canvas.dataset.characterScale = scale.toFixed(3);
-    canvas.dataset.playerLook = String(player.look);
-    canvas.dataset.playerRole=role||'guest';
-    canvas.dataset.playerPersona=persona;
-    canvas.dataset.gesture = player.gesture || "idle";
-    canvas.dataset.motionRig='original-svg-segments';
-    canvas.dataset.jumpHeight=characterMotion(player,sceneTime/1000,motion.matches).lift.toFixed(1);
-    canvas.dataset.pan = pan.toFixed(1);
-    canvas.dataset.heartCount = String(hearts.length);
-    canvas.dataset.blessingArrivals = String(blessingArrivals);
-    canvas.dataset.blessingTargets = actors
+      });});
+    const labelValue=JSON.stringify(nextLabels);
+    if(labelValue!==lastLabelValue){lastLabelValue=labelValue;onLabels(nextLabels);}
+    setData('playerX',player.x.toFixed(1));
+    setData('playerY',player.y.toFixed(1));
+    setData('characterScale',scale.toFixed(3));
+    setData('playerLook',String(player.look));
+    setData('playerRole',role||'guest');
+    setData('playerPersona',persona);
+    setData('gesture',player.gesture || "idle");
+    setData('pettingTarget',pendingPet?.id||'');
+    setData('walking',String(!!player.walking));
+    setData('motionRig','original-svg-segments');
+    const playerFrame=characterMotion(player,sceneTime/1000,motion.matches);
+    setData('jumpHeight',playerFrame.lift.toFixed(1));
+    setData('jumpPhase',playerFrame.jumpPhase);
+    const dance=player.gesture&&danceFor(player.gesture),status=dance?{id:dance.id,label:dance.label,remaining:Math.max(0,Math.ceil((gestureUntil-sceneTime)/1000))}:null,statusValue=JSON.stringify(status);
+    if(statusValue!==lastMotion){lastMotion=statusValue;onMotion(status);}
+    setData('pan',pan.toFixed(1));
+    setData('heartCount',String(hearts.length));
+    setData('blessingArrivals',String(blessingArrivals));
+    setData('blessingTargets',actors
       .slice(0, 2)
       .map((actor) => actor.name)
-      .join(",");
-    canvas.dataset.appearance = JSON.stringify(player.appearance);
-    canvas.dataset.emotion = emotion?.id || "";
-    canvas.dataset.temporaryHead=emotion?.id||'';
-    canvas.dataset.people=JSON.stringify(actors.map(a=>({name:a.name,username:a.username||null,npc:!!a.npc,kind:a.kind||'visitor',x:a.x,y:a.y,walking:!!a.walking,action:a.kind==='juggler'?'juggle':a.gesture||a.ambientAction||'idle',heldItem:a.heldItem?.id||'',formalStyle:a.appearance.formalStyle,formalColor:a.appearance.formalColor,appearance:a.username==='lqc'||a.username==='shenqidayang'?a.appearance:undefined})));
+      .join(","));
+    setData('appearance',JSON.stringify(player.appearance));
+    setData('emotion',emotion?.id || "");
+    setData('temporaryHead',emotion?.id||'');
+    setData('emojiRolling',String(!!roulette));
+    const autoHead=automaticHead();setData('danceHead',autoHead?.id||'');
+    setData('headAngle',characterMotion({...player,emotionStarted:emotion?.started??autoHead?.started},sceneTime/1000,motion.matches).rigidPose.head.toFixed(2));
+    setData('people',JSON.stringify(actors.map(a=>({name:a.name,username:a.username||null,npc:!!a.npc,kind:a.kind||'visitor',x:a.x,y:a.y,walking:!!a.walking,action:a.kind==='juggler'?'juggle':a.gesture||a.ambientAction||'idle',heldItem:a.heldItem?.id||'',face:a.appearance.face,formalStyle:a.appearance.formalStyle,formalColor:a.appearance.formalColor,appearance:a.username==='lqc'||a.username==='shenqidayang'?a.appearance:undefined}))));
     const juggler=actors.find(a=>a.kind==='juggler');
-    if(onScreen(juggler))canvas.dataset.juggling=JSON.stringify(jugglerArt.frame(sceneTime/1000,motion.matches).map(p=>({id:p.id,x:juggler.x+p.x,y:juggler.y+p.y,airborne:p.airborne})));
-    canvas.dataset.heldItem=player.heldItem?.id||'';
-    canvas.dataset.carryMode=carryMode(player.gesture?null:player.heldItem);
-    canvas.dataset.cats = JSON.stringify(cats.map(({ id, x, y, reactingUntil, state, personality, activity, stride, facing }) => ({
+    if(onScreen(juggler))setData('juggling',JSON.stringify(jugglerArt.frame(sceneTime/1000,motion.matches).map(p=>({id:p.id,x:juggler.x+p.x,y:juggler.y+p.y,airborne:p.airborne}))));
+    setData('heldItem',player.heldItem?.id||'');
+    setData('heldHand',!player.heldItem?'none':carryMode(player.heldItem)==='two-hands'?'both':heldSide(player.heldItem)<0?'left':'right');
+    setData('carryMode',carryMode(player.gesture?null:player.heldItem));
+    setData('cats',JSON.stringify(cats.map(({ id, x, y, reactingUntil, state, personality, activity, stride, facing }) => ({
       id, x: worldLeft() + x * scale, y: worldTop() + (y - 29) * scale,
       worldX: x, worldY: y, state, personality, activity, stride, facing,
       reacting: reactingUntil > sceneTime,
-    })));
+    }))));
   }
   function tick(now) {
     if (disposed) return;
+    if(!dirty&&now-lastTick<1000/(compact.matches?30:60)-1){frame=requestAnimationFrame(tick);return;}
+    lastTick=now;
     const dt = Math.min((now - previous) / 1000, 0.05);
     previous = now;
     if (document.hidden) return;
     sceneTime += dt * 1000;
-    if (emotion && now >= emotion.until) { emotion = null; dirty = true; }
-    let animate = !!destination || !!player.gesture || hearts.length > 0 || sceneTime < locateUntil;
+    if(roulette){const elapsed=sceneTime-roulette.started;
+      if(elapsed>=rouletteDuration){emotion={...roulette.final,started:sceneTime/1000,until:now+5000};roulette=null;onExpression({rolling:false,label:emotion.label});dirty=true;}
+      else{const item=roulette.frames[rouletteIndex(elapsed,roulette.frames.length)];if(emotion?.id!==item.id){emotion={...item,started:roulette.started/1000,until:Infinity};dirty=true;}}
+    }
+    if (emotion && now >= emotion.until) { emotion = null;onExpression(null); dirty = true; }
+    let animate = !!destination || !!player.gesture || !!emotion || !!roulette || hearts.length > 0 || sceneTime < locateUntil;
     if (destination) {
       const waypoint = route[0];
       const dx = waypoint.x - player.x,
@@ -279,28 +348,23 @@ export async function createWeddingScene(host, onLabels, { signal, onPet = () =>
         player.y += (dy / d) * step;
       }
     }
-    const florist=actors.find(actor=>actor.kind==='florist');
-    if(florist){
-      const cycle=Math.floor(sceneTime/11400),phase=sceneTime%11400;
-      const action=!motion.matches&&phase<6400?(cycle%2?'dance-twist':'dance-sway'):'';
-      if(florist.ambientAction!==action){florist.ambientAction=action;florist.ambientStarted=cycle*11.4;dirty=true;}
-      animate=(!!action&&onScreen(florist))||animate;
-    }
+    if(pendingPet&&!destination){const cat=cats.find(c=>c.id===pendingPet.id);if(cat&&Math.hypot(cat.x-player.x,cat.y-player.y)<90){catArt.pet(cat.id,player);onPet(cat.name);}pendingPet=null;dirty=true;ambient.interrupt(sceneTime);}
     animate = ambient.update(dt,sceneTime,motion.matches,!!destination,onScreen) || animate;
     const juggler=actors.find(a=>a.kind==='juggler'),jugglerVisible=onScreen(juggler);
     animate=(!motion.matches&&jugglerVisible)||animate;
     animate = catArt.update(dt, sceneTime, actors, player, motion.matches) || animate;
     if (player.gesture && sceneTime >= gestureUntil) {
       player.gesture = "";
+      ambient.interrupt(sceneTime);
+      const next=pendingAfterJump;pendingAfterJump=null;next?.();
       dirty = true;
     }
     if (dirty || animate) {
+      drawBackdrop();
       ctx.clearRect(0, 0, width, height);
       ctx.save();
       ctx.translate(worldLeft(), worldTop());
       ctx.scale(scale, scale);
-      ctx.drawImage(background, 0, 0, WIDTH, HEIGHT);
-      giftArt.drawBackdrop(ctx);
       if(sceneTime < locateUntil){
         const progress=1-(locateUntil-sceneTime)/2400;
         const radius=motion.matches?30:25+8*Math.sin(progress*Math.PI*4)**2;
@@ -312,7 +376,7 @@ export async function createWeddingScene(host, onLabels, { signal, onPet = () =>
       for (const actor of [...actors, ...cats].sort((a, b) => a.y - b.y)) {
         if(!onScreen(actor))continue;
         if (actor.cat) catArt.draw(ctx, actor, sceneTime, motion.matches);
-        else {art.draw(ctx, actor===player&&emotion?{...actor,appearance:emotion.appearance}:actor, sceneTime / 1000, motion.matches);if(actor.kind==='juggler'&&jugglerVisible)jugglerArt.draw(ctx,actor,sceneTime/1000,motion.matches);}
+        else {const head=actor===player?(emotion||automaticHead()):null;art.draw(ctx,head?{...actor,appearance:head.appearance,emotionStarted:head.started}:actor, sceneTime / 1000, motion.matches);if(actor.kind==='juggler'&&jugglerVisible)jugglerArt.draw(ctx,actor,sceneTime/1000,motion.matches);}
       }
       if (destination) {
         ctx.strokeStyle = "#9c806980";
@@ -345,14 +409,9 @@ export async function createWeddingScene(host, onLabels, { signal, onPet = () =>
             eased ** 2 * heart.to.y;
         ctx.save();
         ctx.translate(x, y);
-        ctx.scale(22, 22);
         ctx.globalAlpha = Math.min(1, t * 7, (1 - t) * 8);
-        ctx.fillStyle = "#d87c90";
-        ctx.beginPath();
-        ctx.moveTo(0, 0.7);
-        ctx.bezierCurveTo(-1.4, -0.1, -0.8, -1.2, 0, -0.55);
-        ctx.bezierCurveTo(0.8, -1.2, 1.4, -0.1, 0, 0.7);
-        ctx.fill();
+        const heartWidth=26,heartHeight=heartWidth*giftArt.heart.naturalHeight/giftArt.heart.naturalWidth;
+        ctx.drawImage(giftArt.heart,-heartWidth/2,-heartHeight/2,heartWidth,heartHeight);
         ctx.restore();
       }
       ctx.restore();
@@ -361,6 +420,12 @@ export async function createWeddingScene(host, onLabels, { signal, onPet = () =>
         lastLabels = now;
       }
       dirty = false;
+      if(!motion.matches&&!catLoadTimer&&catArt.needsActions(onScreen)){
+        catLoadTimer=setTimeout(()=>{
+          catLoadTimer=null;
+          if(!disposed&&!motion.matches)void catArt.loadActions({isVisible:onScreen,onReady:()=>{dirty=true;}}).finally(()=>{dirty=true;});
+        },350);
+      }
     }
     frame = requestAnimationFrame(tick);
   }
@@ -385,7 +450,7 @@ export async function createWeddingScene(host, onLabels, { signal, onPet = () =>
   document.addEventListener("visibilitychange", visibility);
   motion.addEventListener("change", reducedChanged);
   frame = requestAnimationFrame(tick);
-  return {
+  return controls={
     approach(station) {
       setDestination(station.x, station.y);
       if(station.id==='payment'){
@@ -393,30 +458,47 @@ export async function createWeddingScene(host, onLabels, { signal, onPet = () =>
         pan=width/2-((width-WIDTH*scale)/2+focusX*scale);constrainPan();dirty=true;
       }
     },
-    stopApproach() { destination=null;route=[];player.walking=false;dirty=true; },
+    stopApproach() { destination=null;route=[];pendingPet=null;player.walking=false;dirty=true; },
     async carry(id){
       const version=++carryVersion,item=id?items.find(i=>i.id===id&&i.uses.includes('handheld')):null;
       if(id&&!item)return false;
       await art.ensureHeldItem(item);
       if(disposed||version!==carryVersion)return false;
-      player.heldItem=item;player.gesture='';player.ambientAction='';
+      player.heldItem=assignCarryHand(item);if(!jumping())player.gesture='';player.ambientAction='';
       ambient.interrupt(sceneTime);player.direction='front';dirty=true;return true;
     },
     async express(id) {
       const item = emojiHeads.find(e => e.id === id);
       if (!item || disposed) return false;
       const version = ++emotionVersion;
+      roulette=null;if(emotion)emotion.until=performance.now()+5000;
+      onExpression(null);
       let base,temporary;
       do{base=player.appearance;temporary=await art.ensureAppearance({...base,animalHead:id});if(disposed||version!==emotionVersion)return false;}while(base!==player.appearance);
-      emotion = { id, label: item.label, appearance:temporary, until: performance.now()+5000 };
+      emotion = { id, label: item.label, appearance:temporary, started:sceneTime/1000,until: performance.now()+5000 };
+      onExpression({rolling:false,label:item.label});
       ambient.interrupt(sceneTime);
       dirty = true;
       return true;
     },
+    async spinEmoji(){
+      const version=++emotionVersion,{final,candidates}=rouletteCandidates(emojiHeads);roulette=null;
+      if(emotion)emotion.until=performance.now()+5000;onExpression({rolling:true,loading:true});
+      try{
+        let base,frames;
+        do{base=player.appearance;frames=await Promise.all(candidates.map(async item=>({id:item.id,label:item.label,appearance:await art.ensureAppearance({...base,animalHead:item.id})})));if(disposed||version!==emotionVersion)return false;}while(base!==player.appearance);
+        if(motion.matches){emotion={...frames.find(f=>f.id===final.id),started:sceneTime/1000,until:performance.now()+5000};onExpression({rolling:false,label:final.label});}
+        else{roulette={frames,final:frames.find(f=>f.id===final.id),started:sceneTime};onExpression({rolling:true,loading:false});}
+        ambient.interrupt(sceneTime);dirty=true;return true;
+      }catch(error){if(version===emotionVersion)onExpression(null);throw error;}
+    },
     petCat,
+    setDanceEmoji(enabled){danceEmojiEnabled=!!enabled;dirty=true;if(enabled)void prepareDanceHeads(player.gesture);},
     gesture(kind) {
       ambient.interrupt(sceneTime);
-      if (!["walk", "clap", "bless", "wave", "jump", "stretch", "scratch", "sway",...danceMoves.map(p=>p.id)].includes(kind)) return false;
+      pendingPet=null;
+      if (!["walk", "clap", "bless", "dance",...dailyMoves.map(p=>p.id),...danceMoves.map(p=>p.id)].includes(kind)) return false;
+      if(jumping()){pendingAfterJump=()=>controls.gesture(kind);return true;}
       if (kind === "walk") {
         player.gesture = "";
         dirty = true;
@@ -431,21 +513,25 @@ export async function createWeddingScene(host, onLabels, { signal, onPet = () =>
       player.gestureStarted = sceneTime / 1000;
       gestureUntil = sceneTime + actionDuration(kind)*1000;
       player.direction = "front";
+      if(danceFor(kind)?.emoji)void prepareDanceHeads(kind);
       if (kind === "bless") {
         // The two closest cats join in; repeated clicks cannot stack reactions.
         catArt.bless(player);
         blessingArrivals = 0;
-        for (const [index, recipient] of actors.slice(0, 2).entries())
+        for (const [index, recipient] of actors.slice(0, 2).entries()){
+          const delay=950+index*180,frame=characterMotion(player,(sceneTime+delay)/1000,motion.matches);
+          const palms=[-1,1].map(side=>upperPoint(circularHandFrame(frame.rigidPose,frame.rigidBindings,side<0?frame.leftCircularArm:frame.circularArm,side).palm,frame.rigidPose,frame.rigidBindings));
           hearts.push({
-            from: { x: player.x, y: player.y - 75 },
+            from: { x:player.x+(palms[0].x+palms[1].x)*.125,y:player.y+(palms[0].y+palms[1].y)*.125 },
             to: { x: recipient.x, y: recipient.y - 75 },
             control: {
               x: (player.x + recipient.x) / 2 + (index ? 110 : -110),
               y: Math.min(player.y, recipient.y) - 125,
             },
-            start: sceneTime + 250 + index * 180,
+            start: sceneTime + delay,
             duration: 1700,
           });
+        }
       }
       dirty = true;
       return true;
@@ -459,6 +545,8 @@ export async function createWeddingScene(host, onLabels, { signal, onPet = () =>
       if (disposed || version !== customizeVersion) return false;
       player.name = name;
       player.appearance = appearance;
+      danceHeadVersion++;danceHeads.clear();if(player.gesture&&danceFor(player.gesture)?.emoji)void prepareDanceHeads(player.gesture);
+      if(roulette){roulette=null;emotionVersion++;if(emotion)emotion.until=performance.now()+5000;onExpression(emotion?{rolling:false,label:emotion.label}:null);}
       player.look = typeof value === "number" ? value : "custom";
       player.direction = "front";
       if(emotion){const active=emotion,temporary=await art.ensureAppearance({...appearance,animalHead:active.id});if(!disposed&&version===customizeVersion&&emotion===active)active.appearance=temporary;}
@@ -473,7 +561,13 @@ export async function createWeddingScene(host, onLabels, { signal, onPet = () =>
     },
     dispose() {
       disposed = true;
+      danceHeadVersion++;danceHeads.clear();
+      pendingAfterJump=null;
+      pendingPet=null;
+      clearTimeout(catLoadTimer);
+      catArt.dispose();
       emotionVersion++;
+      roulette=null;
       emotion = null;
       customizeVersion++;
       carryVersion++;
@@ -487,6 +581,7 @@ export async function createWeddingScene(host, onLabels, { signal, onPet = () =>
       motion.removeEventListener("change", reducedChanged);
       art.dispose();
       canvas.remove();
+      backdrop.remove();
     },
   };
 }

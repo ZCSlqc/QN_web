@@ -15,6 +15,8 @@ for(const side of ['left','right']){
 export const defaultBasePose={...defaultPose,...calibratedRig.basePose,leftHand:0,rightHand:0};
 export const fixedHand={x:armAttachment.wrist.x,y:armAttachment.wrist.y,sx:armAttachment.handPivot.x,sy:armAttachment.handPivot.y};
 export const fixedHandAngle=armAttachment.handAngle;
+export const legOuterLimit=-11;
+export const legInnerTravel=26;
 export function rangeFor(key,waistAxis=0){
   if(key.endsWith('Hand'))return {min:0,max:0};
   if(key==='head')return {min:-20,max:20};
@@ -32,7 +34,7 @@ export function normalizePose(value={},setup=false,waistAxis=0){return Object.fr
 export function normalizeBindings(value={}){
   // Migrate previously saved world-space hips to the waistband's local space.
   if(!value.waist){value={...value};for(const key of ['leftLeg','rightLeg'])if(value[key])value[key]={...value[key],x:value[key].x+76.5,y:value[key].y+190};}
-  return Object.fromEntries(Object.entries(defaultBindings).map(([k,v])=>[k,k.endsWith('Hand')?{...fixedHand}:(k==='waist'||k==='neck')?{...defaultBindings[k],...(k==='waist'?{axis:value.waist?.axis===1?1:0}:{})}:Object.fromEntries(Object.entries(v).map(([axis,n])=>[axis,Number.isFinite(value[k]?.[axis])?Math.max(-650,Math.min(650,value[k][axis])):n]))]));
+  return Object.fromEntries(Object.entries(defaultBindings).map(([k,v])=>[k,k.endsWith('Hand')?{...fixedHand}:(k==='waist'||k==='neck')?{...defaultBindings[k],...(k==='waist'?{axis:value.waist?.axis===1?1:0}:{})}:{...Object.fromEntries(Object.entries(v).map(([axis,n])=>[axis,Number.isFinite(value[k]?.[axis])?Math.max(-650,Math.min(650,value[k][axis])):n])),...(k.endsWith('Leg')?{axis:value[k]?.axis==='inner'?'inner':'outer',pivotStyle:['long','short','shorter'].includes(value[k]?.pivotStyle)?value[k].pivotStyle:'long'}:{})}]));
 }
 const rad=n=>n*Math.PI/180;
 const rotate=(p,a)=>({x:p.x*Math.cos(a)-p.y*Math.sin(a),y:p.x*Math.sin(a)+p.y*Math.cos(a)});
@@ -51,9 +53,18 @@ export function rigidSide(pose,side,bindings=defaultBindings){
   const shoulder={x:arm.x,y:arm.y},armAngle=rad(42+pose[prefix+'Arm']);
   const wrist=fromPart(shoulder,arm,hand,armAngle,side);
   const waist=bindings.waist||defaultBindings.waist;
-  const hip={x:waist.x-waist.sx+leg.x,y:waist.y-waist.sy+leg.y},localLegAngle=.12+rad(pose[prefix+'Leg']);
+  const outer={x:waist.x-waist.sx+leg.x,y:waist.y-waist.sy+leg.y},localLegAngle=.12+rad(pose[prefix+'Leg']);
+  // Freeze the inner SVG vertex at its position at the outer stop. Translating
+  // the rigid group's origin preserves every point at the instant of switching.
+  const style=leg.pivotStyle||'long',pants=legAttachment.pants[style],pantsInner=legAttachment.pantsInner[style];
+  const relative=rotate({x:pantsInner.x-pants.x,y:pantsInner.y-pants.y},rad(-3));
+  const innerSource={x:leg.sx+relative.x,y:leg.sy+relative.y};
+  const inner=fromPart(outer,leg,innerSource,.12+rad(legOuterLimit),side);
+  const offset=fromPart({x:0,y:0},leg,innerSource,localLegAngle,side);
+  const hip=leg.axis==='inner'?{x:inner.x-offset.x,y:inner.y-offset.y}:outer;
   const ankle=fromPart(hip,leg,shoe,localLegAngle,side);
-  return {prefix,side,shoulder,wrist,armAngle,hip,legAngle:side*localLegAngle,localLegAngle,ankle,arm,hand,leg,shoe};
+  const legInner=fromPart(hip,leg,innerSource,localLegAngle,side);
+  return {prefix,side,shoulder,wrist,armAngle,hip,legPivot:leg.axis==='inner'?inner:outer,legInner,legOuter:hip,legAngle:side*localLegAngle,localLegAngle,ankle,arm,hand,leg,shoe};
 }
 export function rigidHandles(value,bindings=defaultBindings){
   const pose=Object.fromEntries(Object.keys(defaultPose).map(k=>[k,Number.isFinite(value[k])?value[k]:0])),head=bindings.head;
@@ -64,7 +75,7 @@ export function rigidHandles(value,bindings=defaultBindings){
   for(const side of [-1,1]){
     const r=rigidSide(pose,side,bindings),p=r.prefix;
     result[p+'Arm']={pivot:r.shoulder,tip:r.wrist,parent:0,rest:42+Math.atan2(r.hand.y-r.arm.sy,r.hand.x-r.arm.sx)*180/Math.PI,side};
-    result[p+'Leg']={pivot:r.hip,tip:{x:r.hip.x+(r.ankle.x-r.hip.x)*.55,y:r.hip.y+(r.ankle.y-r.hip.y)*.55},parent:0,rest:Math.atan2(r.shoe.y-r.leg.sy,r.shoe.x-r.leg.sx)*180/Math.PI+.12*180/Math.PI,side};
+    result[p+'Leg']={pivot:r.legPivot,tip:{x:r.legPivot.x+(r.ankle.x-r.legPivot.x)*.55,y:r.legPivot.y+(r.ankle.y-r.legPivot.y)*.55},parent:0,rest:Math.atan2(r.shoe.y-r.leg.sy,r.shoe.x-r.leg.sx)*180/Math.PI+.12*180/Math.PI,side};
     // Zero local swing is horizontal in the resting pose; inherit leg motion
     // without inheriting the template's fixed 0.12-radian inward tilt.
     const shoeTip=rotate({x:62,y:0},rad(pose[p+'Leg']+pose[p+'Shoe']));

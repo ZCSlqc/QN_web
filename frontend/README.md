@@ -26,3 +26,7 @@ Vue 3 + Vite。`npm run dev` 开发，`npm run build` 构建，`npm run preview`
 
 维护源集中在根目录 `asset/`，发布版在 `frontend/public/`，两边按 `index`、`pet`、`journey`、`wedding`、`shared` 分类。背景使用用途命名，如 `index/background/home-cover.webp`；头像使用 `index/avatars/qiqi.webp`。位图主要使用 WebP，需裁切的源图保留原尺寸与透明通道；原版人物 SVG、绑定数据与授权留在源库。
 `npm run assets:rebuild` 从源库重建全部衍生素材并发布；`npm run assets:optimize` 按 `asset/manifest.json` 同步已定稿资源并移除发布目录中的多余文件；`npm run assets:check` 检查内容一致且不存在未登记文件。public 不存放原稿、示例图、编辑图集和废弃中间资源。具体结构见根目录 `asset/README.md`。
+
+`python frontend/scripts/optimize-ui-assets.py`（项目根目录，需 fonttools[woff]、Pillow）从保留的 TTF 原稿重建字体子集，保留拉丁字母、重音、标点及连字；其他文字使用系统字体。浏览器图标使用 32px PNG 副本，256px 原始图标仍留在源库。重新生成后运行 `npm run assets:optimize` 同步发布图标。
+
+字体原稿及授权在 `../asset/shared/fonts/`，前端只保留两张 WOFF2 子集。需重建字体与浏览器图标时执行 `npm run assets:ui`（Python + fonttools[woff] + Pillow）；日常构建不依赖 Python。

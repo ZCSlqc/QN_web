@@ -3,6 +3,7 @@ import { test, expect } from '../fixtures/app.mjs'
 test('local font loads and petals are confined to the cover', async ({ page, app }) => {
   app.admin = true
   await page.goto('/index')
+  await expect(page.locator('link[rel="icon"]')).toHaveAttribute('href','/shared/branding/favicon-32.png')
   await page.evaluate(() => document.fonts.load('16px Lato'))
   expect(await page.evaluate(() => [...document.fonts].some(font => font.family === 'Lato' && font.status === 'loaded'))).toBe(true)
   expect(await page.locator('#album .section-title').evaluate(el => getComputedStyle(el).fontFamily)).toContain('SimSun')

@@ -1,0 +1,1406 @@
+{
+  "version": 2,
+  "art": "original approved collection",
+  "items": [
+    {
+      "id": "lemon-iced-tea",
+      "name": "柠檬冰茶",
+      "category": "drinks",
+      "style": "refreshing",
+      "uses": [
+        "handheld",
+        "tabletop"
+      ],
+      "image": "/wedding/original/drinks/lemon-iced-tea.webp",
+      "width": 158,
+      "height": 227,
+      "anchors": {
+        "hand": [
+          0.5,
+          0.68
+        ],
+        "table": [
+          0.5,
+          0.9823788546255506
+        ]
+      },
+      "hands": 1,
+      "suggestedWorldHeight": 30,
+      "sourceBounds": {
+        "left": 30,
+        "top": 38,
+        "width": 150,
+        "height": 219
+      },
+      "sourcePixels": 24611
+    },
+    {
+      "id": "orange-juice",
+      "name": "鲜榨橙汁",
+      "category": "drinks",
+      "style": "refreshing",
+      "uses": [
+        "handheld",
+        "tabletop"
+      ],
+      "image": "/wedding/original/drinks/orange-juice.webp",
+      "width": 172,
+      "height": 202,
+      "anchors": {
+        "hand": [
+          0.5,
+          0.68
+        ],
+        "table": [
+          0.5,
+          0.9801980198019802
+        ]
+      },
+      "hands": 1,
+      "suggestedWorldHeight": 30,
+      "sourceBounds": {
+        "left": 195,
+        "top": 64,
+        "width": 164,
+        "height": 194
+      },
+      "sourcePixels": 23198
+    },
+    {
+      "id": "pearl-milk-tea",
+      "name": "珍珠奶茶",
+      "category": "drinks",
+      "style": "refreshing",
+      "uses": [
+        "handheld",
+        "tabletop"
+      ],
+      "image": "/wedding/original/drinks/pearl-milk-tea.webp",
+      "width": 155,
+      "height": 238,
+      "anchors": {
+        "hand": [
+          0.5,
+          0.68
+        ],
+        "table": [
+          0.5,
+          0.9831932773109243
+        ]
+      },
+      "hands": 1,
+      "suggestedWorldHeight": 30,
+      "sourceBounds": {
+        "left": 386,
+        "top": 30,
+        "width": 147,
+        "height": 230
+      },
+      "sourcePixels": 23637
+    },
+    {
+      "id": "iced-coffee",
+      "name": "冰咖啡",
+      "category": "drinks",
+      "style": "refreshing",
+      "uses": [
+        "handheld",
+        "tabletop"
+      ],
+      "image": "/wedding/original/drinks/iced-coffee.webp",
+      "width": 169,
+      "height": 220,
+      "anchors": {
+        "hand": [
+          0.5,
+          0.68
+        ],
+        "table": [
+          0.5,
+          0.9818181818181818
+        ]
+      },
+      "hands": 1,
+      "suggestedWorldHeight": 30,
+      "sourceBounds": {
+        "left": 550,
+        "top": 48,
+        "width": 161,
+        "height": 212
+      },
+      "sourcePixels": 24380
+    },
+    {
+      "id": "coconut-drink",
+      "name": "椰子饮",
+      "category": "drinks",
+      "style": "refreshing",
+      "uses": [
+        "handheld",
+        "tabletop"
+      ],
+      "image": "/wedding/original/drinks/coconut-drink.webp",
+      "width": 206,
+      "height": 237,
+      "anchors": {
+        "hand": [
+          0.5,
+          0.68
+        ],
+        "table": [
+          0.5,
+          0.9831223628691983
+        ]
+      },
+      "hands": 1,
+      "suggestedWorldHeight": 30,
+      "sourceBounds": {
+        "left": 728,
+        "top": 31,
+        "width": 198,
+        "height": 229
+      },
+      "sourcePixels": 29231
+    },
+    {
+      "id": "strawberry-milkshake",
+      "name": "草莓奶昔",
+      "category": "drinks",
+      "style": "refreshing",
+      "uses": [
+        "handheld",
+        "tabletop"
+      ],
+      "image": "/wedding/original/drinks/strawberry-milkshake.webp",
+      "width": 153,
+      "height": 242,
+      "anchors": {
+        "hand": [
+          0.5,
+          0.68
+        ],
+        "table": [
+          0.5,
+          0.9834710743801653
+        ]
+      },
+      "hands": 1,
+      "suggestedWorldHeight": 30,
+      "sourceBounds": {
+        "left": 941,
+        "top": 29,
+        "width": 145,
+        "height": 234
+      },
+      "sourcePixels": 24267
+    },
+    {
+      "id": "burger",
+      "name": "汉堡",
+      "category": "food",
+      "style": "snack",
+      "uses": [
+        "handheld",
+        "tabletop"
+      ],
+      "image": "/wedding/original/snacks/burger.webp",
+      "width": 206,
+      "height": 184,
+      "anchors": {
+        "hand": [
+          0.5,
+          0.86
+        ],
+        "table": [
+          0.5,
+          0.9782608695652174
+        ]
+      },
+      "hands": 1,
+      "suggestedWorldHeight": 24,
+      "sourceBounds": {
+        "left": 12,
+        "top": 272,
+        "width": 198,
+        "height": 176
+      },
+      "sourcePixels": 25858
+    },
+    {
+      "id": "fried-chicken",
+      "name": "炸鸡腿",
+      "category": "food",
+      "style": "snack",
+      "uses": [
+        "handheld",
+        "tabletop"
+      ],
+      "image": "/wedding/original/snacks/fried-chicken.webp",
+      "width": 186,
+      "height": 178,
+      "anchors": {
+        "hand": [
+          0.82,
+          0.24
+        ],
+        "table": [
+          0.5,
+          0.9775280898876404
+        ]
+      },
+      "hands": 1,
+      "suggestedWorldHeight": 24,
+      "sourceBounds": {
+        "left": 200,
+        "top": 270,
+        "width": 178,
+        "height": 170
+      },
+      "sourcePixels": 16855
+    },
+    {
+      "id": "fries",
+      "name": "薯条",
+      "category": "food",
+      "style": "snack",
+      "uses": [
+        "handheld",
+        "tabletop"
+      ],
+      "image": "/wedding/original/snacks/fries.webp",
+      "width": 183,
+      "height": 176,
+      "anchors": {
+        "hand": [
+          0.5,
+          0.86
+        ],
+        "table": [
+          0.5,
+          0.9772727272727273
+        ]
+      },
+      "hands": 1,
+      "suggestedWorldHeight": 24,
+      "sourceBounds": {
+        "left": 376,
+        "top": 271,
+        "width": 175,
+        "height": 168
+      },
+      "sourcePixels": 22165
+    },
+    {
+      "id": "pizza",
+      "name": "披萨",
+      "category": "food",
+      "style": "snack",
+      "uses": [
+        "handheld",
+        "tabletop"
+      ],
+      "image": "/wedding/original/snacks/pizza.webp",
+      "width": 214,
+      "height": 180,
+      "anchors": {
+        "hand": [
+          0.5,
+          0.86
+        ],
+        "table": [
+          0.5,
+          0.9777777777777777
+        ]
+      },
+      "hands": 1,
+      "suggestedWorldHeight": 24,
+      "sourceBounds": {
+        "left": 520,
+        "top": 272,
+        "width": 206,
+        "height": 172
+      },
+      "sourcePixels": 21535
+    },
+    {
+      "id": "hot-dog",
+      "name": "热狗",
+      "category": "food",
+      "style": "snack",
+      "uses": [
+        "handheld",
+        "tabletop"
+      ],
+      "image": "/wedding/original/snacks/hot-dog.webp",
+      "width": 218,
+      "height": 162,
+      "anchors": {
+        "hand": [
+          0.5,
+          0.86
+        ],
+        "table": [
+          0.5,
+          0.9753086419753086
+        ]
+      },
+      "hands": 1,
+      "suggestedWorldHeight": 24,
+      "sourceBounds": {
+        "left": 719,
+        "top": 286,
+        "width": 210,
+        "height": 154
+      },
+      "sourcePixels": 21304
+    },
+    {
+      "id": "takoyaki",
+      "name": "章鱼小丸子",
+      "category": "food",
+      "style": "snack",
+      "uses": [
+        "handheld",
+        "tabletop"
+      ],
+      "image": "/wedding/original/snacks/takoyaki.webp",
+      "width": 183,
+      "height": 178,
+      "anchors": {
+        "hand": [
+          0.5,
+          0.86
+        ],
+        "table": [
+          0.5,
+          0.9775280898876404
+        ]
+      },
+      "hands": 2,
+      "suggestedWorldHeight": 24,
+      "sourceBounds": {
+        "left": 906,
+        "top": 275,
+        "width": 175,
+        "height": 170
+      },
+      "sourcePixels": 17342
+    },
+    {
+      "id": "dumpling-platter",
+      "name": "饺子拼盘",
+      "category": "meals",
+      "style": "banquet",
+      "uses": [
+        "handheld",
+        "tabletop"
+      ],
+      "image": "/wedding/original/meals/dumpling-platter.webp",
+      "width": 208,
+      "height": 158,
+      "anchors": {
+        "hand": [
+          0.5,
+          0.91
+        ],
+        "table": [
+          0.5,
+          0.9746835443037974
+        ]
+      },
+      "hands": 2,
+      "suggestedWorldHeight": 25,
+      "sourceBounds": {
+        "left": 0,
+        "top": 463,
+        "width": 200,
+        "height": 150
+      },
+      "sourcePixels": 21949
+    },
+    {
+      "id": "xiaolongbao",
+      "name": "小笼包",
+      "category": "meals",
+      "style": "banquet",
+      "uses": [
+        "handheld",
+        "tabletop"
+      ],
+      "image": "/wedding/original/meals/xiaolongbao.webp",
+      "width": 189,
+      "height": 185,
+      "anchors": {
+        "hand": [
+          0.5,
+          0.91
+        ],
+        "table": [
+          0.5,
+          0.9783783783783784
+        ]
+      },
+      "hands": 2,
+      "suggestedWorldHeight": 25,
+      "sourceBounds": {
+        "left": 196,
+        "top": 438,
+        "width": 181,
+        "height": 177
+      },
+      "sourcePixels": 22598
+    },
+    {
+      "id": "egg-fried-rice",
+      "name": "蛋炒饭",
+      "category": "meals",
+      "style": "banquet",
+      "uses": [
+        "handheld",
+        "tabletop"
+      ],
+      "image": "/wedding/original/meals/egg-fried-rice.webp",
+      "width": 188,
+      "height": 160,
+      "anchors": {
+        "hand": [
+          0.5,
+          0.91
+        ],
+        "table": [
+          0.5,
+          0.975
+        ]
+      },
+      "hands": 2,
+      "suggestedWorldHeight": 25,
+      "sourceBounds": {
+        "left": 369,
+        "top": 460,
+        "width": 180,
+        "height": 152
+      },
+      "sourcePixels": 19995
+    },
+    {
+      "id": "beef-noodles",
+      "name": "牛肉面",
+      "category": "meals",
+      "style": "banquet",
+      "uses": [
+        "handheld",
+        "tabletop"
+      ],
+      "image": "/wedding/original/meals/beef-noodles.webp",
+      "width": 198,
+      "height": 191,
+      "anchors": {
+        "hand": [
+          0.5,
+          0.91
+        ],
+        "table": [
+          0.5,
+          0.9790575916230366
+        ]
+      },
+      "hands": 2,
+      "suggestedWorldHeight": 25,
+      "sourceBounds": {
+        "left": 544,
+        "top": 449,
+        "width": 190,
+        "height": 183
+      },
+      "sourcePixels": 24589
+    },
+    {
+      "id": "kung-pao-chicken",
+      "name": "宫保鸡丁饭",
+      "category": "meals",
+      "style": "banquet",
+      "uses": [
+        "handheld",
+        "tabletop"
+      ],
+      "image": "/wedding/original/meals/kung-pao-chicken.webp",
+      "width": 192,
+      "height": 162,
+      "anchors": {
+        "hand": [
+          0.5,
+          0.91
+        ],
+        "table": [
+          0.5,
+          0.9753086419753086
+        ]
+      },
+      "hands": 2,
+      "suggestedWorldHeight": 25,
+      "sourceBounds": {
+        "left": 721,
+        "top": 463,
+        "width": 184,
+        "height": 154
+      },
+      "sourcePixels": 20371
+    },
+    {
+      "id": "sweet-sour-ribs",
+      "name": "糖醋排骨饭",
+      "category": "meals",
+      "style": "banquet",
+      "uses": [
+        "handheld",
+        "tabletop"
+      ],
+      "image": "/wedding/original/meals/sweet-sour-ribs.webp",
+      "width": 194,
+      "height": 166,
+      "anchors": {
+        "hand": [
+          0.5,
+          0.91
+        ],
+        "table": [
+          0.5,
+          0.9759036144578314
+        ]
+      },
+      "hands": 2,
+      "suggestedWorldHeight": 25,
+      "sourceBounds": {
+        "left": 899,
+        "top": 459,
+        "width": 186,
+        "height": 158
+      },
+      "sourcePixels": 20814
+    },
+    {
+      "id": "strawberry-cake",
+      "name": "草莓蛋糕",
+      "category": "desserts",
+      "style": "patisserie",
+      "uses": [
+        "handheld",
+        "tabletop"
+      ],
+      "image": "/wedding/original/desserts/strawberry-cake.webp",
+      "width": 194,
+      "height": 183,
+      "anchors": {
+        "hand": [
+          0.5,
+          0.86
+        ],
+        "table": [
+          0.5,
+          0.9781420765027322
+        ]
+      },
+      "hands": 1,
+      "suggestedWorldHeight": 24,
+      "sourceBounds": {
+        "left": 13,
+        "top": 621,
+        "width": 186,
+        "height": 175
+      },
+      "sourcePixels": 24800
+    },
+    {
+      "id": "chocolate-cake",
+      "name": "巧克力蛋糕",
+      "category": "desserts",
+      "style": "patisserie",
+      "uses": [
+        "handheld",
+        "tabletop"
+      ],
+      "image": "/wedding/original/desserts/chocolate-cake.webp",
+      "width": 175,
+      "height": 176,
+      "anchors": {
+        "hand": [
+          0.5,
+          0.86
+        ],
+        "table": [
+          0.5,
+          0.9772727272727273
+        ]
+      },
+      "hands": 1,
+      "suggestedWorldHeight": 24,
+      "sourceBounds": {
+        "left": 208,
+        "top": 624,
+        "width": 167,
+        "height": 168
+      },
+      "sourcePixels": 22097
+    },
+    {
+      "id": "matcha-roll",
+      "name": "抹茶卷",
+      "category": "desserts",
+      "style": "patisserie",
+      "uses": [
+        "handheld",
+        "tabletop"
+      ],
+      "image": "/wedding/original/desserts/matcha-roll.webp",
+      "width": 187,
+      "height": 201,
+      "anchors": {
+        "hand": [
+          0.5,
+          0.86
+        ],
+        "table": [
+          0.5,
+          0.9800995024875622
+        ]
+      },
+      "hands": 1,
+      "suggestedWorldHeight": 24,
+      "sourceBounds": {
+        "left": 386,
+        "top": 599,
+        "width": 179,
+        "height": 193
+      },
+      "sourcePixels": 23387
+    },
+    {
+      "id": "mango-cheesecake",
+      "name": "芒果芝士蛋糕",
+      "category": "desserts",
+      "style": "patisserie",
+      "uses": [
+        "handheld",
+        "tabletop"
+      ],
+      "image": "/wedding/original/desserts/mango-cheesecake.webp",
+      "width": 209,
+      "height": 191,
+      "anchors": {
+        "hand": [
+          0.5,
+          0.86
+        ],
+        "table": [
+          0.5,
+          0.9790575916230366
+        ]
+      },
+      "hands": 1,
+      "suggestedWorldHeight": 24,
+      "sourceBounds": {
+        "left": 550,
+        "top": 622,
+        "width": 201,
+        "height": 183
+      },
+      "sourcePixels": 24233
+    },
+    {
+      "id": "vanilla-cone",
+      "name": "香草甜筒",
+      "category": "desserts",
+      "style": "patisserie",
+      "uses": [
+        "handheld",
+        "tabletop"
+      ],
+      "image": "/wedding/original/desserts/vanilla-cone.webp",
+      "width": 126,
+      "height": 215,
+      "anchors": {
+        "hand": [
+          0.5,
+          0.86
+        ],
+        "table": [
+          0.5,
+          0.9813953488372092
+        ]
+      },
+      "hands": 1,
+      "suggestedWorldHeight": 24,
+      "sourceBounds": {
+        "left": 776,
+        "top": 601,
+        "width": 118,
+        "height": 207
+      },
+      "sourcePixels": 14906
+    },
+    {
+      "id": "strawberry-sundae",
+      "name": "草莓冰淇淋",
+      "category": "desserts",
+      "style": "patisserie",
+      "uses": [
+        "handheld",
+        "tabletop"
+      ],
+      "image": "/wedding/original/desserts/strawberry-sundae.webp",
+      "width": 173,
+      "height": 216,
+      "anchors": {
+        "hand": [
+          0.5,
+          0.86
+        ],
+        "table": [
+          0.5,
+          0.9814814814814815
+        ]
+      },
+      "hands": 1,
+      "suggestedWorldHeight": 24,
+      "sourceBounds": {
+        "left": 909,
+        "top": 601,
+        "width": 165,
+        "height": 208
+      },
+      "sourcePixels": 22132
+    },
+    {
+      "id": "bouquet-garden",
+      "name": "奶油花园捧花",
+      "category": "flowers",
+      "style": "garden",
+      "uses": [
+        "handheld",
+        "tabletop"
+      ],
+      "image": "/wedding/original/flowers/garden/bouquet-garden.webp",
+      "width": 223,
+      "height": 216,
+      "anchors": {
+        "hand": [
+          0.5,
+          0.85
+        ],
+        "table": [
+          0.5,
+          0.9814814814814815
+        ]
+      },
+      "hands": 1,
+      "suggestedWorldHeight": 39,
+      "sourceBounds": {
+        "left": 0,
+        "top": 796,
+        "width": 215,
+        "height": 208
+      },
+      "sourcePixels": 30306
+    },
+    {
+      "id": "gift-garden",
+      "name": "薄荷金带礼盒",
+      "category": "gifts",
+      "style": "garden",
+      "uses": [
+        "handheld",
+        "tabletop"
+      ],
+      "image": "/wedding/original/flowers/garden/gift-garden.webp",
+      "width": 204,
+      "height": 179,
+      "anchors": {
+        "hand": [
+          0.5,
+          0.86
+        ],
+        "table": [
+          0.5,
+          0.9776536312849162
+        ]
+      },
+      "hands": 2,
+      "suggestedWorldHeight": 29,
+      "sourceBounds": {
+        "left": 202,
+        "top": 822,
+        "width": 196,
+        "height": 171
+      },
+      "sourcePixels": 24275
+    },
+    {
+      "id": "balloons-garden",
+      "name": "奶油粉气球",
+      "category": "balloons",
+      "style": "garden",
+      "uses": [
+        "handheld",
+        "tabletop"
+      ],
+      "image": "/wedding/original/flowers/garden/balloons-garden.webp",
+      "width": 161,
+      "height": 216,
+      "anchors": {
+        "hand": [
+          0.5,
+          0.86
+        ],
+        "table": [
+          0.5,
+          0.9814814814814815
+        ]
+      },
+      "hands": 1,
+      "suggestedWorldHeight": 54,
+      "sourceBounds": {
+        "left": 399,
+        "top": 795,
+        "width": 153,
+        "height": 208
+      },
+      "sourcePixels": 18364
+    },
+    {
+      "id": "popper-garden",
+      "name": "奶油花园礼花",
+      "category": "celebration",
+      "style": "garden",
+      "uses": [
+        "handheld",
+        "tabletop"
+      ],
+      "image": "/wedding/original/flowers/garden/popper-garden.webp",
+      "width": 178,
+      "height": 224,
+      "anchors": {
+        "hand": [
+          0.38,
+          0.83
+        ],
+        "table": [
+          0.5,
+          0.9821428571428571
+        ]
+      },
+      "hands": 1,
+      "suggestedWorldHeight": 36,
+      "sourceBounds": {
+        "left": 548,
+        "top": 794,
+        "width": 170,
+        "height": 216
+      },
+      "sourcePixels": 23640
+    },
+    {
+      "id": "basket-garden",
+      "name": "奶油花园花篮",
+      "category": "flowers",
+      "style": "garden",
+      "uses": [
+        "handheld",
+        "tabletop"
+      ],
+      "image": "/wedding/original/flowers/garden/basket-garden.webp",
+      "width": 240,
+      "height": 213,
+      "anchors": {
+        "hand": [
+          0.5,
+          0.88
+        ],
+        "table": [
+          0.5,
+          0.9812206572769953
+        ]
+      },
+      "hands": 2,
+      "suggestedWorldHeight": 34,
+      "sourceBounds": {
+        "left": 703,
+        "top": 802,
+        "width": 232,
+        "height": 205
+      },
+      "sourcePixels": 32414
+    },
+    {
+      "id": "rose-garden",
+      "name": "浅粉玫瑰",
+      "category": "flowers",
+      "style": "garden",
+      "uses": [
+        "handheld",
+        "tabletop"
+      ],
+      "image": "/wedding/original/flowers/garden/rose-garden.webp",
+      "width": 155,
+      "height": 211,
+      "anchors": {
+        "hand": [
+          0.5,
+          0.86
+        ],
+        "table": [
+          0.5,
+          0.981042654028436
+        ]
+      },
+      "hands": 1,
+      "suggestedWorldHeight": 36,
+      "sourceBounds": {
+        "left": 927,
+        "top": 805,
+        "width": 147,
+        "height": 203
+      },
+      "sourcePixels": 20558
+    },
+    {
+      "id": "bouquet-festive",
+      "name": "红金喜庆捧花",
+      "category": "flowers",
+      "style": "festive",
+      "uses": [
+        "handheld",
+        "tabletop"
+      ],
+      "image": "/wedding/original/flowers/festive/bouquet-festive.webp",
+      "width": 227,
+      "height": 207,
+      "anchors": {
+        "hand": [
+          0.5,
+          0.85
+        ],
+        "table": [
+          0.5,
+          0.9806763285024155
+        ]
+      },
+      "hands": 1,
+      "suggestedWorldHeight": 39,
+      "sourceBounds": {
+        "left": 0,
+        "top": 994,
+        "width": 219,
+        "height": 199
+      },
+      "sourcePixels": 29925
+    },
+    {
+      "id": "gift-festive",
+      "name": "红色金带礼盒",
+      "category": "gifts",
+      "style": "festive",
+      "uses": [
+        "handheld",
+        "tabletop"
+      ],
+      "image": "/wedding/original/flowers/festive/gift-festive.webp",
+      "width": 188,
+      "height": 182,
+      "anchors": {
+        "hand": [
+          0.5,
+          0.86
+        ],
+        "table": [
+          0.5,
+          0.978021978021978
+        ]
+      },
+      "hands": 2,
+      "suggestedWorldHeight": 29,
+      "sourceBounds": {
+        "left": 213,
+        "top": 1013,
+        "width": 180,
+        "height": 174
+      },
+      "sourcePixels": 24814
+    },
+    {
+      "id": "balloons-festive",
+      "name": "红金气球",
+      "category": "balloons",
+      "style": "festive",
+      "uses": [
+        "handheld",
+        "tabletop"
+      ],
+      "image": "/wedding/original/flowers/festive/balloons-festive.webp",
+      "width": 165,
+      "height": 222,
+      "anchors": {
+        "hand": [
+          0.5,
+          0.86
+        ],
+        "table": [
+          0.5,
+          0.9819819819819819
+        ]
+      },
+      "hands": 1,
+      "suggestedWorldHeight": 54,
+      "sourceBounds": {
+        "left": 403,
+        "top": 992,
+        "width": 157,
+        "height": 214
+      },
+      "sourcePixels": 18326
+    },
+    {
+      "id": "popper-festive",
+      "name": "红金礼花",
+      "category": "celebration",
+      "style": "festive",
+      "uses": [
+        "handheld",
+        "tabletop"
+      ],
+      "image": "/wedding/original/flowers/festive/popper-festive.webp",
+      "width": 179,
+      "height": 211,
+      "anchors": {
+        "hand": [
+          0.38,
+          0.83
+        ],
+        "table": [
+          0.5,
+          0.981042654028436
+        ]
+      },
+      "hands": 1,
+      "suggestedWorldHeight": 36,
+      "sourceBounds": {
+        "left": 548,
+        "top": 995,
+        "width": 171,
+        "height": 203
+      },
+      "sourcePixels": 22513
+    },
+    {
+      "id": "basket-festive",
+      "name": "红金玫瑰花篮",
+      "category": "flowers",
+      "style": "festive",
+      "uses": [
+        "handheld",
+        "tabletop"
+      ],
+      "image": "/wedding/original/flowers/festive/basket-festive.webp",
+      "width": 236,
+      "height": 209,
+      "anchors": {
+        "hand": [
+          0.5,
+          0.88
+        ],
+        "table": [
+          0.5,
+          0.9808612440191388
+        ]
+      },
+      "hands": 2,
+      "suggestedWorldHeight": 34,
+      "sourceBounds": {
+        "left": 700,
+        "top": 997,
+        "width": 228,
+        "height": 201
+      },
+      "sourcePixels": 31669
+    },
+    {
+      "id": "rose-festive",
+      "name": "酒红玫瑰",
+      "category": "flowers",
+      "style": "festive",
+      "uses": [
+        "handheld",
+        "tabletop"
+      ],
+      "image": "/wedding/original/flowers/festive/rose-festive.webp",
+      "width": 171,
+      "height": 212,
+      "anchors": {
+        "hand": [
+          0.5,
+          0.86
+        ],
+        "table": [
+          0.5,
+          0.9811320754716981
+        ]
+      },
+      "hands": 1,
+      "suggestedWorldHeight": 36,
+      "sourceBounds": {
+        "left": 917,
+        "top": 999,
+        "width": 163,
+        "height": 204
+      },
+      "sourcePixels": 21631
+    },
+    {
+      "id": "gold-ingot",
+      "name": "元宝",
+      "category": "decoration",
+      "style": "celebration",
+      "uses": [
+        "decoration"
+      ],
+      "image": "/wedding/original/juggling/gold-ingot.webp",
+      "width": 164,
+      "height": 137,
+      "anchors": {
+        "hand": [
+          0.5,
+          0.8
+        ],
+        "table": [
+          0.5,
+          0.9708029197080292
+        ]
+      },
+      "hands": 1,
+      "suggestedWorldHeight": 24,
+      "sourceBounds": {
+        "left": 24,
+        "top": 1180,
+        "width": 156,
+        "height": 129
+      },
+      "sourcePixels": 11429
+    },
+    {
+      "id": "gold-bar",
+      "name": "金条",
+      "category": "decoration",
+      "style": "celebration",
+      "uses": [
+        "decoration"
+      ],
+      "image": "/wedding/original/juggling/gold-bar.webp",
+      "width": 152,
+      "height": 138,
+      "anchors": {
+        "hand": [
+          0.5,
+          0.8
+        ],
+        "table": [
+          0.5,
+          0.9710144927536232
+        ]
+      },
+      "hands": 1,
+      "suggestedWorldHeight": 24,
+      "sourceBounds": {
+        "left": 199,
+        "top": 1189,
+        "width": 144,
+        "height": 130
+      },
+      "sourcePixels": 10391
+    },
+    {
+      "id": "lucky-coins",
+      "name": "钱币",
+      "category": "decoration",
+      "style": "celebration",
+      "uses": [
+        "decoration"
+      ],
+      "image": "/wedding/original/juggling/lucky-coins.webp",
+      "width": 159,
+      "height": 129,
+      "anchors": {
+        "hand": [
+          0.5,
+          0.8
+        ],
+        "table": [
+          0.5,
+          0.9689922480620154
+        ]
+      },
+      "hands": 1,
+      "suggestedWorldHeight": 24,
+      "sourceBounds": {
+        "left": 358,
+        "top": 1186,
+        "width": 151,
+        "height": 121
+      },
+      "sourcePixels": 12249
+    },
+    {
+      "id": "wedding-rings",
+      "name": "婚戒",
+      "category": "decoration",
+      "style": "celebration",
+      "uses": [
+        "decoration"
+      ],
+      "image": "/wedding/original/decorations/wedding-rings.webp",
+      "width": 159,
+      "height": 117,
+      "anchors": {
+        "hand": [
+          0.5,
+          0.8
+        ],
+        "table": [
+          0.5,
+          0.9658119658119658
+        ]
+      },
+      "hands": 1,
+      "suggestedWorldHeight": 24,
+      "sourceBounds": {
+        "left": 544,
+        "top": 1194,
+        "width": 151,
+        "height": 109
+      },
+      "sourcePixels": 11157
+    },
+    {
+      "id": "heart",
+      "name": "爱心",
+      "category": "effects",
+      "style": "celebration",
+      "uses": [
+        "decoration"
+      ],
+      "image": "/shared/icons/heart.webp",
+      "width": 174,
+      "height": 123,
+      "anchors": {
+        "hand": [
+          0.5,
+          0.8
+        ],
+        "table": [
+          0.5,
+          0.967479674796748
+        ]
+      },
+      "hands": 1,
+      "suggestedWorldHeight": 24,
+      "sourceBounds": {
+        "left": 728,
+        "top": 1193,
+        "width": 166,
+        "height": 115
+      },
+      "sourcePixels": 11332
+    },
+    {
+      "id": "stars",
+      "name": "星星",
+      "category": "effects",
+      "style": "celebration",
+      "uses": [
+        "decoration"
+      ],
+      "image": "/shared/icons/stars.webp",
+      "width": 159,
+      "height": 113,
+      "anchors": {
+        "hand": [
+          0.5,
+          0.8
+        ],
+        "table": [
+          0.5,
+          0.9646017699115044
+        ]
+      },
+      "hands": 1,
+      "suggestedWorldHeight": 24,
+      "sourceBounds": {
+        "left": 907,
+        "top": 1200,
+        "width": 151,
+        "height": 105
+      },
+      "sourcePixels": 8739
+    },
+    {
+      "id": "idea",
+      "name": "灯泡",
+      "category": "effects",
+      "style": "celebration",
+      "uses": [
+        "decoration"
+      ],
+      "image": "/shared/icons/idea.webp",
+      "width": 102,
+      "height": 137,
+      "anchors": {
+        "hand": [
+          0.5,
+          0.8
+        ],
+        "table": [
+          0.5,
+          0.9708029197080292
+        ]
+      },
+      "hands": 1,
+      "suggestedWorldHeight": 24,
+      "sourceBounds": {
+        "left": 54,
+        "top": 1303,
+        "width": 94,
+        "height": 129
+      },
+      "sourcePixels": 8253
+    },
+    {
+      "id": "envelope",
+      "name": "信封",
+      "category": "effects",
+      "style": "celebration",
+      "uses": [
+        "decoration"
+      ],
+      "image": "/shared/icons/envelope.webp",
+      "width": 168,
+      "height": 134,
+      "anchors": {
+        "hand": [
+          0.5,
+          0.8
+        ],
+        "table": [
+          0.5,
+          0.9701492537313433
+        ]
+      },
+      "hands": 1,
+      "suggestedWorldHeight": 24,
+      "sourceBounds": {
+        "left": 209,
+        "top": 1308,
+        "width": 160,
+        "height": 126
+      },
+      "sourcePixels": 14005
+    }
+  ]
+}

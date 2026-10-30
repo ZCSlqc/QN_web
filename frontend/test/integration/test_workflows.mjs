@@ -40,13 +40,12 @@ test('real backend: login, todo, journey draft, mailbox and share code', async (
   await page.goto('/index')
   await page.locator('.mailbox-trigger').click()
   await page.getByRole('button', { name: '写封信', exact: true }).click()
-  await page.locator('#mail-title').fill('真实接口测试')
   await page.locator('#mail-body').fill('仅存在于测试数据库的一封信。')
   await page.getByRole('button', { name: '寄给ta', exact: true }).click()
   await expect(page.locator('.mailbox-panel')).toBeHidden()
   await page.locator('.mailbox-trigger').click()
-  await page.locator('.letter-item').filter({ hasText: '真实接口测试' }).click()
-  await expect(page.locator('.letter-paper')).toContainText('真实接口测试')
+  await page.locator('.letter-item').filter({ hasText: '仅存在于测试数据库' }).click()
+  await expect(page.locator('.letter-paper')).toContainText('仅存在于测试数据库')
   const webOrigin = new URL(page.url()).origin
   const peer = await browser.newContext()
   try {

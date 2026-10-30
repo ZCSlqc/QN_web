@@ -116,8 +116,10 @@ async function main(){
    cap:pth('M-77 -522 Q-79 -575 -13 -578 Q52 -579 72 -530 L77 -516 H-77Z','#8caaa8')+pth('M-76 -522 Q-3 -539 88 -517 L109 -504 Q18 -510 -64 -504Z','#5b7e7f')+(!back?pth('M-7 -576 Q-15 -551 -10 -530','none','stroke="#6c8f8e" stroke-width="2"'):''),
    'top-hat':pth('M-59 -536 L-65 -605 Q0 -615 65 -605 L59 -536Z','#343843')+pth('M-61 -552 H61 V-534 H-61Z','#b58d77')+pth('M-92 -536 Q0 -551 92 -536 L98 -524 Q0 -513 -98 -524Z','#242a33'),
    fedora:pth('M-70 -535 L-60 -583 Q-41 -591 -17 -580 Q6 -589 46 -585 L70 -535Z','#c7ad85')+pth('M-67 -549 Q0 -541 67 -549 L70 -533 Q0 -523 -70 -533Z','#726044')+pth('M-94 -535 Q0 -525 94 -535 L107 -522 Q0 -504 -107 -522Z','#a88d67')+(!back?pth('M-42 -580 Q-22 -553 -14 -580','none','stroke="#a78b62" stroke-width="2"'):''),
+   bow:pth('M-77 -482 Q-79 -523 0 -526 Q79 -523 77 -482','none','stroke="#a5747e" stroke-width="5" stroke-linecap="round"')+pth('M-48 -526 Q-84 -552 -95 -531 Q-98 -506 -49 -517 Q-16 -551 -4 -530 Q2 -508 -43 -517Z','#c78e9b')+pth('M-57 -520 L-72 -495 L-59 -500 L-51 -489 L-42 -517 L-25 -496 L-17 -507 L-6 -502 L-34 -523Z','#aa6d7b')+pth('M-52 -532 Q-44 -536 -37 -531 L-36 -514 Q-44 -509 -52 -515Z',back?'#bd8792':'#dfb0b9'),
+   beret:pth('M-78 -540 Q-93 -565 -45 -581 Q4 -599 58 -583 Q92 -570 79 -543 L67 -530 H-68Z','#728672')+pth('M-75 -544 Q0 -533 78 -544 L70 -528 Q0 -518 -73 -530Z','#465d4e')+pth('M-23 -584 L-20 -596 L-11 -594 L-13 -582Z','#465d4e')+(!back?`<circle cx="48" cy="-549" r="4" fill="#d3bd8f"/>`:''),
   };
-  const seated={wreath:0,crown:22,cap:10,'top-hat':22,fedora:16};
+  const seated={wreath:0,crown:22,cap:10,'top-hat':22,fedora:16,bow:0,beret:12};
   for(const [id,body] of Object.entries(headwear))write(`accessories/${id}-${back?'back':'front'}.svg`,svg(280,180,'-140 -610 280 180',`<g transform="translate(0 ${seated[id]})">${body}</g>`),'vector_skin.svg head crown and original hair anchors; fixed-size seated head accessory');
  }
  const {dressShoeStyles,dressShoeColors}=await import('../src/features/wedding/dressShoes.js');

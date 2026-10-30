@@ -40,7 +40,7 @@ test("emoji temporarily changes the head for five seconds and restores appearanc
   await expect(canvas).toBeVisible();
   const original=await canvas.getAttribute('data-appearance');
   await page.getByRole('button',{name:'emoji',exact:true}).click();
-  await expect(page.locator('.emoji-options button')).toHaveCount(8);
+  await expect(page.locator('.emoji-options button')).toHaveCount(12);
   await page.getByRole('button',{name:'表达：飞吻',exact:true}).click();
   await expect(canvas).toHaveAttribute('data-emotion','emoji-kiss');
   await expect(canvas).toHaveAttribute('data-temporary-head',/emoji-/);await expect(page.locator('.wedding-emotions img')).toHaveCount(0);
@@ -57,7 +57,7 @@ test("emoji temporarily changes the head for five seconds and restores appearanc
   await expect(canvas).toHaveAttribute('data-appearance',original);
 });
 
-test("curated emoji heads show eight favourites and preserve appearance when removed", async ({page,app},testInfo)=>{
+test("curated emoji heads show eleven favourites and preserve appearance when removed", async ({page,app},testInfo)=>{
   app.admin=true;
   await page.goto('/wedding');
   const scene=page.locator('.wedding-canvas canvas');
@@ -65,7 +65,7 @@ test("curated emoji heads show eight favourites and preserve appearance when rem
   const original=JSON.parse(await scene.getAttribute('data-appearance'));
   await page.getByRole('button',{name:'我的造型',exact:true}).click();
   await page.locator('.wardrobe').getByRole('button',{name:'emoji',exact:true}).click();
-  await expect(page.locator('.part-grid button')).toHaveCount(8);
+  await expect(page.locator('.part-grid button')).toHaveCount(11);
   await page.getByRole('button',{name:'派对主角',exact:true}).click();
   await expect(page.locator('.wardrobe-summary .character-preview')).toHaveAttribute('aria-busy','false');
   await page.getByRole('button',{name:'更多趣味 · 全部 29 款',exact:true}).click();
@@ -111,6 +111,7 @@ test("cat sitting lying and greeting artwork mirrors around its feet", async ({p
   const results=await page.evaluate(async()=>{
     const {loadCats}=await import('/src/features/wedding/cats.js');
     const art=await loadCats();
+    await art.loadActions();
     const canvas=document.createElement('canvas');canvas.width=180;canvas.height=130;
     const ctx=canvas.getContext('2d',{willReadFrequently:true});
     return ['sit','lie','greet','observe','walk','trot'].map(state=>{
@@ -329,7 +330,7 @@ test("animal heads replace facial parts, preview all choices and restore the hum
   expect(restored.face).toBe(original.face);
 });
 
-test("five cats respond to touch and blessings without moving the guest", async ({ page, app }, testInfo) => {
+test("the guest approaches cats to pet them, blessings and mobile panning still work", async ({ page, app }, testInfo) => {
   app.admin = true;
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/wedding");
@@ -337,33 +338,34 @@ test("five cats respond to touch and blessings without moving the guest", async 
   await expect(canvas).toHaveAttribute("data-cats", /liuyi/);
   const cats = () => canvas.getAttribute("data-cats").then(JSON.parse);
   expect((await cats()).map((cat) => cat.id)).toEqual(["liuyi", "anan", "guagua", "huahua", "heihei"]);
-  const before = await canvas.getAttribute("data-player-x");
+  const before = await canvas.getAttribute("data-player-y");
   const liuyi = (await cats())[0];
   await canvas.click({ position: { x: liuyi.x, y: liuyi.y } });
   await expect(page.locator(".wedding-toolbar")).toContainText("六一收到你的摸摸");
   await expect(page.getByRole("button", { name: "摸摸六一" })).toHaveClass(/active/);
-  await expect(canvas).toHaveAttribute("data-player-x", before);
+  await expect(canvas).not.toHaveAttribute("data-player-y", before);
   await expect.poll(async () => (await cats()).filter((cat) => cat.reacting).length).toBe(0);
-  await page.getByRole("button", { name: "♡ 祝福", exact: true }).click();
+  await page.getByRole("button", { name: "💖 祝福", exact: true }).click();
   await expect.poll(async () => (await cats()).filter((cat) => cat.reacting).length).toBe(2);
   await page.screenshot({ path: testInfo.outputPath("wedding-cats.png") });
   await expect(canvas).toHaveAttribute("data-blessing-arrivals", "2");
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.setViewportSize({ width: 390, height: 844 });
-  await expect.poll(async () => Math.round((await cats())[0].x)).toBe(195);
+  await expect.poll(async () => Math.round((await cats())[0].x)).toBeGreaterThan(0);
   await expect.poll(async()=>Number(await canvas.getAttribute('data-character-scale'))).toBeCloseTo(844/900,3);
   const cat = (await cats())[0];
   await canvas.click({ position: { x: cat.x, y: cat.y } });
   await expect(page.getByRole("button", { name: "摸摸六一" })).toHaveClass(/active/);
   await page.screenshot({ path: testInfo.outputPath("wedding-cats-mobile.png") });
   await expect.poll(async () => (await cats()).filter((item) => item.reacting).length).toBe(0);
+  const approached=await canvas.getAttribute("data-player-x");
   await page.mouse.move(cat.x, cat.y);
   await page.mouse.down();
   await page.mouse.move(cat.x + 90, cat.y, { steps: 8 });
   await page.mouse.up();
   await expect.poll(async () => Number(await canvas.getAttribute("data-pan"))).toBeGreaterThan(50);
   expect((await cats()).some((item) => item.reacting)).toBe(false);
-  await expect(canvas).toHaveAttribute("data-player-x", before);
+  await expect(canvas).toHaveAttribute("data-player-x", approached);
   await page.getByRole("button", { name: "摸摸安安" }).focus();
   await page.keyboard.press("Enter");
   await expect(page.locator(".wedding-toolbar")).toContainText("安安收到你的摸摸");
@@ -428,8 +430,8 @@ test("immersive wedding has no navigation and supports avatar interaction", asyn
   );
   await expect(page.locator(".nav-bar")).toHaveCount(0);
   await expect(page.getByRole("heading", { name: "爱的婚礼" })).toBeVisible();
-  await page.getByRole("button", { name: "♪ 跳舞" }).click();
-  await expect(page.locator(".wedding-toolbar")).toContainText("跳一支舞");
+  await page.getByRole("button", { name: "💃 舞蹈" }).click();
+  await expect(page.locator(".wedding-toolbar")).toContainText("婚礼圆舞");
   await page.getByRole("button", { name: "我的造型" }).click();
   await expect(page.locator(".wardrobe header p")).toHaveText("来宾小雨");
   await expect(page.locator('.wardrobe input:not([type="radio"])')).toHaveCount(
@@ -632,18 +634,18 @@ test("wardrobe matches skin and clothing parts, and blessing reaches both newlyw
     leg: "shorter",
     face: "custom",
   });
-  await page.getByRole("button", { name: "♡ 祝福", exact: true }).click();
+  await page.getByRole("button", { name: "💖 祝福", exact: true }).click();
   await expect(canvas).toHaveAttribute("data-heart-count", "2");
   await expect(canvas).toHaveAttribute("data-blessing-targets", "琪琪,妮妮");
-  await page.getByRole("button", { name: "♡ 祝福", exact: true }).click();
+  await page.getByRole("button", { name: "💖 祝福", exact: true }).click();
   await expect(canvas).toHaveAttribute("data-heart-count", "2");
   await page.waitForTimeout(800);
   await page.screenshot({ path: testInfo.outputPath("wedding-blessing.png") });
   await expect(canvas).toHaveAttribute("data-heart-count", "0");
   await expect(canvas).toHaveAttribute("data-blessing-arrivals", "2");
-  await page.getByRole("button", { name: "♪ 跳舞", exact: true }).click();
-  await expect(canvas).toHaveAttribute("data-gesture", "dance");
-  await page.getByRole("button", { name: "🚶 走路", exact: true }).click();
+  await page.getByRole("button", { name: "💃 舞蹈", exact: true }).click();
+  await expect(canvas).toHaveAttribute("data-gesture", "dance-waltz");
+  await page.getByRole("button", { name: "⏹ 收舞", exact: true }).click();
   await expect(canvas).toHaveAttribute("data-gesture", "idle");
   await page.setViewportSize({ width: 390, height: 844 });
   await page.getByRole("button", { name: "我的造型", exact: true }).click();

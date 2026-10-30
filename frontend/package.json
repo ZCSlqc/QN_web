@@ -13,9 +13,10 @@
     "assets:check": "node scripts/optimize-images.cjs --check",
     "assets:rebuild": "node scripts/rebuild-assets.cjs",
     "assets:wedding": "node scripts/build-wedding-character-assets.cjs",
-    "assets:wedding-juggler": "node scripts/build-wedding-juggler.cjs",
+    "assets:original": "node scripts/build-original-wedding-art.cjs",
     "test:e2e": "playwright test --config test/playwright.config.mjs",
-    "test:integration": "playwright test --config test/playwright.integration.config.mjs"
+    "test:integration": "playwright test --config test/playwright.integration.config.mjs",
+    "assets:ui": "python scripts/optimize-ui-assets.py"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.0",

@@ -14,10 +14,10 @@ test('right shoulder rests at three with both anchors and elbows follow shoulder
  await expect(page.locator('[data-motion="rightShoulderUpper"]')).toBeVisible();await expect(page.locator('[data-motion="rightShoulderLower"]')).toBeVisible();
  await select(page,'rightShoulder',5);await expect(page.locator('[data-motion="rightShoulderLower"]')).toHaveCount(0);
  await page.getByRole('button',{name:'归位到 3°',exact:true}).click();await expect(page.locator('[data-motion="rightShoulderLower"]')).toBeVisible();
- await select(page,'rightElbow',200);await expect(page.getByLabel('旋转角度',{exact:true})).toHaveValue('160');
+ await select(page,'rightElbow',200);await expect(page.getByLabel('旋转角度',{exact:true})).toHaveValue('200');
  await select(page,'rightShoulder');await page.getByRole('button',{name:'下点 · 上举',exact:true}).click();await expect(page.getByLabel('旋转角度',{exact:true})).toHaveValue('3');
- await select(page,'rightElbow',200);await expect(page.getByLabel('旋转角度',{exact:true})).toHaveValue('100');
- await select(page,'leftShoulder');await page.getByRole('button',{name:'下点 · 上举',exact:true}).click();await select(page,'leftElbow',200);await expect(page.getByLabel('旋转角度',{exact:true})).toHaveValue('100');
+ await select(page,'rightElbow',200);await expect(page.getByLabel('旋转角度',{exact:true})).toHaveValue('200');
+ await select(page,'leftShoulder');await page.getByRole('button',{name:'下点 · 上举',exact:true}).click();await select(page,'leftElbow',200);await expect(page.getByLabel('旋转角度',{exact:true})).toHaveValue('200');
  await page.getByRole('button',{name:'保存到本机',exact:true}).click();await page.reload();await expect(page.locator('.stage image')).toBeVisible();await select(page,'rightShoulder');await expect(page.getByLabel('旋转角度',{exact:true})).toHaveValue('3');
 });
 test('review page removes binding workflows and enforces new movement limits',async({page,app})=>{
@@ -31,14 +31,14 @@ test('review page removes binding workflows and enforces new movement limits',as
  }
  await page.getByRole('button',{name:'恢复初始姿态',exact:true}).click();await page.screenshot({path:artifactPath('review-page-desktop.png'),fullPage:true});
 });
-test('unlock opens movable joints and restoring limits also restores elbow range',async({page,app})=>{
+test('unlock opens other movable joints while cumulative elbows survive restoring limits',async({page,app})=>{
  await ready(page,app);await select(page,'rightElbow',1080);await page.getByRole('button',{name:'解放旋转角度',exact:true}).click();
  for(const key of ['head','leftShoulder','rightShoulder','waist','leftLeg','rightLeg','leftShoe','rightShoe']){await select(page,key,120);await expect(page.getByLabel('旋转角度',{exact:true})).toHaveValue('120');}
  await expect(page.locator('[data-point$="Hand"]')).toHaveCount(0);await page.getByRole('button',{name:'恢复角度限制',exact:true}).click();
- for(const [key,value] of [['head',20],['rightShoulder',45],['leftShoulder',35],['waist',10],['leftLeg',9],['rightShoe',5],['rightElbow',160]]){await select(page,key);await expect(page.getByLabel('旋转角度',{exact:true})).toHaveValue(String(value));}
+ for(const [key,value] of [['head',20],['rightShoulder',45],['leftShoulder',35],['waist',10],['leftLeg',9],['rightShoe',5],['rightElbow',1080]]){await select(page,key);await expect(page.getByLabel('旋转角度',{exact:true})).toHaveValue(String(value));}
 });
 test('elbow pointer drag accumulates full turns for both arms',async({page,app})=>{
- await ready(page,app);await page.getByRole('button',{name:'恢复初始姿态',exact:true}).click();await page.getByRole('button',{name:'解放旋转角度',exact:true}).click();
+ await ready(page,app);await page.getByRole('button',{name:'恢复初始姿态',exact:true}).click();
  for(const side of ['left','right']){
   const h=page.locator(`[data-motion="${side}Elbow"]`),geo=await h.evaluate(el=>{const p=el.parentElement.querySelector('[data-motion-root]'),m=el.getScreenCTM(),center=new DOMPoint(+p.getAttribute('cx'),+p.getAttribute('cy')).matrixTransform(m),tip=new DOMPoint(+el.getAttribute('cx'),+el.getAttribute('cy')).matrixTransform(m);return {x:center.x,y:center.y,dx:tip.x-center.x,dy:tip.y-center.y};});
   await page.mouse.move(geo.x+geo.dx,geo.y+geo.dy);await page.mouse.down();

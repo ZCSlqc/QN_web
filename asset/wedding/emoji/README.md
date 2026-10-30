@@ -1,31 +1,9 @@
-# emoji 表情头套
+# emoji 头像
 
-来源：用户提供的 `artifacts/emojiHead/`，当前29张500×500 WebP已全部接入。礼花已移到good物件目录。默认8张，展开可查看全部29张；人物五官部件库独立保留。
+29 张正面、7 张背面定稿图，统一为 256×256 透明 WebP。这些小图直接作为维护源，不再保留重复的 sources 大图。正面来自用户素材，独立背面使用 imagegen 绘制，提示词保留于 `back-prompts.json`。
 
-默认：被爱包围、飞吻、派对主角、满眼星星、墨镜大佬、搞怪吐舌、惊到冒烟、感动泪目。
+`catalog.json` 记录 ID、中文名、featured 精选标记、尺寸、锚点和 backFile。修改精选与排序以此文件为准，脚本不会重置。工具栏首页为老虎机和 11 款特色表情，点“更多”展开全部。衣橱可设为常用头像，工具栏表情则临时换头 5 秒。
 
-全部列表包含胡子伪装、小恶魔、冻得发抖、认真研究，以及微笑、笑弯眼、吐舌、眨眼、秘密、发财、心动、隐身等其余21款。头像和临时表达共用同一清单。
+主体保持原比例，位于 224×224 区域，公共挂点 (128,248)。一般背面共用 yellow-back，派对、小恶魔、隐身、冰冻、冒烟、秘密使用独立背面。
 
-默认展示优先婚礼祝福与有特色的夸张表情；全部列表保留相似笑脸及“秘”等符号头像，供后续自行筛选。若删除某款，调整生成脚本中的selections，再重建清单；不要仅删除正在引用的图片。
-
-展示顺序按视觉与含义相似度排列：微笑/大笑/眨眼 → 吐舌/馋嘴 → 亲亲/爱心/星星眼 → 泪目/发呆/隐身 → 眼镜/伪装/墨镜 → 发财及特殊造型。精选入口沿用同一顺序，头像与临时表达列表一致。文件名与稳定ID不随展示顺序变化。
-
-`catalog.json` 记录中文名、稳定ID和原UUID文件映射；`sources/` 保存原图。前后全部36张发布图统一为256×256透明WebP。前端加载路径为 `/wedding/emoji/`。
-
-统一规格：主体等比例放入224×224区域，水平居中、底部基线y=248，公共挂点为(128,248)，归一化坐标为(0.5,0.96875)。保留原比例，不拉伸帽子、双角和烟云；原始大图不修改。`width`、`height`、`contentSize`、`anchor`同步写入目录数据。所有正反面可以使用同一绘制尺寸和挂点，无需逐图裁切或补偿。
-
-重建：`node frontend/scripts/curate-wedding-emojis.cjs`，同步生成前端目录 `emojiHeads.json`、发布副本及资源清单。
-
-换装中以独立“emoji”分类提供，使用与动物头像互斥的头套槽位，不覆盖原人物五官和发型选择；切回“使用人物头像”恢复原搭配。
-
-## 绘制背面
-
-背面由内置imagegen基于对应正面图片逐张生成，保留透明背景和柔和的立体明暗。普通23款共用 `yellow-back.webp`；以下6款独立使用 `party-back.webp`、`little-devil-back.webp`、`invisible-back.webp`、`freezing-back.webp`、`mind-blown-back.webp`、`secret-back.webp`。
-
-派对保留彩帽和彩纸，小恶魔保留紫色双角，隐身保留半透明淡色与虚线轮廓，冰冻保留蓝紫色与冰霜边缘，惊到冒烟保留开口头顶与烟云，秘密使用无字的粉色圆头。背面均去除五官和正面文字。
-
-同尺寸无损源图在 `sources/back/*.webp`，完整提示词在 `back-prompts.json`。执行 `node frontend/scripts/build-emoji-backs.cjs` 保留alpha、裁切透明边缘并输出256×256的WebP，同步到 `frontend/public/wedding/emoji/`，登记资源清单。正面与背面生成脚本共用 `emoji-frame.cjs`，保证重建后规格一致。
-
-`catalog.json` 的 `backFile` 指定背面图片。渲染器按需加载并复用共用背面缓存；所有emoji统一按180/224缩放整张画布，并把公共挂点放在人物本地y=-355处，正反切换无需额外裁切或独立缩放。已取消旧的Canvas纯色圆及自动轮廓背面替代。
-
-婚礼工具栏的emoji可用于临时表达感想：选中后在人物头顶显示3.2秒，不修改头像；新表达替换旧表达，页面隐藏时暂停计时。礼花筒归入 `../good/party-popper.webp`，不出现在头像列表。
+根目录执行 `node frontend/scripts/curate-wedding-emojis.cjs` 校验并发布正面和前端清单；`node frontend/scripts/build-emoji-backs.cjs` 校验并发布背面。完整同步使用 `npm --prefix frontend run assets:rebuild`。礼花筒属于 `wedding/original/flowers/` 物件。

@@ -326,6 +326,7 @@
 .weather-icons .selected img { filter: drop-shadow(0 2px 2px #73583c55); }
 .weather-control p { z-index: 7; }
 .cat-emotion { position: absolute; top: 8%; right: 18%; width: 40px; height: 40px; object-fit: contain; pointer-events: none; }
+
 .cat-emotion.heart { animation: heart-rise 2.4s ease-out both; }
 .cat-emotion.idea { animation: idea-appear 1.4s ease-out both; }
 .cat-emotion.stars { animation: idle-stars 3s ease-in-out infinite; }

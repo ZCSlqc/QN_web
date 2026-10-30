@@ -174,9 +174,10 @@ export function createCatLife(configs, random = Math.random) {
   }
   return {
     cats,
+    reservePet(id,player){const cat=cats.find(c=>c.id===id);if(cat){stop(cat,'sit',20000);cat.familiarUntil=Math.max(cat.familiarUntil,time+20000);attend(cat,player);}return cat;},
     pet(id, player) { const cat = cats.find((c) => c.id === id); if (cat) react(cat, true, player); return cat; },
     bless(player) { [...cats].sort((a, b) => distance(a, player) - distance(b, player)).slice(0, 2).forEach((c) => react(c, false, player)); },
-    update(dt, now, actors, player, reduce = false) {
+    update(dt, now, actors, player, reduce = false, ready = () => true) {
       time = now;
       let changed = false;
       if (reduce !== reduced) {
@@ -188,7 +189,7 @@ export function createCatLife(configs, random = Math.random) {
         if (cat.reactingUntil && cat.reactingUntil <= time) { cat.reactingUntil = 0; pose(cat, "sit"); changed = true; }
         if (cat.reactingUntil || time - cat.transition < 200) changed = true;
         if (cat.reactingUntil) changed = faceTarget(cat, cat.attention, time) || changed;
-        if (reduced || cat.reactingUntil) continue;
+        if (reduced || cat.reactingUntil || !ready(cat)) continue;
         const danger = [player, ...cats.filter((c) => c.state === "trot")].find((p) => p !== cat && distance(cat, p) < 95);
         if (cat.personality === "shy" && danger && cat.familiarUntil <= time && cat.retreatUntil <= time) {
           const angle = Math.atan2(cat.y - danger.y, cat.x - danger.x);

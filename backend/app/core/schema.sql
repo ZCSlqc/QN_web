@@ -18,6 +18,13 @@ CREATE TABLE IF NOT EXISTS wedding_wardrobes (
     updated_at TEXT NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS wedding_face_defaults (
+    actor_key TEXT PRIMARY KEY NOT NULL,
+    user_id TEXT UNIQUE REFERENCES user(id) ON DELETE CASCADE,
+    preset_id TEXT NOT NULL CHECK(preset_id IN ('face-completes-face1','face-completes-face2','face-completes-face3','face-completes-face4')),
+    created_at TEXT NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS things (
     id TEXT PRIMARY KEY NOT NULL DEFAULT (lower(hex(randomblob(4)) || '-' || hex(randomblob(2)) || '-4' || substr(hex(randomblob(2)),2) || '-' || substr('89ab', (random() & 3)+1, 1) || substr(hex(randomblob(2)),2) || '-' || hex(randomblob(6)))),
     entry      TEXT    NOT NULL UNIQUE,
@@ -85,7 +92,6 @@ CREATE TABLE IF NOT EXISTS mailbox_letters (
     sender_name TEXT NOT NULL,
     recipient_name TEXT NOT NULL,
     kind TEXT NOT NULL,
-    title TEXT NOT NULL,
     body TEXT NOT NULL,
     created_at TEXT NOT NULL,
     recipient_read_at TEXT,

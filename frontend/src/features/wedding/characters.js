@@ -271,7 +271,7 @@ export async function loadCharacters() {
     ctx.scale(CHARACTER_SCALE, CHARACTER_SCALE);
     ctx.fillStyle = "#5e4c3433";
     ctx.beginPath();
-    ctx.ellipse(0, -2, 100*(actor.shadowScale||1), 22*(actor.shadowScale||1), 0, 0, 7);
+    ctx.ellipse(actor.bodyOffset?.x||0, -2, 100*(actor.shadowScale||1), 22*(actor.shadowScale||1), 0, 0, 7);
     ctx.fill();
     if (actor.player) {
       ctx.strokeStyle = "#66876dbb";
@@ -280,7 +280,7 @@ export async function loadCharacters() {
       ctx.ellipse(0, -2, 108, 27, 0, 0, 7);
       ctx.stroke();
     }
-    ctx.translate(0,-(actor.lift||0));
+    ctx.translate(actor.bodyOffset?.x||0,(actor.bodyOffset?.y||0)-(actor.lift||0));
     // A forced rear forearm must precede the entire figure, including legs.
     function upperBodyTransform(){
       if(rigid){const w=waistTransform(rigid,bindings);ctx.translate(w.pivot.x,w.pivot.y);ctx.rotate(w.angle);ctx.translate(-w.pivot.x,-w.pivot.y);ctx.translate(0,upperBodyDrop);}
@@ -291,7 +291,10 @@ export async function loadCharacters() {
       if(!image||!actor.circularArm?.enabled)return;
       const left=circularHandFrame(rigid,bindings,actor.leftCircularArm,-1).palm,right=circularHandFrame(rigid,bindings,actor.circularArm,1).palm;
       const placement=heldPlacement(item,image,left,right);
+      ctx.save();
+      if(placement.mirrored){ctx.translate(2*placement.grip.x,0);ctx.scale(-1,1);}
       ctx.drawImage(image,placement.x,placement.y,placement.width,placement.height);
+      ctx.restore();
     }
     if(rigid){ctx.save();upperBodyTransform();if(back)drawHeld();drawArms('behind');ctx.restore();}
     for (const side of [-1, 1]) {

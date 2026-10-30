@@ -2,12 +2,11 @@
 const path=require('node:path'),{spawnSync}=require('node:child_process');
 const steps=[
  ['build-wedding-character-assets.cjs'],
- ['build-wedding-juggler.cjs'],
+ ['build-original-wedding-art.cjs'],
  ['build-wedding-cat-actions.cjs'],
  ['build-animal-backs.cjs'],
  ['build-emoji-backs.cjs'],
  ['curate-wedding-emojis.cjs'],
- ['organize-wedding-props.cjs'],
  ['optimize-images.cjs','--prune'],
  ['optimize-images.cjs','--check'],
 ];

@@ -24,7 +24,7 @@ def test_reset_preserves_content_and_backup(pet_pair, tmp_path):
     from scripts.reset_pet_mailbox import reset_database
     from app.services.pet_wallets import replenish_startup_food
     replenish_startup_food()
-    client.post('/mailbox/letters', data={'title': 'reset test', 'body': 'private body', 'request_key': 'reset-letter-000001'}, headers=auth['养猫甲'])
+    client.post('/mailbox/letters', data={'body': 'private body', 'request_key': 'reset-letter-000001'}, headers=auth['养猫甲'])
     client.post('/pet/feed', data={'food': 'can', 'request_key': 'reset-feed-0000001'}, headers=auth['养猫甲'])
     client.post('/blessings', data={'content': 'preserve me'}, headers=auth['访客'])
     result = reset_database(module.settings.DB_PATH, tmp_path / 'backups')

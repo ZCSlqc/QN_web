@@ -10,6 +10,11 @@ const standardPoints = [[-32,-450],[32,-450],[-32,-414],[32,-414],[0,-395],[0,-3
 export function presetAppearance(a, preset) {
   return {...a, face:preset.id, faceLayout:preset.id, eyes:preset.eyes, eyebrows:preset.eyebrows, mouth:preset.mouth, nose:preset.nose};
 }
+export function withDefaultFace(appearance,presetId,savedAppearance){
+  if(['face','faceLayout','eyes','eyebrows','mouth','nose'].some(key=>Object.hasOwn(savedAppearance||{},key)))return appearance;
+  const preset=facePresets.find(p=>p.id===presetId);
+  return preset?presetAppearance(appearance,preset):appearance;
+}
 export function drawFace(ctx, images, parts, a, pose = {}) {
   const preset = facePresets.find(p=>p.id===a.faceLayout) || facePresets[0];
   const points = preset.points || standardPoints;

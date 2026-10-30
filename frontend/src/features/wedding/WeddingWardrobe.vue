@@ -17,20 +17,28 @@
     <p v-if="libraryError" class="library-error" role="alert">{{libraryError}}</p>
    </template>
    <div v-if="category==='hair'" class="face-mode"><button aria-label="没有头发" :aria-pressed="draft.hair==='none'" @click="draft.hair='none';draft.animalHead=null">没有</button></div>
+   <div v-if="category==='headwear'" class="face-mode"><button aria-label="没有头饰" :aria-pressed="draft.headwear==='none'" @click="choose({id:'none'})">没有</button></div>
    <div v-if="category==='animalHead'||category==='emojiHead'" class="face-mode"><button :aria-pressed="!draft.animalHead" @click="draft.animalHead=null">使用人物头像</button></div>
-   <div v-if="category==='emojiHead'" class="face-mode"><button :aria-pressed="!moreEmojis" @click="moreEmojis=false">精选 8 款</button><button :aria-pressed="moreEmojis" @click="moreEmojis=true">更多趣味 · 全部 {{emojiHeads.length}} 款</button></div>
+   <div v-if="category==='emojiHead'" class="face-mode"><button :aria-pressed="!moreEmojis" @click="moreEmojis=false">精选 {{emojiHeads.filter(p=>p.featured).length}} 款</button><button :aria-pressed="moreEmojis" @click="moreEmojis=true">更多趣味 · 全部 {{emojiHeads.length}} 款</button></div>
    <template v-if="category==='face'">
     <div class="face-mode"><button :aria-pressed="!editingFace" @click="editingFace=false">默认搭配</button><button :aria-pressed="editingFace" @click="editingFace=true">自己搭配五官</button></div>
     <div v-if="editingFace" class="face-tabs"><button v-for="item in faceCategories" :key="item.id" :aria-pressed="faceSlot===item.id" @click="faceSlot=item.id;filterGroup=''">{{item.label}}</button></div>
    </template>
-   <template v-if="showParts">
+   <template v-if="category==='headwear'">
+    <section v-for="group in headwearGroups" :key="group.id" class="headwear-group" :aria-label="group.label">
+     <h3>{{group.label}}</h3>
+     <div class="part-grid" data-slot="headwear"><button v-for="part in shown.filter(p=>p.group===group.id)" :key="part.id" :aria-label="part.label" :aria-pressed="selected(part)" @click="choose(part)"><img :src="partUrl(part)" alt="" loading="lazy"><small>{{part.label}}</small></button></div>
+    </section>
+    <p class="part-total">{{shown.length}} 款可选</p>
+   </template>
+   <template v-else-if="showParts">
     <fieldset v-if="isStyled" class="color-options"><legend>{{category==='shirt'&&draft.coatStyle?'内搭颜色':'颜色'}}</legend><button v-for="group in groups" :key="group" :aria-label="colorLabel(group)" :aria-pressed="currentPart?.group===group" @click="changeColor(group)">{{colorLabel(group)}}</button></fieldset>
     <label v-else-if="groups.length>1" class="group-filter">颜色分类<select v-model="filterGroup"><option value="">全部</option><option v-for="group in groups" :key="group" :value="group">{{groupLabel(group)}}</option></select></label>
     <fieldset v-if="category==='shirt'||category==='pants'&&occasion==='daily'" class="length-options">
      <legend>{{category==='shirt'?'袖长':'裤长'}}</legend><label v-for="length in lengths" :key="length.id"><input type="radio" :name="category+'-length'" :value="length.id" :checked="draft[category==='shirt'?'innerSleeve':'leg']===length.id" @change="chooseLength(length.id)">{{length.label}}</label>
     </fieldset>
     <div class="part-grid" :data-slot="slot"><button v-for="part in shown" :key="part.id" :aria-label="partName(part)" :title="part.name" :aria-pressed="selected(part)" @click="choose(part)">
-     <FacePreview v-if="slot==='face'" :appearance="presetAppearance(draft,part)"/><span v-else-if="slot==='headwear'&&part.id==='none'" class="empty-accessory">○</span><img v-else :src="partUrl(part)" alt="" loading="lazy"><small>{{partName(part)}}</small>
+     <FacePreview v-if="slot==='face'" :appearance="presetAppearance(draft,part)"/><img v-else :src="partUrl(part)" alt="" loading="lazy"><small>{{partName(part)}}</small>
     </button></div><p class="part-total">{{shown.length}} 款可选</p>
    </template>
    <template v-if="cards.length">
@@ -52,7 +60,7 @@ import ClothingPreview from './ClothingPreview.vue';
 import FacePreview from './FacePreview.vue';
 import {facePresets,presetAppearance} from './faceLayouts';
 import {formalStyles,formalColors,isCoatStyle} from './formalWear';
-import {headwearOptions} from './headwear';
+import {headwearOptions,headwearGroups} from './headwear';
 import {dressShoes,dressShoeColors} from './dressShoes';
 import {occasions,bottomStyles,topName,changeClothes,applyOutfit,outfitPresets,outfitVariant,clothingSignature} from './outfitCatalog';
 import {byId,styledSlots,styleKey,styleLabel,styleVariant,animalHeads,emojiHeads,options,partUrl,partLabel,groupLabel,makeAppearance,normalizeAppearance} from './catalog';
@@ -80,7 +88,7 @@ const lookSummary=computed(()=>draft.coatStyle?`${draft.topStyle?topName(draft.t
 const slot=computed(()=>category.value==='skin'?'head':category.value==='face'?(editingFace.value?faceSlot.value:'face'):category.value);
 const showParts=computed(()=>section.value==='makeup'||category.value==='shoes'||category.value==='pants'&&occasion.value==='daily'||category.value==='shirt');
 const available=computed(()=>{
- if(slot.value==='headwear')return headwearOptions.map(p=>({...p,name:p.label,derivedFile:`accessories/${p.id}-front.svg`}));
+ if(slot.value==='headwear')return headwearOptions.filter(p=>p.id!=='none').map(p=>({...p,name:p.label,derivedFile:`accessories/${p.id}-front.svg`}));
  if(slot.value==='face')return facePresets;
  if(slot.value==='emojiHead')return emojiHeads.filter(p=>moreEmojis.value||p.featured);
  if(slot.value==='animalHead')return animalHeads;
@@ -241,7 +249,7 @@ function reset(){Object.assign(draft,normalizeAppearance(props.defaultAppearance
 .save-outfit{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px;margin-bottom:14px}.save-outfit input{min-width:0;padding:8px;border:1px solid #dfcaba;border-radius:8px;background:#fffcf8;font:inherit;font-size:11px;color:#795d50}.save-outfit button,.remove-outfit{border:1px solid #dfcaba;background:#eee0d1;color:#795d50;padding:8px;border-radius:8px;font-size:11px;cursor:pointer}.remove-outfit{margin-top:10px;background:#faf1eb}.library-error{font-size:11px;color:#a45151}
 .wear-modes{display:flex;gap:6px;margin-bottom:12px}.wear-modes button{flex:1;padding:8px;background:#faf4ec;color:#8b6c59;border:1px solid #e7d8c9;border-radius:9px;cursor:pointer}
 .layer-tabs{border-bottom:1px solid #e8dacc;padding-bottom:8px}.layer-tabs button{flex:1}.clothes-heading{font-size:12px;font-weight:600;margin:17px 0 10px;color:#8b6c59}.garment-colors{margin-top:14px}
-.accessory-note{font-size:11px;line-height:1.6;color:#9b8270;margin:0 0 12px}.empty-accessory{width:50px;height:54px;display:grid;place-items:center;font-size:30px;color:#b29b88}
+.accessory-note{font-size:11px;line-height:1.6;color:#9b8270;margin:0 0 12px}.headwear-group+.headwear-group{margin-top:16px}.headwear-group h3{font-size:12px;font-weight:500;color:#947b66;margin:0 0 8px}
 .wardrobe nav button,
 .color-options button,
 .face-mode button,

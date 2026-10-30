@@ -1,48 +1,24 @@
-import { test, expect } from '../fixtures/app.mjs';
+import {test,expect} from '../fixtures/app.mjs';
 
-test('food, gifts and original payment code open from the garden', async ({ page, app }, testInfo) => {
-  test.setTimeout(120000);
-  app.allowedPages = ['/wedding'];
-  await page.goto('/wedding');
-  await expect(page.locator('canvas[data-renderer="2d"]')).toBeVisible();
-  const menu = page.getByRole('navigation', { name: '婚礼招待' });
-  await menu.getByRole('button', { name: '新鲜水果' }).click();
-  const dialog = page.locator('dialog');
-  await expect(dialog).toBeVisible({timeout:20000});
-  await dialog.getByRole('button', { name: '水果', exact: true }).click();
-  await expect(dialog.getByRole('button', { name: /^领取/ })).toHaveCount(11);
-  await expect(dialog.getByRole('button', { name: '领取桔子', exact: true })).toHaveCount(0);
-  await expect(dialog.getByRole('button', { name: '领取可乐', exact: true })).toHaveCount(0);
-  await dialog.getByRole('button', { name: '领取苹果', exact: true }).click();
-  await expect(page.locator('.collected')).toContainText('苹果');
-  await page.keyboard.press('Escape');
-  await expect(dialog).not.toBeVisible();
-  await menu.getByRole('button', { name: '花礼管家' }).click();
-  await dialog.getByRole('button', { name: '领取红色金带礼盒', exact: true }).click();
-  await expect(page.locator('.collected')).toContainText('红色金带礼盒');
-  await dialog.getByRole('button', { name: '关闭招待面板' }).click();
-  await page.getByRole('button', { name: '收起领取物品' }).click();
-  await expect(page.locator('.collected')).toHaveCount(0);
-  await menu.getByRole('button', { name: '美食与饮品' }).click();
-  await expect(dialog).toBeVisible({timeout:20000});
-  await expect(dialog.getByRole('button', { name: '领取汉堡', exact: true })).toBeVisible();
-  await expect(dialog.getByRole('button', { name: '领取珍珠奶茶', exact: true })).toBeVisible();
-  await dialog.getByRole('button', { name: '领取可乐', exact: true }).click();
-  await expect(page.locator('.collected')).toContainText('可乐');
-  await expect(dialog.getByRole('button', { name: '领取蛋挞', exact: true })).toBeVisible();
-  await dialog.getByRole('button', { name: '餐食', exact: true }).click();
-  await expect(dialog.getByRole('button', { name: /^领取/ })).toHaveCount(3);
-  await dialog.getByRole('button', { name: '领取饺子拼盘', exact: true }).click();
-  await expect(page.locator('.collected')).toContainText('饺子拼盘');
-  await page.keyboard.press('Escape');
-  await menu.getByRole('button', { name: '随个份子' }).click();
-  await expect(dialog).toBeVisible({timeout:20000});
-  await expect(dialog.locator('.payment-code')).toHaveJSProperty('naturalWidth', 1118);
-  await expect(dialog.getByRole('link', { name: '保存收款码原图' })).toHaveAttribute('download', '婚礼微信收款码.jpg');
-  await page.keyboard.press('Escape');
-  await page.screenshot({path:testInfo.outputPath('garden-gifts.png')});
-  await page.setViewportSize({width:390,height:844});
-  await menu.getByRole('button', { name: '随个份子' }).click();
-  await expect(dialog).toBeInViewport();
-  await page.screenshot({path:testInfo.outputPath('mobile-payment.png')});
+test('four food styles and two gift styles have six original items each, and QR stays native',async({page,app},testInfo)=>{
+ test.setTimeout(120000);app.allowedPages=['/wedding'];
+ await page.emulateMedia({reducedMotion:'reduce'});await page.goto('/wedding');
+ const canvas=page.locator('.wedding-canvas canvas');await expect(canvas).toHaveAttribute('data-motion-rig','original-svg-segments');
+ const menu=page.getByRole('navigation',{name:'婚礼招待'}),dialog=page.locator('dialog');
+ for(const [station,tabs,pick] of [
+  ['饮料与小食',['清爽饮料','活力小食'],'汉堡'],
+  ['中餐与甜品',['家宴中餐','奶油甜品'],'草莓冰淇淋'],
+  ['礼物与鲜花',['奶油花园','喜庆红金'],'红色金带礼盒'],
+ ]){
+  await menu.getByRole('button',{name:station}).click();await expect(dialog).toBeVisible();
+  await expect(dialog.getByRole('button',{name:/^领取/})).toHaveCount(12);
+  for(const tab of tabs){await dialog.getByRole('button',{name:tab+' 6',exact:true}).click();await expect(dialog.getByRole('button',{name:/^领取/})).toHaveCount(6);}
+  await dialog.getByRole('button',{name:'领取'+pick,exact:true}).click();await expect(page.locator('.collected')).toContainText(pick);
+  await dialog.locator('.item-grid img').evaluateAll(imgs=>Promise.all(imgs.map(i=>i.decode())));
+  await page.screenshot({path:testInfo.outputPath(station+'.png')});await page.keyboard.press('Escape');
+ }
+ await page.getByRole('button',{name:'收起领取物品'}).click();await expect(page.locator('.collected')).toHaveCount(0);
+ await menu.getByRole('button',{name:'随个份子'}).click();await expect(dialog.locator('.payment-code')).toHaveJSProperty('naturalWidth',1118);
+ await expect(dialog.getByRole('link',{name:'保存收款码原图'})).toHaveAttribute('download','婚礼微信收款码.jpg');
+ await page.setViewportSize({width:390,height:844});await expect(dialog).toBeInViewport();await page.screenshot({path:testInfo.outputPath('mobile-payment.png')});
 });

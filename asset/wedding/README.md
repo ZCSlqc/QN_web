@@ -1,16 +1,16 @@
 # 婚礼场景素材
 
-## 发布资产
+- `background/garden-orthographic.webp`：当前平行投影庭院背景，只发布这一张背景。旧故事书版、未接入的叠层和早期点位已清理。
+- `kenney_modular-characters/`：原版 428 张 PNG、SVG 原稿、CC0 授权及 Derived 衣物与刚性四肢等衍生素材。
+- `custom/formal/`：仍用于礼服重建的原版 SVG 提取模板。
+- `original/`：自制食物、花礼、杂耍与婚戒，按类型分文件夹，编排参数见 `catalog.json`。
+- `emoji/`、`pixelAnimal/`：定稿的透明头像正反面。
+- `cats/`：五只猫的定稿坐姿、动作原图集与发布图集。
+- `payment/`：保留原始 JPEG 收款码及庭院小牌使用的 WebP 预览。
 
-- `garden-orthographic.png`：内置imagegen生成，参考最早的花园婚礼概念图（删除人物和UI），重新约束为平行投影。发布到 `frontend/public/wedding/background/garden-orthographic.webp`，原图保留。
-- `modular/`：Kenney Modular Characters 官方包的全部428张PNG分层部件（`characters/`保留初版精选素材），CC0-1.0；`LICENSE.txt` 保留原授权，`catalog.json` 标明原文件对应关系。没有使用下载包中的SWF或执行其中代码。
-- 图片使用 Canvas 2D 实时组合。衣服配色、背面轮廓、婚纱及配饰为本地适配，不是素材包原带的婚礼角色。
+共用爱心、星星、灯泡、信封位于 `asset/shared/icons/`。移动范围配置位于 `frontend/src/features/wedding/walkable-area.json`，不在美术资源目录重复发布。
 
-## 外部素材调研
-
-采用：https://kenney.nl/assets/modular-characters （425项2D分层部件，CC0）。
-
-备选：https://kenney.nl/assets/toon-characters （270项2D姿态，CC0）。角色更偏冒险主题，本次选择更方便换婚服的Modular套件。
+从项目根目录执行 `npm --prefix frontend run assets:rebuild`，从此目录完整重建和发布，不依赖 artifacts 或项目外临时文件。图片按需加载，人物部件按原坐标与比例组合，不拉伸。
 
 ## 最终背景提示词（内置 imagegen）
 

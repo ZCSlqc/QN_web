@@ -1,6 +1,6 @@
 <template>
   <button class="mailbox-trigger" :class="{ scrolled }" :aria-label="triggerLabel" :title="triggerLabel" @click="openMailbox">
-    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="m4 7 8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <img src="/shared/icons/envelope.webp" width="27" height="24" style="object-fit:contain" alt="" aria-hidden="true" />
     <span v-if="summary.unread_letters" class="mailbox-badge">{{ summary.unread_letters > 99 ? '99+' : summary.unread_letters }}</span>
     <span v-else-if="summary.unread_reply_threads" class="mailbox-dot" aria-hidden="true"></span>
   </button>
@@ -27,7 +27,7 @@
         <div v-else class="mailbox-list">
           <button v-for="letter in letters" :key="letter.id" class="letter-item" :class="{ unread: letter.unread }" @click="openLetter(letter.id)">
             <span class="letter-icon" aria-hidden="true">{{ kinds[letter.kind]?.icon || '✉️' }}</span>
-            <span class="letter-meta"><strong>{{ letter.title }}</strong><small>{{ box === 'inbox' ? `来自 ${letter.sender_name}` : `写给 ${letter.recipient_name}` }} · {{ letter.created_at }}</small></span>
+            <span class="letter-meta"><strong>{{ letter.preview }}</strong><small>{{ box === 'inbox' ? `来自 ${letter.sender_name}` : `写给 ${letter.recipient_name}` }} · {{ letter.created_at }}</small></span>
             <span class="letter-flags"><span v-if="letter.unread" class="letter-badge">未读</span><span v-else-if="letter.is_sender" class="receipt">{{ letter.recipient_read_at ? '对方已读' : '对方未读' }}</span><span v-if="letter.new_comments" class="letter-badge reply">新留言 {{ letter.new_comments }}</span></span>
           </button>
           <p v-if="!letters.length" class="mailbox-state">{{ box === 'inbox' ? '还没有来信，先给对方写一封吧。' : '你写下的悄悄话，会留在这里。' }}</p>
@@ -41,13 +41,11 @@
         <p class="letter-to">写给 {{ summary.partner }}</p>
         <label for="mail-kind">想说些什么</label>
         <select id="mail-kind" v-model="draft.kind" :disabled="busy"><option v-for="(kind, key) in kinds" :key="key" :value="key">{{ kind.icon }} {{ kind.label }}</option></select>
-        <label for="mail-title">标题</label>
-        <input id="mail-title" v-model="draft.title" maxlength="100" required :disabled="busy" placeholder="给这封信起个名字…" />
         <label for="mail-body">正文</label>
         <textarea id="mail-body" v-model="draft.body" rows="4" maxlength="10000" required :disabled="busy" placeholder="想道个歉，分享一件小事，或者只是说一句想你…"></textarea>
         <p class="mailbox-count">{{ draft.body.length }} / 10000</p>
         <p v-if="actionError" class="mailbox-error" role="alert">{{ actionError }}</p>
-        <footer class="mailbox-actions"><button type="button" :disabled="busy" @click="switchBox(box)">取消</button><button class="primary" type="submit" :disabled="busy || !draft.title.trim() || !draft.body.trim() || !summary.partner_ready">{{ busy ? '投递中…' : '寄给ta' }}</button></footer>
+        <footer class="mailbox-actions"><button type="button" :disabled="busy" @click="switchBox(box)">取消</button><button class="primary" type="submit" :disabled="busy || !draft.body.trim() || !summary.partner_ready">{{ busy ? '投递中…' : '寄给ta' }}</button></footer>
       </form>
 
       <template v-else>
@@ -57,7 +55,6 @@
         <template v-else-if="detail">
           <article class="letter-paper">
             <span class="letter-kind">{{ kinds[detail.kind]?.icon }} {{ kinds[detail.kind]?.label }}</span>
-            <h4>{{ detail.title }}</h4>
             <p class="letter-to">{{ detail.sender_name }} 写给 {{ detail.recipient_name }} · {{ detail.created_at }}</p>
             <div class="letter-body">{{ detail.body }}</div>
             <p class="letter-receipt">{{ detail.is_sender ? (detail.recipient_read_at ? `对方已读 · ${detail.recipient_read_at}` : '对方还没有打开这封信') : (detail.recipient_read_at ? `已读 · ${detail.recipient_read_at}` : '阅读状态待同步') }}</p>
@@ -97,7 +94,7 @@ const summary = reactive({ unread_letters: 0, pending_sent: 0, unread_reply_thre
 const summaryError = ref(''), listError = ref(''), detailError = ref(''), actionError = ref(''), readError = ref(''), refreshError = ref('')
 const letters = ref([]), detail = ref(null), currentLetterId = ref(null)
 const listLoading = ref(false), detailLoading = ref(false), refreshing = ref(false), busy = ref(false)
-const draft = reactive({ title: '', body: '', kind: 'secret' })
+const draft = reactive({ body: '', kind: 'secret' })
 const replyText = ref('')
 const currentIndex = computed(() => letters.value.findIndex(letter => letter.id === currentLetterId.value))
 const triggerLabel = computed(() => `私密信箱，${summary.unread_letters}封未读，${summary.unread_reply_threads}封信有新留言`)
@@ -130,7 +127,7 @@ async function refreshListAndSummary() { await Promise.allSettled([refreshSummar
 async function openMailbox() { visible.value = true; await refreshListAndSummary() }
 async function discardDraft() {
   if (busy.value) return false
-  const dirty = view.value === 'compose' ? draft.title.trim() || draft.body.trim() : replyText.value.trim()
+  const dirty = view.value === 'compose' ? draft.body.trim() : replyText.value.trim()
   if (!dirty) return true
   try {
     await ElMessageBox.confirm('还有没发送的文字，确定放弃吗？', '保留这段话', { confirmButtonText: '放弃草稿', cancelButtonText: '继续写' })
@@ -138,7 +135,7 @@ async function discardDraft() {
   } catch { return false }
 }
 function resetReply() { replyText.value = ''; replyKey = newKey(); actionError.value = '' }
-function resetDraft() { Object.assign(draft, { title: '', body: '', kind: 'secret' }); sendKey = newKey(); actionError.value = '' }
+function resetDraft() { Object.assign(draft, { body: '', kind: 'secret' }); sendKey = newKey(); actionError.value = '' }
 async function closeMailbox() {
   if (!await discardDraft()) return
   visible.value = false; detailGeneration++; resetReply(); resetDraft(); view.value = 'list'; detail.value = null
@@ -194,7 +191,7 @@ async function loadDetail(id, refresh = false) {
   } finally { if (generation === detailGeneration) { detailLoading.value = false; refreshing.value = false } }
 }
 async function sendLetter() {
-  if (busy.value || !draft.title.trim() || !draft.body.trim() || !summary.partner_ready) return
+  if (busy.value || !draft.body.trim() || !summary.partner_ready) return
   busy.value = true; actionError.value = ''
   try {
     const res = await request.post('/mailbox/letters', form({ ...draft, request_key: sendKey }), { signal: controller.signal })
@@ -233,7 +230,7 @@ async function poll() {
 }
 function onVisibility() { if (!document.hidden) void poll() }
 function beforeUnload(event) {
-  if (busy.value || draft.title.trim() || draft.body.trim() || replyText.value.trim()) {
+  if (busy.value || draft.body.trim() || replyText.value.trim()) {
     event.preventDefault()
     event.returnValue = ''
   }

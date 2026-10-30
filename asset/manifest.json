@@ -125,21 +125,6 @@
     "mode": "copy"
   },
   {
-    "source": "pet/liuyi/emotions/heart.png",
-    "public": "pet/liuyi/emotions/heart.png",
-    "mode": "copy"
-  },
-  {
-    "source": "pet/liuyi/emotions/idea.png",
-    "public": "pet/liuyi/emotions/idea.png",
-    "mode": "copy"
-  },
-  {
-    "source": "pet/liuyi/emotions/stars.png",
-    "public": "pet/liuyi/emotions/stars.png",
-    "mode": "copy"
-  },
-  {
     "source": "pet/liuyi/food/bowl-empty.webp",
     "public": "pet/liuyi/food/bowl-empty.webp",
     "mode": "copy"
@@ -255,16 +240,6 @@
     "mode": "copy"
   },
   {
-    "source": "shared/feedback/blessing-sent.png",
-    "public": "shared/feedback/blessing-sent.png",
-    "mode": "copy"
-  },
-  {
-    "source": "shared/feedback/letter-sent.png",
-    "public": "shared/feedback/letter-sent.png",
-    "mode": "copy"
-  },
-  {
     "source": "journey/maps/china/city.geojson",
     "public": "journey/maps/china/city.geojson",
     "mode": "copy"
@@ -282,11 +257,6 @@
   {
     "source": "shared/audio/city-of-stars.mp3",
     "public": "shared/audio/city-of-stars.mp3",
-    "mode": "copy"
-  },
-  {
-    "source": "shared/branding/favicon.ico",
-    "public": "shared/branding/favicon.ico",
     "mode": "copy"
   },
   {
@@ -2550,91 +2520,6 @@
     "mode": "copy"
   },
   {
-    "source": "wedding/food/cola.webp",
-    "public": "wedding/food/cola.webp",
-    "mode": "copy"
-  },
-  {
-    "source": "wedding/food/bubble-tea.webp",
-    "public": "wedding/food/bubble-tea.webp",
-    "mode": "copy"
-  },
-  {
-    "source": "wedding/food/burger.webp",
-    "public": "wedding/food/burger.webp",
-    "mode": "copy"
-  },
-  {
-    "source": "wedding/food/avocado-half.webp",
-    "public": "wedding/food/avocado-half.webp",
-    "mode": "copy"
-  },
-  {
-    "source": "wedding/food/strawberry-donut.webp",
-    "public": "wedding/food/strawberry-donut.webp",
-    "mode": "copy"
-  },
-  {
-    "source": "wedding/food/egg-tart.webp",
-    "public": "wedding/food/egg-tart.webp",
-    "mode": "copy"
-  },
-  {
-    "source": "wedding/food/chocolate-berry-cake.webp",
-    "public": "wedding/food/chocolate-berry-cake.webp",
-    "mode": "copy"
-  },
-  {
-    "source": "wedding/food/cherry-cake-slice.webp",
-    "public": "wedding/food/cherry-cake-slice.webp",
-    "mode": "copy"
-  },
-  {
-    "source": "wedding/food/cherry-ice-cream-cone.webp",
-    "public": "wedding/food/cherry-ice-cream-cone.webp",
-    "mode": "copy"
-  },
-  {
-    "source": "wedding/good/balloon-bunch-burgundy-cream.webp",
-    "public": "wedding/good/balloon-bunch-burgundy-cream.webp",
-    "mode": "copy"
-  },
-  {
-    "source": "wedding/good/bouquet-burgundy-white.webp",
-    "public": "wedding/good/bouquet-burgundy-white.webp",
-    "mode": "copy"
-  },
-  {
-    "source": "wedding/good/bouquet-blush-sticker.webp",
-    "public": "wedding/good/bouquet-blush-sticker.webp",
-    "mode": "copy"
-  },
-  {
-    "source": "wedding/good/gift-box-mint-gold.webp",
-    "public": "wedding/good/gift-box-mint-gold.webp",
-    "mode": "copy"
-  },
-  {
-    "source": "wedding/good/gift-box-red-gold.webp",
-    "public": "wedding/good/gift-box-red-gold.webp",
-    "mode": "copy"
-  },
-  {
-    "source": "wedding/good/hibiscus-yellow.webp",
-    "public": "wedding/good/hibiscus-yellow.webp",
-    "mode": "copy"
-  },
-  {
-    "source": "wedding/good/rose-red.webp",
-    "public": "wedding/good/rose-red.webp",
-    "mode": "copy"
-  },
-  {
-    "source": "wedding/good/flower-basket-pastel.webp",
-    "public": "wedding/good/flower-basket-pastel.webp",
-    "mode": "copy"
-  },
-  {
     "source": "wedding/emoji/loved.webp",
     "public": "wedding/emoji/loved.webp",
     "mode": "copy"
@@ -2692,11 +2577,6 @@
   {
     "source": "wedding/emoji/monocle.webp",
     "public": "wedding/emoji/monocle.webp",
-    "mode": "copy"
-  },
-  {
-    "source": "wedding/good/party-popper.webp",
-    "public": "wedding/good/party-popper.webp",
     "mode": "copy"
   },
   {
@@ -2882,101 +2762,6 @@
   {
     "source": "wedding/payment/wechat-receive.jpg",
     "public": "wedding/payment/wechat-receive.jpg",
-    "mode": "copy"
-  },
-  {
-    "source": "wedding/food/apple.webp",
-    "public": "wedding/food/apple.webp",
-    "mode": "copy"
-  },
-  {
-    "source": "wedding/food/banana.webp",
-    "public": "wedding/food/banana.webp",
-    "mode": "copy"
-  },
-  {
-    "source": "wedding/food/peach.webp",
-    "public": "wedding/food/peach.webp",
-    "mode": "copy"
-  },
-  {
-    "source": "wedding/food/mandarins.webp",
-    "public": "wedding/food/mandarins.webp",
-    "mode": "copy"
-  },
-  {
-    "source": "wedding/food/orange-half.webp",
-    "public": "wedding/food/orange-half.webp",
-    "mode": "copy"
-  },
-  {
-    "source": "wedding/food/grapes.webp",
-    "public": "wedding/food/grapes.webp",
-    "mode": "copy"
-  },
-  {
-    "source": "wedding/food/blueberries.webp",
-    "public": "wedding/food/blueberries.webp",
-    "mode": "copy"
-  },
-  {
-    "source": "wedding/food/pineapple.webp",
-    "public": "wedding/food/pineapple.webp",
-    "mode": "copy"
-  },
-  {
-    "source": "wedding/food/cantaloupe.webp",
-    "public": "wedding/food/cantaloupe.webp",
-    "mode": "copy"
-  },
-  {
-    "source": "wedding/food/kiwi-half.webp",
-    "public": "wedding/food/kiwi-half.webp",
-    "mode": "copy"
-  },
-  {
-    "source": "wedding/food/avocado-sticker.webp",
-    "public": "wedding/food/avocado-sticker.webp",
-    "mode": "copy"
-  },
-  {
-    "source": "wedding/food/coconut-drink.webp",
-    "public": "wedding/food/coconut-drink.webp",
-    "mode": "copy"
-  },
-  {
-    "source": "wedding/food/soup-bowl.webp",
-    "public": "wedding/food/soup-bowl.webp",
-    "mode": "copy"
-  },
-  {
-    "source": "wedding/food/braised-fish.webp",
-    "public": "wedding/food/braised-fish.webp",
-    "mode": "copy"
-  },
-  {
-    "source": "wedding/food/dumpling-platter.webp",
-    "public": "wedding/food/dumpling-platter.webp",
-    "mode": "copy"
-  },
-  {
-    "source": "wedding/good/florist-gift-backdrop.webp",
-    "public": "wedding/good/florist-gift-backdrop.webp",
-    "mode": "copy"
-  },
-  {
-    "source": "wedding/juggler/gold-bar.webp",
-    "public": "wedding/juggler/gold-bar.webp",
-    "mode": "copy"
-  },
-  {
-    "source": "wedding/juggler/gold-ingot.webp",
-    "public": "wedding/juggler/gold-ingot.webp",
-    "mode": "copy"
-  },
-  {
-    "source": "wedding/juggler/lucky-coins.webp",
-    "public": "wedding/juggler/lucky-coins.webp",
     "mode": "copy"
   },
   {
@@ -4042,6 +3827,256 @@
   {
     "source": "wedding/kenney_modular-characters/Derived/templates/sleeve-shorter.svg",
     "public": "wedding/kenney_modular-characters/Derived/templates/sleeve-shorter.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "shared/branding/favicon-32.png",
+    "public": "shared/branding/favicon-32.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/original/drinks/lemon-iced-tea.webp",
+    "public": "wedding/original/drinks/lemon-iced-tea.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/original/drinks/orange-juice.webp",
+    "public": "wedding/original/drinks/orange-juice.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/original/drinks/pearl-milk-tea.webp",
+    "public": "wedding/original/drinks/pearl-milk-tea.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/original/drinks/iced-coffee.webp",
+    "public": "wedding/original/drinks/iced-coffee.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/original/drinks/coconut-drink.webp",
+    "public": "wedding/original/drinks/coconut-drink.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/original/drinks/strawberry-milkshake.webp",
+    "public": "wedding/original/drinks/strawberry-milkshake.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/original/snacks/burger.webp",
+    "public": "wedding/original/snacks/burger.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/original/snacks/fried-chicken.webp",
+    "public": "wedding/original/snacks/fried-chicken.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/original/snacks/fries.webp",
+    "public": "wedding/original/snacks/fries.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/original/snacks/pizza.webp",
+    "public": "wedding/original/snacks/pizza.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/original/snacks/hot-dog.webp",
+    "public": "wedding/original/snacks/hot-dog.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/original/snacks/takoyaki.webp",
+    "public": "wedding/original/snacks/takoyaki.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/original/meals/dumpling-platter.webp",
+    "public": "wedding/original/meals/dumpling-platter.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/original/meals/xiaolongbao.webp",
+    "public": "wedding/original/meals/xiaolongbao.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/original/meals/egg-fried-rice.webp",
+    "public": "wedding/original/meals/egg-fried-rice.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/original/meals/beef-noodles.webp",
+    "public": "wedding/original/meals/beef-noodles.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/original/meals/kung-pao-chicken.webp",
+    "public": "wedding/original/meals/kung-pao-chicken.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/original/meals/sweet-sour-ribs.webp",
+    "public": "wedding/original/meals/sweet-sour-ribs.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/original/desserts/strawberry-cake.webp",
+    "public": "wedding/original/desserts/strawberry-cake.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/original/desserts/chocolate-cake.webp",
+    "public": "wedding/original/desserts/chocolate-cake.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/original/desserts/matcha-roll.webp",
+    "public": "wedding/original/desserts/matcha-roll.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/original/desserts/mango-cheesecake.webp",
+    "public": "wedding/original/desserts/mango-cheesecake.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/original/desserts/vanilla-cone.webp",
+    "public": "wedding/original/desserts/vanilla-cone.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/original/desserts/strawberry-sundae.webp",
+    "public": "wedding/original/desserts/strawberry-sundae.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/original/flowers/garden/bouquet-garden.webp",
+    "public": "wedding/original/flowers/garden/bouquet-garden.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/original/flowers/garden/gift-garden.webp",
+    "public": "wedding/original/flowers/garden/gift-garden.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/original/flowers/garden/balloons-garden.webp",
+    "public": "wedding/original/flowers/garden/balloons-garden.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/original/flowers/garden/popper-garden.webp",
+    "public": "wedding/original/flowers/garden/popper-garden.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/original/flowers/garden/basket-garden.webp",
+    "public": "wedding/original/flowers/garden/basket-garden.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/original/flowers/garden/rose-garden.webp",
+    "public": "wedding/original/flowers/garden/rose-garden.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/original/flowers/festive/bouquet-festive.webp",
+    "public": "wedding/original/flowers/festive/bouquet-festive.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/original/flowers/festive/gift-festive.webp",
+    "public": "wedding/original/flowers/festive/gift-festive.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/original/flowers/festive/balloons-festive.webp",
+    "public": "wedding/original/flowers/festive/balloons-festive.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/original/flowers/festive/popper-festive.webp",
+    "public": "wedding/original/flowers/festive/popper-festive.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/original/flowers/festive/basket-festive.webp",
+    "public": "wedding/original/flowers/festive/basket-festive.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/original/flowers/festive/rose-festive.webp",
+    "public": "wedding/original/flowers/festive/rose-festive.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/original/juggling/gold-ingot.webp",
+    "public": "wedding/original/juggling/gold-ingot.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/original/juggling/gold-bar.webp",
+    "public": "wedding/original/juggling/gold-bar.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/original/juggling/lucky-coins.webp",
+    "public": "wedding/original/juggling/lucky-coins.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/original/decorations/wedding-rings.webp",
+    "public": "wedding/original/decorations/wedding-rings.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "shared/icons/heart.webp",
+    "public": "shared/icons/heart.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "shared/icons/stars.webp",
+    "public": "shared/icons/stars.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "shared/icons/idea.webp",
+    "public": "shared/icons/idea.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "shared/icons/envelope.webp",
+    "public": "shared/icons/envelope.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/payment/wechat-preview.webp",
+    "public": "wedding/payment/wechat-preview.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/accessories/bow-front.svg",
+    "public": "wedding/kenney_modular-characters/Derived/accessories/bow-front.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/accessories/beret-front.svg",
+    "public": "wedding/kenney_modular-characters/Derived/accessories/beret-front.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/accessories/bow-back.svg",
+    "public": "wedding/kenney_modular-characters/Derived/accessories/bow-back.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/accessories/beret-back.svg",
+    "public": "wedding/kenney_modular-characters/Derived/accessories/beret-back.svg",
     "mode": "copy"
   }
 ]

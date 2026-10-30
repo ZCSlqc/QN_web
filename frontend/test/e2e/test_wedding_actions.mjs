@@ -1,0 +1,22 @@
+import {test,expect} from '../fixtures/app.mjs';
+import {artifactPath} from '../artifactPath.mjs';
+
+test('daily action drawer replaces walking and stretch reaches the reviewed upward shoulder mode',async({page,app})=>{
+ app.admin=true;await page.goto('/wedding');const canvas=page.locator('.wedding-canvas canvas');await expect(canvas).toBeVisible();await expect(page.getByRole('button',{name:'🚶 走路'})).toHaveCount(0);
+ await page.getByRole('button',{name:'动作',exact:true}).click();await expect(page.getByRole('tab',{name:'日常'})).toHaveAttribute('aria-selected','true');await expect(page.locator('.motion-options>button')).toHaveCount(8);await page.getByRole('button',{name:'🙆 伸个懒腰',exact:false}).click();await expect(canvas).toHaveAttribute('data-gesture','stretch');
+ const result=await page.evaluate(async()=>{const {characterMotion}=await import('/src/features/wedding/motions.js');return [0,.4,1.5,2.5,4.5].map(t=>{const f=characterMotion({gesture:'stretch'},t);return [f.leftCircularArm.up,f.circularArm.up,f.leftCircularArm.shoulder,f.circularArm.shoulder,f.leftCircularArm.bend];});});
+ expect(result[0]).toEqual([false,false,35,35,0]);expect(result[2]).toEqual([true,true,8,11,10]);expect(result[4]).toEqual(result[0]);await expect(canvas).toHaveAttribute('data-gesture','idle');
+ await page.setViewportSize({width:390,height:844});await page.getByRole('button',{name:'动作',exact:true}).click();await page.getByRole('tab',{name:'舞步'}).click();await expect(page.locator('.dance-card')).toHaveCount(8);const rect=await page.locator('.motion-picker').boundingBox();expect(rect.x).toBeGreaterThanOrEqual(0);expect(rect.x+rect.width).toBeLessThanOrEqual(390);await page.screenshot({path:artifactPath('wedding-actions-mobile.png')});
+});
+
+test('roulette uses cached heads, settles after two to three seconds and holds its result for five seconds',async({page,app})=>{
+ app.admin=true;const requests=[];page.on('request',r=>{if(r.url().includes('/wedding/emoji/'))requests.push(r.url());});await page.goto('/wedding');const canvas=page.locator('.wedding-canvas canvas');await expect(canvas).toBeVisible();await page.getByRole('button',{name:'emoji',exact:true}).click();await expect(page.locator('.emoji-options>button').first()).toHaveAttribute('aria-label','幸运轮盘');await page.getByRole('button',{name:'幸运轮盘',exact:true}).click();await expect(canvas).toHaveAttribute('data-emoji-rolling','true');const initialRequests=requests.length,started=Date.now(),seen=new Set(),angles=[];
+ while(await canvas.getAttribute('data-emoji-rolling')==='true'){seen.add(await canvas.getAttribute('data-temporary-head'));angles.push(Number(await canvas.getAttribute('data-head-angle')));await page.waitForTimeout(100);}
+ expect(Date.now()-started).toBeGreaterThan(1800);expect(Date.now()-started).toBeLessThan(3200);expect(seen.size).toBeGreaterThanOrEqual(3);expect(requests.length).toBe(initialRequests);expect(Math.max(...angles)-Math.min(...angles)).toBeGreaterThan(3);
+ const chosen=await canvas.getAttribute('data-temporary-head');expect(chosen).toMatch(/^emoji-/);await page.waitForTimeout(4100);await expect(canvas).toHaveAttribute('data-temporary-head',chosen);await expect(canvas).toHaveAttribute('data-temporary-head','',{timeout:2000});expect(app.wardrobeWrites).toBe(0);
+});
+
+test('manual emoji selection cancels a spin and reduced motion selects without flashing or shaking',async({page,app})=>{
+ app.admin=true;await page.goto('/wedding');const canvas=page.locator('.wedding-canvas canvas');await expect(canvas).toBeVisible();await page.getByRole('button',{name:'emoji',exact:true}).click();await page.getByRole('button',{name:'幸运轮盘',exact:true}).click();await expect(canvas).toHaveAttribute('data-emoji-rolling','true');await page.getByRole('button',{name:'表达：飞吻',exact:true}).click();await expect(canvas).toHaveAttribute('data-emoji-rolling','false');await expect(canvas).toHaveAttribute('data-temporary-head','emoji-kiss');await page.waitForTimeout(2800);await expect(canvas).toHaveAttribute('data-temporary-head','emoji-kiss');
+ await page.emulateMedia({reducedMotion:'reduce'});await page.getByRole('button',{name:'emoji',exact:true}).click();await page.getByRole('button',{name:'幸运轮盘',exact:true}).click();await expect(canvas).toHaveAttribute('data-emoji-rolling','false');await expect(page.getByRole('button',{name:'幸运轮盘'})).toHaveAttribute('aria-busy','false');await expect(canvas).toHaveAttribute('data-head-angle','-1.00');
+});

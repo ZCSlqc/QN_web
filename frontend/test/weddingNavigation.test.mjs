@@ -4,8 +4,8 @@ import { readFileSync } from 'node:fs';
 import { boundary, isWalkable, nearestWalkable, segmentWalkable, walkingRoute } from '../src/features/wedding/navigation.js';
 
 test('source polygon maps into world space and includes the marked stage', () => {
-  const data = JSON.parse(readFileSync(new URL('../../asset/wedding/background/walkable-area.json', import.meta.url)));
-  assert.equal(boundary.length, 60);
+  const data = JSON.parse(readFileSync(new URL('../src/features/wedding/walkable-area.json', import.meta.url)));
+  assert.equal(boundary.length, data.points.length);
   assert.equal(boundary[0].x, data.points[0][0] * 1600 / 1672);
   assert.equal(boundary[0].y, data.points[0][1] * 900 / 941);
   assert.ok(isWalkable({ x: 800, y: 300 }));
@@ -15,8 +15,8 @@ test('source polygon maps into world space and includes the marked stage', () =>
 
 test('outside clicks project to valid ground and routes never cut concave corners', () => {
   let detours = 0;
-  for (let i = 0; i < boundary.length; i += 3) {
-    const start = boundary[i], goal = boundary[(i + 19) % boundary.length];
+  for (let i = 0; i < boundary.length; i++) for(let j=i+1;j<boundary.length;j++) {
+    const start = boundary[i], goal = boundary[j];
     const path = walkingRoute(start, goal);
     assert.ok(path?.length);
     if (!segmentWalkable(start, goal)) { assert.ok(path.length > 1); detours++; }

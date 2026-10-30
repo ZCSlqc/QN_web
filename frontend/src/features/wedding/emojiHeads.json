@@ -3,7 +3,7 @@
     "id": "emoji-smile",
     "name": "暖暖微笑",
     "label": "暖暖微笑",
-    "featured": false,
+    "featured": true,
     "slot": "emojiHead",
     "file": "smile.webp",
     "width": 256,
@@ -14,8 +14,7 @@
       "y": 248
     },
     "backFile": "yellow-back.webp",
-    "original": "artifacts/emojiHead/812462da-83d5-41e3-baa5-7dd5ee169e9a.webp",
-    "source": "wedding/emoji/sources/smile.webp"
+    "source": "wedding/emoji/smile.webp"
   },
   {
     "id": "emoji-laugh",
@@ -32,8 +31,7 @@
       "y": 248
     },
     "backFile": "yellow-back.webp",
-    "original": "artifacts/emojiHead/9317c0a3-26fd-464e-bf3b-2a721259fc29.webp",
-    "source": "wedding/emoji/sources/laugh.webp"
+    "source": "wedding/emoji/laugh.webp"
   },
   {
     "id": "emoji-grin",
@@ -50,14 +48,13 @@
       "y": 248
     },
     "backFile": "yellow-back.webp",
-    "original": "artifacts/emojiHead/3f3a04ec-aac3-4725-a51c-2ebb9687bfaf.webp",
-    "source": "wedding/emoji/sources/grin.webp"
+    "source": "wedding/emoji/grin.webp"
   },
   {
     "id": "emoji-wink",
     "name": "默契眨眼",
     "label": "默契眨眼",
-    "featured": false,
+    "featured": true,
     "slot": "emojiHead",
     "file": "wink.webp",
     "width": 256,
@@ -68,8 +65,7 @@
       "y": 248
     },
     "backFile": "yellow-back.webp",
-    "original": "artifacts/emojiHead/7e110a44-acff-4386-8781-46d4628d2a5e.webp",
-    "source": "wedding/emoji/sources/wink.webp"
+    "source": "wedding/emoji/wink.webp"
   },
   {
     "id": "emoji-yummy",
@@ -86,8 +82,7 @@
       "y": 248
     },
     "backFile": "yellow-back.webp",
-    "original": "artifacts/emojiHead/02ca344a-ce50-4467-9760-b3e46305ce24.webp",
-    "source": "wedding/emoji/sources/yummy.webp"
+    "source": "wedding/emoji/yummy.webp"
   },
   {
     "id": "emoji-tongue",
@@ -104,8 +99,7 @@
       "y": 248
     },
     "backFile": "yellow-back.webp",
-    "original": "artifacts/emojiHead/212d186e-25ff-48fc-a572-8a740506fa5a.webp",
-    "source": "wedding/emoji/sources/tongue.webp"
+    "source": "wedding/emoji/tongue.webp"
   },
   {
     "id": "emoji-wink-tongue",
@@ -122,8 +116,7 @@
       "y": 248
     },
     "backFile": "yellow-back.webp",
-    "original": "artifacts/emojiHead/6b30959c-9c83-4498-acee-b94d9ae2e7f1.webp",
-    "source": "wedding/emoji/sources/wink-tongue.webp"
+    "source": "wedding/emoji/wink-tongue.webp"
   },
   {
     "id": "emoji-goofy",
@@ -140,8 +133,7 @@
       "y": 248
     },
     "backFile": "yellow-back.webp",
-    "original": "artifacts/emojiHead/75149bfe-a125-4a0f-a886-cd8f4257f35b.webp",
-    "source": "wedding/emoji/sources/goofy.webp"
+    "source": "wedding/emoji/goofy.webp"
   },
   {
     "id": "emoji-drooling",
@@ -158,8 +150,7 @@
       "y": 248
     },
     "backFile": "yellow-back.webp",
-    "original": "artifacts/emojiHead/1f3850e8-4387-4e13-b5dc-3c31f96aba51.webp",
-    "source": "wedding/emoji/sources/drooling.webp"
+    "source": "wedding/emoji/drooling.webp"
   },
   {
     "id": "emoji-pucker",
@@ -176,8 +167,7 @@
       "y": 248
     },
     "backFile": "yellow-back.webp",
-    "original": "artifacts/emojiHead/2553b944-e93b-4f59-8334-d006e288994f.webp",
-    "source": "wedding/emoji/sources/pucker.webp"
+    "source": "wedding/emoji/pucker.webp"
   },
   {
     "id": "emoji-kiss",
@@ -194,8 +184,7 @@
       "y": 248
     },
     "backFile": "yellow-back.webp",
-    "original": "artifacts/emojiHead/be372800-4e03-4895-a211-3a304d178a9b.webp",
-    "source": "wedding/emoji/sources/kiss.webp"
+    "source": "wedding/emoji/kiss.webp"
   },
   {
     "id": "emoji-loved",
@@ -212,8 +201,7 @@
       "y": 248
     },
     "backFile": "yellow-back.webp",
-    "original": "artifacts/emojiHead/21dae628-b75a-4622-b08a-71d04ac74e13.webp",
-    "source": "wedding/emoji/sources/loved.webp"
+    "source": "wedding/emoji/loved.webp"
   },
   {
     "id": "emoji-heart-eyes",
@@ -230,8 +218,7 @@
       "y": 248
     },
     "backFile": "yellow-back.webp",
-    "original": "artifacts/emojiHead/c1769a83-bb73-4c75-af27-dfdcb8d1aaab.webp",
-    "source": "wedding/emoji/sources/heart-eyes.webp"
+    "source": "wedding/emoji/heart-eyes.webp"
   },
   {
     "id": "emoji-star-eyes",
@@ -248,8 +235,7 @@
       "y": 248
     },
     "backFile": "yellow-back.webp",
-    "original": "artifacts/emojiHead/e6a35279-aaa8-43d6-89e4-8b55d1cbc898.webp",
-    "source": "wedding/emoji/sources/star-eyes.webp"
+    "source": "wedding/emoji/star-eyes.webp"
   },
   {
     "id": "emoji-happy-tears",
@@ -266,8 +252,7 @@
       "y": 248
     },
     "backFile": "yellow-back.webp",
-    "original": "artifacts/emojiHead/767a5d12-432f-4926-9e9a-02cd9533296d.webp",
-    "source": "wedding/emoji/sources/happy-tears.webp"
+    "source": "wedding/emoji/happy-tears.webp"
   },
   {
     "id": "emoji-single-tear",
@@ -284,8 +269,7 @@
       "y": 248
     },
     "backFile": "yellow-back.webp",
-    "original": "artifacts/emojiHead/e454812e-cdd4-4d73-b183-35811ea6a6e6.webp",
-    "source": "wedding/emoji/sources/single-tear.webp"
+    "source": "wedding/emoji/single-tear.webp"
   },
   {
     "id": "emoji-blank",
@@ -302,8 +286,7 @@
       "y": 248
     },
     "backFile": "yellow-back.webp",
-    "original": "artifacts/emojiHead/2fc8e2d7-f7de-4da7-a393-5ef7837500b7.webp",
-    "source": "wedding/emoji/sources/blank.webp"
+    "source": "wedding/emoji/blank.webp"
   },
   {
     "id": "emoji-invisible",
@@ -320,8 +303,7 @@
       "y": 248
     },
     "backFile": "invisible-back.webp",
-    "original": "artifacts/emojiHead/f54eb055-704b-4fd2-815e-44050148a9ef.webp",
-    "source": "wedding/emoji/sources/invisible.webp"
+    "source": "wedding/emoji/invisible.webp"
   },
   {
     "id": "emoji-glasses",
@@ -338,8 +320,7 @@
       "y": 248
     },
     "backFile": "yellow-back.webp",
-    "original": "artifacts/emojiHead/5edc315a-7950-47c6-abc7-b92e4319ab6d.webp",
-    "source": "wedding/emoji/sources/glasses.webp"
+    "source": "wedding/emoji/glasses.webp"
   },
   {
     "id": "emoji-monocle",
@@ -356,8 +337,7 @@
       "y": 248
     },
     "backFile": "yellow-back.webp",
-    "original": "artifacts/emojiHead/fd10cdb9-fee9-428c-b4c5-b3f724036e0c.webp",
-    "source": "wedding/emoji/sources/monocle.webp"
+    "source": "wedding/emoji/monocle.webp"
   },
   {
     "id": "emoji-disguise",
@@ -374,8 +354,7 @@
       "y": 248
     },
     "backFile": "yellow-back.webp",
-    "original": "artifacts/emojiHead/58898fdd-d114-46b7-a17e-3aba51fff6da.webp",
-    "source": "wedding/emoji/sources/disguise.webp"
+    "source": "wedding/emoji/disguise.webp"
   },
   {
     "id": "emoji-cool",
@@ -392,14 +371,13 @@
       "y": 248
     },
     "backFile": "yellow-back.webp",
-    "original": "artifacts/emojiHead/ddcac224-e7ab-4a2d-aa4c-50fb5f283398.webp",
-    "source": "wedding/emoji/sources/cool.webp"
+    "source": "wedding/emoji/cool.webp"
   },
   {
     "id": "emoji-money",
     "name": "发财啦",
     "label": "发财啦",
-    "featured": false,
+    "featured": true,
     "slot": "emojiHead",
     "file": "money.webp",
     "width": 256,
@@ -410,8 +388,7 @@
       "y": 248
     },
     "backFile": "yellow-back.webp",
-    "original": "artifacts/emojiHead/3f07805c-4513-4d16-bd0f-f2593f2bdfc5.webp",
-    "source": "wedding/emoji/sources/money.webp"
+    "source": "wedding/emoji/money.webp"
   },
   {
     "id": "emoji-angel",
@@ -428,8 +405,7 @@
       "y": 248
     },
     "backFile": "yellow-back.webp",
-    "original": "artifacts/emojiHead/18224430-4aaf-4b32-b88d-bb5319375459.webp",
-    "source": "wedding/emoji/sources/angel.webp"
+    "source": "wedding/emoji/angel.webp"
   },
   {
     "id": "emoji-party",
@@ -446,8 +422,7 @@
       "y": 248
     },
     "backFile": "party-back.webp",
-    "original": "artifacts/emojiHead/fb00755b-8d5e-4e49-868f-5509db956945.webp",
-    "source": "wedding/emoji/sources/party.webp"
+    "source": "wedding/emoji/party.webp"
   },
   {
     "id": "emoji-little-devil",
@@ -464,8 +439,7 @@
       "y": 248
     },
     "backFile": "little-devil-back.webp",
-    "original": "artifacts/emojiHead/19719e38-09a3-4c7b-b0ec-c526df4dfefb.webp",
-    "source": "wedding/emoji/sources/little-devil.webp"
+    "source": "wedding/emoji/little-devil.webp"
   },
   {
     "id": "emoji-freezing",
@@ -482,8 +456,7 @@
       "y": 248
     },
     "backFile": "freezing-back.webp",
-    "original": "artifacts/emojiHead/5b2f9ed1-8e08-4f1e-bbf0-bbb36082ed4e.webp",
-    "source": "wedding/emoji/sources/freezing.webp"
+    "source": "wedding/emoji/freezing.webp"
   },
   {
     "id": "emoji-mind-blown",
@@ -500,8 +473,7 @@
       "y": 248
     },
     "backFile": "mind-blown-back.webp",
-    "original": "artifacts/emojiHead/46fc5286-ecf7-427f-905a-5b9abea9300f.webp",
-    "source": "wedding/emoji/sources/mind-blown.webp"
+    "source": "wedding/emoji/mind-blown.webp"
   },
   {
     "id": "emoji-secret",
@@ -518,7 +490,6 @@
       "y": 248
     },
     "backFile": "secret-back.webp",
-    "original": "artifacts/emojiHead/0de862d7-c7b9-40b6-a84c-2ca0b591586b.webp",
-    "source": "wedding/emoji/sources/secret.webp"
+    "source": "wedding/emoji/secret.webp"
   }
 ]

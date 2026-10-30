@@ -1,7 +1,7 @@
 import { test, expect } from '../fixtures/app.mjs'
 
 function incoming(id = 1) {
-  return { id, sender_name: '测试乙', recipient_name: '测试甲', title: `想和你说的话 ${id}`, body: '今天有点想你。\n<script>这只是文字</script>', kind: 'secret', created_at: '2026-10-28 08:00:00', recipient_read_at: null, comments: [] }
+  return { id, sender_name: '测试乙', recipient_name: '测试甲', body: `想和你说的话 ${id}\n<script>这只是文字</script>`, kind: 'secret', created_at: '2026-10-28 08:00:00', recipient_read_at: null, comments: [] }
 }
 
 test('visitors and unrelated administrators do not see the mailbox', async ({ page, app }) => {
@@ -44,7 +44,7 @@ test('sending retries keep the draft and do not duplicate delivery', async ({ pa
   await page.locator('.mailbox-trigger').click()
   await page.getByRole('button', { name: '写封信', exact: true }).click()
   await page.locator('#mail-kind').selectOption('apology')
-  await page.locator('#mail-title').fill('刚才的话，想再好好说一次')
+  await expect(page.locator('#mail-title')).toHaveCount(0)
   await page.locator('#mail-body').fill('对不起，刚才有点着急。\n我想听听你的想法。')
   await page.getByRole('button', { name: '寄给ta', exact: true }).click()
   await expect(page.locator('.letter-compose .mailbox-error')).toBeVisible()
@@ -53,7 +53,7 @@ test('sending retries keep the draft and do not duplicate delivery', async ({ pa
   await expect(page.locator('.mailbox-panel')).toBeHidden()
   await page.locator('.mailbox-trigger').click()
   await page.locator('.letter-item').first().click()
-  await expect(page.locator('.letter-paper')).toContainText('刚才的话，想再好好说一次')
+  await expect(page.locator('.letter-paper')).toContainText('对不起，刚才有点着急。')
   await expect(page.locator('.letter-receipt')).toContainText('对方还没有打开')
   expect(app.mailboxLetters).toHaveLength(1)
   expect(app.mailboxLetters[0].recipient_read_at).toBeNull()

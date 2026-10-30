@@ -11,7 +11,7 @@ test('daily first blessing earns a personal treat usable by an ordinary user', a
   await leaveBlessing('祝你们每天开心')
   await expect(page.getByText('祝福送到啦，猫条已放进你的口袋。', { exact: true })).toBeVisible()
   expect(app.personalTreats).toBe(1)
-  await expect(page.locator('.message-flight-icon')).toHaveAttribute('src', '/shared/feedback/blessing-sent.png')
+  await expect(page.locator('.message-flight-icon')).toHaveAttribute('src', '/shared/icons/heart.webp')
   await expect(page.locator('.nav-logo')).toHaveClass(/pet-reward-arrived/)
   await expect(page.locator('.food-reward-flight strong')).toHaveText('+1')
   await expect(page.locator('.food-reward-flight')).toHaveCount(0)

@@ -6,7 +6,7 @@ for(const [username,persona,hair] of [['shenqidayang','calm-girl','blackwoman3']
 
 test('hair and headwear can be removed, outfits enter the user library and dressing survives reload',async({page,app})=>{
  app.admin=true;await page.goto('/wedding');const canvas=page.locator('.wedding-canvas canvas');await expect(canvas).toBeVisible();await page.getByRole('button',{name:'我的造型',exact:true}).click();const w=page.locator('.wardrobe');
- await w.getByRole('button',{name:'没有头发',exact:true}).click();await w.getByRole('button',{name:'头饰',exact:true}).click();await w.getByRole('button',{name:'不带',exact:true}).click();
+ await w.getByRole('button',{name:'没有头发',exact:true}).click();await w.getByRole('button',{name:'头饰',exact:true}).click();await w.getByRole('button',{name:'没有头饰',exact:true}).click();
  await expect(w.locator('.wardrobe-summary canvas')).toHaveAttribute('data-appearance',/"hair":"none"/);await expect(w.locator('.wardrobe-summary .character-preview')).toHaveAttribute('aria-busy','false');
  await w.getByRole('button',{name:'造型',exact:true}).click();await w.getByRole('button',{name:'套装',exact:true}).click();await w.getByLabel('搭配名称',{exact:true}).fill('晴天搭配');await w.getByRole('button',{name:'保存当前搭配',exact:true}).click();
  await expect.poll(()=>app.weddingWardrobe.outfits.length).toBe(1);expect(app.weddingWardrobe.outfits[0].appearance.hair).toBeUndefined();await expect(w.getByRole('button',{name:'晴天搭配',exact:true})).toBeVisible();

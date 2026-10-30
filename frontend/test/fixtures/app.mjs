@@ -45,7 +45,7 @@ export const test = base.extend({
           {username:'lqc',name:'lqc',role:null,persona:'lively-boy',appearance:null},
         ]);
         if(!people.some(p=>p.username===username))people.push({username,name:state.nickname||username,role:state.weddingRole,persona:'guest',appearance:state.weddingWardrobe.appearance});
-        return json({people});
+        return json({people,npcFaces:state.weddingNpcFaces||{}});
       }
       if(path==='/wedding/wardrobe'){
         if(req.method()==='GET')state.wardrobeReads++;
@@ -86,7 +86,7 @@ export const test = base.extend({
         if (!state.mailbox) return route.fulfill({ status: 403, json: { detail: '此信箱仅限情侣双方使用' } })
         const own = letter => letter.sender_name === state.mailboxUsername
         const countReplies = letter => letter.comments.filter(comment => comment.author !== state.mailboxUsername && comment.id > (letter.seen || 0)).length
-        const meta = letter => ({ id: letter.id, kind: letter.kind, title: letter.title, sender_name: letter.sender_name, recipient_name: letter.recipient_name, created_at: letter.created_at, recipient_read_at: letter.recipient_read_at, is_sender: own(letter), unread: !own(letter) && !letter.recipient_read_at, new_comments: countReplies(letter) })
+        const meta = letter => ({ id: letter.id, kind: letter.kind, preview: letter.body.replace(/\s+/g, ' ').slice(0,80), sender_name: letter.sender_name, recipient_name: letter.recipient_name, created_at: letter.created_at, recipient_read_at: letter.recipient_read_at, is_sender: own(letter), unread: !own(letter) && !letter.recipient_read_at, new_comments: countReplies(letter) })
         const summary = () => ({ unread_letters: state.mailboxLetters.filter(letter => !own(letter) && !letter.recipient_read_at).length,
           pending_sent: state.mailboxLetters.filter(letter => own(letter) && !letter.recipient_read_at).length,
           unread_reply_threads: state.mailboxLetters.filter(letter => countReplies(letter) > 0).length,
@@ -104,7 +104,7 @@ export const test = base.extend({
           const replayed = !!letter
           if (!letter) {
             letter = { id: state.mailboxLetters.length + 1, sender_name: state.mailboxUsername, recipient_name: state.mailboxPartner,
-              title: field(req, 'title'), body: field(req, 'body'), kind: field(req, 'kind'), request_key: key,
+              body: field(req, 'body'), kind: field(req, 'kind'), request_key: key,
               created_at: '2026-10-28 09:00:00', recipient_read_at: null, comments: [] }
             state.mailboxLetters.push(letter)
             if (!state.letterRewarded) { awarded = 1; state.letterRewarded = true; state.petInventory.treat++ }
@@ -158,7 +158,7 @@ export const test = base.extend({
       }
       if (path === '/story') {
         if (req.method() === 'PUT') {
-          state.story = { ...state.story, title: field(req, 'title'), content: field(req, 'content'), version: state.story.version + 1 }
+          state.story = { ...state.story, content: field(req, 'content'), version: state.story.version + 1 }
         }
         return json({ data: state.story })
       }

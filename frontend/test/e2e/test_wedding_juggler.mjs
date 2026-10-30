@@ -2,7 +2,7 @@ import { artifactPath } from '../artifactPath.mjs';
 import {test,expect} from '../fixtures/app.mjs';
 
 test('real visitor avatars replace numbered guests and the QR performer throws exactly the supplied three props',async({page,app})=>{
- app.allowedPages=['/index','/wedding'];await page.setViewportSize({width:1440,height:1000});const propRequests=[];page.on('request',r=>{if(r.url().includes('/wedding/juggler/'))propRequests.push(r.url());});
+ app.allowedPages=['/index','/wedding'];await page.setViewportSize({width:1440,height:1000});const propRequests=[];page.on('request',r=>{if(r.url().includes('/wedding/original/juggling/'))propRequests.push(r.url());});
  await page.goto('/wedding');const canvas=page.locator('.wedding-canvas canvas');await expect(canvas).toHaveAttribute('data-juggling',/gold-ingot/);
  const people=JSON.parse(await canvas.getAttribute('data-people'));expect(people.filter(p=>p.npc)).toHaveLength(2);expect(people.filter(p=>/来宾\s*\d/.test(p.name))).toEqual([]);
  expect(people.filter(p=>p.username==='shenqidayang')).toHaveLength(1);expect(people.filter(p=>p.username==='lqc')).toHaveLength(1);
@@ -40,5 +40,5 @@ test('all listed visitors exist locally with one controlled avatar and no pollin
  await page.goto('/wedding');const canvas=page.locator('.wedding-canvas canvas');await expect(canvas).toHaveAttribute('data-player-persona','lively-boy');
  const people=JSON.parse(await canvas.getAttribute('data-people'));expect(people).toHaveLength(46);expect(people.filter(p=>p.username==='lqc')).toHaveLength(1);expect(people.filter(p=>p.username)).toHaveLength(44);
  await expect(page.locator('.wedding-title')).toContainText('数据库新郎 & 数据库新娘');expect(people.find(p=>p.username==='shenqidayang').name).toBe('数据库女孩');expect(people.find(p=>p.username==='lqc').name).toBe('数据库男孩');
- await page.getByRole('button',{name:'↟ 跳跃',exact:true}).click();await expect(canvas).toHaveAttribute('data-gesture','idle');expect(app.weddingPeopleReads).toBe(1);expect(app.wardrobeWrites).toBe(0);
+ await page.getByRole('button',{name:'动作',exact:true}).click();await page.getByRole('button',{name:'🐇 开心小跳',exact:false}).click();await expect(canvas).toHaveAttribute('data-gesture','idle');expect(app.weddingPeopleReads).toBe(1);expect(app.wardrobeWrites).toBe(0);
 });

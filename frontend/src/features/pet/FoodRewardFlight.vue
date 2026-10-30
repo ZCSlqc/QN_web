@@ -2,7 +2,7 @@
   <Teleport to="body">
     <div v-if="arrivalNotice" class="food-reward-notice" role="status">已放入小窝</div>
     <div v-if="reward" ref="token" class="food-reward-flight" :class="{ 'reward-reduced': reduced, 'message-flight': reward.kind }" :data-stage="reward.kind || 'food'" role="status" aria-live="polite">
-      <img v-if="reward.kind" :src="`/shared/feedback/${reward.kind}-sent.png`" class="message-flight-icon" alt="" />
+      <img v-if="reward.kind" :src="`/shared/icons/${reward.kind==='letter'?'envelope':'heart'}.webp`" class="message-flight-icon" alt="" />
       <template v-else><FoodIcon :kind="reward.food" /><strong>+{{ reward.amount }}</strong></template><span>{{ label }}</span>
     </div>
   </Teleport>

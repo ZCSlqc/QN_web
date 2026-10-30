@@ -10,6 +10,7 @@ from pydantic import BaseModel, ConfigDict, Field, field_validator
 from app.core.database import get_db, bj_time
 from app.core.security import require_admin, require_page_access
 from app.core.settings import settings
+from app.services.wedding_faces import ensure_default_faces
 
 router = APIRouter(prefix='/wedding', tags=['婚礼猫咪'])
 
@@ -64,7 +65,8 @@ def wardrobe_response(data, user_id):
 @router.get('/people')
 def wedding_people(request: Request, username=Depends(require_page_access('/wedding'))):
     with get_db() as conn:
-        rows = conn.execute('''SELECT u.username,u.nickname,w.appearance FROM user u
+        faces = ensure_default_faces(conn, settings.WEDDING_GROOM_USER, bj_time())
+        rows = conn.execute('''SELECT u.id,u.username,u.nickname,w.appearance FROM user u
                                LEFT JOIN wedding_wardrobes w ON w.user_id=u.id
                                ORDER BY CASE WHEN u.username=? THEN 0 WHEN u.username IN (?,?) THEN 1 ELSE 2 END,u.userdate,u.id''', (username, settings.WEDDING_GROOM_USER, settings.WEDDING_BRIDE_USER)).fetchall()
     people = []
@@ -73,8 +75,9 @@ def wedding_people(request: Request, username=Depends(require_page_access('/wedd
         role = ('groom' if name == settings.WEDDING_GROOM_USER else 'bride' if name == settings.WEDDING_BRIDE_USER else None) if name in settings.ADMIN_USERS else None
         persona = 'calm-girl' if name == 'shenqidayang' else 'lively-boy' if name == 'lqc' else 'guest'
         people.append({'username': name, 'name': row['nickname'] or name,
-                       'role': role, 'persona': persona, 'appearance': json.loads(row['appearance']) if row['appearance'] else None})
-    data = {'people': people}
+                       'role': role, 'persona': persona, 'appearance': json.loads(row['appearance']) if row['appearance'] else None,
+                       'facePreset': None if role == 'groom' else faces.get(f'user:{row["id"]}')})
+    data = {'people': people, 'npcFaces': {key: faces[f'npc:{key}'] for key in ('florist', 'juggler')}}
     digest = hashlib.sha256(json.dumps(data, ensure_ascii=False, sort_keys=True).encode()).hexdigest()[:20]
     headers = {'Cache-Control': 'private, no-cache', 'Vary': 'Authorization', 'ETag': f'"wedding-people-{digest}"'}
     if request.headers.get('if-none-match') == headers['ETag']:

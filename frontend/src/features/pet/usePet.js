@@ -102,14 +102,16 @@ export function usePet(onFed, scene = null) {
   }
   function visibility() { if (!document.hidden) void poll() }
   onMounted(() => {
-    void load()
+    void load().finally(()=>{if(!disposed){clearTimeout(pollTimer);pollTimer=setTimeout(poll,30000)}})
     if (scene?.value) {
+      let firstObservation=true
       sceneObserver = new IntersectionObserver(([entry]) => {
         const wasVisible = sceneVisible; sceneVisible = entry.isIntersecting && entry.intersectionRatio >= .1
-        if (sceneVisible && !wasVisible) void poll()
+        if (!firstObservation && sceneVisible && !wasVisible) void poll()
+        firstObservation=false
       }, { threshold: 0.1 })
       sceneObserver.observe(scene.value)
-    } else void poll()
+    }
     document.addEventListener('visibilitychange', visibility)
     window.addEventListener('auth-expired', clearAuth)
     window.addEventListener('profile-updated', visibility)

@@ -1,6 +1,7 @@
 import {defaultBasePose,defaultBindings,upperPoint} from './rigidRig';
 import {normalizeReviewArm} from './reviewPose';
 import {circularHandFrame} from './circularArm';
+import {loadOriginalImages} from './originalArt';
 
 export const jugglerPosition={x:1180,y:265};
 export const jugglerSaying='祝大家财源滚滚，事业有成，份子拿来！';
@@ -34,10 +35,8 @@ export function jugglingFrame(time,reduced=false){
  lastFrame={time,reduced,props};return props;
 }
 
-let loading;
 export async function loadJugglerProps(){
- if(!loading)loading=Promise.all(jugglingProps.map(async prop=>{const image=new Image();image.src=`/wedding/juggler/${prop.id}.webp`;await image.decode();return [prop.id,image];})).catch(error=>{loading=null;throw error;});
- const images=new Map(await loading);
+ const images=await loadOriginalImages(jugglingProps.map(p=>p.id));
  return {draw(ctx,actor,time,reduced){
   const frame=jugglingFrame(time,reduced);
   for(const prop of frame){const image=images.get(prop.id),height=prop.width*image.naturalHeight/image.naturalWidth;ctx.save();ctx.translate(actor.x+prop.x,actor.y+prop.y-height*.28);ctx.rotate(prop.rotation);ctx.drawImage(image,-prop.width/2,-height/2,prop.width,height);ctx.restore();}

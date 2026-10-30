@@ -41,6 +41,8 @@ test('page identity is reused and cat polling pauses offscreen', async ({ page, 
   await expect(page.locator('.pet-room')).toBeVisible()
   await expect.poll(() => petReads).toBeGreaterThan(0)
   await expect(page.locator('.pantry-card')).toBeVisible()
+  await page.waitForTimeout(250)
+  expect(petReads).toBe(1)
   expect(profiles).toBe(1)
   await page.locator('.pet-footer').scrollIntoViewIfNeeded()
   await expect.poll(() => page.locator('.pet-room').evaluate(el => el.getBoundingClientRect().bottom)).toBeLessThan(0)
