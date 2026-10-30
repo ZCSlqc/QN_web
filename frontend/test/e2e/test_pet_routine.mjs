@@ -1,9 +1,9 @@
 import { test, expect } from '../fixtures/app.mjs'
 
 test('Beijing dawn and dusk switch without refreshing, regardless of browser timezone', async ({ page, app }, testInfo) => {
-  app.allowedPages = ['/cat']
+  app.allowedPages = ['/pet']
   await page.clock.install({ time: new Date('2026-10-28T09:59:59Z') })
-  await page.goto('/cat')
+  await page.goto('/pet')
   await expect(page.locator('.pet-room')).not.toHaveClass(/night-room/)
   await page.clock.runFor(2000)
   await expect(page.locator('.pet-room')).toHaveClass(/night-room/)
@@ -21,7 +21,7 @@ for (const [name, action, duration] of [['猫条', 'treat', 4000], ['猫粮', 'k
   test(`${name} keeps eating for its configured duration and spends once`, async ({ page, app }) => {
     app.admin = true; app.petCanFeed = true
     await page.clock.install()
-    await page.goto('/cat')
+    await page.goto('/pet')
     await page.getByRole('button', { name: `画面内投喂${name}`, exact: true }).click()
     await expect(page.locator('.cat-wrap')).toHaveClass(new RegExp(`\\b${action}\\b`))
     await page.clock.runFor(duration - 1000)
@@ -34,11 +34,11 @@ for (const [name, action, duration] of [['猫条', 'treat', 4000], ['猫粮', 'k
 }
 
 test('unattended cat sleeps and wakes on its own with a current-state caption', async ({ page, app }) => {
-  app.allowedPages = ['/cat']
+  app.allowedPages = ['/pet']
   await page.addInitScript(() => { Math.random = () => 0.5 })
   await page.emulateMedia({ reducedMotion: 'reduce' })
   await page.clock.install()
-  await page.goto('/cat')
+  await page.goto('/pet')
   await page.locator('.pet-room').scrollIntoViewIfNeeded()
   await expect(page.locator('.cat-wrap')).toHaveClass(/\bidle\b/)
   await page.clock.runFor(100000)

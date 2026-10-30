@@ -13,7 +13,8 @@
           <a :href="sectionHref('story')" @click.prevent="navigateTo('story')">爱的故事</a>
           <a :href="sectionHref('album')" @click.prevent="navigateTo('album')">爱的相册</a>
           <router-link v-if="canVisitPage('/journey', navigationAdmin)" to="/journey" class="journey-nav-link">爱的旅程</router-link>
-          <router-link v-if="canVisitPage('/cat', navigationAdmin)" to="/cat" class="pet-nav-link">爱的小窝</router-link>
+          <router-link v-if="canVisitPage('/pet', navigationAdmin)" to="/pet" class="pet-nav-link">爱的小窝</router-link>
+          <router-link v-if="canVisitPage('/wedding', navigationAdmin)" to="/wedding">爱的婚礼</router-link>
         </nav>
         <button class="nav-toggle" aria-label="切换导航菜单" :aria-expanded="mobileNavOpen" @click="mobileNavOpen = !mobileNavOpen">
           <span></span><span></span><span></span>
@@ -24,7 +25,8 @@
         <a :href="sectionHref('story')" @click.prevent="navigateTo('story'); mobileNavOpen = false">爱的故事</a>
         <a :href="sectionHref('album')" @click.prevent="navigateTo('album'); mobileNavOpen = false">爱的相册</a>
         <router-link v-if="canVisitPage('/journey', navigationAdmin)" to="/journey" @click="mobileNavOpen = false" class="journey-mobile-link">爱的旅程</router-link>
-        <router-link v-if="canVisitPage('/cat', navigationAdmin)" to="/cat" @click="mobileNavOpen = false">爱的小窝</router-link>
+        <router-link v-if="canVisitPage('/pet', navigationAdmin)" to="/pet" @click="mobileNavOpen = false">爱的小窝</router-link>
+        <router-link v-if="canVisitPage('/wedding', navigationAdmin)" to="/wedding" @click="mobileNavOpen = false">爱的婚礼</router-link>
       </div>
 
 </template>
@@ -34,6 +36,7 @@ import { useRoute, useRouter } from 'vue-router'
 import PrivateMailbox from '../../features/mailbox/PrivateMailbox.vue'
 import AccountMenu from '../../features/auth/AccountMenu.vue'
 import { canVisitPage, currentProfile } from '../../features/auth/pageAccess'
+import { homeSectionHref as sectionHref, navigateHomeSection } from '../../utils/homeNavigation'
 defineProps({ light: Boolean, isAdmin: Boolean, hasMailbox: Boolean, currentUsername: String })
 const emit = defineEmits(['mailbox-unavailable'])
 const mailboxUnavailable = ref(false)
@@ -45,11 +48,9 @@ const route = useRoute()
 const router = useRouter()
 const mobileNavOpen = ref(false)
 watch(() => route.fullPath, () => { mobileNavOpen.value = false })
-function sectionHref(id) { return id === 'home' ? '/index' : `/index#${id}` }
 function navigateTo(id) {
   mobileNavOpen.value = false
-  if (route.path !== '/index') { router.push(sectionHref(id)); return }
-  document.getElementById(id)?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' })
+  return navigateHomeSection(router, id)
 }
 </script>
 <style scoped>

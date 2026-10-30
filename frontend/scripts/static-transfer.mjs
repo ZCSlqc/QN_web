@@ -7,7 +7,7 @@ import { gzipSync } from 'node:zlib'
 // API responses are never handled here; music keeps Vite's range-request support.
 export function staticTransfer() {
   const compressed = new Map()
-  const types = { '.png': 'image/png', '.webp': 'image/webp', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.svg': 'image/svg+xml', '.geojson': 'application/geo+json' }
+  const types = { '.png': 'image/png', '.webp': 'image/webp', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.svg': 'image/svg+xml', '.geojson': 'application/geo+json', '.ico': 'image/x-icon' }
   function install(server, folder) {
     const root = resolve(folder)
     server.middlewares.use(async (req, res, next) => {
@@ -19,7 +19,7 @@ export function staticTransfer() {
         if (['import', 'url', 'raw', 'worker'].some(key => url.searchParams.has(key))) return next()
         pathname = decodeURIComponent(url.pathname)
       } catch { return next() }
-      if (!/^\/(pets|backgrounds|avatars|maps|feedback|branding)\//.test(pathname) || !types[extname(pathname)]) return next()
+      if (!/^\/(index|pet|journey|wedding|shared)\//.test(pathname) || !types[extname(pathname)]) return next()
       try {
         const file = await realpath(resolve(root, '.' + pathname))
         if (!file.startsWith(root + sep)) return next()

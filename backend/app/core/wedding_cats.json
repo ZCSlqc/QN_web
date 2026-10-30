@@ -1,0 +1,7 @@
+[
+  {"id":"liuyi","name":"六一","personality":"clingy","rest_weight":20,"explore_weight":15,"social_weight":10,"approach_weight":55,"speed":64,"roam_radius":240,"rest_min":3,"rest_max":7,"home_x":800,"home_y":367},
+  {"id":"anan","name":"安安","personality":"lazy","rest_weight":70,"explore_weight":15,"social_weight":10,"approach_weight":5,"speed":34,"roam_radius":130,"rest_min":8,"rest_max":18,"home_x":650,"home_y":395},
+  {"id":"guagua","name":"瓜瓜","personality":"shy","rest_weight":45,"explore_weight":30,"social_weight":20,"approach_weight":5,"speed":46,"roam_radius":170,"rest_min":4,"rest_max":9,"home_x":940,"home_y":610},
+  {"id":"huahua","name":"花花","personality":"playful","rest_weight":15,"explore_weight":40,"social_weight":35,"approach_weight":10,"speed":78,"roam_radius":300,"rest_min":2,"rest_max":5,"home_x":510,"home_y":615},
+  {"id":"heihei","name":"黑黑","personality":"alert","rest_weight":30,"explore_weight":45,"social_weight":15,"approach_weight":10,"speed":52,"roam_radius":230,"rest_min":3,"rest_max":8,"home_x":1080,"home_y":405}
+]

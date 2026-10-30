@@ -1,310 +1,4047 @@
 [
   {
-    "source": "backgrounds/home-cover.jpg",
-    "public": "backgrounds/home-cover.webp",
-    "mode": "webp",
-    "width": 1600,
-    "quality": 82
-  },
-  {
-    "source": "backgrounds/anniversary.jpg",
-    "public": "backgrounds/anniversary.webp",
-    "mode": "webp",
-    "width": 1600,
-    "quality": 82
-  },
-  {
-    "source": "backgrounds/wedding-boutonniere.jpg",
-    "public": "backgrounds/wedding-boutonniere.webp",
-    "mode": "webp",
-    "width": 1600,
-    "quality": 82
-  },
-  {
-    "source": "avatars/qiqi.png",
-    "public": "avatars/qiqi.webp",
-    "mode": "webp",
-    "width": 160,
-    "quality": 82
-  },
-  {
-    "source": "avatars/nini.png",
-    "public": "avatars/nini.webp",
-    "mode": "webp",
-    "width": 160,
-    "quality": 82
-  },
-  {
-    "source": "pets/liuyi/illustrated/pose-0.webp",
-    "public": "pets/liuyi/illustrated/pose-0.webp",
+    "source": "index/background/home-cover.webp",
+    "public": "index/background/home-cover.webp",
     "mode": "copy"
   },
   {
-    "source": "pets/liuyi/illustrated/pose-1.webp",
-    "public": "pets/liuyi/illustrated/pose-1.webp",
+    "source": "index/background/anniversary.webp",
+    "public": "index/background/anniversary.webp",
     "mode": "copy"
   },
   {
-    "source": "pets/liuyi/illustrated/pose-2.webp",
-    "public": "pets/liuyi/illustrated/pose-2.webp",
+    "source": "index/background/wedding-boutonniere.webp",
+    "public": "index/background/wedding-boutonniere.webp",
     "mode": "copy"
   },
   {
-    "source": "pets/liuyi/illustrated/pose-3.webp",
-    "public": "pets/liuyi/illustrated/pose-3.webp",
+    "source": "index/avatars/qiqi.webp",
+    "public": "index/avatars/qiqi.webp",
     "mode": "copy"
   },
   {
-    "source": "pets/liuyi/illustrated/sleep.webp",
-    "public": "pets/liuyi/illustrated/sleep.webp",
+    "source": "index/avatars/nini.webp",
+    "public": "index/avatars/nini.webp",
     "mode": "copy"
   },
   {
-    "source": "pets/liuyi/illustrated/walk-0.webp",
-    "public": "pets/liuyi/illustrated/walk-0.webp",
+    "source": "pet/liuyi/illustrated/pose-0.webp",
+    "public": "pet/liuyi/illustrated/pose-0.webp",
     "mode": "copy"
   },
   {
-    "source": "pets/liuyi/illustrated/walk-1.webp",
-    "public": "pets/liuyi/illustrated/walk-1.webp",
+    "source": "pet/liuyi/illustrated/pose-1.webp",
+    "public": "pet/liuyi/illustrated/pose-1.webp",
     "mode": "copy"
   },
   {
-    "source": "pets/liuyi/illustrated/walk-2.webp",
-    "public": "pets/liuyi/illustrated/walk-2.webp",
+    "source": "pet/liuyi/illustrated/pose-2.webp",
+    "public": "pet/liuyi/illustrated/pose-2.webp",
     "mode": "copy"
   },
   {
-    "source": "pets/liuyi/illustrated/walk-3.webp",
-    "public": "pets/liuyi/illustrated/walk-3.webp",
+    "source": "pet/liuyi/illustrated/pose-3.webp",
+    "public": "pet/liuyi/illustrated/pose-3.webp",
     "mode": "copy"
   },
   {
-    "source": "pets/liuyi/illustrated/portrait.webp",
-    "public": "pets/liuyi/illustrated/portrait.webp",
+    "source": "pet/liuyi/illustrated/sleep.webp",
+    "public": "pet/liuyi/illustrated/sleep.webp",
     "mode": "copy"
   },
   {
-    "source": "pets/liuyi/realistic/pose-0.webp",
-    "public": "pets/liuyi/realistic/pose-0.webp",
+    "source": "pet/liuyi/illustrated/walk-0.webp",
+    "public": "pet/liuyi/illustrated/walk-0.webp",
     "mode": "copy"
   },
   {
-    "source": "pets/liuyi/realistic/pose-1.webp",
-    "public": "pets/liuyi/realistic/pose-1.webp",
+    "source": "pet/liuyi/illustrated/walk-1.webp",
+    "public": "pet/liuyi/illustrated/walk-1.webp",
     "mode": "copy"
   },
   {
-    "source": "pets/liuyi/realistic/pose-2.webp",
-    "public": "pets/liuyi/realistic/pose-2.webp",
+    "source": "pet/liuyi/illustrated/walk-2.webp",
+    "public": "pet/liuyi/illustrated/walk-2.webp",
     "mode": "copy"
   },
   {
-    "source": "pets/liuyi/realistic/pose-3.webp",
-    "public": "pets/liuyi/realistic/pose-3.webp",
+    "source": "pet/liuyi/illustrated/walk-3.webp",
+    "public": "pet/liuyi/illustrated/walk-3.webp",
     "mode": "copy"
   },
   {
-    "source": "pets/liuyi/realistic/sleep.webp",
-    "public": "pets/liuyi/realistic/sleep.webp",
+    "source": "pet/liuyi/illustrated/portrait.webp",
+    "public": "pet/liuyi/illustrated/portrait.webp",
     "mode": "copy"
   },
   {
-    "source": "pets/liuyi/realistic/walk-0.webp",
-    "public": "pets/liuyi/realistic/walk-0.webp",
+    "source": "pet/liuyi/realistic/pose-0.webp",
+    "public": "pet/liuyi/realistic/pose-0.webp",
     "mode": "copy"
   },
   {
-    "source": "pets/liuyi/realistic/walk-1.webp",
-    "public": "pets/liuyi/realistic/walk-1.webp",
+    "source": "pet/liuyi/realistic/pose-1.webp",
+    "public": "pet/liuyi/realistic/pose-1.webp",
     "mode": "copy"
   },
   {
-    "source": "pets/liuyi/realistic/walk-2.webp",
-    "public": "pets/liuyi/realistic/walk-2.webp",
+    "source": "pet/liuyi/realistic/pose-2.webp",
+    "public": "pet/liuyi/realistic/pose-2.webp",
     "mode": "copy"
   },
   {
-    "source": "pets/liuyi/realistic/walk-3.webp",
-    "public": "pets/liuyi/realistic/walk-3.webp",
+    "source": "pet/liuyi/realistic/pose-3.webp",
+    "public": "pet/liuyi/realistic/pose-3.webp",
     "mode": "copy"
   },
   {
-    "source": "pets/liuyi/realistic/portrait.webp",
-    "public": "pets/liuyi/realistic/portrait.webp",
+    "source": "pet/liuyi/realistic/sleep.webp",
+    "public": "pet/liuyi/realistic/sleep.webp",
     "mode": "copy"
   },
   {
-    "source": "pets/liuyi/emotions/heart.png",
-    "public": "pets/liuyi/emotions/heart.png",
+    "source": "pet/liuyi/realistic/walk-0.webp",
+    "public": "pet/liuyi/realistic/walk-0.webp",
     "mode": "copy"
   },
   {
-    "source": "pets/liuyi/emotions/idea.png",
-    "public": "pets/liuyi/emotions/idea.png",
+    "source": "pet/liuyi/realistic/walk-1.webp",
+    "public": "pet/liuyi/realistic/walk-1.webp",
     "mode": "copy"
   },
   {
-    "source": "pets/liuyi/emotions/stars.png",
-    "public": "pets/liuyi/emotions/stars.png",
+    "source": "pet/liuyi/realistic/walk-2.webp",
+    "public": "pet/liuyi/realistic/walk-2.webp",
     "mode": "copy"
   },
   {
-    "source": "pets/liuyi/food/bowl-empty.webp",
-    "public": "pets/liuyi/food/bowl-empty.webp",
+    "source": "pet/liuyi/realistic/walk-3.webp",
+    "public": "pet/liuyi/realistic/walk-3.webp",
     "mode": "copy"
   },
   {
-    "source": "pets/liuyi/food/bowl-full.webp",
-    "public": "pets/liuyi/food/bowl-full.webp",
+    "source": "pet/liuyi/realistic/portrait.webp",
+    "public": "pet/liuyi/realistic/portrait.webp",
     "mode": "copy"
   },
   {
-    "source": "pets/liuyi/food/can-open.webp",
-    "public": "pets/liuyi/food/can-open.webp",
+    "source": "pet/liuyi/emotions/heart.png",
+    "public": "pet/liuyi/emotions/heart.png",
     "mode": "copy"
   },
   {
-    "source": "pets/liuyi/food/treat-open.webp",
-    "public": "pets/liuyi/food/treat-open.webp",
+    "source": "pet/liuyi/emotions/idea.png",
+    "public": "pet/liuyi/emotions/idea.png",
     "mode": "copy"
   },
   {
-    "source": "pets/liuyi/friends/anan.png",
-    "public": "pets/liuyi/friends/anan.webp",
-    "mode": "webp",
-    "height": 480,
-    "quality": 82
-  },
-  {
-    "source": "pets/liuyi/friends/guagua.png",
-    "public": "pets/liuyi/friends/guagua.webp",
-    "mode": "webp",
-    "height": 480,
-    "quality": 82
-  },
-  {
-    "source": "pets/liuyi/friends/heihei.png",
-    "public": "pets/liuyi/friends/heihei.webp",
-    "mode": "webp",
-    "height": 480,
-    "quality": 82
-  },
-  {
-    "source": "pets/liuyi/friends/huahua.png",
-    "public": "pets/liuyi/friends/huahua.webp",
-    "mode": "webp",
-    "height": 480,
-    "quality": 82
-  },
-  {
-    "source": "pets/liuyi/icons/cat-can.png",
-    "public": "pets/liuyi/icons/cat-can.png",
+    "source": "pet/liuyi/emotions/stars.png",
+    "public": "pet/liuyi/emotions/stars.png",
     "mode": "copy"
   },
   {
-    "source": "pets/liuyi/icons/cat-food.png",
-    "public": "pets/liuyi/icons/cat-food.png",
+    "source": "pet/liuyi/food/bowl-empty.webp",
+    "public": "pet/liuyi/food/bowl-empty.webp",
     "mode": "copy"
   },
   {
-    "source": "pets/liuyi/icons/cat-teaser.png",
-    "public": "pets/liuyi/icons/cat-teaser.png",
+    "source": "pet/liuyi/food/bowl-full.webp",
+    "public": "pet/liuyi/food/bowl-full.webp",
     "mode": "copy"
   },
   {
-    "source": "pets/liuyi/icons/cat-treat.png",
-    "public": "pets/liuyi/icons/cat-treat.png",
+    "source": "pet/liuyi/food/can-open.webp",
+    "public": "pet/liuyi/food/can-open.webp",
     "mode": "copy"
   },
   {
-    "source": "pets/liuyi/icons/toy-mouse.png",
-    "public": "pets/liuyi/icons/toy-mouse.png",
+    "source": "pet/liuyi/food/treat-open.webp",
+    "public": "pet/liuyi/food/treat-open.webp",
     "mode": "copy"
   },
   {
-    "source": "pets/liuyi/interaction/hand-pet.webp",
-    "public": "pets/liuyi/interaction/hand-pet.webp",
+    "source": "pet/liuyi/friends/anan.webp",
+    "public": "pet/liuyi/friends/anan.webp",
     "mode": "copy"
   },
   {
-    "source": "pets/liuyi/interaction/hand-teaser.webp",
-    "public": "pets/liuyi/interaction/hand-teaser.webp",
+    "source": "pet/liuyi/friends/guagua.webp",
+    "public": "pet/liuyi/friends/guagua.webp",
     "mode": "copy"
   },
   {
-    "source": "pets/liuyi/sounds/content.mp3",
-    "public": "pets/liuyi/sounds/content.mp3",
+    "source": "pet/liuyi/friends/heihei.webp",
+    "public": "pet/liuyi/friends/heihei.webp",
     "mode": "copy"
   },
   {
-    "source": "pets/liuyi/sounds/hungry.mp3",
-    "public": "pets/liuyi/sounds/hungry.mp3",
+    "source": "pet/liuyi/friends/huahua.webp",
+    "public": "pet/liuyi/friends/huahua.webp",
     "mode": "copy"
   },
   {
-    "source": "pets/liuyi/sounds/meow.mp3",
-    "public": "pets/liuyi/sounds/meow.mp3",
+    "source": "pet/liuyi/icons/cat-can.png",
+    "public": "pet/liuyi/icons/cat-can.png",
     "mode": "copy"
   },
   {
-    "source": "pets/liuyi/sounds/pet.mp3",
-    "public": "pets/liuyi/sounds/pet.mp3",
+    "source": "pet/liuyi/icons/cat-food.png",
+    "public": "pet/liuyi/icons/cat-food.png",
     "mode": "copy"
   },
   {
-    "source": "pets/liuyi/sounds/play.mp3",
-    "public": "pets/liuyi/sounds/play.mp3",
+    "source": "pet/liuyi/icons/cat-teaser.png",
+    "public": "pet/liuyi/icons/cat-teaser.png",
     "mode": "copy"
   },
   {
-    "source": "pets/liuyi/weather/cloudy.png",
-    "public": "pets/liuyi/weather/cloudy.png",
+    "source": "pet/liuyi/icons/cat-treat.png",
+    "public": "pet/liuyi/icons/cat-treat.png",
     "mode": "copy"
   },
   {
-    "source": "pets/liuyi/weather/rainy.png",
-    "public": "pets/liuyi/weather/rainy.png",
+    "source": "pet/liuyi/icons/toy-mouse.png",
+    "public": "pet/liuyi/icons/toy-mouse.png",
     "mode": "copy"
   },
   {
-    "source": "pets/liuyi/weather/sunny.png",
-    "public": "pets/liuyi/weather/sunny.png",
+    "source": "pet/liuyi/interaction/hand-pet.webp",
+    "public": "pet/liuyi/interaction/hand-pet.webp",
     "mode": "copy"
   },
   {
-    "source": "feedback/blessing-sent.png",
-    "public": "feedback/blessing-sent.png",
+    "source": "pet/liuyi/interaction/hand-teaser.webp",
+    "public": "pet/liuyi/interaction/hand-teaser.webp",
     "mode": "copy"
   },
   {
-    "source": "feedback/letter-sent.png",
-    "public": "feedback/letter-sent.png",
+    "source": "pet/liuyi/sounds/content.mp3",
+    "public": "pet/liuyi/sounds/content.mp3",
     "mode": "copy"
   },
   {
-    "source": "maps/china/city.geojson",
-    "public": "maps/china/city.geojson",
+    "source": "pet/liuyi/sounds/hungry.mp3",
+    "public": "pet/liuyi/sounds/hungry.mp3",
     "mode": "copy"
   },
   {
-    "source": "maps/china/outline.geojson",
-    "public": "maps/china/outline.geojson",
+    "source": "pet/liuyi/sounds/meow.mp3",
+    "public": "pet/liuyi/sounds/meow.mp3",
     "mode": "copy"
   },
   {
-    "source": "maps/china/province.geojson",
-    "public": "maps/china/province.geojson",
+    "source": "pet/liuyi/sounds/pet.mp3",
+    "public": "pet/liuyi/sounds/pet.mp3",
     "mode": "copy"
   },
   {
-    "source": "audio/city-of-stars.mp3",
-    "public": "audio/city-of-stars.mp3",
+    "source": "pet/liuyi/sounds/play.mp3",
+    "public": "pet/liuyi/sounds/play.mp3",
     "mode": "copy"
   },
   {
-    "source": "branding/favicon.ico",
-    "public": "branding/favicon.ico",
+    "source": "pet/liuyi/weather/cloudy.png",
+    "public": "pet/liuyi/weather/cloudy.png",
+    "mode": "copy"
+  },
+  {
+    "source": "pet/liuyi/weather/rainy.png",
+    "public": "pet/liuyi/weather/rainy.png",
+    "mode": "copy"
+  },
+  {
+    "source": "pet/liuyi/weather/sunny.png",
+    "public": "pet/liuyi/weather/sunny.png",
+    "mode": "copy"
+  },
+  {
+    "source": "shared/feedback/blessing-sent.png",
+    "public": "shared/feedback/blessing-sent.png",
+    "mode": "copy"
+  },
+  {
+    "source": "shared/feedback/letter-sent.png",
+    "public": "shared/feedback/letter-sent.png",
+    "mode": "copy"
+  },
+  {
+    "source": "journey/maps/china/city.geojson",
+    "public": "journey/maps/china/city.geojson",
+    "mode": "copy"
+  },
+  {
+    "source": "journey/maps/china/outline.geojson",
+    "public": "journey/maps/china/outline.geojson",
+    "mode": "copy"
+  },
+  {
+    "source": "journey/maps/china/province.geojson",
+    "public": "journey/maps/china/province.geojson",
+    "mode": "copy"
+  },
+  {
+    "source": "shared/audio/city-of-stars.mp3",
+    "public": "shared/audio/city-of-stars.mp3",
+    "mode": "copy"
+  },
+  {
+    "source": "shared/branding/favicon.ico",
+    "public": "shared/branding/favicon.ico",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/background/garden-orthographic.webp",
+    "public": "wedding/background/garden-orthographic.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Completes/face1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Completes/face1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Completes/face2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Completes/face2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Completes/face3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Completes/face3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Completes/face4.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Completes/face4.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Eyebrows/blackBrow1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Eyebrows/blackBrow1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Eyebrows/blackBrow2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Eyebrows/blackBrow2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Eyebrows/blackBrow3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Eyebrows/blackBrow3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Eyebrows/blondeBrow1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Eyebrows/blondeBrow1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Eyebrows/blondeBrow2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Eyebrows/blondeBrow2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Eyebrows/blondeBrow3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Eyebrows/blondeBrow3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Eyebrows/brown1Brow1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Eyebrows/brown1Brow1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Eyebrows/brown1Brow2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Eyebrows/brown1Brow2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Eyebrows/brown1Brow3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Eyebrows/brown1Brow3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Eyebrows/brown2Brow1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Eyebrows/brown2Brow1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Eyebrows/brown2Brow2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Eyebrows/brown2Brow2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Eyebrows/brown2Brow3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Eyebrows/brown2Brow3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Eyebrows/greyBrow1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Eyebrows/greyBrow1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Eyebrows/greyBrow2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Eyebrows/greyBrow2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Eyebrows/greyBrow3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Eyebrows/greyBrow3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Eyebrows/redBrow1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Eyebrows/redBrow1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Eyebrows/redBrow2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Eyebrows/redBrow2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Eyebrows/redBrow3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Eyebrows/redBrow3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Eyebrows/tanBrow1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Eyebrows/tanBrow1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Eyebrows/tanBrow2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Eyebrows/tanBrow2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Eyebrows/tanBrow3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Eyebrows/tanBrow3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Eyebrows/whiteBrow1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Eyebrows/whiteBrow1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Eyebrows/whiteBrow2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Eyebrows/whiteBrow2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Eyebrows/whiteBrow3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Eyebrows/whiteBrow3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Eyes/eyeBlack_large.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Eyes/eyeBlack_large.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Eyes/eyeBlack_small.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Eyes/eyeBlack_small.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Eyes/eyeBlue_large.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Eyes/eyeBlue_large.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Eyes/eyeBlue_small.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Eyes/eyeBlue_small.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Eyes/eyeBrown_large.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Eyes/eyeBrown_large.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Eyes/eyeBrown_small.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Eyes/eyeBrown_small.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Eyes/eyeGreen_large.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Eyes/eyeGreen_large.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Eyes/eyeGreen_small.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Eyes/eyeGreen_small.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Eyes/eyePine_large.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Eyes/eyePine_large.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Eyes/eyePine_small.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Eyes/eyePine_small.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Mouth/mouth_glad.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Mouth/mouth_glad.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Mouth/mouth_happy.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Mouth/mouth_happy.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Mouth/mouth_oh.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Mouth/mouth_oh.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Mouth/mouth_sad.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Mouth/mouth_sad.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Mouth/mouth_straight.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Mouth/mouth_straight.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Mouth/mouth_teethLower.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Mouth/mouth_teethLower.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Mouth/mouth_teethUpper.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Mouth/mouth_teethUpper.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Nose/Tint 1/tint1Nose1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Nose/Tint 1/tint1Nose1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Nose/Tint 1/tint1Nose2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Nose/Tint 1/tint1Nose2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Nose/Tint 1/tint1Nose3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Nose/Tint 1/tint1Nose3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Nose/Tint 2/tint2Nose1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Nose/Tint 2/tint2Nose1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Nose/Tint 2/tint2Nose2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Nose/Tint 2/tint2Nose2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Nose/Tint 2/tint2Nose3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Nose/Tint 2/tint2Nose3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Nose/Tint 3/tint3Nose1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Nose/Tint 3/tint3Nose1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Nose/Tint 3/tint3Nose2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Nose/Tint 3/tint3Nose2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Nose/Tint 3/tint3Nose3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Nose/Tint 3/tint3Nose3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Nose/Tint 4/tint4Nose1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Nose/Tint 4/tint4Nose1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Nose/Tint 4/tint4Nose2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Nose/Tint 4/tint4Nose2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Nose/Tint 4/tint4Nose3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Nose/Tint 4/tint4Nose3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Nose/Tint 5/tint5Nose1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Nose/Tint 5/tint5Nose1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Nose/Tint 5/tint5Nose2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Nose/Tint 5/tint5Nose2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Nose/Tint 5/tint5Nose3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Nose/Tint 5/tint5Nose3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Nose/Tint 6/tint6Nose1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Nose/Tint 6/tint6Nose1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Nose/Tint 6/tint6Nose2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Nose/Tint 6/tint6Nose2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Nose/Tint 6/tint6Nose3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Nose/Tint 6/tint6Nose3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Nose/Tint 7/tint7Nose1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Nose/Tint 7/tint7Nose1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Nose/Tint 7/tint7Nose2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Nose/Tint 7/tint7Nose2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Nose/Tint 7/tint7Nose3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Nose/Tint 7/tint7Nose3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Nose/Tint 8/tint8Nose1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Nose/Tint 8/tint8Nose1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Nose/Tint 8/tint8Nose2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Nose/Tint 8/tint8Nose2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Face/Nose/Tint 8/tint8Nose3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Face/Nose/Tint 8/tint8Nose3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Black/blackMan1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Black/blackMan1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Black/blackMan2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Black/blackMan2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Black/blackMan3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Black/blackMan3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Black/blackMan4.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Black/blackMan4.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Black/blackMan5.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Black/blackMan5.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Black/blackMan6.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Black/blackMan6.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Black/blackMan7.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Black/blackMan7.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Black/blackMan8.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Black/blackMan8.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Black/blackWoman1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Black/blackWoman1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Black/blackWoman2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Black/blackWoman2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Black/blackWoman3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Black/blackWoman3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Black/blackWoman4.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Black/blackWoman4.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Black/blackWoman5.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Black/blackWoman5.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Black/blackWoman6.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Black/blackWoman6.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Blonde/blondeMan1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Blonde/blondeMan1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Blonde/blondeMan2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Blonde/blondeMan2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Blonde/blondeMan3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Blonde/blondeMan3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Blonde/blondeMan4.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Blonde/blondeMan4.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Blonde/blondeMan5.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Blonde/blondeMan5.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Blonde/blondeMan6.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Blonde/blondeMan6.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Blonde/blondeMan7.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Blonde/blondeMan7.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Blonde/blondeMan8.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Blonde/blondeMan8.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Blonde/blondeWoman1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Blonde/blondeWoman1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Blonde/blondeWoman2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Blonde/blondeWoman2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Blonde/blondeWoman3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Blonde/blondeWoman3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Blonde/blondeWoman4.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Blonde/blondeWoman4.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Blonde/blondeWoman5.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Blonde/blondeWoman5.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Blonde/blondeWoman6.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Blonde/blondeWoman6.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Brown 1/brown1Man1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Brown 1/brown1Man1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Brown 1/brown1Man2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Brown 1/brown1Man2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Brown 1/brown1Man3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Brown 1/brown1Man3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Brown 1/brown1Man4.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Brown 1/brown1Man4.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Brown 1/brown1Man5.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Brown 1/brown1Man5.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Brown 1/brown1Man6.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Brown 1/brown1Man6.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Brown 1/brown1Man7.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Brown 1/brown1Man7.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Brown 1/brown1Man8.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Brown 1/brown1Man8.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Brown 1/brown1Woman1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Brown 1/brown1Woman1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Brown 1/brown1Woman2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Brown 1/brown1Woman2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Brown 1/brown1Woman3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Brown 1/brown1Woman3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Brown 1/brown1Woman4.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Brown 1/brown1Woman4.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Brown 1/brown1Woman5.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Brown 1/brown1Woman5.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Brown 1/brown1Woman6.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Brown 1/brown1Woman6.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Brown 2/brown2Man1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Brown 2/brown2Man1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Brown 2/brown2Man2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Brown 2/brown2Man2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Brown 2/brown2Man3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Brown 2/brown2Man3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Brown 2/brown2Man4.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Brown 2/brown2Man4.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Brown 2/brown2Man5.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Brown 2/brown2Man5.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Brown 2/brown2Man6.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Brown 2/brown2Man6.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Brown 2/brown2Man7.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Brown 2/brown2Man7.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Brown 2/brown2Man8.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Brown 2/brown2Man8.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Brown 2/brown2Woman1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Brown 2/brown2Woman1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Brown 2/brown2Woman2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Brown 2/brown2Woman2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Brown 2/brown2Woman3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Brown 2/brown2Woman3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Brown 2/brown2Woman4.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Brown 2/brown2Woman4.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Brown 2/brown2Woman5.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Brown 2/brown2Woman5.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Brown 2/brown2Woman6.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Brown 2/brown2Woman6.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Grey/greyMan1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Grey/greyMan1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Grey/greyMan2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Grey/greyMan2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Grey/greyMan3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Grey/greyMan3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Grey/greyMan4.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Grey/greyMan4.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Grey/greyMan5.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Grey/greyMan5.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Grey/greyMan6.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Grey/greyMan6.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Grey/greyMan7.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Grey/greyMan7.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Grey/greyMan8.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Grey/greyMan8.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Grey/greyWoman1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Grey/greyWoman1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Grey/greyWoman2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Grey/greyWoman2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Grey/greyWoman3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Grey/greyWoman3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Grey/greyWoman4.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Grey/greyWoman4.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Grey/greyWoman5.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Grey/greyWoman5.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Grey/greyWoman6.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Grey/greyWoman6.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Red/redMan1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Red/redMan1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Red/redMan2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Red/redMan2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Red/redMan3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Red/redMan3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Red/redMan4.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Red/redMan4.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Red/redMan5.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Red/redMan5.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Red/redMan6.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Red/redMan6.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Red/redMan7.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Red/redMan7.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Red/redMan8.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Red/redMan8.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Red/redWoman1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Red/redWoman1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Red/redWoman2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Red/redWoman2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Red/redWoman3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Red/redWoman3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Red/redWoman4.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Red/redWoman4.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Red/redWoman5.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Red/redWoman5.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Red/redWoman6.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Red/redWoman6.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Tan/tanMan1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Tan/tanMan1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Tan/tanMan2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Tan/tanMan2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Tan/tanMan3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Tan/tanMan3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Tan/tanMan4.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Tan/tanMan4.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Tan/tanMan5.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Tan/tanMan5.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Tan/tanMan6.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Tan/tanMan6.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Tan/tanMan7.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Tan/tanMan7.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Tan/tanMan8.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Tan/tanMan8.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Tan/tanWoman1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Tan/tanWoman1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Tan/tanWoman2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Tan/tanWoman2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Tan/tanWoman3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Tan/tanWoman3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Tan/tanWoman4.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Tan/tanWoman4.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Tan/tanWoman5.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Tan/tanWoman5.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/Tan/tanWoman6.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/Tan/tanWoman6.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/White/whiteMan1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/White/whiteMan1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/White/whiteMan2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/White/whiteMan2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/White/whiteMan3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/White/whiteMan3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/White/whiteMan4.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/White/whiteMan4.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/White/whiteMan5.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/White/whiteMan5.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/White/whiteMan6.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/White/whiteMan6.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/White/whiteMan7.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/White/whiteMan7.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/White/whiteMan8.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/White/whiteMan8.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/White/whiteWoman1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/White/whiteWoman1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/White/whiteWoman2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/White/whiteWoman2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/White/whiteWoman3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/White/whiteWoman3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/White/whiteWoman4.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/White/whiteWoman4.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/White/whiteWoman5.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/White/whiteWoman5.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Hair/White/whiteWoman6.png",
+    "public": "wedding/kenney_modular-characters/PNG/Hair/White/whiteWoman6.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Blue 1/pantsBlue11.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Blue 1/pantsBlue11.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Blue 1/pantsBlue12.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Blue 1/pantsBlue12.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Blue 1/pantsBlue13.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Blue 1/pantsBlue13.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Blue 1/pantsBlue14.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Blue 1/pantsBlue14.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Blue 1/pantsBlue1_long.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Blue 1/pantsBlue1_long.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Blue 1/pantsBlue1_short.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Blue 1/pantsBlue1_short.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Blue 1/pantsBlue1_shorter.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Blue 1/pantsBlue1_shorter.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Blue 2/pantsBlue21.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Blue 2/pantsBlue21.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Blue 2/pantsBlue22.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Blue 2/pantsBlue22.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Blue 2/pantsBlue23.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Blue 2/pantsBlue23.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Blue 2/pantsBlue24.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Blue 2/pantsBlue24.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Blue 2/pantsBlue2_long.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Blue 2/pantsBlue2_long.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Blue 2/pantsBlue2_short.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Blue 2/pantsBlue2_short.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Blue 2/pantsBlue2_shorter.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Blue 2/pantsBlue2_shorter.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Brown/pantsBrown1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Brown/pantsBrown1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Brown/pantsBrown2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Brown/pantsBrown2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Brown/pantsBrown3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Brown/pantsBrown3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Brown/pantsBrown4.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Brown/pantsBrown4.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Brown/pantsBrown_long.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Brown/pantsBrown_long.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Brown/pantsBrown_short.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Brown/pantsBrown_short.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Brown/pantsBrown_shorter.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Brown/pantsBrown_shorter.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Green/pantsGreen1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Green/pantsGreen1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Green/pantsGreen2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Green/pantsGreen2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Green/pantsGreen3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Green/pantsGreen3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Green/pantsGreen4.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Green/pantsGreen4.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Green/pantsGreen_long.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Green/pantsGreen_long.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Green/pantsGreen_short.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Green/pantsGreen_short.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Green/pantsGreen_shorter.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Green/pantsGreen_shorter.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Grey/pantsGrey1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Grey/pantsGrey1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Grey/pantsGrey2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Grey/pantsGrey2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Grey/pantsGrey3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Grey/pantsGrey3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Grey/pantsGrey4.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Grey/pantsGrey4.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Grey/pantsGrey_long.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Grey/pantsGrey_long.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Grey/pantsGrey_short.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Grey/pantsGrey_short.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Grey/pantsGrey_shorter.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Grey/pantsGrey_shorter.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Light Blue/pantsLightBlue1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Light Blue/pantsLightBlue1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Light Blue/pantsLightBlue2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Light Blue/pantsLightBlue2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Light Blue/pantsLightBlue3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Light Blue/pantsLightBlue3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Light Blue/pantsLightBlue4.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Light Blue/pantsLightBlue4.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Light Blue/pantsLightBlue_long.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Light Blue/pantsLightBlue_long.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Light Blue/pantsLightBlue_short.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Light Blue/pantsLightBlue_short.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Light Blue/pantsLightBlue_shorter.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Light Blue/pantsLightBlue_shorter.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Navy/pantsNavy1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Navy/pantsNavy1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Navy/pantsNavy2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Navy/pantsNavy2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Navy/pantsNavy3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Navy/pantsNavy3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Navy/pantsNavy4.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Navy/pantsNavy4.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Navy/pantsNavy_long.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Navy/pantsNavy_long.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Navy/pantsNavy_short.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Navy/pantsNavy_short.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Navy/pantsNavy_shorter.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Navy/pantsNavy_shorter.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Pine/pantsPine1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Pine/pantsPine1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Pine/pantsPine2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Pine/pantsPine2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Pine/pantsPine3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Pine/pantsPine3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Pine/pantsPine4.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Pine/pantsPine4.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Pine/pantsPine_long.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Pine/pantsPine_long.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Pine/pantsPine_short.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Pine/pantsPine_short.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Pine/pantsPine_shorter.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Pine/pantsPine_shorter.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Red/pantsRed1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Red/pantsRed1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Red/pantsRed2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Red/pantsRed2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Red/pantsRed3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Red/pantsRed3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Red/pantsRed4.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Red/pantsRed4.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Red/pantsRed_long.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Red/pantsRed_long.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Red/pantsRed_short.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Red/pantsRed_short.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Red/pantsRed_shorter.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Red/pantsRed_shorter.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Tan/pantsTan1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Tan/pantsTan1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Tan/pantsTan2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Tan/pantsTan2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Tan/pantsTan3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Tan/pantsTan3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Tan/pantsTan4.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Tan/pantsTan4.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Tan/pantsTan_long.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Tan/pantsTan_long.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Tan/pantsTan_short.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Tan/pantsTan_short.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Tan/pantsTan_shorter.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Tan/pantsTan_shorter.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/White/pantsWhite1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/White/pantsWhite1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/White/pantsWhite2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/White/pantsWhite2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/White/pantsWhite3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/White/pantsWhite3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/White/pantsWhite4.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/White/pantsWhite4.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/White/pantsWhite_long.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/White/pantsWhite_long.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/White/pantsWhite_short.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/White/pantsWhite_short.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/White/pantsWhite_shorter.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/White/pantsWhite_shorter.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Yellow/legYellow_long.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Yellow/legYellow_long.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Yellow/legYellow_short.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Yellow/legYellow_short.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Yellow/legYellow_shorter.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Yellow/legYellow_shorter.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Yellow/pantsYellow1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Yellow/pantsYellow1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Yellow/pantsYellow2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Yellow/pantsYellow2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Yellow/pantsYellow3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Yellow/pantsYellow3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Pants/Yellow/pantsYellow4.png",
+    "public": "wedding/kenney_modular-characters/PNG/Pants/Yellow/pantsYellow4.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Blue/blueArm_long.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Blue/blueArm_long.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Blue/blueArm_short.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Blue/blueArm_short.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Blue/blueArm_shorter.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Blue/blueArm_shorter.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Blue/blueShirt1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Blue/blueShirt1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Blue/blueShirt2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Blue/blueShirt2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Blue/blueShirt3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Blue/blueShirt3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Blue/blueShirt4.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Blue/blueShirt4.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Blue/blueShirt5.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Blue/blueShirt5.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Blue/blueShirt6.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Blue/blueShirt6.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Blue/blueShirt7.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Blue/blueShirt7.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Blue/blueShirt8.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Blue/blueShirt8.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Green/greenArm_long.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Green/greenArm_long.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Green/greenArm_short.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Green/greenArm_short.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Green/greenArm_shorter.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Green/greenArm_shorter.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Green/greenShirt1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Green/greenShirt1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Green/greenShirt2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Green/greenShirt2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Green/greenShirt3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Green/greenShirt3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Green/greenShirt4.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Green/greenShirt4.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Green/greenShirt5.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Green/greenShirt5.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Green/greenShirt6.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Green/greenShirt6.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Green/greenShirt7.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Green/greenShirt7.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Green/greenShirt8.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Green/greenShirt8.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Grey/greyArm_long.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Grey/greyArm_long.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Grey/greyArm_short.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Grey/greyArm_short.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Grey/greyArm_shorter.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Grey/greyArm_shorter.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Grey/greyShirt1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Grey/greyShirt1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Grey/greyShirt2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Grey/greyShirt2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Grey/greyShirt3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Grey/greyShirt3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Grey/greyShirt4.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Grey/greyShirt4.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Grey/greyShirt5.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Grey/greyShirt5.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Grey/greyShirt6.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Grey/greyShirt6.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Grey/greyShirt7.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Grey/greyShirt7.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Grey/greyShirt8.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Grey/greyShirt8.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Navy/navyArm_long.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Navy/navyArm_long.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Navy/navyArm_short.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Navy/navyArm_short.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Navy/navyArm_shorter.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Navy/navyArm_shorter.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Navy/navyShirt1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Navy/navyShirt1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Navy/navyShirt2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Navy/navyShirt2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Navy/navyShirt3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Navy/navyShirt3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Navy/navyShirt4.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Navy/navyShirt4.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Navy/navyShirt5.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Navy/navyShirt5.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Navy/navyShirt6.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Navy/navyShirt6.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Navy/navyShirt7.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Navy/navyShirt7.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Navy/navyShirt8.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Navy/navyShirt8.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Pine/pineArm_long.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Pine/pineArm_long.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Pine/pineArm_short.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Pine/pineArm_short.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Pine/pineArm_shorter.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Pine/pineArm_shorter.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Pine/pineShirt1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Pine/pineShirt1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Pine/pineShirt2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Pine/pineShirt2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Pine/pineShirt3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Pine/pineShirt3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Pine/pineShirt4.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Pine/pineShirt4.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Pine/pineShirt5.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Pine/pineShirt5.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Pine/pineShirt6.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Pine/pineShirt6.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Pine/pineShirt7.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Pine/pineShirt7.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Pine/pineShirt8.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Pine/pineShirt8.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Red/redArm_long.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Red/redArm_long.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Red/redArm_short.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Red/redArm_short.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Red/redArm_shorter.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Red/redArm_shorter.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Red/redShirt1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Red/redShirt1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Red/redShirt2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Red/redShirt2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Red/redShirt3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Red/redShirt3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Red/redShirt4.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Red/redShirt4.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Red/redShirt5.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Red/redShirt5.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Red/redShirt6.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Red/redShirt6.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Red/redShirt7.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Red/redShirt7.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Red/redShirt8.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Red/redShirt8.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/White/armWhite_long.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/White/armWhite_long.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/White/armWhite_short.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/White/armWhite_short.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/White/armWhite_shorter.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/White/armWhite_shorter.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/White/whiteShirt1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/White/whiteShirt1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/White/whiteShirt2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/White/whiteShirt2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/White/whiteShirt3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/White/whiteShirt3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/White/whiteShirt4.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/White/whiteShirt4.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/White/whiteShirt5.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/White/whiteShirt5.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/White/whiteShirt6.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/White/whiteShirt6.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/White/whiteShirt7.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/White/whiteShirt7.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/White/whiteShirt8.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/White/whiteShirt8.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Yellow/armYellow_long.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Yellow/armYellow_long.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Yellow/armYellow_short.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Yellow/armYellow_short.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Yellow/armYellow_shorter.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Yellow/armYellow_shorter.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Yellow/shirtYellow1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Yellow/shirtYellow1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Yellow/shirtYellow2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Yellow/shirtYellow2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Yellow/shirtYellow3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Yellow/shirtYellow3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Yellow/shirtYellow4.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Yellow/shirtYellow4.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Yellow/shirtYellow5.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Yellow/shirtYellow5.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Yellow/shirtYellow6.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Yellow/shirtYellow6.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Yellow/shirtYellow7.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Yellow/shirtYellow7.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shirts/Yellow/shirtYellow8.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shirts/Yellow/shirtYellow8.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shoes/Black/blackShoe1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shoes/Black/blackShoe1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shoes/Black/blackShoe2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shoes/Black/blackShoe2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shoes/Black/blackShoe3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shoes/Black/blackShoe3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shoes/Black/blackShoe4.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shoes/Black/blackShoe4.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shoes/Black/blackShoe5.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shoes/Black/blackShoe5.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shoes/Blue/blueShoe1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shoes/Blue/blueShoe1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shoes/Blue/blueShoe2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shoes/Blue/blueShoe2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shoes/Blue/blueShoe3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shoes/Blue/blueShoe3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shoes/Blue/blueShoe4.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shoes/Blue/blueShoe4.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shoes/Blue/blueShoe5.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shoes/Blue/blueShoe5.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shoes/Brown 1/brownShoe1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shoes/Brown 1/brownShoe1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shoes/Brown 1/brownShoe2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shoes/Brown 1/brownShoe2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shoes/Brown 1/brownShoe3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shoes/Brown 1/brownShoe3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shoes/Brown 1/brownShoe4.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shoes/Brown 1/brownShoe4.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shoes/Brown 1/brownShoe5.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shoes/Brown 1/brownShoe5.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shoes/Brown 2/brown2Shoe1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shoes/Brown 2/brown2Shoe1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shoes/Brown 2/brown2Shoe2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shoes/Brown 2/brown2Shoe2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shoes/Brown 2/brown2Shoe3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shoes/Brown 2/brown2Shoe3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shoes/Brown 2/brown2Shoe4.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shoes/Brown 2/brown2Shoe4.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shoes/Brown 2/brown2Shoe5.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shoes/Brown 2/brown2Shoe5.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shoes/Grey/greyShoe1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shoes/Grey/greyShoe1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shoes/Grey/greyShoe2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shoes/Grey/greyShoe2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shoes/Grey/greyShoe3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shoes/Grey/greyShoe3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shoes/Grey/greyShoe4.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shoes/Grey/greyShoe4.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shoes/Grey/greyShoe5.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shoes/Grey/greyShoe5.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shoes/Red/redShoe1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shoes/Red/redShoe1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shoes/Red/redShoe2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shoes/Red/redShoe2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shoes/Red/redShoe3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shoes/Red/redShoe3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shoes/Red/redShoe4.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shoes/Red/redShoe4.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shoes/Red/redShoe5.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shoes/Red/redShoe5.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shoes/Tan/tanShoe1.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shoes/Tan/tanShoe1.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shoes/Tan/tanShoe2.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shoes/Tan/tanShoe2.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shoes/Tan/tanShoe3.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shoes/Tan/tanShoe3.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shoes/Tan/tanShoe4.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shoes/Tan/tanShoe4.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Shoes/Tan/tanShoe5.png",
+    "public": "wedding/kenney_modular-characters/PNG/Shoes/Tan/tanShoe5.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Skin/Tint 1/tint1_arm.png",
+    "public": "wedding/kenney_modular-characters/PNG/Skin/Tint 1/tint1_arm.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Skin/Tint 1/tint1_hand.png",
+    "public": "wedding/kenney_modular-characters/PNG/Skin/Tint 1/tint1_hand.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Skin/Tint 1/tint1_head.png",
+    "public": "wedding/kenney_modular-characters/PNG/Skin/Tint 1/tint1_head.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Skin/Tint 1/tint1_leg.png",
+    "public": "wedding/kenney_modular-characters/PNG/Skin/Tint 1/tint1_leg.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Skin/Tint 1/tint1_neck.png",
+    "public": "wedding/kenney_modular-characters/PNG/Skin/Tint 1/tint1_neck.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Skin/Tint 2/tint2_arm.png",
+    "public": "wedding/kenney_modular-characters/PNG/Skin/Tint 2/tint2_arm.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Skin/Tint 2/tint2_hand.png",
+    "public": "wedding/kenney_modular-characters/PNG/Skin/Tint 2/tint2_hand.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Skin/Tint 2/tint2_head.png",
+    "public": "wedding/kenney_modular-characters/PNG/Skin/Tint 2/tint2_head.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Skin/Tint 2/tint2_leg.png",
+    "public": "wedding/kenney_modular-characters/PNG/Skin/Tint 2/tint2_leg.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Skin/Tint 2/tint2_neck.png",
+    "public": "wedding/kenney_modular-characters/PNG/Skin/Tint 2/tint2_neck.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Skin/Tint 3/tint3_arm.png",
+    "public": "wedding/kenney_modular-characters/PNG/Skin/Tint 3/tint3_arm.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Skin/Tint 3/tint3_hand.png",
+    "public": "wedding/kenney_modular-characters/PNG/Skin/Tint 3/tint3_hand.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Skin/Tint 3/tint3_head.png",
+    "public": "wedding/kenney_modular-characters/PNG/Skin/Tint 3/tint3_head.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Skin/Tint 3/tint3_leg.png",
+    "public": "wedding/kenney_modular-characters/PNG/Skin/Tint 3/tint3_leg.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Skin/Tint 3/tint3_neck.png",
+    "public": "wedding/kenney_modular-characters/PNG/Skin/Tint 3/tint3_neck.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Skin/Tint 4/tint4_arm.png",
+    "public": "wedding/kenney_modular-characters/PNG/Skin/Tint 4/tint4_arm.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Skin/Tint 4/tint4_hand.png",
+    "public": "wedding/kenney_modular-characters/PNG/Skin/Tint 4/tint4_hand.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Skin/Tint 4/tint4_head.png",
+    "public": "wedding/kenney_modular-characters/PNG/Skin/Tint 4/tint4_head.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Skin/Tint 4/tint4_leg.png",
+    "public": "wedding/kenney_modular-characters/PNG/Skin/Tint 4/tint4_leg.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Skin/Tint 4/tint4_neck.png",
+    "public": "wedding/kenney_modular-characters/PNG/Skin/Tint 4/tint4_neck.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Skin/Tint 5/tint5_arm.png",
+    "public": "wedding/kenney_modular-characters/PNG/Skin/Tint 5/tint5_arm.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Skin/Tint 5/tint5_hand.png",
+    "public": "wedding/kenney_modular-characters/PNG/Skin/Tint 5/tint5_hand.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Skin/Tint 5/tint5_head.png",
+    "public": "wedding/kenney_modular-characters/PNG/Skin/Tint 5/tint5_head.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Skin/Tint 5/tint5_leg.png",
+    "public": "wedding/kenney_modular-characters/PNG/Skin/Tint 5/tint5_leg.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Skin/Tint 5/tint5_neck.png",
+    "public": "wedding/kenney_modular-characters/PNG/Skin/Tint 5/tint5_neck.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Skin/Tint 6/tint6_arm.png",
+    "public": "wedding/kenney_modular-characters/PNG/Skin/Tint 6/tint6_arm.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Skin/Tint 6/tint6_hand.png",
+    "public": "wedding/kenney_modular-characters/PNG/Skin/Tint 6/tint6_hand.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Skin/Tint 6/tint6_head.png",
+    "public": "wedding/kenney_modular-characters/PNG/Skin/Tint 6/tint6_head.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Skin/Tint 6/tint6_leg.png",
+    "public": "wedding/kenney_modular-characters/PNG/Skin/Tint 6/tint6_leg.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Skin/Tint 6/tint6_neck.png",
+    "public": "wedding/kenney_modular-characters/PNG/Skin/Tint 6/tint6_neck.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Skin/Tint 7/tint7_arm.png",
+    "public": "wedding/kenney_modular-characters/PNG/Skin/Tint 7/tint7_arm.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Skin/Tint 7/tint7_hand.png",
+    "public": "wedding/kenney_modular-characters/PNG/Skin/Tint 7/tint7_hand.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Skin/Tint 7/tint7_head.png",
+    "public": "wedding/kenney_modular-characters/PNG/Skin/Tint 7/tint7_head.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Skin/Tint 7/tint7_leg.png",
+    "public": "wedding/kenney_modular-characters/PNG/Skin/Tint 7/tint7_leg.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Skin/Tint 7/tint7_neck.png",
+    "public": "wedding/kenney_modular-characters/PNG/Skin/Tint 7/tint7_neck.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Skin/Tint 8/tint8_arm.png",
+    "public": "wedding/kenney_modular-characters/PNG/Skin/Tint 8/tint8_arm.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Skin/Tint 8/tint8_hand.png",
+    "public": "wedding/kenney_modular-characters/PNG/Skin/Tint 8/tint8_hand.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Skin/Tint 8/tint8_head.png",
+    "public": "wedding/kenney_modular-characters/PNG/Skin/Tint 8/tint8_head.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Skin/Tint 8/tint8_leg.png",
+    "public": "wedding/kenney_modular-characters/PNG/Skin/Tint 8/tint8_leg.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/PNG/Skin/Tint 8/tint8_neck.png",
+    "public": "wedding/kenney_modular-characters/PNG/Skin/Tint 8/tint8_neck.png",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/license.txt",
+    "public": "wedding/kenney_modular-characters/license.txt",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/cats/liuyi.webp",
+    "public": "wedding/cats/liuyi.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/cats/anan.webp",
+    "public": "wedding/cats/anan.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/cats/guagua.webp",
+    "public": "wedding/cats/guagua.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/cats/huahua.webp",
+    "public": "wedding/cats/huahua.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/cats/heihei.webp",
+    "public": "wedding/cats/heihei.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/pixelAnimal/animal-bear-front.webp",
+    "public": "wedding/pixelAnimal/animal-bear-front.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/pixelAnimal/animal-chick-front.webp",
+    "public": "wedding/pixelAnimal/animal-chick-front.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/pixelAnimal/animal-chicken-front.webp",
+    "public": "wedding/pixelAnimal/animal-chicken-front.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/pixelAnimal/animal-fox-front.webp",
+    "public": "wedding/pixelAnimal/animal-fox-front.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/pixelAnimal/animal-frog-front.webp",
+    "public": "wedding/pixelAnimal/animal-frog-front.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/pixelAnimal/animal-monkey-front.webp",
+    "public": "wedding/pixelAnimal/animal-monkey-front.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/pixelAnimal/animal-pig-front.webp",
+    "public": "wedding/pixelAnimal/animal-pig-front.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/pixelAnimal/animal-rabbit-front.webp",
+    "public": "wedding/pixelAnimal/animal-rabbit-front.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/pixelAnimal/animal-tabby-cat-front.webp",
+    "public": "wedding/pixelAnimal/animal-tabby-cat-front.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/pixelAnimal/animal-tiger-front.webp",
+    "public": "wedding/pixelAnimal/animal-tiger-front.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/pixelAnimal/animal-white-bird-front.webp",
+    "public": "wedding/pixelAnimal/animal-white-bird-front.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/pixelAnimal/animal-white-cat-front.webp",
+    "public": "wedding/pixelAnimal/animal-white-cat-front.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/cats/liuyi-actions.webp",
+    "public": "wedding/cats/liuyi-actions.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/cats/anan-actions.webp",
+    "public": "wedding/cats/anan-actions.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/cats/guagua-actions.webp",
+    "public": "wedding/cats/guagua-actions.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/cats/huahua-actions.webp",
+    "public": "wedding/cats/huahua-actions.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/cats/heihei-actions.webp",
+    "public": "wedding/cats/heihei-actions.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/food/cola.webp",
+    "public": "wedding/food/cola.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/food/bubble-tea.webp",
+    "public": "wedding/food/bubble-tea.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/food/burger.webp",
+    "public": "wedding/food/burger.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/food/avocado-half.webp",
+    "public": "wedding/food/avocado-half.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/food/strawberry-donut.webp",
+    "public": "wedding/food/strawberry-donut.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/food/egg-tart.webp",
+    "public": "wedding/food/egg-tart.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/food/chocolate-berry-cake.webp",
+    "public": "wedding/food/chocolate-berry-cake.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/food/cherry-cake-slice.webp",
+    "public": "wedding/food/cherry-cake-slice.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/food/cherry-ice-cream-cone.webp",
+    "public": "wedding/food/cherry-ice-cream-cone.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/good/balloon-bunch-burgundy-cream.webp",
+    "public": "wedding/good/balloon-bunch-burgundy-cream.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/good/bouquet-burgundy-white.webp",
+    "public": "wedding/good/bouquet-burgundy-white.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/good/bouquet-blush-sticker.webp",
+    "public": "wedding/good/bouquet-blush-sticker.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/good/gift-box-mint-gold.webp",
+    "public": "wedding/good/gift-box-mint-gold.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/good/gift-box-red-gold.webp",
+    "public": "wedding/good/gift-box-red-gold.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/good/hibiscus-yellow.webp",
+    "public": "wedding/good/hibiscus-yellow.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/good/rose-red.webp",
+    "public": "wedding/good/rose-red.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/good/flower-basket-pastel.webp",
+    "public": "wedding/good/flower-basket-pastel.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/emoji/loved.webp",
+    "public": "wedding/emoji/loved.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/emoji/kiss.webp",
+    "public": "wedding/emoji/kiss.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/emoji/party.webp",
+    "public": "wedding/emoji/party.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/emoji/star-eyes.webp",
+    "public": "wedding/emoji/star-eyes.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/emoji/cool.webp",
+    "public": "wedding/emoji/cool.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/emoji/goofy.webp",
+    "public": "wedding/emoji/goofy.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/emoji/mind-blown.webp",
+    "public": "wedding/emoji/mind-blown.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/emoji/happy-tears.webp",
+    "public": "wedding/emoji/happy-tears.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/emoji/disguise.webp",
+    "public": "wedding/emoji/disguise.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/emoji/little-devil.webp",
+    "public": "wedding/emoji/little-devil.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/emoji/freezing.webp",
+    "public": "wedding/emoji/freezing.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/emoji/monocle.webp",
+    "public": "wedding/emoji/monocle.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/good/party-popper.webp",
+    "public": "wedding/good/party-popper.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/emoji/yummy.webp",
+    "public": "wedding/emoji/yummy.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/emoji/secret.webp",
+    "public": "wedding/emoji/secret.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/emoji/angel.webp",
+    "public": "wedding/emoji/angel.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/emoji/drooling.webp",
+    "public": "wedding/emoji/drooling.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/emoji/tongue.webp",
+    "public": "wedding/emoji/tongue.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/emoji/pucker.webp",
+    "public": "wedding/emoji/pucker.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/emoji/blank.webp",
+    "public": "wedding/emoji/blank.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/emoji/money.webp",
+    "public": "wedding/emoji/money.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/emoji/grin.webp",
+    "public": "wedding/emoji/grin.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/emoji/glasses.webp",
+    "public": "wedding/emoji/glasses.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/emoji/wink-tongue.webp",
+    "public": "wedding/emoji/wink-tongue.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/emoji/wink.webp",
+    "public": "wedding/emoji/wink.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/emoji/smile.webp",
+    "public": "wedding/emoji/smile.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/emoji/laugh.webp",
+    "public": "wedding/emoji/laugh.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/emoji/heart-eyes.webp",
+    "public": "wedding/emoji/heart-eyes.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/emoji/single-tear.webp",
+    "public": "wedding/emoji/single-tear.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/emoji/invisible.webp",
+    "public": "wedding/emoji/invisible.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/pixelAnimal/animal-bear-back.webp",
+    "public": "wedding/pixelAnimal/animal-bear-back.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/pixelAnimal/animal-chick-back.webp",
+    "public": "wedding/pixelAnimal/animal-chick-back.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/pixelAnimal/animal-chicken-back.webp",
+    "public": "wedding/pixelAnimal/animal-chicken-back.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/pixelAnimal/animal-fox-back.webp",
+    "public": "wedding/pixelAnimal/animal-fox-back.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/pixelAnimal/animal-frog-back.webp",
+    "public": "wedding/pixelAnimal/animal-frog-back.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/pixelAnimal/animal-monkey-back.webp",
+    "public": "wedding/pixelAnimal/animal-monkey-back.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/pixelAnimal/animal-pig-back.webp",
+    "public": "wedding/pixelAnimal/animal-pig-back.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/pixelAnimal/animal-rabbit-back.webp",
+    "public": "wedding/pixelAnimal/animal-rabbit-back.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/pixelAnimal/animal-tabby-cat-back.webp",
+    "public": "wedding/pixelAnimal/animal-tabby-cat-back.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/pixelAnimal/animal-tiger-back.webp",
+    "public": "wedding/pixelAnimal/animal-tiger-back.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/pixelAnimal/animal-white-bird-back.webp",
+    "public": "wedding/pixelAnimal/animal-white-bird-back.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/pixelAnimal/animal-white-cat-back.webp",
+    "public": "wedding/pixelAnimal/animal-white-cat-back.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/emoji/yellow-back.webp",
+    "public": "wedding/emoji/yellow-back.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/emoji/party-back.webp",
+    "public": "wedding/emoji/party-back.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/emoji/little-devil-back.webp",
+    "public": "wedding/emoji/little-devil-back.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/emoji/invisible-back.webp",
+    "public": "wedding/emoji/invisible-back.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/emoji/freezing-back.webp",
+    "public": "wedding/emoji/freezing-back.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/emoji/mind-blown-back.webp",
+    "public": "wedding/emoji/mind-blown-back.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/emoji/secret-back.webp",
+    "public": "wedding/emoji/secret-back.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/payment/wechat-receive.jpg",
+    "public": "wedding/payment/wechat-receive.jpg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/food/apple.webp",
+    "public": "wedding/food/apple.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/food/banana.webp",
+    "public": "wedding/food/banana.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/food/peach.webp",
+    "public": "wedding/food/peach.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/food/mandarins.webp",
+    "public": "wedding/food/mandarins.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/food/orange-half.webp",
+    "public": "wedding/food/orange-half.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/food/grapes.webp",
+    "public": "wedding/food/grapes.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/food/blueberries.webp",
+    "public": "wedding/food/blueberries.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/food/pineapple.webp",
+    "public": "wedding/food/pineapple.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/food/cantaloupe.webp",
+    "public": "wedding/food/cantaloupe.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/food/kiwi-half.webp",
+    "public": "wedding/food/kiwi-half.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/food/avocado-sticker.webp",
+    "public": "wedding/food/avocado-sticker.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/food/coconut-drink.webp",
+    "public": "wedding/food/coconut-drink.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/food/soup-bowl.webp",
+    "public": "wedding/food/soup-bowl.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/food/braised-fish.webp",
+    "public": "wedding/food/braised-fish.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/food/dumpling-platter.webp",
+    "public": "wedding/food/dumpling-platter.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/good/florist-gift-backdrop.webp",
+    "public": "wedding/good/florist-gift-backdrop.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/juggler/gold-bar.webp",
+    "public": "wedding/juggler/gold-bar.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/juggler/gold-ingot.webp",
+    "public": "wedding/juggler/gold-ingot.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/juggler/lucky-coins.webp",
+    "public": "wedding/juggler/lucky-coins.webp",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/accessories/cap-back.svg",
+    "public": "wedding/kenney_modular-characters/Derived/accessories/cap-back.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/accessories/cap-front.svg",
+    "public": "wedding/kenney_modular-characters/Derived/accessories/cap-front.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/accessories/crown-back.svg",
+    "public": "wedding/kenney_modular-characters/Derived/accessories/crown-back.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/accessories/crown-front.svg",
+    "public": "wedding/kenney_modular-characters/Derived/accessories/crown-front.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/accessories/fedora-back.svg",
+    "public": "wedding/kenney_modular-characters/Derived/accessories/fedora-back.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/accessories/fedora-front.svg",
+    "public": "wedding/kenney_modular-characters/Derived/accessories/fedora-front.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/accessories/top-hat-back.svg",
+    "public": "wedding/kenney_modular-characters/Derived/accessories/top-hat-back.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/accessories/top-hat-front.svg",
+    "public": "wedding/kenney_modular-characters/Derived/accessories/top-hat-front.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/accessories/veil-back.svg",
+    "public": "wedding/kenney_modular-characters/Derived/accessories/veil-back.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/accessories/veil-front.svg",
+    "public": "wedding/kenney_modular-characters/Derived/accessories/veil-front.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/accessories/wreath-back.svg",
+    "public": "wedding/kenney_modular-characters/Derived/accessories/wreath-back.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/accessories/wreath-front.svg",
+    "public": "wedding/kenney_modular-characters/Derived/accessories/wreath-front.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/bridal-blush-outer-back.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/bridal-blush-outer-back.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/bridal-blush-outer-front.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/bridal-blush-outer-front.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/bridal-blush-skirt-back.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/bridal-blush-skirt-back.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/bridal-blush-skirt-front.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/bridal-blush-skirt-front.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/bridal-ivory-outer-back.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/bridal-ivory-outer-back.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/bridal-ivory-outer-front.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/bridal-ivory-outer-front.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/bridal-ivory-skirt-back.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/bridal-ivory-skirt-back.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/bridal-ivory-skirt-front.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/bridal-ivory-skirt-front.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/bridal-lace-cream-outer-back.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/bridal-lace-cream-outer-back.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/bridal-lace-cream-outer-front.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/bridal-lace-cream-outer-front.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/bridal-lace-cream-skirt-back.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/bridal-lace-cream-skirt-back.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/bridal-lace-cream-skirt-front.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/bridal-lace-cream-skirt-front.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/bridal-lace-pearl-outer-back.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/bridal-lace-pearl-outer-back.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/bridal-lace-pearl-outer-front.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/bridal-lace-pearl-outer-front.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/bridal-lace-pearl-skirt-back.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/bridal-lace-pearl-skirt-back.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/bridal-lace-pearl-skirt-front.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/bridal-lace-pearl-skirt-front.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/bridal-lace-white-outer-back.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/bridal-lace-white-outer-back.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/bridal-lace-white-outer-front.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/bridal-lace-white-outer-front.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/bridal-lace-white-skirt-back.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/bridal-lace-white-skirt-back.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/bridal-lace-white-skirt-front.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/bridal-lace-white-skirt-front.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/bridal-white-outer-back.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/bridal-white-outer-back.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/bridal-white-outer-front.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/bridal-white-outer-front.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/bridal-white-skirt-back.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/bridal-white-skirt-back.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/bridal-white-skirt-front.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/bridal-white-skirt-front.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/cardigan-oat-outer-back.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/cardigan-oat-outer-back.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/cardigan-oat-outer-front.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/cardigan-oat-outer-front.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/cardigan-rose-outer-back.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/cardigan-rose-outer-back.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/cardigan-rose-outer-front.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/cardigan-rose-outer-front.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/cardigan-sage-outer-back.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/cardigan-sage-outer-back.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/cardigan-sage-outer-front.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/cardigan-sage-outer-front.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/dress-blue-outer-back.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/dress-blue-outer-back.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/dress-blue-outer-front.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/dress-blue-outer-front.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/dress-blue-skirt-back.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/dress-blue-skirt-back.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/dress-blue-skirt-front.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/dress-blue-skirt-front.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/dress-champagne-outer-back.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/dress-champagne-outer-back.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/dress-champagne-outer-front.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/dress-champagne-outer-front.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/dress-champagne-skirt-back.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/dress-champagne-skirt-back.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/dress-champagne-skirt-front.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/dress-champagne-skirt-front.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/dress-rose-outer-back.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/dress-rose-outer-back.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/dress-rose-outer-front.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/dress-rose-outer-front.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/dress-rose-skirt-back.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/dress-rose-skirt-back.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/dress-rose-skirt-front.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/dress-rose-skirt-front.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/jacket-blue-outer-back.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/jacket-blue-outer-back.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/jacket-blue-outer-front.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/jacket-blue-outer-front.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/jacket-olive-outer-back.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/jacket-olive-outer-back.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/jacket-olive-outer-front.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/jacket-olive-outer-front.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/jacket-sand-outer-back.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/jacket-sand-outer-back.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/jacket-sand-outer-front.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/jacket-sand-outer-front.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/morning-black-outer-back.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/morning-black-outer-back.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/morning-black-outer-front.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/morning-black-outer-front.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/morning-ivory-outer-back.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/morning-ivory-outer-back.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/morning-ivory-outer-front.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/morning-ivory-outer-front.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/morning-slate-outer-back.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/morning-slate-outer-back.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/morning-slate-outer-front.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/morning-slate-outer-front.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/qipao-jade-outer-back.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/qipao-jade-outer-back.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/qipao-jade-outer-front.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/qipao-jade-outer-front.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/qipao-jade-skirt-back.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/qipao-jade-skirt-back.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/qipao-jade-skirt-front.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/qipao-jade-skirt-front.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/qipao-navy-outer-back.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/qipao-navy-outer-back.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/qipao-navy-outer-front.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/qipao-navy-outer-front.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/qipao-navy-skirt-back.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/qipao-navy-skirt-back.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/qipao-navy-skirt-front.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/qipao-navy-skirt-front.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/qipao-red-outer-back.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/qipao-red-outer-back.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/qipao-red-outer-front.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/qipao-red-outer-front.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/qipao-red-skirt-back.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/qipao-red-skirt-back.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/qipao-red-skirt-front.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/qipao-red-skirt-front.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/suit-charcoal-outer-back.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/suit-charcoal-outer-back.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/suit-charcoal-outer-front.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/suit-charcoal-outer-front.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/suit-ivory-outer-back.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/suit-ivory-outer-back.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/suit-ivory-outer-front.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/suit-ivory-outer-front.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/suit-navy-outer-back.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/suit-navy-outer-back.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/suit-navy-outer-front.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/suit-navy-outer-front.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/tuxedo-ivory-outer-back.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/tuxedo-ivory-outer-back.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/tuxedo-ivory-outer-front.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/tuxedo-ivory-outer-front.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/tuxedo-midnight-outer-back.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/tuxedo-midnight-outer-back.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/tuxedo-midnight-outer-front.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/tuxedo-midnight-outer-front.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/tuxedo-wine-outer-back.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/tuxedo-wine-outer-back.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/tuxedo-wine-outer-front.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/tuxedo-wine-outer-front.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/waistcoat-camel-outer-back.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/waistcoat-camel-outer-back.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/waistcoat-camel-outer-front.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/waistcoat-camel-outer-front.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/waistcoat-navy-outer-back.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/waistcoat-navy-outer-back.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/waistcoat-navy-outer-front.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/waistcoat-navy-outer-front.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/waistcoat-sage-outer-back.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/waistcoat-sage-outer-back.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/formal/waistcoat-sage-outer-front.svg",
+    "public": "wedding/kenney_modular-characters/Derived/formal/waistcoat-sage-outer-front.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-bridal-blush-lower.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-bridal-blush-lower.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-bridal-blush-upper.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-bridal-blush-upper.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-bridal-ivory-lower.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-bridal-ivory-lower.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-bridal-ivory-upper.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-bridal-ivory-upper.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-bridal-lace-cream-lower.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-bridal-lace-cream-lower.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-bridal-lace-cream-upper.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-bridal-lace-cream-upper.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-bridal-lace-pearl-lower.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-bridal-lace-pearl-lower.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-bridal-lace-pearl-upper.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-bridal-lace-pearl-upper.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-bridal-lace-white-lower.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-bridal-lace-white-lower.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-bridal-lace-white-upper.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-bridal-lace-white-upper.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-bridal-white-lower.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-bridal-white-lower.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-bridal-white-upper.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-bridal-white-upper.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-cardigan-oat-lower.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-cardigan-oat-lower.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-cardigan-oat-upper.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-cardigan-oat-upper.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-cardigan-rose-lower.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-cardigan-rose-lower.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-cardigan-rose-upper.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-cardigan-rose-upper.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-cardigan-sage-lower.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-cardigan-sage-lower.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-cardigan-sage-upper.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-cardigan-sage-upper.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-dress-blue-lower.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-dress-blue-lower.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-dress-blue-upper.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-dress-blue-upper.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-dress-champagne-lower.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-dress-champagne-lower.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-dress-champagne-upper.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-dress-champagne-upper.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-dress-rose-lower.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-dress-rose-lower.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-dress-rose-upper.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-dress-rose-upper.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-jacket-blue-lower.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-jacket-blue-lower.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-jacket-blue-upper.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-jacket-blue-upper.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-jacket-olive-lower.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-jacket-olive-lower.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-jacket-olive-upper.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-jacket-olive-upper.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-jacket-sand-lower.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-jacket-sand-lower.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-jacket-sand-upper.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-jacket-sand-upper.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-morning-black-lower.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-morning-black-lower.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-morning-black-upper.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-morning-black-upper.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-morning-ivory-lower.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-morning-ivory-lower.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-morning-ivory-upper.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-morning-ivory-upper.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-morning-slate-lower.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-morning-slate-lower.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-morning-slate-upper.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-morning-slate-upper.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-qipao-jade-lower.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-qipao-jade-lower.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-qipao-jade-upper.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-qipao-jade-upper.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-qipao-navy-lower.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-qipao-navy-lower.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-qipao-navy-upper.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-qipao-navy-upper.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-qipao-red-lower.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-qipao-red-lower.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-qipao-red-upper.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-qipao-red-upper.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-suit-charcoal-lower.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-suit-charcoal-lower.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-suit-charcoal-upper.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-suit-charcoal-upper.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-suit-ivory-lower.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-suit-ivory-lower.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-suit-ivory-upper.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-suit-ivory-upper.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-suit-navy-lower.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-suit-navy-lower.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-suit-navy-upper.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-suit-navy-upper.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-tuxedo-ivory-lower.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-tuxedo-ivory-lower.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-tuxedo-ivory-upper.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-tuxedo-ivory-upper.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-tuxedo-midnight-lower.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-tuxedo-midnight-lower.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-tuxedo-midnight-upper.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-tuxedo-midnight-upper.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-tuxedo-wine-lower.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-tuxedo-wine-lower.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-tuxedo-wine-upper.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-tuxedo-wine-upper.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-waistcoat-camel-lower.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-waistcoat-camel-lower.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-waistcoat-camel-upper.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-waistcoat-camel-upper.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-waistcoat-navy-lower.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-waistcoat-navy-lower.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-waistcoat-navy-upper.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-waistcoat-navy-upper.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-waistcoat-sage-lower.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-waistcoat-sage-lower.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/formal-waistcoat-sage-upper.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/formal-waistcoat-sage-upper.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/sleeve-blue-lower.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/sleeve-blue-lower.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/sleeve-blue-upper.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/sleeve-blue-upper.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/sleeve-green-lower.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/sleeve-green-lower.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/sleeve-green-upper.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/sleeve-green-upper.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/sleeve-grey-lower.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/sleeve-grey-lower.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/sleeve-grey-upper.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/sleeve-grey-upper.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/sleeve-navy-lower.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/sleeve-navy-lower.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/sleeve-navy-upper.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/sleeve-navy-upper.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/sleeve-pine-lower.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/sleeve-pine-lower.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/sleeve-pine-upper.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/sleeve-pine-upper.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/sleeve-red-lower.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/sleeve-red-lower.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/sleeve-red-upper.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/sleeve-red-upper.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/sleeve-white-lower.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/sleeve-white-lower.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/sleeve-white-upper.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/sleeve-white-upper.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/sleeve-yellow-lower.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/sleeve-yellow-lower.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/sleeve-yellow-upper.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/sleeve-yellow-upper.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/tint-1-lower.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/tint-1-lower.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/tint-1-upper.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/tint-1-upper.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/tint-2-lower.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/tint-2-lower.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/tint-2-upper.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/tint-2-upper.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/tint-3-lower.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/tint-3-lower.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/tint-3-upper.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/tint-3-upper.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/tint-4-lower.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/tint-4-lower.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/tint-4-upper.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/tint-4-upper.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/tint-5-lower.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/tint-5-lower.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/tint-5-upper.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/tint-5-upper.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/tint-6-lower.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/tint-6-lower.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/tint-6-upper.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/tint-6-upper.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/tint-7-lower.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/tint-7-lower.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/tint-7-upper.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/tint-7-upper.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/tint-8-lower.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/tint-8-lower.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/rig/tint-8-upper.svg",
+    "public": "wedding/kenney_modular-characters/Derived/rig/tint-8-upper.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/shoes/ankle-strap-black.svg",
+    "public": "wedding/kenney_modular-characters/Derived/shoes/ankle-strap-black.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/shoes/ankle-strap-ivory.svg",
+    "public": "wedding/kenney_modular-characters/Derived/shoes/ankle-strap-ivory.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/shoes/ankle-strap-nude.svg",
+    "public": "wedding/kenney_modular-characters/Derived/shoes/ankle-strap-nude.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/shoes/ankle-strap-red.svg",
+    "public": "wedding/kenney_modular-characters/Derived/shoes/ankle-strap-red.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/shoes/ballet-black.svg",
+    "public": "wedding/kenney_modular-characters/Derived/shoes/ballet-black.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/shoes/ballet-ivory.svg",
+    "public": "wedding/kenney_modular-characters/Derived/shoes/ballet-ivory.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/shoes/ballet-nude.svg",
+    "public": "wedding/kenney_modular-characters/Derived/shoes/ballet-nude.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/shoes/ballet-red.svg",
+    "public": "wedding/kenney_modular-characters/Derived/shoes/ballet-red.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/shoes/block-heel-black.svg",
+    "public": "wedding/kenney_modular-characters/Derived/shoes/block-heel-black.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/shoes/block-heel-ivory.svg",
+    "public": "wedding/kenney_modular-characters/Derived/shoes/block-heel-ivory.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/shoes/block-heel-nude.svg",
+    "public": "wedding/kenney_modular-characters/Derived/shoes/block-heel-nude.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/shoes/block-heel-red.svg",
+    "public": "wedding/kenney_modular-characters/Derived/shoes/block-heel-red.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/shoes/oxford-black.svg",
+    "public": "wedding/kenney_modular-characters/Derived/shoes/oxford-black.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/shoes/oxford-ivory.svg",
+    "public": "wedding/kenney_modular-characters/Derived/shoes/oxford-ivory.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/shoes/oxford-nude.svg",
+    "public": "wedding/kenney_modular-characters/Derived/shoes/oxford-nude.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/shoes/oxford-red.svg",
+    "public": "wedding/kenney_modular-characters/Derived/shoes/oxford-red.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/shoes/stiletto-black.svg",
+    "public": "wedding/kenney_modular-characters/Derived/shoes/stiletto-black.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/shoes/stiletto-ivory.svg",
+    "public": "wedding/kenney_modular-characters/Derived/shoes/stiletto-ivory.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/shoes/stiletto-nude.svg",
+    "public": "wedding/kenney_modular-characters/Derived/shoes/stiletto-nude.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/shoes/stiletto-red.svg",
+    "public": "wedding/kenney_modular-characters/Derived/shoes/stiletto-red.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/templates/leg.svg",
+    "public": "wedding/kenney_modular-characters/Derived/templates/leg.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/templates/pants.svg",
+    "public": "wedding/kenney_modular-characters/Derived/templates/pants.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/templates/shirt.svg",
+    "public": "wedding/kenney_modular-characters/Derived/templates/shirt.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/templates/sleeve-long.svg",
+    "public": "wedding/kenney_modular-characters/Derived/templates/sleeve-long.svg",
+    "mode": "copy"
+  },
+  {
+    "source": "wedding/kenney_modular-characters/Derived/templates/sleeve-shorter.svg",
+    "public": "wedding/kenney_modular-characters/Derived/templates/sleeve-shorter.svg",
     "mode": "copy"
   }
 ]

@@ -5,7 +5,7 @@ test('foreground furniture and autonomous water drinking spend no food and allow
   await page.addInitScript(() => { Math.random = () => .5 })
   await page.emulateMedia({ reducedMotion: 'reduce' })
   await page.clock.install()
-  await page.goto('/cat')
+  await page.goto('/pet')
   await page.locator('.pet-room').scrollIntoViewIfNeeded()
   await expect(page.locator('.cat-tree')).toBeVisible()
   await expect(page.locator('.water-bowl')).toBeVisible()

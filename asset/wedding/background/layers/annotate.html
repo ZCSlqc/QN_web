@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>婚礼背景 · 区域标注</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f4f0e9;color:#393c37;font:14px system-ui}header{padding:16px 22px;background:#fffdf8;border-bottom:1px solid #ddd}h1{font-size:20px;margin:0 0 8px}p{margin:6px 0;line-height:1.7;color:#666}main{display:grid;grid-template-columns:260px 1fr;height:calc(100vh - 110px);min-height:480px}aside{padding:16px;overflow:auto;background:#fffdf8}button,select,.file{font:inherit;padding:8px 11px;border:1px solid #ccc;border-radius:7px;background:white;color:inherit;cursor:pointer}button:hover,.file:hover{background:#f1eee5}button:disabled{opacity:.45;cursor:default}.primary{background:#246a57;color:white;border-color:#246a57}.row{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}select{width:100%}h2{font-size:14px;margin:20px 0 8px}#viewport{overflow:auto;background:#282e2d;position:relative;padding:24px;touch-action:none}#stage{position:relative;flex:none;line-height:0}#source{width:100%;height:100%;pointer-events:none;user-select:none}svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;touch-action:none}svg circle{cursor:grab}#regions button{display:block;width:100%;text-align:left;margin:6px 0;border-left:5px solid var(--color)}#regions button.active{background:#e5eee8}small{display:block;line-height:1.7;color:#777}#status{min-height:48px;color:#246a57}input[type=file]{display:none}#zoom{width:100%}.danger{color:#a64337}@media(max-width:750px){main{grid-template-columns:210px 1fr}aside{padding:10px}header{padding:10px}main{height:calc(100vh - 130px)}}
+</style>
+<header><h1>沿原图圈出遮挡区域</h1><p>逐点点击画线 → 点击起点或按 Enter 闭合。拖动节点修边；按住空格拖动画布。前景可圈多块。</p></header>
+<main><aside>
+<label for="layer">当前图层</label><select id="layer"><option value="foreground">前景（左右可分开圈）</option><option value="table-left">左侧饮品桌</option><option value="table-right">右侧甜点桌</option></select>
+<div class="row"><button id="new" class="primary">新画一块</button><button id="close">闭合区域</button></div>
+<div class="row"><button id="undo">撤销</button><button id="cancel">取消本次绘制</button></div>
+<small>建议沿物件外缘画；转角多加点，直边少加点。这里保存的是保留范围，包含范围内的原图像素。细碎花叶可以先粗圈，后续再精修。</small>
+<h2>缩放 <span id="zoomLabel"></span></h2><input id="zoom" type="range" min="20" max="300" value="75" step="5"><div class="row"><button id="fit">适应窗口</button><label><input type="checkbox" id="fill" checked>区域填色</label></div>
+<h2>已圈区域</h2><div id="regions"></div><button id="delete" class="danger">删除选中区域</button>
+<h2>保存与继续</h2><div class="row"><button id="export" class="primary">导出 JSON</button><label class="file">导入 JSON<input id="import" type="file" accept=".json,application/json"></label></div>
+<small>本浏览器自动保存草稿（含未闭合点）。完成后请导出 JSON 放回这个目录，方便后续使用。切换浏览器或移动 HTML 时可导入继续。</small><p id="status" role="status"></p>
+</aside><div id="viewport"><div id="stage"><img id="source" src="../garden-orthographic.webp" alt="婚礼原始背景" draggable="false"><svg id="overlay" aria-label="多边形标注画布"></svg></div></div></main>
+<script>
+'use strict';
+const $=id=>document.getElementById(id), NS='http://www.w3.org/2000/svg';
+const names={'foreground':'前景','table-left':'左侧饮品桌','table-right':'右侧甜点桌'}, colors={'foreground':'#ffb649','table-left':'#42e0df','table-right':'#ff85d5'};
+const key='qn-wedding-garden-regions-v1';
+let regions=[],draft=[],selected=null,history=[],width=1672,height=941,scale=.75,space=false,drag=null,pan=null,ready=false;
+const say=t=>$('status').textContent=t;
+const snapshot=()=>JSON.stringify({regions,draft,selected,layer:$('layer').value});
+function checkpoint(){history.push(snapshot());if(history.length>100)history.shift()}
+function save(){try{localStorage.setItem(key,JSON.stringify({width,height,...JSON.parse(snapshot())}))}catch{say('浏览器无法自动保存，请导出 JSON 保存。')}}
+function node(tag,attrs){const n=document.createElementNS(NS,tag);for(const [k,v]of Object.entries(attrs))n.setAttribute(k,v);$('overlay').append(n);return n}
+function render(){
+ $('overlay').replaceChildren();$('regions').replaceChildren();
+ regions.forEach((r,i)=>{const active=r.id===selected;const poly=node('polygon',{points:r.points.map(p=>p.join(',')).join(' '),fill:$('fill').checked?colors[r.layer]:'none','fill-opacity':active?.24:.12,stroke:colors[r.layer],'stroke-width':(active?3:1.5)/scale});poly.style.pointerEvents='none';
+ const b=document.createElement('button');b.textContent=`${names[r.layer]} · ${i+1}（${r.points.length} 点）`;b.style.setProperty('--color',colors[r.layer]);b.className=active?'active':'';b.onclick=()=>{if(draft.length){say('请先闭合或取消正在绘制的区域。');return}selected=r.id;$('layer').value=r.layer;render();save()};$('regions').append(b);
+ if(active&&!draft.length)handles(r.points,r.id);
+ });
+ if(draft.length){node('polyline',{points:draft.map(p=>p.join(',')).join(' '),fill:'none',stroke:colors[$('layer').value],'stroke-width':2/scale,'stroke-dasharray':`${6/scale} ${4/scale}`,'pointer-events':'none'});handles(draft,'draft')}
+ $('close').disabled=draft.length<3;$('cancel').disabled=!draft.length;$('delete').disabled=!selected||!!draft.length;$('undo').disabled=!history.length;
+}
+function handles(points,id){points.forEach((p,i)=>{const c=node('circle',{cx:p[0],cy:p[1],r:(id==='draft'&&i===0?6:4)/scale,fill:i===0&&id==='draft'?'#fff':colors[id==='draft'?$('layer').value:regions.find(r=>r.id===id).layer],stroke:'#172924','stroke-width':1/scale});c.onpointerdown=e=>{if(space||e.button!==0)return;e.stopPropagation();if(id==='draft'&&i===0&&draft.length>=3){close();return}checkpoint();drag={id,i};$('overlay').setPointerCapture(e.pointerId)};})}
+function point(e){const r=$('overlay').getBoundingClientRect();return [Math.round(Math.max(0,Math.min(width,(e.clientX-r.left)/r.width*width))),Math.round(Math.max(0,Math.min(height,(e.clientY-r.top)/r.height*height)))]}
+function close(){if(draft.length<3)return;const area=Math.abs(draft.reduce((sum,p,i)=>{const q=draft[(i+1)%draft.length];return sum+p[0]*q[1]-q[0]*p[1]},0))/2;if(area<1){say('区域面积太小，请补充轮廓节点。');return}checkpoint();const r={id:`region-${Date.now()}-${Math.random().toString(36).slice(2,7)}`,layer:$('layer').value,points:draft};regions.push(r);selected=r.id;draft=[];render();save();say('已闭合。可拖动节点修边，或点击“新画一块”继续。')}
+function zoom(value){scale=value;$('stage').style.width=width*scale+'px';$('stage').style.height=height*scale+'px';$('zoom').value=scale*100;$('zoomLabel').textContent=Math.round(scale*100)+'%';render()}
+function fit(){zoom(Math.max(.2,Math.min(1,($('viewport').clientWidth-48)/width,($('viewport').clientHeight-48)/height)))}
+function validate(data){if(data.width!==width||data.height!==height)throw Error('图片尺寸不匹配');if(!Array.isArray(data.regions)||data.regions.length>1000)throw Error('区域列表无效');const ids=new Set();for(const r of data.regions){if(!r||typeof r.id!=='string'||ids.has(r.id)||!Object.hasOwn(names,r.layer)||!Array.isArray(r.points)||r.points.length<3||!validPoints(r.points))throw Error('区域坐标或图层无效');ids.add(r.id)}if(data.draft&&(!Array.isArray(data.draft)||!validPoints(data.draft)))throw Error('草稿坐标无效');return data}
+function validPoints(points){return points.length<=10000&&points.every(p=>Array.isArray(p)&&p.length===2&&p.every(Number.isFinite)&&p[0]>=0&&p[0]<=width&&p[1]>=0&&p[1]<=height)}
+$('overlay').onpointerdown=e=>{if(!ready||space||e.button!==0)return;if(selected){say('当前在修边。点击“新画一块”开始新的轮廓。');return}checkpoint();draft.push(point(e));render();save()};
+$('overlay').onpointermove=e=>{if(!drag)return;const points=drag.id==='draft'?draft:regions.find(r=>r.id===drag.id).points;points[drag.i]=point(e);render()};
+$('overlay').onpointerup=$('overlay').onpointercancel=()=>{if(drag){drag=null;save()}};
+$('viewport').onpointerdown=e=>{if(space||e.button===1){e.preventDefault();pan={x:e.clientX,y:e.clientY,left:$('viewport').scrollLeft,top:$('viewport').scrollTop};$('viewport').setPointerCapture(e.pointerId)}};
+$('viewport').onpointermove=e=>{if(pan){$('viewport').scrollLeft=pan.left-e.clientX+pan.x;$('viewport').scrollTop=pan.top-e.clientY+pan.y}};
+$('viewport').onpointerup=$('viewport').onpointercancel=()=>pan=null;
+$('new').onclick=()=>{if(draft.length){say('先闭合或取消当前轮廓，再新画一块。');return}selected=null;render();save();say('沿轮廓点击加点，Enter 闭合。')};
+$('close').onclick=close;
+$('cancel').onclick=()=>{if(!draft.length)return;checkpoint();draft=[];render();save()};
+$('undo').onclick=()=>{if(!history.length)return;const s=JSON.parse(history.pop());({regions,draft,selected}=s);$('layer').value=s.layer;render();save()};
+$('delete').onclick=()=>{if(!selected||draft.length)return;checkpoint();regions=regions.filter(r=>r.id!==selected);selected=null;render();save()};
+$('layer').onchange=()=>{if(draft.length){say('当前未闭合轮廓已归入所选图层。')}selected=null;render();save()};
+$('fill').onchange=render;$('zoom').oninput=e=>zoom(Number(e.target.value)/100);$('fit').onclick=fit;
+$('export').onclick=()=>{if(draft.length){say('请先闭合当前轮廓再导出，避免漏掉这块。');return}if(!regions.length){say('先圈出至少一个区域。');return}const data={version:1,image:'wedding/background/garden-orthographic.webp',width,height,coordinateSystem:'source-image-pixels',world:{width:1600,height:900},regions};const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='garden-occlusion-regions.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);say(`已导出 ${regions.length} 块区域，请保留 JSON 文件。`)};
+$('import').onchange=async e=>{const file=e.target.files[0];if(!file)return;try{const data=validate(JSON.parse(await file.text()));checkpoint();regions=data.regions;draft=[];selected=null;render();save();say('已导入，可继续修边。导入前的标注可撤销恢复。')}catch(err){say('导入失败：'+err.message)}e.target.value=''};
+document.addEventListener('keydown',e=>{if(/INPUT|SELECT|TEXTAREA|BUTTON/.test(e.target.tagName))return;if(e.code==='Space'){e.preventDefault();space=true;$('viewport').style.cursor='grab'}if(e.key==='Enter'){e.preventDefault();close()}if(e.key==='Escape')$('cancel').click();if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='z'){e.preventDefault();$('undo').click()}if(e.key==='Backspace'&&draft.length){e.preventDefault();checkpoint();draft.pop();render();save()}});
+document.addEventListener('keyup',e=>{if(e.code==='Space'){space=false;pan=null;$('viewport').style.cursor=''}});window.addEventListener('blur',()=>{space=false;pan=null;drag=null;$('viewport').style.cursor=''});
+$('source').decode().then(()=>{width=$('source').naturalWidth;height=$('source').naturalHeight;$('overlay').setAttribute('viewBox',`0 0 ${width} ${height}`);ready=true;try{const raw=localStorage.getItem(key);if(raw){const s=validate(JSON.parse(raw));regions=s.regions;draft=s.draft||[];selected=regions.some(r=>r.id===s.selected)?s.selected:null;if(Object.hasOwn(names,s.layer))$('layer').value=s.layer;say('已恢复本地草稿。')}}catch{say('未恢复旧草稿，可导入已保存的 JSON。')}fit()}).catch(()=>say('原图加载失败，请将 HTML 保留在原目录。'));
+</script></html>

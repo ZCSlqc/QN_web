@@ -79,6 +79,14 @@ export function createFrontendServer({ directory, apiTarget, allowedHosts = [] }
       if ((req.headers['if-none-match'] || '').split(',').some(value => value.trim().replace(/^W\//, '') === etag)) { res.statusCode = 304; res.end(); return }
       if (codec) {
         res.setHeader('Content-Encoding', codec)
+        const compressedFile = file + (codec === 'br' ? '.br' : '.gz')
+        const compressedInfo = await stat(compressedFile).catch(() => null)
+        if (compressedInfo?.isFile() && compressedInfo.mtimeMs >= info.mtimeMs) {
+          res.setHeader('Content-Length', compressedInfo.size)
+          if (req.method === 'HEAD') res.end()
+          else pipeline(createReadStream(compressedFile), res, () => {})
+          return
+        }
         if (req.method === 'HEAD') { res.end(); return }
         pipeline(createReadStream(file), codec === 'br' ? createBrotliCompress({ params: { [constants.BROTLI_PARAM_QUALITY]: 4 } }) : createGzip({ level: 6 }), res, () => {})
         return

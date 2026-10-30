@@ -2,7 +2,7 @@ import { test, expect } from '../fixtures/app.mjs'
 
 test('portrait covers split equally and memory thumbnails stay compact', async ({ page, app }) => {
   app.admin = true
-  const portrait = { id: 'p', width: 600, height: 900, thumbnail_url: '/avatars/qiqi.webp', url: '/avatars/qiqi.webp' }
+  const portrait = { id: 'p', width: 600, height: 900, thumbnail_url: '/index/avatars/qiqi.webp', url: '/index/avatars/qiqi.webp' }
   const landscape = { ...portrait, id: 'l', width: 900, height: 600 }
   const base = app.journeys[0]
   app.journeys = [

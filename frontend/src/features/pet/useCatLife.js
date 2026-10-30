@@ -9,8 +9,8 @@ export function useCatLife({ scene, action, pose, walk, reset, react, moveToy, f
   const busy = computed(() => feeding.value || eating.value || isCatAway(action.value) || action.value === 'approaching-food')
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)')
   let phase = '', remaining = 0, deadline = 0
-  let napTimer, wakeTimer, mouseTimer, endTimer, observer, disposed = false
-  function clearToys() { clearTimeout(mouseTimer); clearTimeout(endTimer) }
+  let napTimer, wakeTimer, mouseTimer, endTimer, pawTimer, observer, disposed = false, pawCount = 0, lastPaw = 0
+  function clearToys() { clearTimeout(mouseTimer); clearTimeout(endTimer); clearTimeout(pawTimer) }
   function wake() { const wasSleeping = sleeping.value; clearTimeout(wakeTimer); clearToys(); walk.stop(); reset(); hand.value.visible = false; if (wasSleeping) say('睡醒啦，伸个懒腰。') }
   function nap() {
     if (busy.value) return
@@ -55,11 +55,34 @@ export function useCatLife({ scene, action, pose, walk, reset, react, moveToy, f
     if (toy === 'mouse') {
       action.value = 'play'; chase()
       endTimer = setTimeout(wake, 12000)
-    } else react('play', window.matchMedia('(pointer: coarse)').matches)
+    } else {
+      action.value = 'play'; pose.value = 0; pawCount = 0; lastPaw = 0
+      say('让我抓一下！')
+      endTimer = setTimeout(wake, 12000)
+    }
+  }
+  function teaserMove(event) {
+    if (action.value !== 'play' || activeToy.value !== 'teaser' || busy.value) return
+    if (event.target.closest('.weather-control, .scene-tools, .room-topline')) return
+    moveToy(event)
+    const box = scene.value?.getBoundingClientRect()
+    if (!box) return
+    walk.follow((event.clientX - box.left) / box.width * 100, batTeaser)
+    if (walk.walking.value) { clearTimeout(pawTimer); pose.value = 0 }
+  }
+  function batTeaser() {
+    if (action.value !== 'play' || activeToy.value !== 'teaser' || walk.walking.value || pawCount >= 4 || Date.now() - lastPaw < 900) return
+    lastPaw = Date.now(); pawCount++; pose.value = 2
+    clearTimeout(pawTimer)
+    pawTimer = setTimeout(() => {
+      if (action.value !== 'play' || activeToy.value !== 'teaser') return
+      pose.value = 0
+      pawTimer = setTimeout(batTeaser, 500)
+    }, 550)
   }
   function pointerMove(event) {
     if (event.target.closest('.weather-control, .scene-tools, .room-topline')) { leave(); return }
-    if (activeToy.value === 'teaser') moveToy(event)
+    if (activeToy.value === 'teaser') teaserMove(event)
     const box = scene.value?.getBoundingClientRect()
     const cat = scene.value?.querySelector('.cat-wrap')?.getBoundingClientRect()
     if (!box || !cat) return
@@ -80,11 +103,11 @@ export function useCatLife({ scene, action, pose, walk, reset, react, moveToy, f
   })
   watch(walk.walking, moving => { if (moving && action.value === 'idle') say(['巡视一下我的地盘。', '走两步，看看窗外。', '这边也闻一闻。'][Math.floor(Math.random() * 3)], false) })
   onMounted(() => {
-    observer = new IntersectionObserver(([entry]) => { visible.value = entry.isIntersecting; if (!visible.value) suspend(); else scheduleNap() }, { threshold: .2 })
+    observer = new IntersectionObserver(([entry]) => { visible.value = entry.isIntersecting && entry.intersectionRatio >= .2; if (!visible.value) suspend(); else scheduleNap() }, { threshold: .2 })
     if (scene.value) observer.observe(scene.value)
     document.addEventListener('visibilitychange', visibilityChanged)
     motion.addEventListener('change', suspend)
   })
   onUnmounted(() => { disposed = true; suspend(); observer?.disconnect(); document.removeEventListener('visibilitychange', visibilityChanged); motion.removeEventListener('change', suspend) })
-  return { activeToy, hand, mouse, sleeping, wake, playWith, pointerMove, leave }
+  return { activeToy, hand, mouse, sleeping, wake, playWith, pointerMove, teaserMove, leave }
 }

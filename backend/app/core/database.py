@@ -1,6 +1,7 @@
 """Final-schema initialization; existing data is never converted at startup."""
 import sqlite3
 import datetime
+import json
 from pathlib import Path
 from contextlib import contextmanager
 from app.core.settings import settings
@@ -33,3 +34,8 @@ def init_db():
         conn.execute('INSERT OR IGNORE INTO love_story(id,title,content,updated_at) VALUES (?,?,?,?)',
                      (STORY_ID, DEFAULT_STORY_TITLE, DEFAULT_STORY_CONTENT, bj_time()))
         conn.execute('INSERT OR IGNORE INTO pets(id,name,created_at) VALUES (?,?,?)', (PET_ID, '六一', bj_time()))
+        cats = json.loads(Path(__file__).with_name('wedding_cats.json').read_text(encoding='utf-8'))
+        for order, cat in enumerate(cats):
+            values = dict(cat, sort_order=order, updated_at=bj_time())
+            conn.execute('INSERT OR IGNORE INTO wedding_cat_npcs (' + ','.join(values) + ') VALUES (' +
+                         ','.join('?' for _ in values) + ')', list(values.values()))

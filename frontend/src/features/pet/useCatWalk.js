@@ -89,6 +89,19 @@ export function useCatWalk(scene, styleName, action) {
     if (!rect || event.clientY < rect.top + rect.height * 0.64) return
     go((event.clientX - rect.left) / rect.width * 100)
   }
+  function follow(target, callback) {
+    if (disposed || document.hidden || !visible) return
+    clearTimeout(idleTimer)
+    destination = clamp(target); arrival = callback
+    const distance = destination - x.value
+    if (Math.abs(distance) < .8) { cancelAnimationFrame(raf); clearTimeout(turnTimer); arrive(); return }
+    facing.value = distance > 0 ? 1 : -1
+    if (motion.matches) { cancel(); callback?.(); return }
+    if (walking.value) return
+    clearTimeout(turnTimer); preparing.value = false; walking.value = true
+    lastTime = 0; frameTime = 0
+    raf = requestAnimationFrame(tick)
+  }
   function resized() {
     x.value = clamp(x.value); destination = clamp(destination)
   }
@@ -102,12 +115,12 @@ export function useCatWalk(scene, styleName, action) {
     if (!loadingStyles.has(style) && !ready.value[style]) {
       loadingStyles.add(style)
       Promise.all(Array.from({ length: 4 }, (_, i) => {
-        const img = new Image(); img.src = `/pets/liuyi/${style}/walk-${i}.webp`; return img.decode()
+        const img = new Image(); img.src = `/pet/liuyi/${style}/walk-${i}.webp`; return img.decode()
       })).then(() => { if (!disposed) { ready.value[style] = true; rest() } }, () => {}).finally(() => loadingStyles.delete(style))
     }
   }, { immediate: true })
   onMounted(() => {
-    observer = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; if (!visible) pause(); else resume() }, { threshold: 0.2 })
+    observer = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting && entry.intersectionRatio >= .2; if (!visible) pause(); else resume() }, { threshold: 0.2 })
     if (scene.value) observer.observe(scene.value)
     resizeObserver = new ResizeObserver(resized)
     if (scene.value) resizeObserver.observe(scene.value)
@@ -118,5 +131,5 @@ export function useCatWalk(scene, styleName, action) {
     disposed = true; cancel(); observer?.disconnect(); resizeObserver?.disconnect()
     document.removeEventListener('visibilitychange', visibilityChanged); motion.removeEventListener('change', visibilityChanged)
   })
-  return { x, walking, preparing, facing, frame, ready, spriteStyle, go, stop: cancel, rest, floorClick }
+  return { x, walking, preparing, facing, frame, ready, spriteStyle, go, follow, stop: cancel, rest, floorClick }
 }

@@ -1,0 +1,114 @@
+{
+  "version": 3,
+  "mode": "whole-arm-bindings",
+  "locked": true,
+  "bindings": {
+    "head": {
+      "x": 0,
+      "y": -346,
+      "sx": 0,
+      "sy": -348
+    },
+    "neck": {
+      "x": -5.333781416538841e-8,
+      "y": -356.79557597954835,
+      "sx": 0,
+      "sy": 0
+    },
+    "leftArm": {
+      "x": -55.314400207734565,
+      "y": -346.6476995118218,
+      "sx": 5.057179483369478,
+      "sy": 0.000002308337340986499
+    },
+    "rightArm": {
+      "x": 55.314400207734565,
+      "y": -346.6476995118218,
+      "sx": 5.057179483369478,
+      "sy": 0.000002308337340986499
+    },
+    "leftHand": {
+      "x": 153.52076747575637,
+      "y": 119.96440516650028,
+      "sx": 17.225903307888032,
+      "sy": 37.877975902149814
+    },
+    "rightHand": {
+      "x": 153.52076747575637,
+      "y": 119.96440516650028,
+      "sx": 17.225903307888032,
+      "sy": 37.877975902149814
+    },
+    "waist": {
+      "x": 0.000005749528018572647,
+      "y": -179.54726614809894,
+      "sx": 76.5,
+      "sy": 0
+    },
+    "leftLeg": {
+      "x": -0.000009173261304340485,
+      "y": 23.4229555223809,
+      "sx": 78.54916722879592,
+      "sy": 5.609396259498107
+    },
+    "rightLeg": {
+      "x": 153.0000091732613,
+      "y": 23.4229555223809,
+      "sx": 78.54916722879592,
+      "sy": 5.609396259498107
+    },
+    "leftShoe": {
+      "x": 40,
+      "y": 166,
+      "sx": 3,
+      "sy": 11
+    },
+    "rightShoe": {
+      "x": 40,
+      "y": 166,
+      "sx": 3,
+      "sy": 11
+    }
+  },
+  "pose": {
+    "head": 0,
+    "leftArm": 0,
+    "rightArm": 0,
+    "leftHand": 0,
+    "rightHand": 0,
+    "leftLeg": 0,
+    "rightLeg": 0,
+    "leftShoe": 0,
+    "rightShoe": 0
+  },
+  "poseConfirmed": true,
+  "basePose": {
+    "head": -1,
+    "leftArm": -44,
+    "rightArm": -44,
+    "leftHand": 60.74988960007881,
+    "rightHand": 60.74988960007881,
+    "leftLeg": 0,
+    "rightLeg": 0,
+    "leftShoe": 0,
+    "rightShoe": 0
+  },
+  "appearance": {
+    "animalHead": null,
+    "formalStyle": null,
+    "formalColor": "navy",
+    "skin": "Tint 1",
+    "hair": "hair-black-blackman1",
+    "shirt": "shirts-blue-blueshirt5",
+    "sleeve": "long",
+    "pants": "pants-navy-pantsnavy3",
+    "leg": "long",
+    "shoes": "shoes-black-blackshoe1",
+    "face": "face-completes-face1",
+    "faceLayout": "face-completes-face1",
+    "eyes": "face-eyes-eyebrown-large",
+    "eyebrows": "face-eyebrows-blackbrow1",
+    "mouth": "face-mouth-mouth-happy",
+    "nose": "1"
+  }
+}

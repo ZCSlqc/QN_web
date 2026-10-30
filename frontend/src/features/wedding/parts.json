@@ -1,0 +1,4282 @@
+[
+  {
+    "id": "face-completes-face1",
+    "file": "face-completes-face1.png",
+    "slot": "face",
+    "group": "Completes",
+    "name": "face1",
+    "width": 100,
+    "height": 101,
+    "original": "Face/Completes/face1.png"
+  },
+  {
+    "id": "face-completes-face2",
+    "file": "face-completes-face2.png",
+    "slot": "face",
+    "group": "Completes",
+    "name": "face2",
+    "width": 98,
+    "height": 108,
+    "original": "Face/Completes/face2.png"
+  },
+  {
+    "id": "face-completes-face3",
+    "file": "face-completes-face3.png",
+    "slot": "face",
+    "group": "Completes",
+    "name": "face3",
+    "width": 112,
+    "height": 65,
+    "original": "Face/Completes/face3.png"
+  },
+  {
+    "id": "face-completes-face4",
+    "file": "face-completes-face4.png",
+    "slot": "face",
+    "group": "Completes",
+    "name": "face4",
+    "width": 111,
+    "height": 87,
+    "original": "Face/Completes/face4.png"
+  },
+  {
+    "id": "face-eyebrows-blackbrow1",
+    "file": "face-eyebrows-blackbrow1.png",
+    "slot": "eyebrows",
+    "group": "Eyebrows",
+    "name": "blackBrow1",
+    "width": 40,
+    "height": 17,
+    "original": "Face/Eyebrows/blackBrow1.png"
+  },
+  {
+    "id": "face-eyebrows-blackbrow2",
+    "file": "face-eyebrows-blackbrow2.png",
+    "slot": "eyebrows",
+    "group": "Eyebrows",
+    "name": "blackBrow2",
+    "width": 41,
+    "height": 11,
+    "original": "Face/Eyebrows/blackBrow2.png"
+  },
+  {
+    "id": "face-eyebrows-blackbrow3",
+    "file": "face-eyebrows-blackbrow3.png",
+    "slot": "eyebrows",
+    "group": "Eyebrows",
+    "name": "blackBrow3",
+    "width": 40,
+    "height": 17,
+    "original": "Face/Eyebrows/blackBrow3.png"
+  },
+  {
+    "id": "face-eyebrows-blondebrow1",
+    "file": "face-eyebrows-blondebrow1.png",
+    "slot": "eyebrows",
+    "group": "Eyebrows",
+    "name": "blondeBrow1",
+    "width": 40,
+    "height": 17,
+    "original": "Face/Eyebrows/blondeBrow1.png"
+  },
+  {
+    "id": "face-eyebrows-blondebrow2",
+    "file": "face-eyebrows-blondebrow2.png",
+    "slot": "eyebrows",
+    "group": "Eyebrows",
+    "name": "blondeBrow2",
+    "width": 41,
+    "height": 11,
+    "original": "Face/Eyebrows/blondeBrow2.png"
+  },
+  {
+    "id": "face-eyebrows-blondebrow3",
+    "file": "face-eyebrows-blondebrow3.png",
+    "slot": "eyebrows",
+    "group": "Eyebrows",
+    "name": "blondeBrow3",
+    "width": 40,
+    "height": 17,
+    "original": "Face/Eyebrows/blondeBrow3.png"
+  },
+  {
+    "id": "face-eyebrows-brown1brow1",
+    "file": "face-eyebrows-brown1brow1.png",
+    "slot": "eyebrows",
+    "group": "Eyebrows",
+    "name": "brown1Brow1",
+    "width": 40,
+    "height": 17,
+    "original": "Face/Eyebrows/brown1Brow1.png"
+  },
+  {
+    "id": "face-eyebrows-brown1brow2",
+    "file": "face-eyebrows-brown1brow2.png",
+    "slot": "eyebrows",
+    "group": "Eyebrows",
+    "name": "brown1Brow2",
+    "width": 41,
+    "height": 11,
+    "original": "Face/Eyebrows/brown1Brow2.png"
+  },
+  {
+    "id": "face-eyebrows-brown1brow3",
+    "file": "face-eyebrows-brown1brow3.png",
+    "slot": "eyebrows",
+    "group": "Eyebrows",
+    "name": "brown1Brow3",
+    "width": 40,
+    "height": 17,
+    "original": "Face/Eyebrows/brown1Brow3.png"
+  },
+  {
+    "id": "face-eyebrows-brown2brow1",
+    "file": "face-eyebrows-brown2brow1.png",
+    "slot": "eyebrows",
+    "group": "Eyebrows",
+    "name": "brown2Brow1",
+    "width": 40,
+    "height": 17,
+    "original": "Face/Eyebrows/brown2Brow1.png"
+  },
+  {
+    "id": "face-eyebrows-brown2brow2",
+    "file": "face-eyebrows-brown2brow2.png",
+    "slot": "eyebrows",
+    "group": "Eyebrows",
+    "name": "brown2Brow2",
+    "width": 41,
+    "height": 11,
+    "original": "Face/Eyebrows/brown2Brow2.png"
+  },
+  {
+    "id": "face-eyebrows-brown2brow3",
+    "file": "face-eyebrows-brown2brow3.png",
+    "slot": "eyebrows",
+    "group": "Eyebrows",
+    "name": "brown2Brow3",
+    "width": 40,
+    "height": 17,
+    "original": "Face/Eyebrows/brown2Brow3.png"
+  },
+  {
+    "id": "face-eyebrows-greybrow1",
+    "file": "face-eyebrows-greybrow1.png",
+    "slot": "eyebrows",
+    "group": "Eyebrows",
+    "name": "greyBrow1",
+    "width": 40,
+    "height": 17,
+    "original": "Face/Eyebrows/greyBrow1.png"
+  },
+  {
+    "id": "face-eyebrows-greybrow2",
+    "file": "face-eyebrows-greybrow2.png",
+    "slot": "eyebrows",
+    "group": "Eyebrows",
+    "name": "greyBrow2",
+    "width": 41,
+    "height": 11,
+    "original": "Face/Eyebrows/greyBrow2.png"
+  },
+  {
+    "id": "face-eyebrows-greybrow3",
+    "file": "face-eyebrows-greybrow3.png",
+    "slot": "eyebrows",
+    "group": "Eyebrows",
+    "name": "greyBrow3",
+    "width": 40,
+    "height": 17,
+    "original": "Face/Eyebrows/greyBrow3.png"
+  },
+  {
+    "id": "face-eyebrows-redbrow1",
+    "file": "face-eyebrows-redbrow1.png",
+    "slot": "eyebrows",
+    "group": "Eyebrows",
+    "name": "redBrow1",
+    "width": 40,
+    "height": 17,
+    "original": "Face/Eyebrows/redBrow1.png"
+  },
+  {
+    "id": "face-eyebrows-redbrow2",
+    "file": "face-eyebrows-redbrow2.png",
+    "slot": "eyebrows",
+    "group": "Eyebrows",
+    "name": "redBrow2",
+    "width": 41,
+    "height": 11,
+    "original": "Face/Eyebrows/redBrow2.png"
+  },
+  {
+    "id": "face-eyebrows-redbrow3",
+    "file": "face-eyebrows-redbrow3.png",
+    "slot": "eyebrows",
+    "group": "Eyebrows",
+    "name": "redBrow3",
+    "width": 40,
+    "height": 17,
+    "original": "Face/Eyebrows/redBrow3.png"
+  },
+  {
+    "id": "face-eyebrows-tanbrow1",
+    "file": "face-eyebrows-tanbrow1.png",
+    "slot": "eyebrows",
+    "group": "Eyebrows",
+    "name": "tanBrow1",
+    "width": 40,
+    "height": 17,
+    "original": "Face/Eyebrows/tanBrow1.png"
+  },
+  {
+    "id": "face-eyebrows-tanbrow2",
+    "file": "face-eyebrows-tanbrow2.png",
+    "slot": "eyebrows",
+    "group": "Eyebrows",
+    "name": "tanBrow2",
+    "width": 41,
+    "height": 11,
+    "original": "Face/Eyebrows/tanBrow2.png"
+  },
+  {
+    "id": "face-eyebrows-tanbrow3",
+    "file": "face-eyebrows-tanbrow3.png",
+    "slot": "eyebrows",
+    "group": "Eyebrows",
+    "name": "tanBrow3",
+    "width": 40,
+    "height": 17,
+    "original": "Face/Eyebrows/tanBrow3.png"
+  },
+  {
+    "id": "face-eyebrows-whitebrow1",
+    "file": "face-eyebrows-whitebrow1.png",
+    "slot": "eyebrows",
+    "group": "Eyebrows",
+    "name": "whiteBrow1",
+    "width": 40,
+    "height": 17,
+    "original": "Face/Eyebrows/whiteBrow1.png"
+  },
+  {
+    "id": "face-eyebrows-whitebrow2",
+    "file": "face-eyebrows-whitebrow2.png",
+    "slot": "eyebrows",
+    "group": "Eyebrows",
+    "name": "whiteBrow2",
+    "width": 41,
+    "height": 11,
+    "original": "Face/Eyebrows/whiteBrow2.png"
+  },
+  {
+    "id": "face-eyebrows-whitebrow3",
+    "file": "face-eyebrows-whitebrow3.png",
+    "slot": "eyebrows",
+    "group": "Eyebrows",
+    "name": "whiteBrow3",
+    "width": 40,
+    "height": 17,
+    "original": "Face/Eyebrows/whiteBrow3.png"
+  },
+  {
+    "id": "face-eyes-eyeblack-large",
+    "file": "face-eyes-eyeblack-large.png",
+    "slot": "eyes",
+    "group": "Eyes",
+    "name": "eyeBlack_large",
+    "width": 21,
+    "height": 21,
+    "original": "Face/Eyes/eyeBlack_large.png"
+  },
+  {
+    "id": "face-eyes-eyeblack-small",
+    "file": "face-eyes-eyeblack-small.png",
+    "slot": "eyes",
+    "group": "Eyes",
+    "name": "eyeBlack_small",
+    "width": 15,
+    "height": 16,
+    "original": "Face/Eyes/eyeBlack_small.png"
+  },
+  {
+    "id": "face-eyes-eyeblue-large",
+    "file": "face-eyes-eyeblue-large.png",
+    "slot": "eyes",
+    "group": "Eyes",
+    "name": "eyeBlue_large",
+    "width": 21,
+    "height": 21,
+    "original": "Face/Eyes/eyeBlue_large.png"
+  },
+  {
+    "id": "face-eyes-eyeblue-small",
+    "file": "face-eyes-eyeblue-small.png",
+    "slot": "eyes",
+    "group": "Eyes",
+    "name": "eyeBlue_small",
+    "width": 15,
+    "height": 16,
+    "original": "Face/Eyes/eyeBlue_small.png"
+  },
+  {
+    "id": "face-eyes-eyebrown-large",
+    "file": "face-eyes-eyebrown-large.png",
+    "slot": "eyes",
+    "group": "Eyes",
+    "name": "eyeBrown_large",
+    "width": 21,
+    "height": 21,
+    "original": "Face/Eyes/eyeBrown_large.png"
+  },
+  {
+    "id": "face-eyes-eyebrown-small",
+    "file": "face-eyes-eyebrown-small.png",
+    "slot": "eyes",
+    "group": "Eyes",
+    "name": "eyeBrown_small",
+    "width": 15,
+    "height": 16,
+    "original": "Face/Eyes/eyeBrown_small.png"
+  },
+  {
+    "id": "face-eyes-eyegreen-large",
+    "file": "face-eyes-eyegreen-large.png",
+    "slot": "eyes",
+    "group": "Eyes",
+    "name": "eyeGreen_large",
+    "width": 21,
+    "height": 21,
+    "original": "Face/Eyes/eyeGreen_large.png"
+  },
+  {
+    "id": "face-eyes-eyegreen-small",
+    "file": "face-eyes-eyegreen-small.png",
+    "slot": "eyes",
+    "group": "Eyes",
+    "name": "eyeGreen_small",
+    "width": 15,
+    "height": 16,
+    "original": "Face/Eyes/eyeGreen_small.png"
+  },
+  {
+    "id": "face-eyes-eyepine-large",
+    "file": "face-eyes-eyepine-large.png",
+    "slot": "eyes",
+    "group": "Eyes",
+    "name": "eyePine_large",
+    "width": 21,
+    "height": 21,
+    "original": "Face/Eyes/eyePine_large.png"
+  },
+  {
+    "id": "face-eyes-eyepine-small",
+    "file": "face-eyes-eyepine-small.png",
+    "slot": "eyes",
+    "group": "Eyes",
+    "name": "eyePine_small",
+    "width": 15,
+    "height": 16,
+    "original": "Face/Eyes/eyePine_small.png"
+  },
+  {
+    "id": "face-mouth-mouth-glad",
+    "file": "face-mouth-mouth-glad.png",
+    "slot": "mouth",
+    "group": "Mouth",
+    "name": "mouth_glad",
+    "width": 34,
+    "height": 13,
+    "original": "Face/Mouth/mouth_glad.png"
+  },
+  {
+    "id": "face-mouth-mouth-happy",
+    "file": "face-mouth-mouth-happy.png",
+    "slot": "mouth",
+    "group": "Mouth",
+    "name": "mouth_happy",
+    "width": 34,
+    "height": 13,
+    "original": "Face/Mouth/mouth_happy.png"
+  },
+  {
+    "id": "face-mouth-mouth-oh",
+    "file": "face-mouth-mouth-oh.png",
+    "slot": "mouth",
+    "group": "Mouth",
+    "name": "mouth_oh",
+    "width": 15,
+    "height": 15,
+    "original": "Face/Mouth/mouth_oh.png"
+  },
+  {
+    "id": "face-mouth-mouth-sad",
+    "file": "face-mouth-mouth-sad.png",
+    "slot": "mouth",
+    "group": "Mouth",
+    "name": "mouth_sad",
+    "width": 34,
+    "height": 13,
+    "original": "Face/Mouth/mouth_sad.png"
+  },
+  {
+    "id": "face-mouth-mouth-straight",
+    "file": "face-mouth-mouth-straight.png",
+    "slot": "mouth",
+    "group": "Mouth",
+    "name": "mouth_straight",
+    "width": 36,
+    "height": 6,
+    "original": "Face/Mouth/mouth_straight.png"
+  },
+  {
+    "id": "face-mouth-mouth-teethlower",
+    "file": "face-mouth-mouth-teethlower.png",
+    "slot": "mouth",
+    "group": "Mouth",
+    "name": "mouth_teethLower",
+    "width": 34,
+    "height": 13,
+    "original": "Face/Mouth/mouth_teethLower.png"
+  },
+  {
+    "id": "face-mouth-mouth-teethupper",
+    "file": "face-mouth-mouth-teethupper.png",
+    "slot": "mouth",
+    "group": "Mouth",
+    "name": "mouth_teethUpper",
+    "width": 34,
+    "height": 13,
+    "original": "Face/Mouth/mouth_teethUpper.png"
+  },
+  {
+    "id": "face-nose-tint-1-tint1nose1",
+    "file": "face-nose-tint-1-tint1nose1.png",
+    "slot": "nose",
+    "group": "Tint 1",
+    "name": "tint1Nose1",
+    "width": 31,
+    "height": 21,
+    "original": "Face/Nose/Tint 1/tint1Nose1.png"
+  },
+  {
+    "id": "face-nose-tint-1-tint1nose2",
+    "file": "face-nose-tint-1-tint1nose2.png",
+    "slot": "nose",
+    "group": "Tint 1",
+    "name": "tint1Nose2",
+    "width": 24,
+    "height": 24,
+    "original": "Face/Nose/Tint 1/tint1Nose2.png"
+  },
+  {
+    "id": "face-nose-tint-1-tint1nose3",
+    "file": "face-nose-tint-1-tint1nose3.png",
+    "slot": "nose",
+    "group": "Tint 1",
+    "name": "tint1Nose3",
+    "width": 22,
+    "height": 15,
+    "original": "Face/Nose/Tint 1/tint1Nose3.png"
+  },
+  {
+    "id": "face-nose-tint-2-tint2nose1",
+    "file": "face-nose-tint-2-tint2nose1.png",
+    "slot": "nose",
+    "group": "Tint 2",
+    "name": "tint2Nose1",
+    "width": 31,
+    "height": 21,
+    "original": "Face/Nose/Tint 2/tint2Nose1.png"
+  },
+  {
+    "id": "face-nose-tint-2-tint2nose2",
+    "file": "face-nose-tint-2-tint2nose2.png",
+    "slot": "nose",
+    "group": "Tint 2",
+    "name": "tint2Nose2",
+    "width": 24,
+    "height": 24,
+    "original": "Face/Nose/Tint 2/tint2Nose2.png"
+  },
+  {
+    "id": "face-nose-tint-2-tint2nose3",
+    "file": "face-nose-tint-2-tint2nose3.png",
+    "slot": "nose",
+    "group": "Tint 2",
+    "name": "tint2Nose3",
+    "width": 22,
+    "height": 15,
+    "original": "Face/Nose/Tint 2/tint2Nose3.png"
+  },
+  {
+    "id": "face-nose-tint-3-tint3nose1",
+    "file": "face-nose-tint-3-tint3nose1.png",
+    "slot": "nose",
+    "group": "Tint 3",
+    "name": "tint3Nose1",
+    "width": 31,
+    "height": 21,
+    "original": "Face/Nose/Tint 3/tint3Nose1.png"
+  },
+  {
+    "id": "face-nose-tint-3-tint3nose2",
+    "file": "face-nose-tint-3-tint3nose2.png",
+    "slot": "nose",
+    "group": "Tint 3",
+    "name": "tint3Nose2",
+    "width": 24,
+    "height": 24,
+    "original": "Face/Nose/Tint 3/tint3Nose2.png"
+  },
+  {
+    "id": "face-nose-tint-3-tint3nose3",
+    "file": "face-nose-tint-3-tint3nose3.png",
+    "slot": "nose",
+    "group": "Tint 3",
+    "name": "tint3Nose3",
+    "width": 22,
+    "height": 15,
+    "original": "Face/Nose/Tint 3/tint3Nose3.png"
+  },
+  {
+    "id": "face-nose-tint-4-tint4nose1",
+    "file": "face-nose-tint-4-tint4nose1.png",
+    "slot": "nose",
+    "group": "Tint 4",
+    "name": "tint4Nose1",
+    "width": 31,
+    "height": 21,
+    "original": "Face/Nose/Tint 4/tint4Nose1.png"
+  },
+  {
+    "id": "face-nose-tint-4-tint4nose2",
+    "file": "face-nose-tint-4-tint4nose2.png",
+    "slot": "nose",
+    "group": "Tint 4",
+    "name": "tint4Nose2",
+    "width": 24,
+    "height": 24,
+    "original": "Face/Nose/Tint 4/tint4Nose2.png"
+  },
+  {
+    "id": "face-nose-tint-4-tint4nose3",
+    "file": "face-nose-tint-4-tint4nose3.png",
+    "slot": "nose",
+    "group": "Tint 4",
+    "name": "tint4Nose3",
+    "width": 22,
+    "height": 15,
+    "original": "Face/Nose/Tint 4/tint4Nose3.png"
+  },
+  {
+    "id": "face-nose-tint-5-tint5nose1",
+    "file": "face-nose-tint-5-tint5nose1.png",
+    "slot": "nose",
+    "group": "Tint 5",
+    "name": "tint5Nose1",
+    "width": 31,
+    "height": 21,
+    "original": "Face/Nose/Tint 5/tint5Nose1.png"
+  },
+  {
+    "id": "face-nose-tint-5-tint5nose2",
+    "file": "face-nose-tint-5-tint5nose2.png",
+    "slot": "nose",
+    "group": "Tint 5",
+    "name": "tint5Nose2",
+    "width": 24,
+    "height": 24,
+    "original": "Face/Nose/Tint 5/tint5Nose2.png"
+  },
+  {
+    "id": "face-nose-tint-5-tint5nose3",
+    "file": "face-nose-tint-5-tint5nose3.png",
+    "slot": "nose",
+    "group": "Tint 5",
+    "name": "tint5Nose3",
+    "width": 22,
+    "height": 15,
+    "original": "Face/Nose/Tint 5/tint5Nose3.png"
+  },
+  {
+    "id": "face-nose-tint-6-tint6nose1",
+    "file": "face-nose-tint-6-tint6nose1.png",
+    "slot": "nose",
+    "group": "Tint 6",
+    "name": "tint6Nose1",
+    "width": 31,
+    "height": 21,
+    "original": "Face/Nose/Tint 6/tint6Nose1.png"
+  },
+  {
+    "id": "face-nose-tint-6-tint6nose2",
+    "file": "face-nose-tint-6-tint6nose2.png",
+    "slot": "nose",
+    "group": "Tint 6",
+    "name": "tint6Nose2",
+    "width": 24,
+    "height": 24,
+    "original": "Face/Nose/Tint 6/tint6Nose2.png"
+  },
+  {
+    "id": "face-nose-tint-6-tint6nose3",
+    "file": "face-nose-tint-6-tint6nose3.png",
+    "slot": "nose",
+    "group": "Tint 6",
+    "name": "tint6Nose3",
+    "width": 22,
+    "height": 15,
+    "original": "Face/Nose/Tint 6/tint6Nose3.png"
+  },
+  {
+    "id": "face-nose-tint-7-tint7nose1",
+    "file": "face-nose-tint-7-tint7nose1.png",
+    "slot": "nose",
+    "group": "Tint 7",
+    "name": "tint7Nose1",
+    "width": 31,
+    "height": 21,
+    "original": "Face/Nose/Tint 7/tint7Nose1.png"
+  },
+  {
+    "id": "face-nose-tint-7-tint7nose2",
+    "file": "face-nose-tint-7-tint7nose2.png",
+    "slot": "nose",
+    "group": "Tint 7",
+    "name": "tint7Nose2",
+    "width": 24,
+    "height": 24,
+    "original": "Face/Nose/Tint 7/tint7Nose2.png"
+  },
+  {
+    "id": "face-nose-tint-7-tint7nose3",
+    "file": "face-nose-tint-7-tint7nose3.png",
+    "slot": "nose",
+    "group": "Tint 7",
+    "name": "tint7Nose3",
+    "width": 22,
+    "height": 15,
+    "original": "Face/Nose/Tint 7/tint7Nose3.png"
+  },
+  {
+    "id": "face-nose-tint-8-tint8nose1",
+    "file": "face-nose-tint-8-tint8nose1.png",
+    "slot": "nose",
+    "group": "Tint 8",
+    "name": "tint8Nose1",
+    "width": 31,
+    "height": 21,
+    "original": "Face/Nose/Tint 8/tint8Nose1.png"
+  },
+  {
+    "id": "face-nose-tint-8-tint8nose2",
+    "file": "face-nose-tint-8-tint8nose2.png",
+    "slot": "nose",
+    "group": "Tint 8",
+    "name": "tint8Nose2",
+    "width": 24,
+    "height": 24,
+    "original": "Face/Nose/Tint 8/tint8Nose2.png"
+  },
+  {
+    "id": "face-nose-tint-8-tint8nose3",
+    "file": "face-nose-tint-8-tint8nose3.png",
+    "slot": "nose",
+    "group": "Tint 8",
+    "name": "tint8Nose3",
+    "width": 22,
+    "height": 15,
+    "original": "Face/Nose/Tint 8/tint8Nose3.png"
+  },
+  {
+    "id": "hair-black-blackman1",
+    "file": "hair-black-blackman1.png",
+    "slot": "hair",
+    "group": "Black",
+    "name": "blackMan1",
+    "width": 158,
+    "height": 119,
+    "original": "Hair/Black/blackMan1.png"
+  },
+  {
+    "id": "hair-black-blackman2",
+    "file": "hair-black-blackman2.png",
+    "slot": "hair",
+    "group": "Black",
+    "name": "blackMan2",
+    "width": 158,
+    "height": 138,
+    "original": "Hair/Black/blackMan2.png"
+  },
+  {
+    "id": "hair-black-blackman3",
+    "file": "hair-black-blackman3.png",
+    "slot": "hair",
+    "group": "Black",
+    "name": "blackMan3",
+    "width": 158,
+    "height": 119,
+    "original": "Hair/Black/blackMan3.png"
+  },
+  {
+    "id": "hair-black-blackman4",
+    "file": "hair-black-blackman4.png",
+    "slot": "hair",
+    "group": "Black",
+    "name": "blackMan4",
+    "width": 158,
+    "height": 119,
+    "original": "Hair/Black/blackMan4.png"
+  },
+  {
+    "id": "hair-black-blackman5",
+    "file": "hair-black-blackman5.png",
+    "slot": "hair",
+    "group": "Black",
+    "name": "blackMan5",
+    "width": 171,
+    "height": 130,
+    "original": "Hair/Black/blackMan5.png"
+  },
+  {
+    "id": "hair-black-blackman6",
+    "file": "hair-black-blackman6.png",
+    "slot": "hair",
+    "group": "Black",
+    "name": "blackMan6",
+    "width": 158,
+    "height": 119,
+    "original": "Hair/Black/blackMan6.png"
+  },
+  {
+    "id": "hair-black-blackman7",
+    "file": "hair-black-blackman7.png",
+    "slot": "hair",
+    "group": "Black",
+    "name": "blackMan7",
+    "width": 158,
+    "height": 119,
+    "original": "Hair/Black/blackMan7.png"
+  },
+  {
+    "id": "hair-black-blackman8",
+    "file": "hair-black-blackman8.png",
+    "slot": "hair",
+    "group": "Black",
+    "name": "blackMan8",
+    "width": 158,
+    "height": 47,
+    "original": "Hair/Black/blackMan8.png"
+  },
+  {
+    "id": "hair-black-blackwoman1",
+    "file": "hair-black-blackwoman1.png",
+    "slot": "hair",
+    "group": "Black",
+    "name": "blackWoman1",
+    "width": 165,
+    "height": 227,
+    "original": "Hair/Black/blackWoman1.png"
+  },
+  {
+    "id": "hair-black-blackwoman2",
+    "file": "hair-black-blackwoman2.png",
+    "slot": "hair",
+    "group": "Black",
+    "name": "blackWoman2",
+    "width": 158,
+    "height": 285,
+    "original": "Hair/Black/blackWoman2.png"
+  },
+  {
+    "id": "hair-black-blackwoman3",
+    "file": "hair-black-blackwoman3.png",
+    "slot": "hair",
+    "group": "Black",
+    "name": "blackWoman3",
+    "width": 160,
+    "height": 227,
+    "original": "Hair/Black/blackWoman3.png"
+  },
+  {
+    "id": "hair-black-blackwoman4",
+    "file": "hair-black-blackwoman4.png",
+    "slot": "hair",
+    "group": "Black",
+    "name": "blackWoman4",
+    "width": 158,
+    "height": 286,
+    "original": "Hair/Black/blackWoman4.png"
+  },
+  {
+    "id": "hair-black-blackwoman5",
+    "file": "hair-black-blackwoman5.png",
+    "slot": "hair",
+    "group": "Black",
+    "name": "blackWoman5",
+    "width": 168,
+    "height": 213,
+    "original": "Hair/Black/blackWoman5.png"
+  },
+  {
+    "id": "hair-black-blackwoman6",
+    "file": "hair-black-blackwoman6.png",
+    "slot": "hair",
+    "group": "Black",
+    "name": "blackWoman6",
+    "width": 164,
+    "height": 213,
+    "original": "Hair/Black/blackWoman6.png"
+  },
+  {
+    "id": "hair-blonde-blondeman1",
+    "file": "hair-blonde-blondeman1.png",
+    "slot": "hair",
+    "group": "Blonde",
+    "name": "blondeMan1",
+    "width": 159,
+    "height": 119,
+    "original": "Hair/Blonde/blondeMan1.png"
+  },
+  {
+    "id": "hair-blonde-blondeman2",
+    "file": "hair-blonde-blondeman2.png",
+    "slot": "hair",
+    "group": "Blonde",
+    "name": "blondeMan2",
+    "width": 159,
+    "height": 138,
+    "original": "Hair/Blonde/blondeMan2.png"
+  },
+  {
+    "id": "hair-blonde-blondeman3",
+    "file": "hair-blonde-blondeman3.png",
+    "slot": "hair",
+    "group": "Blonde",
+    "name": "blondeMan3",
+    "width": 159,
+    "height": 119,
+    "original": "Hair/Blonde/blondeMan3.png"
+  },
+  {
+    "id": "hair-blonde-blondeman4",
+    "file": "hair-blonde-blondeman4.png",
+    "slot": "hair",
+    "group": "Blonde",
+    "name": "blondeMan4",
+    "width": 159,
+    "height": 119,
+    "original": "Hair/Blonde/blondeMan4.png"
+  },
+  {
+    "id": "hair-blonde-blondeman5",
+    "file": "hair-blonde-blondeman5.png",
+    "slot": "hair",
+    "group": "Blonde",
+    "name": "blondeMan5",
+    "width": 171,
+    "height": 130,
+    "original": "Hair/Blonde/blondeMan5.png"
+  },
+  {
+    "id": "hair-blonde-blondeman6",
+    "file": "hair-blonde-blondeman6.png",
+    "slot": "hair",
+    "group": "Blonde",
+    "name": "blondeMan6",
+    "width": 159,
+    "height": 119,
+    "original": "Hair/Blonde/blondeMan6.png"
+  },
+  {
+    "id": "hair-blonde-blondeman7",
+    "file": "hair-blonde-blondeman7.png",
+    "slot": "hair",
+    "group": "Blonde",
+    "name": "blondeMan7",
+    "width": 159,
+    "height": 119,
+    "original": "Hair/Blonde/blondeMan7.png"
+  },
+  {
+    "id": "hair-blonde-blondeman8",
+    "file": "hair-blonde-blondeman8.png",
+    "slot": "hair",
+    "group": "Blonde",
+    "name": "blondeMan8",
+    "width": 158,
+    "height": 47,
+    "original": "Hair/Blonde/blondeMan8.png"
+  },
+  {
+    "id": "hair-blonde-blondewoman1",
+    "file": "hair-blonde-blondewoman1.png",
+    "slot": "hair",
+    "group": "Blonde",
+    "name": "blondeWoman1",
+    "width": 158,
+    "height": 285,
+    "original": "Hair/Blonde/blondeWoman1.png"
+  },
+  {
+    "id": "hair-blonde-blondewoman2",
+    "file": "hair-blonde-blondewoman2.png",
+    "slot": "hair",
+    "group": "Blonde",
+    "name": "blondeWoman2",
+    "width": 160,
+    "height": 227,
+    "original": "Hair/Blonde/blondeWoman2.png"
+  },
+  {
+    "id": "hair-blonde-blondewoman3",
+    "file": "hair-blonde-blondewoman3.png",
+    "slot": "hair",
+    "group": "Blonde",
+    "name": "blondeWoman3",
+    "width": 158,
+    "height": 286,
+    "original": "Hair/Blonde/blondeWoman3.png"
+  },
+  {
+    "id": "hair-blonde-blondewoman4",
+    "file": "hair-blonde-blondewoman4.png",
+    "slot": "hair",
+    "group": "Blonde",
+    "name": "blondeWoman4",
+    "width": 165,
+    "height": 227,
+    "original": "Hair/Blonde/blondeWoman4.png"
+  },
+  {
+    "id": "hair-blonde-blondewoman5",
+    "file": "hair-blonde-blondewoman5.png",
+    "slot": "hair",
+    "group": "Blonde",
+    "name": "blondeWoman5",
+    "width": 164,
+    "height": 213,
+    "original": "Hair/Blonde/blondeWoman5.png"
+  },
+  {
+    "id": "hair-blonde-blondewoman6",
+    "file": "hair-blonde-blondewoman6.png",
+    "slot": "hair",
+    "group": "Blonde",
+    "name": "blondeWoman6",
+    "width": 168,
+    "height": 213,
+    "original": "Hair/Blonde/blondeWoman6.png"
+  },
+  {
+    "id": "hair-brown-1-brown1man1",
+    "file": "hair-brown-1-brown1man1.png",
+    "slot": "hair",
+    "group": "Brown 1",
+    "name": "brown1Man1",
+    "width": 158,
+    "height": 119,
+    "original": "Hair/Brown 1/brown1Man1.png"
+  },
+  {
+    "id": "hair-brown-1-brown1man2",
+    "file": "hair-brown-1-brown1man2.png",
+    "slot": "hair",
+    "group": "Brown 1",
+    "name": "brown1Man2",
+    "width": 158,
+    "height": 138,
+    "original": "Hair/Brown 1/brown1Man2.png"
+  },
+  {
+    "id": "hair-brown-1-brown1man3",
+    "file": "hair-brown-1-brown1man3.png",
+    "slot": "hair",
+    "group": "Brown 1",
+    "name": "brown1Man3",
+    "width": 158,
+    "height": 119,
+    "original": "Hair/Brown 1/brown1Man3.png"
+  },
+  {
+    "id": "hair-brown-1-brown1man4",
+    "file": "hair-brown-1-brown1man4.png",
+    "slot": "hair",
+    "group": "Brown 1",
+    "name": "brown1Man4",
+    "width": 158,
+    "height": 119,
+    "original": "Hair/Brown 1/brown1Man4.png"
+  },
+  {
+    "id": "hair-brown-1-brown1man5",
+    "file": "hair-brown-1-brown1man5.png",
+    "slot": "hair",
+    "group": "Brown 1",
+    "name": "brown1Man5",
+    "width": 171,
+    "height": 130,
+    "original": "Hair/Brown 1/brown1Man5.png"
+  },
+  {
+    "id": "hair-brown-1-brown1man6",
+    "file": "hair-brown-1-brown1man6.png",
+    "slot": "hair",
+    "group": "Brown 1",
+    "name": "brown1Man6",
+    "width": 158,
+    "height": 119,
+    "original": "Hair/Brown 1/brown1Man6.png"
+  },
+  {
+    "id": "hair-brown-1-brown1man7",
+    "file": "hair-brown-1-brown1man7.png",
+    "slot": "hair",
+    "group": "Brown 1",
+    "name": "brown1Man7",
+    "width": 158,
+    "height": 119,
+    "original": "Hair/Brown 1/brown1Man7.png"
+  },
+  {
+    "id": "hair-brown-1-brown1man8",
+    "file": "hair-brown-1-brown1man8.png",
+    "slot": "hair",
+    "group": "Brown 1",
+    "name": "brown1Man8",
+    "width": 158,
+    "height": 47,
+    "original": "Hair/Brown 1/brown1Man8.png"
+  },
+  {
+    "id": "hair-brown-1-brown1woman1",
+    "file": "hair-brown-1-brown1woman1.png",
+    "slot": "hair",
+    "group": "Brown 1",
+    "name": "brown1Woman1",
+    "width": 158,
+    "height": 285,
+    "original": "Hair/Brown 1/brown1Woman1.png"
+  },
+  {
+    "id": "hair-brown-1-brown1woman2",
+    "file": "hair-brown-1-brown1woman2.png",
+    "slot": "hair",
+    "group": "Brown 1",
+    "name": "brown1Woman2",
+    "width": 160,
+    "height": 227,
+    "original": "Hair/Brown 1/brown1Woman2.png"
+  },
+  {
+    "id": "hair-brown-1-brown1woman3",
+    "file": "hair-brown-1-brown1woman3.png",
+    "slot": "hair",
+    "group": "Brown 1",
+    "name": "brown1Woman3",
+    "width": 158,
+    "height": 286,
+    "original": "Hair/Brown 1/brown1Woman3.png"
+  },
+  {
+    "id": "hair-brown-1-brown1woman4",
+    "file": "hair-brown-1-brown1woman4.png",
+    "slot": "hair",
+    "group": "Brown 1",
+    "name": "brown1Woman4",
+    "width": 165,
+    "height": 227,
+    "original": "Hair/Brown 1/brown1Woman4.png"
+  },
+  {
+    "id": "hair-brown-1-brown1woman5",
+    "file": "hair-brown-1-brown1woman5.png",
+    "slot": "hair",
+    "group": "Brown 1",
+    "name": "brown1Woman5",
+    "width": 164,
+    "height": 213,
+    "original": "Hair/Brown 1/brown1Woman5.png"
+  },
+  {
+    "id": "hair-brown-1-brown1woman6",
+    "file": "hair-brown-1-brown1woman6.png",
+    "slot": "hair",
+    "group": "Brown 1",
+    "name": "brown1Woman6",
+    "width": 168,
+    "height": 213,
+    "original": "Hair/Brown 1/brown1Woman6.png"
+  },
+  {
+    "id": "hair-brown-2-brown2man1",
+    "file": "hair-brown-2-brown2man1.png",
+    "slot": "hair",
+    "group": "Brown 2",
+    "name": "brown2Man1",
+    "width": 158,
+    "height": 119,
+    "original": "Hair/Brown 2/brown2Man1.png"
+  },
+  {
+    "id": "hair-brown-2-brown2man2",
+    "file": "hair-brown-2-brown2man2.png",
+    "slot": "hair",
+    "group": "Brown 2",
+    "name": "brown2Man2",
+    "width": 158,
+    "height": 138,
+    "original": "Hair/Brown 2/brown2Man2.png"
+  },
+  {
+    "id": "hair-brown-2-brown2man3",
+    "file": "hair-brown-2-brown2man3.png",
+    "slot": "hair",
+    "group": "Brown 2",
+    "name": "brown2Man3",
+    "width": 158,
+    "height": 119,
+    "original": "Hair/Brown 2/brown2Man3.png"
+  },
+  {
+    "id": "hair-brown-2-brown2man4",
+    "file": "hair-brown-2-brown2man4.png",
+    "slot": "hair",
+    "group": "Brown 2",
+    "name": "brown2Man4",
+    "width": 158,
+    "height": 119,
+    "original": "Hair/Brown 2/brown2Man4.png"
+  },
+  {
+    "id": "hair-brown-2-brown2man5",
+    "file": "hair-brown-2-brown2man5.png",
+    "slot": "hair",
+    "group": "Brown 2",
+    "name": "brown2Man5",
+    "width": 171,
+    "height": 130,
+    "original": "Hair/Brown 2/brown2Man5.png"
+  },
+  {
+    "id": "hair-brown-2-brown2man6",
+    "file": "hair-brown-2-brown2man6.png",
+    "slot": "hair",
+    "group": "Brown 2",
+    "name": "brown2Man6",
+    "width": 158,
+    "height": 119,
+    "original": "Hair/Brown 2/brown2Man6.png"
+  },
+  {
+    "id": "hair-brown-2-brown2man7",
+    "file": "hair-brown-2-brown2man7.png",
+    "slot": "hair",
+    "group": "Brown 2",
+    "name": "brown2Man7",
+    "width": 158,
+    "height": 119,
+    "original": "Hair/Brown 2/brown2Man7.png"
+  },
+  {
+    "id": "hair-brown-2-brown2man8",
+    "file": "hair-brown-2-brown2man8.png",
+    "slot": "hair",
+    "group": "Brown 2",
+    "name": "brown2Man8",
+    "width": 158,
+    "height": 47,
+    "original": "Hair/Brown 2/brown2Man8.png"
+  },
+  {
+    "id": "hair-brown-2-brown2woman1",
+    "file": "hair-brown-2-brown2woman1.png",
+    "slot": "hair",
+    "group": "Brown 2",
+    "name": "brown2Woman1",
+    "width": 158,
+    "height": 285,
+    "original": "Hair/Brown 2/brown2Woman1.png"
+  },
+  {
+    "id": "hair-brown-2-brown2woman2",
+    "file": "hair-brown-2-brown2woman2.png",
+    "slot": "hair",
+    "group": "Brown 2",
+    "name": "brown2Woman2",
+    "width": 160,
+    "height": 227,
+    "original": "Hair/Brown 2/brown2Woman2.png"
+  },
+  {
+    "id": "hair-brown-2-brown2woman3",
+    "file": "hair-brown-2-brown2woman3.png",
+    "slot": "hair",
+    "group": "Brown 2",
+    "name": "brown2Woman3",
+    "width": 158,
+    "height": 286,
+    "original": "Hair/Brown 2/brown2Woman3.png"
+  },
+  {
+    "id": "hair-brown-2-brown2woman4",
+    "file": "hair-brown-2-brown2woman4.png",
+    "slot": "hair",
+    "group": "Brown 2",
+    "name": "brown2Woman4",
+    "width": 165,
+    "height": 227,
+    "original": "Hair/Brown 2/brown2Woman4.png"
+  },
+  {
+    "id": "hair-brown-2-brown2woman5",
+    "file": "hair-brown-2-brown2woman5.png",
+    "slot": "hair",
+    "group": "Brown 2",
+    "name": "brown2Woman5",
+    "width": 164,
+    "height": 213,
+    "original": "Hair/Brown 2/brown2Woman5.png"
+  },
+  {
+    "id": "hair-brown-2-brown2woman6",
+    "file": "hair-brown-2-brown2woman6.png",
+    "slot": "hair",
+    "group": "Brown 2",
+    "name": "brown2Woman6",
+    "width": 168,
+    "height": 213,
+    "original": "Hair/Brown 2/brown2Woman6.png"
+  },
+  {
+    "id": "hair-grey-greyman1",
+    "file": "hair-grey-greyman1.png",
+    "slot": "hair",
+    "group": "Grey",
+    "name": "greyMan1",
+    "width": 159,
+    "height": 119,
+    "original": "Hair/Grey/greyMan1.png"
+  },
+  {
+    "id": "hair-grey-greyman2",
+    "file": "hair-grey-greyman2.png",
+    "slot": "hair",
+    "group": "Grey",
+    "name": "greyMan2",
+    "width": 159,
+    "height": 138,
+    "original": "Hair/Grey/greyMan2.png"
+  },
+  {
+    "id": "hair-grey-greyman3",
+    "file": "hair-grey-greyman3.png",
+    "slot": "hair",
+    "group": "Grey",
+    "name": "greyMan3",
+    "width": 159,
+    "height": 119,
+    "original": "Hair/Grey/greyMan3.png"
+  },
+  {
+    "id": "hair-grey-greyman4",
+    "file": "hair-grey-greyman4.png",
+    "slot": "hair",
+    "group": "Grey",
+    "name": "greyMan4",
+    "width": 159,
+    "height": 119,
+    "original": "Hair/Grey/greyMan4.png"
+  },
+  {
+    "id": "hair-grey-greyman5",
+    "file": "hair-grey-greyman5.png",
+    "slot": "hair",
+    "group": "Grey",
+    "name": "greyMan5",
+    "width": 171,
+    "height": 130,
+    "original": "Hair/Grey/greyMan5.png"
+  },
+  {
+    "id": "hair-grey-greyman6",
+    "file": "hair-grey-greyman6.png",
+    "slot": "hair",
+    "group": "Grey",
+    "name": "greyMan6",
+    "width": 159,
+    "height": 119,
+    "original": "Hair/Grey/greyMan6.png"
+  },
+  {
+    "id": "hair-grey-greyman7",
+    "file": "hair-grey-greyman7.png",
+    "slot": "hair",
+    "group": "Grey",
+    "name": "greyMan7",
+    "width": 159,
+    "height": 119,
+    "original": "Hair/Grey/greyMan7.png"
+  },
+  {
+    "id": "hair-grey-greyman8",
+    "file": "hair-grey-greyman8.png",
+    "slot": "hair",
+    "group": "Grey",
+    "name": "greyMan8",
+    "width": 158,
+    "height": 47,
+    "original": "Hair/Grey/greyMan8.png"
+  },
+  {
+    "id": "hair-grey-greywoman1",
+    "file": "hair-grey-greywoman1.png",
+    "slot": "hair",
+    "group": "Grey",
+    "name": "greyWoman1",
+    "width": 158,
+    "height": 285,
+    "original": "Hair/Grey/greyWoman1.png"
+  },
+  {
+    "id": "hair-grey-greywoman2",
+    "file": "hair-grey-greywoman2.png",
+    "slot": "hair",
+    "group": "Grey",
+    "name": "greyWoman2",
+    "width": 160,
+    "height": 227,
+    "original": "Hair/Grey/greyWoman2.png"
+  },
+  {
+    "id": "hair-grey-greywoman3",
+    "file": "hair-grey-greywoman3.png",
+    "slot": "hair",
+    "group": "Grey",
+    "name": "greyWoman3",
+    "width": 158,
+    "height": 286,
+    "original": "Hair/Grey/greyWoman3.png"
+  },
+  {
+    "id": "hair-grey-greywoman4",
+    "file": "hair-grey-greywoman4.png",
+    "slot": "hair",
+    "group": "Grey",
+    "name": "greyWoman4",
+    "width": 165,
+    "height": 227,
+    "original": "Hair/Grey/greyWoman4.png"
+  },
+  {
+    "id": "hair-grey-greywoman5",
+    "file": "hair-grey-greywoman5.png",
+    "slot": "hair",
+    "group": "Grey",
+    "name": "greyWoman5",
+    "width": 164,
+    "height": 213,
+    "original": "Hair/Grey/greyWoman5.png"
+  },
+  {
+    "id": "hair-grey-greywoman6",
+    "file": "hair-grey-greywoman6.png",
+    "slot": "hair",
+    "group": "Grey",
+    "name": "greyWoman6",
+    "width": 168,
+    "height": 213,
+    "original": "Hair/Grey/greyWoman6.png"
+  },
+  {
+    "id": "hair-red-redman1",
+    "file": "hair-red-redman1.png",
+    "slot": "hair",
+    "group": "Red",
+    "name": "redMan1",
+    "width": 159,
+    "height": 119,
+    "original": "Hair/Red/redMan1.png"
+  },
+  {
+    "id": "hair-red-redman2",
+    "file": "hair-red-redman2.png",
+    "slot": "hair",
+    "group": "Red",
+    "name": "redMan2",
+    "width": 159,
+    "height": 138,
+    "original": "Hair/Red/redMan2.png"
+  },
+  {
+    "id": "hair-red-redman3",
+    "file": "hair-red-redman3.png",
+    "slot": "hair",
+    "group": "Red",
+    "name": "redMan3",
+    "width": 159,
+    "height": 119,
+    "original": "Hair/Red/redMan3.png"
+  },
+  {
+    "id": "hair-red-redman4",
+    "file": "hair-red-redman4.png",
+    "slot": "hair",
+    "group": "Red",
+    "name": "redMan4",
+    "width": 159,
+    "height": 119,
+    "original": "Hair/Red/redMan4.png"
+  },
+  {
+    "id": "hair-red-redman5",
+    "file": "hair-red-redman5.png",
+    "slot": "hair",
+    "group": "Red",
+    "name": "redMan5",
+    "width": 171,
+    "height": 130,
+    "original": "Hair/Red/redMan5.png"
+  },
+  {
+    "id": "hair-red-redman6",
+    "file": "hair-red-redman6.png",
+    "slot": "hair",
+    "group": "Red",
+    "name": "redMan6",
+    "width": 159,
+    "height": 119,
+    "original": "Hair/Red/redMan6.png"
+  },
+  {
+    "id": "hair-red-redman7",
+    "file": "hair-red-redman7.png",
+    "slot": "hair",
+    "group": "Red",
+    "name": "redMan7",
+    "width": 159,
+    "height": 119,
+    "original": "Hair/Red/redMan7.png"
+  },
+  {
+    "id": "hair-red-redman8",
+    "file": "hair-red-redman8.png",
+    "slot": "hair",
+    "group": "Red",
+    "name": "redMan8",
+    "width": 158,
+    "height": 47,
+    "original": "Hair/Red/redMan8.png"
+  },
+  {
+    "id": "hair-red-redwoman1",
+    "file": "hair-red-redwoman1.png",
+    "slot": "hair",
+    "group": "Red",
+    "name": "redWoman1",
+    "width": 159,
+    "height": 285,
+    "original": "Hair/Red/redWoman1.png"
+  },
+  {
+    "id": "hair-red-redwoman2",
+    "file": "hair-red-redwoman2.png",
+    "slot": "hair",
+    "group": "Red",
+    "name": "redWoman2",
+    "width": 161,
+    "height": 227,
+    "original": "Hair/Red/redWoman2.png"
+  },
+  {
+    "id": "hair-red-redwoman3",
+    "file": "hair-red-redwoman3.png",
+    "slot": "hair",
+    "group": "Red",
+    "name": "redWoman3",
+    "width": 159,
+    "height": 286,
+    "original": "Hair/Red/redWoman3.png"
+  },
+  {
+    "id": "hair-red-redwoman4",
+    "file": "hair-red-redwoman4.png",
+    "slot": "hair",
+    "group": "Red",
+    "name": "redWoman4",
+    "width": 165,
+    "height": 227,
+    "original": "Hair/Red/redWoman4.png"
+  },
+  {
+    "id": "hair-red-redwoman5",
+    "file": "hair-red-redwoman5.png",
+    "slot": "hair",
+    "group": "Red",
+    "name": "redWoman5",
+    "width": 164,
+    "height": 213,
+    "original": "Hair/Red/redWoman5.png"
+  },
+  {
+    "id": "hair-red-redwoman6",
+    "file": "hair-red-redwoman6.png",
+    "slot": "hair",
+    "group": "Red",
+    "name": "redWoman6",
+    "width": 168,
+    "height": 213,
+    "original": "Hair/Red/redWoman6.png"
+  },
+  {
+    "id": "hair-tan-tanman1",
+    "file": "hair-tan-tanman1.png",
+    "slot": "hair",
+    "group": "Tan",
+    "name": "tanMan1",
+    "width": 158,
+    "height": 119,
+    "original": "Hair/Tan/tanMan1.png"
+  },
+  {
+    "id": "hair-tan-tanman2",
+    "file": "hair-tan-tanman2.png",
+    "slot": "hair",
+    "group": "Tan",
+    "name": "tanMan2",
+    "width": 158,
+    "height": 138,
+    "original": "Hair/Tan/tanMan2.png"
+  },
+  {
+    "id": "hair-tan-tanman3",
+    "file": "hair-tan-tanman3.png",
+    "slot": "hair",
+    "group": "Tan",
+    "name": "tanMan3",
+    "width": 158,
+    "height": 119,
+    "original": "Hair/Tan/tanMan3.png"
+  },
+  {
+    "id": "hair-tan-tanman4",
+    "file": "hair-tan-tanman4.png",
+    "slot": "hair",
+    "group": "Tan",
+    "name": "tanMan4",
+    "width": 158,
+    "height": 119,
+    "original": "Hair/Tan/tanMan4.png"
+  },
+  {
+    "id": "hair-tan-tanman5",
+    "file": "hair-tan-tanman5.png",
+    "slot": "hair",
+    "group": "Tan",
+    "name": "tanMan5",
+    "width": 171,
+    "height": 130,
+    "original": "Hair/Tan/tanMan5.png"
+  },
+  {
+    "id": "hair-tan-tanman6",
+    "file": "hair-tan-tanman6.png",
+    "slot": "hair",
+    "group": "Tan",
+    "name": "tanMan6",
+    "width": 158,
+    "height": 119,
+    "original": "Hair/Tan/tanMan6.png"
+  },
+  {
+    "id": "hair-tan-tanman7",
+    "file": "hair-tan-tanman7.png",
+    "slot": "hair",
+    "group": "Tan",
+    "name": "tanMan7",
+    "width": 158,
+    "height": 119,
+    "original": "Hair/Tan/tanMan7.png"
+  },
+  {
+    "id": "hair-tan-tanman8",
+    "file": "hair-tan-tanman8.png",
+    "slot": "hair",
+    "group": "Tan",
+    "name": "tanMan8",
+    "width": 158,
+    "height": 47,
+    "original": "Hair/Tan/tanMan8.png"
+  },
+  {
+    "id": "hair-tan-tanwoman1",
+    "file": "hair-tan-tanwoman1.png",
+    "slot": "hair",
+    "group": "Tan",
+    "name": "tanWoman1",
+    "width": 158,
+    "height": 285,
+    "original": "Hair/Tan/tanWoman1.png"
+  },
+  {
+    "id": "hair-tan-tanwoman2",
+    "file": "hair-tan-tanwoman2.png",
+    "slot": "hair",
+    "group": "Tan",
+    "name": "tanWoman2",
+    "width": 160,
+    "height": 227,
+    "original": "Hair/Tan/tanWoman2.png"
+  },
+  {
+    "id": "hair-tan-tanwoman3",
+    "file": "hair-tan-tanwoman3.png",
+    "slot": "hair",
+    "group": "Tan",
+    "name": "tanWoman3",
+    "width": 168,
+    "height": 213,
+    "original": "Hair/Tan/tanWoman3.png"
+  },
+  {
+    "id": "hair-tan-tanwoman4",
+    "file": "hair-tan-tanwoman4.png",
+    "slot": "hair",
+    "group": "Tan",
+    "name": "tanWoman4",
+    "width": 158,
+    "height": 286,
+    "original": "Hair/Tan/tanWoman4.png"
+  },
+  {
+    "id": "hair-tan-tanwoman5",
+    "file": "hair-tan-tanwoman5.png",
+    "slot": "hair",
+    "group": "Tan",
+    "name": "tanWoman5",
+    "width": 165,
+    "height": 227,
+    "original": "Hair/Tan/tanWoman5.png"
+  },
+  {
+    "id": "hair-tan-tanwoman6",
+    "file": "hair-tan-tanwoman6.png",
+    "slot": "hair",
+    "group": "Tan",
+    "name": "tanWoman6",
+    "width": 164,
+    "height": 213,
+    "original": "Hair/Tan/tanWoman6.png"
+  },
+  {
+    "id": "hair-white-whiteman1",
+    "file": "hair-white-whiteman1.png",
+    "slot": "hair",
+    "group": "White",
+    "name": "whiteMan1",
+    "width": 159,
+    "height": 119,
+    "original": "Hair/White/whiteMan1.png"
+  },
+  {
+    "id": "hair-white-whiteman2",
+    "file": "hair-white-whiteman2.png",
+    "slot": "hair",
+    "group": "White",
+    "name": "whiteMan2",
+    "width": 159,
+    "height": 138,
+    "original": "Hair/White/whiteMan2.png"
+  },
+  {
+    "id": "hair-white-whiteman3",
+    "file": "hair-white-whiteman3.png",
+    "slot": "hair",
+    "group": "White",
+    "name": "whiteMan3",
+    "width": 159,
+    "height": 119,
+    "original": "Hair/White/whiteMan3.png"
+  },
+  {
+    "id": "hair-white-whiteman4",
+    "file": "hair-white-whiteman4.png",
+    "slot": "hair",
+    "group": "White",
+    "name": "whiteMan4",
+    "width": 159,
+    "height": 119,
+    "original": "Hair/White/whiteMan4.png"
+  },
+  {
+    "id": "hair-white-whiteman5",
+    "file": "hair-white-whiteman5.png",
+    "slot": "hair",
+    "group": "White",
+    "name": "whiteMan5",
+    "width": 171,
+    "height": 130,
+    "original": "Hair/White/whiteMan5.png"
+  },
+  {
+    "id": "hair-white-whiteman6",
+    "file": "hair-white-whiteman6.png",
+    "slot": "hair",
+    "group": "White",
+    "name": "whiteMan6",
+    "width": 159,
+    "height": 119,
+    "original": "Hair/White/whiteMan6.png"
+  },
+  {
+    "id": "hair-white-whiteman7",
+    "file": "hair-white-whiteman7.png",
+    "slot": "hair",
+    "group": "White",
+    "name": "whiteMan7",
+    "width": 159,
+    "height": 119,
+    "original": "Hair/White/whiteMan7.png"
+  },
+  {
+    "id": "hair-white-whiteman8",
+    "file": "hair-white-whiteman8.png",
+    "slot": "hair",
+    "group": "White",
+    "name": "whiteMan8",
+    "width": 158,
+    "height": 47,
+    "original": "Hair/White/whiteMan8.png"
+  },
+  {
+    "id": "hair-white-whitewoman1",
+    "file": "hair-white-whitewoman1.png",
+    "slot": "hair",
+    "group": "White",
+    "name": "whiteWoman1",
+    "width": 159,
+    "height": 285,
+    "original": "Hair/White/whiteWoman1.png"
+  },
+  {
+    "id": "hair-white-whitewoman2",
+    "file": "hair-white-whitewoman2.png",
+    "slot": "hair",
+    "group": "White",
+    "name": "whiteWoman2",
+    "width": 161,
+    "height": 227,
+    "original": "Hair/White/whiteWoman2.png"
+  },
+  {
+    "id": "hair-white-whitewoman3",
+    "file": "hair-white-whitewoman3.png",
+    "slot": "hair",
+    "group": "White",
+    "name": "whiteWoman3",
+    "width": 159,
+    "height": 286,
+    "original": "Hair/White/whiteWoman3.png"
+  },
+  {
+    "id": "hair-white-whitewoman4",
+    "file": "hair-white-whitewoman4.png",
+    "slot": "hair",
+    "group": "White",
+    "name": "whiteWoman4",
+    "width": 165,
+    "height": 227,
+    "original": "Hair/White/whiteWoman4.png"
+  },
+  {
+    "id": "hair-white-whitewoman5",
+    "file": "hair-white-whitewoman5.png",
+    "slot": "hair",
+    "group": "White",
+    "name": "whiteWoman5",
+    "width": 164,
+    "height": 213,
+    "original": "Hair/White/whiteWoman5.png"
+  },
+  {
+    "id": "hair-white-whitewoman6",
+    "file": "hair-white-whitewoman6.png",
+    "slot": "hair",
+    "group": "White",
+    "name": "whiteWoman6",
+    "width": 168,
+    "height": 213,
+    "original": "Hair/White/whiteWoman6.png"
+  },
+  {
+    "id": "pants-blue-1-pantsblue11",
+    "file": "pants-blue-1-pantsblue11.png",
+    "slot": "pants",
+    "group": "Blue 1",
+    "name": "pantsBlue11",
+    "width": 153,
+    "height": 47,
+    "original": "Pants/Blue 1/pantsBlue11.png"
+  },
+  {
+    "id": "pants-blue-1-pantsblue12",
+    "file": "pants-blue-1-pantsblue12.png",
+    "slot": "pants",
+    "group": "Blue 1",
+    "name": "pantsBlue12",
+    "width": 153,
+    "height": 47,
+    "original": "Pants/Blue 1/pantsBlue12.png"
+  },
+  {
+    "id": "pants-blue-1-pantsblue13",
+    "file": "pants-blue-1-pantsblue13.png",
+    "slot": "pants",
+    "group": "Blue 1",
+    "name": "pantsBlue13",
+    "width": 153,
+    "height": 47,
+    "original": "Pants/Blue 1/pantsBlue13.png"
+  },
+  {
+    "id": "pants-blue-1-pantsblue14",
+    "file": "pants-blue-1-pantsblue14.png",
+    "slot": "pants",
+    "group": "Blue 1",
+    "name": "pantsBlue14",
+    "width": 153,
+    "height": 47,
+    "original": "Pants/Blue 1/pantsBlue14.png"
+  },
+  {
+    "id": "pants-blue-1-pantsblue1-long",
+    "file": "pants-blue-1-pantsblue1-long.png",
+    "slot": "leg",
+    "group": "Blue 1",
+    "name": "pantsBlue1_long",
+    "width": 111,
+    "height": 166,
+    "original": "Pants/Blue 1/pantsBlue1_long.png"
+  },
+  {
+    "id": "pants-blue-1-pantsblue1-short",
+    "file": "pants-blue-1-pantsblue1-short.png",
+    "slot": "leg",
+    "group": "Blue 1",
+    "name": "pantsBlue1_short",
+    "width": 107,
+    "height": 118,
+    "original": "Pants/Blue 1/pantsBlue1_short.png"
+  },
+  {
+    "id": "pants-blue-1-pantsblue1-shorter",
+    "file": "pants-blue-1-pantsblue1-shorter.png",
+    "slot": "leg",
+    "group": "Blue 1",
+    "name": "pantsBlue1_shorter",
+    "width": 104,
+    "height": 105,
+    "original": "Pants/Blue 1/pantsBlue1_shorter.png"
+  },
+  {
+    "id": "pants-blue-2-pantsblue21",
+    "file": "pants-blue-2-pantsblue21.png",
+    "slot": "pants",
+    "group": "Blue 2",
+    "name": "pantsBlue21",
+    "width": 153,
+    "height": 47,
+    "original": "Pants/Blue 2/pantsBlue21.png"
+  },
+  {
+    "id": "pants-blue-2-pantsblue22",
+    "file": "pants-blue-2-pantsblue22.png",
+    "slot": "pants",
+    "group": "Blue 2",
+    "name": "pantsBlue22",
+    "width": 153,
+    "height": 47,
+    "original": "Pants/Blue 2/pantsBlue22.png"
+  },
+  {
+    "id": "pants-blue-2-pantsblue23",
+    "file": "pants-blue-2-pantsblue23.png",
+    "slot": "pants",
+    "group": "Blue 2",
+    "name": "pantsBlue23",
+    "width": 153,
+    "height": 47,
+    "original": "Pants/Blue 2/pantsBlue23.png"
+  },
+  {
+    "id": "pants-blue-2-pantsblue24",
+    "file": "pants-blue-2-pantsblue24.png",
+    "slot": "pants",
+    "group": "Blue 2",
+    "name": "pantsBlue24",
+    "width": 153,
+    "height": 47,
+    "original": "Pants/Blue 2/pantsBlue24.png"
+  },
+  {
+    "id": "pants-blue-2-pantsblue2-long",
+    "file": "pants-blue-2-pantsblue2-long.png",
+    "slot": "leg",
+    "group": "Blue 2",
+    "name": "pantsBlue2_long",
+    "width": 111,
+    "height": 166,
+    "original": "Pants/Blue 2/pantsBlue2_long.png"
+  },
+  {
+    "id": "pants-blue-2-pantsblue2-short",
+    "file": "pants-blue-2-pantsblue2-short.png",
+    "slot": "leg",
+    "group": "Blue 2",
+    "name": "pantsBlue2_short",
+    "width": 107,
+    "height": 118,
+    "original": "Pants/Blue 2/pantsBlue2_short.png"
+  },
+  {
+    "id": "pants-blue-2-pantsblue2-shorter",
+    "file": "pants-blue-2-pantsblue2-shorter.png",
+    "slot": "leg",
+    "group": "Blue 2",
+    "name": "pantsBlue2_shorter",
+    "width": 104,
+    "height": 105,
+    "original": "Pants/Blue 2/pantsBlue2_shorter.png"
+  },
+  {
+    "id": "pants-brown-pantsbrown1",
+    "file": "pants-brown-pantsbrown1.png",
+    "slot": "pants",
+    "group": "Brown",
+    "name": "pantsBrown1",
+    "width": 153,
+    "height": 47,
+    "original": "Pants/Brown/pantsBrown1.png"
+  },
+  {
+    "id": "pants-brown-pantsbrown2",
+    "file": "pants-brown-pantsbrown2.png",
+    "slot": "pants",
+    "group": "Brown",
+    "name": "pantsBrown2",
+    "width": 153,
+    "height": 47,
+    "original": "Pants/Brown/pantsBrown2.png"
+  },
+  {
+    "id": "pants-brown-pantsbrown3",
+    "file": "pants-brown-pantsbrown3.png",
+    "slot": "pants",
+    "group": "Brown",
+    "name": "pantsBrown3",
+    "width": 153,
+    "height": 47,
+    "original": "Pants/Brown/pantsBrown3.png"
+  },
+  {
+    "id": "pants-brown-pantsbrown4",
+    "file": "pants-brown-pantsbrown4.png",
+    "slot": "pants",
+    "group": "Brown",
+    "name": "pantsBrown4",
+    "width": 153,
+    "height": 47,
+    "original": "Pants/Brown/pantsBrown4.png"
+  },
+  {
+    "id": "pants-brown-pantsbrown-long",
+    "file": "pants-brown-pantsbrown-long.png",
+    "slot": "leg",
+    "group": "Brown",
+    "name": "pantsBrown_long",
+    "width": 111,
+    "height": 166,
+    "original": "Pants/Brown/pantsBrown_long.png"
+  },
+  {
+    "id": "pants-brown-pantsbrown-short",
+    "file": "pants-brown-pantsbrown-short.png",
+    "slot": "leg",
+    "group": "Brown",
+    "name": "pantsBrown_short",
+    "width": 107,
+    "height": 118,
+    "original": "Pants/Brown/pantsBrown_short.png"
+  },
+  {
+    "id": "pants-brown-pantsbrown-shorter",
+    "file": "pants-brown-pantsbrown-shorter.png",
+    "slot": "leg",
+    "group": "Brown",
+    "name": "pantsBrown_shorter",
+    "width": 104,
+    "height": 105,
+    "original": "Pants/Brown/pantsBrown_shorter.png"
+  },
+  {
+    "id": "pants-green-pantsgreen1",
+    "file": "pants-green-pantsgreen1.png",
+    "slot": "pants",
+    "group": "Green",
+    "name": "pantsGreen1",
+    "width": 153,
+    "height": 47,
+    "original": "Pants/Green/pantsGreen1.png"
+  },
+  {
+    "id": "pants-green-pantsgreen2",
+    "file": "pants-green-pantsgreen2.png",
+    "slot": "pants",
+    "group": "Green",
+    "name": "pantsGreen2",
+    "width": 153,
+    "height": 47,
+    "original": "Pants/Green/pantsGreen2.png"
+  },
+  {
+    "id": "pants-green-pantsgreen3",
+    "file": "pants-green-pantsgreen3.png",
+    "slot": "pants",
+    "group": "Green",
+    "name": "pantsGreen3",
+    "width": 153,
+    "height": 47,
+    "original": "Pants/Green/pantsGreen3.png"
+  },
+  {
+    "id": "pants-green-pantsgreen4",
+    "file": "pants-green-pantsgreen4.png",
+    "slot": "pants",
+    "group": "Green",
+    "name": "pantsGreen4",
+    "width": 153,
+    "height": 47,
+    "original": "Pants/Green/pantsGreen4.png"
+  },
+  {
+    "id": "pants-green-pantsgreen-long",
+    "file": "pants-green-pantsgreen-long.png",
+    "slot": "leg",
+    "group": "Green",
+    "name": "pantsGreen_long",
+    "width": 111,
+    "height": 166,
+    "original": "Pants/Green/pantsGreen_long.png"
+  },
+  {
+    "id": "pants-green-pantsgreen-short",
+    "file": "pants-green-pantsgreen-short.png",
+    "slot": "leg",
+    "group": "Green",
+    "name": "pantsGreen_short",
+    "width": 107,
+    "height": 118,
+    "original": "Pants/Green/pantsGreen_short.png"
+  },
+  {
+    "id": "pants-green-pantsgreen-shorter",
+    "file": "pants-green-pantsgreen-shorter.png",
+    "slot": "leg",
+    "group": "Green",
+    "name": "pantsGreen_shorter",
+    "width": 104,
+    "height": 105,
+    "original": "Pants/Green/pantsGreen_shorter.png"
+  },
+  {
+    "id": "pants-grey-pantsgrey1",
+    "file": "pants-grey-pantsgrey1.png",
+    "slot": "pants",
+    "group": "Grey",
+    "name": "pantsGrey1",
+    "width": 153,
+    "height": 47,
+    "original": "Pants/Grey/pantsGrey1.png"
+  },
+  {
+    "id": "pants-grey-pantsgrey2",
+    "file": "pants-grey-pantsgrey2.png",
+    "slot": "pants",
+    "group": "Grey",
+    "name": "pantsGrey2",
+    "width": 153,
+    "height": 47,
+    "original": "Pants/Grey/pantsGrey2.png"
+  },
+  {
+    "id": "pants-grey-pantsgrey3",
+    "file": "pants-grey-pantsgrey3.png",
+    "slot": "pants",
+    "group": "Grey",
+    "name": "pantsGrey3",
+    "width": 153,
+    "height": 47,
+    "original": "Pants/Grey/pantsGrey3.png"
+  },
+  {
+    "id": "pants-grey-pantsgrey4",
+    "file": "pants-grey-pantsgrey4.png",
+    "slot": "pants",
+    "group": "Grey",
+    "name": "pantsGrey4",
+    "width": 153,
+    "height": 47,
+    "original": "Pants/Grey/pantsGrey4.png"
+  },
+  {
+    "id": "pants-grey-pantsgrey-long",
+    "file": "pants-grey-pantsgrey-long.png",
+    "slot": "leg",
+    "group": "Grey",
+    "name": "pantsGrey_long",
+    "width": 111,
+    "height": 166,
+    "original": "Pants/Grey/pantsGrey_long.png"
+  },
+  {
+    "id": "pants-grey-pantsgrey-short",
+    "file": "pants-grey-pantsgrey-short.png",
+    "slot": "leg",
+    "group": "Grey",
+    "name": "pantsGrey_short",
+    "width": 107,
+    "height": 118,
+    "original": "Pants/Grey/pantsGrey_short.png"
+  },
+  {
+    "id": "pants-grey-pantsgrey-shorter",
+    "file": "pants-grey-pantsgrey-shorter.png",
+    "slot": "leg",
+    "group": "Grey",
+    "name": "pantsGrey_shorter",
+    "width": 104,
+    "height": 105,
+    "original": "Pants/Grey/pantsGrey_shorter.png"
+  },
+  {
+    "id": "pants-light-blue-pantslightblue1",
+    "file": "pants-light-blue-pantslightblue1.png",
+    "slot": "pants",
+    "group": "Light Blue",
+    "name": "pantsLightBlue1",
+    "width": 153,
+    "height": 47,
+    "original": "Pants/Light Blue/pantsLightBlue1.png"
+  },
+  {
+    "id": "pants-light-blue-pantslightblue2",
+    "file": "pants-light-blue-pantslightblue2.png",
+    "slot": "pants",
+    "group": "Light Blue",
+    "name": "pantsLightBlue2",
+    "width": 153,
+    "height": 47,
+    "original": "Pants/Light Blue/pantsLightBlue2.png"
+  },
+  {
+    "id": "pants-light-blue-pantslightblue3",
+    "file": "pants-light-blue-pantslightblue3.png",
+    "slot": "pants",
+    "group": "Light Blue",
+    "name": "pantsLightBlue3",
+    "width": 153,
+    "height": 47,
+    "original": "Pants/Light Blue/pantsLightBlue3.png"
+  },
+  {
+    "id": "pants-light-blue-pantslightblue4",
+    "file": "pants-light-blue-pantslightblue4.png",
+    "slot": "pants",
+    "group": "Light Blue",
+    "name": "pantsLightBlue4",
+    "width": 153,
+    "height": 47,
+    "original": "Pants/Light Blue/pantsLightBlue4.png"
+  },
+  {
+    "id": "pants-light-blue-pantslightblue-long",
+    "file": "pants-light-blue-pantslightblue-long.png",
+    "slot": "leg",
+    "group": "Light Blue",
+    "name": "pantsLightBlue_long",
+    "width": 111,
+    "height": 166,
+    "original": "Pants/Light Blue/pantsLightBlue_long.png"
+  },
+  {
+    "id": "pants-light-blue-pantslightblue-short",
+    "file": "pants-light-blue-pantslightblue-short.png",
+    "slot": "leg",
+    "group": "Light Blue",
+    "name": "pantsLightBlue_short",
+    "width": 107,
+    "height": 118,
+    "original": "Pants/Light Blue/pantsLightBlue_short.png"
+  },
+  {
+    "id": "pants-light-blue-pantslightblue-shorter",
+    "file": "pants-light-blue-pantslightblue-shorter.png",
+    "slot": "leg",
+    "group": "Light Blue",
+    "name": "pantsLightBlue_shorter",
+    "width": 104,
+    "height": 105,
+    "original": "Pants/Light Blue/pantsLightBlue_shorter.png"
+  },
+  {
+    "id": "pants-navy-pantsnavy1",
+    "file": "pants-navy-pantsnavy1.png",
+    "slot": "pants",
+    "group": "Navy",
+    "name": "pantsNavy1",
+    "width": 153,
+    "height": 47,
+    "original": "Pants/Navy/pantsNavy1.png"
+  },
+  {
+    "id": "pants-navy-pantsnavy2",
+    "file": "pants-navy-pantsnavy2.png",
+    "slot": "pants",
+    "group": "Navy",
+    "name": "pantsNavy2",
+    "width": 153,
+    "height": 47,
+    "original": "Pants/Navy/pantsNavy2.png"
+  },
+  {
+    "id": "pants-navy-pantsnavy3",
+    "file": "pants-navy-pantsnavy3.png",
+    "slot": "pants",
+    "group": "Navy",
+    "name": "pantsNavy3",
+    "width": 153,
+    "height": 47,
+    "original": "Pants/Navy/pantsNavy3.png"
+  },
+  {
+    "id": "pants-navy-pantsnavy4",
+    "file": "pants-navy-pantsnavy4.png",
+    "slot": "pants",
+    "group": "Navy",
+    "name": "pantsNavy4",
+    "width": 153,
+    "height": 47,
+    "original": "Pants/Navy/pantsNavy4.png"
+  },
+  {
+    "id": "pants-navy-pantsnavy-long",
+    "file": "pants-navy-pantsnavy-long.png",
+    "slot": "leg",
+    "group": "Navy",
+    "name": "pantsNavy_long",
+    "width": 111,
+    "height": 166,
+    "original": "Pants/Navy/pantsNavy_long.png"
+  },
+  {
+    "id": "pants-navy-pantsnavy-short",
+    "file": "pants-navy-pantsnavy-short.png",
+    "slot": "leg",
+    "group": "Navy",
+    "name": "pantsNavy_short",
+    "width": 107,
+    "height": 118,
+    "original": "Pants/Navy/pantsNavy_short.png"
+  },
+  {
+    "id": "pants-navy-pantsnavy-shorter",
+    "file": "pants-navy-pantsnavy-shorter.png",
+    "slot": "leg",
+    "group": "Navy",
+    "name": "pantsNavy_shorter",
+    "width": 104,
+    "height": 105,
+    "original": "Pants/Navy/pantsNavy_shorter.png"
+  },
+  {
+    "id": "pants-pine-pantspine1",
+    "file": "pants-pine-pantspine1.png",
+    "slot": "pants",
+    "group": "Pine",
+    "name": "pantsPine1",
+    "width": 153,
+    "height": 47,
+    "original": "Pants/Pine/pantsPine1.png"
+  },
+  {
+    "id": "pants-pine-pantspine2",
+    "file": "pants-pine-pantspine2.png",
+    "slot": "pants",
+    "group": "Pine",
+    "name": "pantsPine2",
+    "width": 153,
+    "height": 47,
+    "original": "Pants/Pine/pantsPine2.png"
+  },
+  {
+    "id": "pants-pine-pantspine3",
+    "file": "pants-pine-pantspine3.png",
+    "slot": "pants",
+    "group": "Pine",
+    "name": "pantsPine3",
+    "width": 153,
+    "height": 47,
+    "original": "Pants/Pine/pantsPine3.png"
+  },
+  {
+    "id": "pants-pine-pantspine4",
+    "file": "pants-pine-pantspine4.png",
+    "slot": "pants",
+    "group": "Pine",
+    "name": "pantsPine4",
+    "width": 153,
+    "height": 47,
+    "original": "Pants/Pine/pantsPine4.png"
+  },
+  {
+    "id": "pants-pine-pantspine-long",
+    "file": "pants-pine-pantspine-long.png",
+    "slot": "leg",
+    "group": "Pine",
+    "name": "pantsPine_long",
+    "width": 111,
+    "height": 166,
+    "original": "Pants/Pine/pantsPine_long.png"
+  },
+  {
+    "id": "pants-pine-pantspine-short",
+    "file": "pants-pine-pantspine-short.png",
+    "slot": "leg",
+    "group": "Pine",
+    "name": "pantsPine_short",
+    "width": 107,
+    "height": 118,
+    "original": "Pants/Pine/pantsPine_short.png"
+  },
+  {
+    "id": "pants-pine-pantspine-shorter",
+    "file": "pants-pine-pantspine-shorter.png",
+    "slot": "leg",
+    "group": "Pine",
+    "name": "pantsPine_shorter",
+    "width": 104,
+    "height": 105,
+    "original": "Pants/Pine/pantsPine_shorter.png"
+  },
+  {
+    "id": "pants-red-pantsred1",
+    "file": "pants-red-pantsred1.png",
+    "slot": "pants",
+    "group": "Red",
+    "name": "pantsRed1",
+    "width": 153,
+    "height": 47,
+    "original": "Pants/Red/pantsRed1.png"
+  },
+  {
+    "id": "pants-red-pantsred2",
+    "file": "pants-red-pantsred2.png",
+    "slot": "pants",
+    "group": "Red",
+    "name": "pantsRed2",
+    "width": 153,
+    "height": 47,
+    "original": "Pants/Red/pantsRed2.png"
+  },
+  {
+    "id": "pants-red-pantsred3",
+    "file": "pants-red-pantsred3.png",
+    "slot": "pants",
+    "group": "Red",
+    "name": "pantsRed3",
+    "width": 153,
+    "height": 47,
+    "original": "Pants/Red/pantsRed3.png"
+  },
+  {
+    "id": "pants-red-pantsred4",
+    "file": "pants-red-pantsred4.png",
+    "slot": "pants",
+    "group": "Red",
+    "name": "pantsRed4",
+    "width": 153,
+    "height": 47,
+    "original": "Pants/Red/pantsRed4.png"
+  },
+  {
+    "id": "pants-red-pantsred-long",
+    "file": "pants-red-pantsred-long.png",
+    "slot": "leg",
+    "group": "Red",
+    "name": "pantsRed_long",
+    "width": 111,
+    "height": 166,
+    "original": "Pants/Red/pantsRed_long.png"
+  },
+  {
+    "id": "pants-red-pantsred-short",
+    "file": "pants-red-pantsred-short.png",
+    "slot": "leg",
+    "group": "Red",
+    "name": "pantsRed_short",
+    "width": 107,
+    "height": 118,
+    "original": "Pants/Red/pantsRed_short.png"
+  },
+  {
+    "id": "pants-red-pantsred-shorter",
+    "file": "pants-red-pantsred-shorter.png",
+    "slot": "leg",
+    "group": "Red",
+    "name": "pantsRed_shorter",
+    "width": 104,
+    "height": 105,
+    "original": "Pants/Red/pantsRed_shorter.png"
+  },
+  {
+    "id": "pants-tan-pantstan1",
+    "file": "pants-tan-pantstan1.png",
+    "slot": "pants",
+    "group": "Tan",
+    "name": "pantsTan1",
+    "width": 153,
+    "height": 47,
+    "original": "Pants/Tan/pantsTan1.png"
+  },
+  {
+    "id": "pants-tan-pantstan2",
+    "file": "pants-tan-pantstan2.png",
+    "slot": "pants",
+    "group": "Tan",
+    "name": "pantsTan2",
+    "width": 153,
+    "height": 47,
+    "original": "Pants/Tan/pantsTan2.png"
+  },
+  {
+    "id": "pants-tan-pantstan3",
+    "file": "pants-tan-pantstan3.png",
+    "slot": "pants",
+    "group": "Tan",
+    "name": "pantsTan3",
+    "width": 153,
+    "height": 47,
+    "original": "Pants/Tan/pantsTan3.png"
+  },
+  {
+    "id": "pants-tan-pantstan4",
+    "file": "pants-tan-pantstan4.png",
+    "slot": "pants",
+    "group": "Tan",
+    "name": "pantsTan4",
+    "width": 153,
+    "height": 47,
+    "original": "Pants/Tan/pantsTan4.png"
+  },
+  {
+    "id": "pants-tan-pantstan-long",
+    "file": "pants-tan-pantstan-long.png",
+    "slot": "leg",
+    "group": "Tan",
+    "name": "pantsTan_long",
+    "width": 111,
+    "height": 166,
+    "original": "Pants/Tan/pantsTan_long.png"
+  },
+  {
+    "id": "pants-tan-pantstan-short",
+    "file": "pants-tan-pantstan-short.png",
+    "slot": "leg",
+    "group": "Tan",
+    "name": "pantsTan_short",
+    "width": 107,
+    "height": 118,
+    "original": "Pants/Tan/pantsTan_short.png"
+  },
+  {
+    "id": "pants-tan-pantstan-shorter",
+    "file": "pants-tan-pantstan-shorter.png",
+    "slot": "leg",
+    "group": "Tan",
+    "name": "pantsTan_shorter",
+    "width": 104,
+    "height": 105,
+    "original": "Pants/Tan/pantsTan_shorter.png"
+  },
+  {
+    "id": "pants-white-pantswhite1",
+    "file": "pants-white-pantswhite1.png",
+    "slot": "pants",
+    "group": "White",
+    "name": "pantsWhite1",
+    "width": 153,
+    "height": 47,
+    "original": "Pants/White/pantsWhite1.png"
+  },
+  {
+    "id": "pants-white-pantswhite2",
+    "file": "pants-white-pantswhite2.png",
+    "slot": "pants",
+    "group": "White",
+    "name": "pantsWhite2",
+    "width": 153,
+    "height": 47,
+    "original": "Pants/White/pantsWhite2.png"
+  },
+  {
+    "id": "pants-white-pantswhite3",
+    "file": "pants-white-pantswhite3.png",
+    "slot": "pants",
+    "group": "White",
+    "name": "pantsWhite3",
+    "width": 153,
+    "height": 47,
+    "original": "Pants/White/pantsWhite3.png"
+  },
+  {
+    "id": "pants-white-pantswhite4",
+    "file": "pants-white-pantswhite4.png",
+    "slot": "pants",
+    "group": "White",
+    "name": "pantsWhite4",
+    "width": 153,
+    "height": 47,
+    "original": "Pants/White/pantsWhite4.png"
+  },
+  {
+    "id": "pants-white-pantswhite-long",
+    "file": "pants-white-pantswhite-long.png",
+    "slot": "leg",
+    "group": "White",
+    "name": "pantsWhite_long",
+    "width": 111,
+    "height": 166,
+    "original": "Pants/White/pantsWhite_long.png"
+  },
+  {
+    "id": "pants-white-pantswhite-short",
+    "file": "pants-white-pantswhite-short.png",
+    "slot": "leg",
+    "group": "White",
+    "name": "pantsWhite_short",
+    "width": 107,
+    "height": 118,
+    "original": "Pants/White/pantsWhite_short.png"
+  },
+  {
+    "id": "pants-white-pantswhite-shorter",
+    "file": "pants-white-pantswhite-shorter.png",
+    "slot": "leg",
+    "group": "White",
+    "name": "pantsWhite_shorter",
+    "width": 104,
+    "height": 105,
+    "original": "Pants/White/pantsWhite_shorter.png"
+  },
+  {
+    "id": "pants-yellow-legyellow-long",
+    "file": "pants-yellow-legyellow-long.png",
+    "slot": "leg",
+    "group": "Yellow",
+    "name": "legYellow_long",
+    "width": 111,
+    "height": 166,
+    "original": "Pants/Yellow/legYellow_long.png"
+  },
+  {
+    "id": "pants-yellow-legyellow-short",
+    "file": "pants-yellow-legyellow-short.png",
+    "slot": "leg",
+    "group": "Yellow",
+    "name": "legYellow_short",
+    "width": 107,
+    "height": 118,
+    "original": "Pants/Yellow/legYellow_short.png"
+  },
+  {
+    "id": "pants-yellow-legyellow-shorter",
+    "file": "pants-yellow-legyellow-shorter.png",
+    "slot": "leg",
+    "group": "Yellow",
+    "name": "legYellow_shorter",
+    "width": 104,
+    "height": 105,
+    "original": "Pants/Yellow/legYellow_shorter.png"
+  },
+  {
+    "id": "pants-yellow-pantsyellow1",
+    "file": "pants-yellow-pantsyellow1.png",
+    "slot": "pants",
+    "group": "Yellow",
+    "name": "pantsYellow1",
+    "width": 153,
+    "height": 47,
+    "original": "Pants/Yellow/pantsYellow1.png"
+  },
+  {
+    "id": "pants-yellow-pantsyellow2",
+    "file": "pants-yellow-pantsyellow2.png",
+    "slot": "pants",
+    "group": "Yellow",
+    "name": "pantsYellow2",
+    "width": 153,
+    "height": 47,
+    "original": "Pants/Yellow/pantsYellow2.png"
+  },
+  {
+    "id": "pants-yellow-pantsyellow3",
+    "file": "pants-yellow-pantsyellow3.png",
+    "slot": "pants",
+    "group": "Yellow",
+    "name": "pantsYellow3",
+    "width": 153,
+    "height": 47,
+    "original": "Pants/Yellow/pantsYellow3.png"
+  },
+  {
+    "id": "pants-yellow-pantsyellow4",
+    "file": "pants-yellow-pantsyellow4.png",
+    "slot": "pants",
+    "group": "Yellow",
+    "name": "pantsYellow4",
+    "width": 153,
+    "height": 47,
+    "original": "Pants/Yellow/pantsYellow4.png"
+  },
+  {
+    "id": "shirts-blue-bluearm-long",
+    "file": "shirts-blue-bluearm-long.png",
+    "slot": "sleeve",
+    "group": "Blue",
+    "name": "blueArm_long",
+    "width": 171,
+    "height": 142,
+    "original": "Shirts/Blue/blueArm_long.png"
+  },
+  {
+    "id": "shirts-blue-bluearm-short",
+    "file": "shirts-blue-bluearm-short.png",
+    "slot": "sleeve",
+    "group": "Blue",
+    "name": "blueArm_short",
+    "width": 118,
+    "height": 96,
+    "original": "Shirts/Blue/blueArm_short.png"
+  },
+  {
+    "id": "shirts-blue-bluearm-shorter",
+    "file": "shirts-blue-bluearm-shorter.png",
+    "slot": "sleeve",
+    "group": "Blue",
+    "name": "blueArm_shorter",
+    "width": 66,
+    "height": 86,
+    "original": "Shirts/Blue/blueArm_shorter.png"
+  },
+  {
+    "id": "shirts-blue-blueshirt1",
+    "file": "shirts-blue-blueshirt1.png",
+    "slot": "shirt",
+    "group": "Blue",
+    "name": "blueShirt1",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/Blue/blueShirt1.png"
+  },
+  {
+    "id": "shirts-blue-blueshirt2",
+    "file": "shirts-blue-blueshirt2.png",
+    "slot": "shirt",
+    "group": "Blue",
+    "name": "blueShirt2",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/Blue/blueShirt2.png"
+  },
+  {
+    "id": "shirts-blue-blueshirt3",
+    "file": "shirts-blue-blueshirt3.png",
+    "slot": "shirt",
+    "group": "Blue",
+    "name": "blueShirt3",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/Blue/blueShirt3.png"
+  },
+  {
+    "id": "shirts-blue-blueshirt4",
+    "file": "shirts-blue-blueshirt4.png",
+    "slot": "shirt",
+    "group": "Blue",
+    "name": "blueShirt4",
+    "width": 161,
+    "height": 174,
+    "original": "Shirts/Blue/blueShirt4.png"
+  },
+  {
+    "id": "shirts-blue-blueshirt5",
+    "file": "shirts-blue-blueshirt5.png",
+    "slot": "shirt",
+    "group": "Blue",
+    "name": "blueShirt5",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/Blue/blueShirt5.png"
+  },
+  {
+    "id": "shirts-blue-blueshirt6",
+    "file": "shirts-blue-blueshirt6.png",
+    "slot": "shirt",
+    "group": "Blue",
+    "name": "blueShirt6",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/Blue/blueShirt6.png"
+  },
+  {
+    "id": "shirts-blue-blueshirt7",
+    "file": "shirts-blue-blueshirt7.png",
+    "slot": "shirt",
+    "group": "Blue",
+    "name": "blueShirt7",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/Blue/blueShirt7.png"
+  },
+  {
+    "id": "shirts-blue-blueshirt8",
+    "file": "shirts-blue-blueshirt8.png",
+    "slot": "shirt",
+    "group": "Blue",
+    "name": "blueShirt8",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/Blue/blueShirt8.png"
+  },
+  {
+    "id": "shirts-green-greenarm-long",
+    "file": "shirts-green-greenarm-long.png",
+    "slot": "sleeve",
+    "group": "Green",
+    "name": "greenArm_long",
+    "width": 171,
+    "height": 142,
+    "original": "Shirts/Green/greenArm_long.png"
+  },
+  {
+    "id": "shirts-green-greenarm-short",
+    "file": "shirts-green-greenarm-short.png",
+    "slot": "sleeve",
+    "group": "Green",
+    "name": "greenArm_short",
+    "width": 118,
+    "height": 96,
+    "original": "Shirts/Green/greenArm_short.png"
+  },
+  {
+    "id": "shirts-green-greenarm-shorter",
+    "file": "shirts-green-greenarm-shorter.png",
+    "slot": "sleeve",
+    "group": "Green",
+    "name": "greenArm_shorter",
+    "width": 67,
+    "height": 86,
+    "original": "Shirts/Green/greenArm_shorter.png"
+  },
+  {
+    "id": "shirts-green-greenshirt1",
+    "file": "shirts-green-greenshirt1.png",
+    "slot": "shirt",
+    "group": "Green",
+    "name": "greenShirt1",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/Green/greenShirt1.png"
+  },
+  {
+    "id": "shirts-green-greenshirt2",
+    "file": "shirts-green-greenshirt2.png",
+    "slot": "shirt",
+    "group": "Green",
+    "name": "greenShirt2",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/Green/greenShirt2.png"
+  },
+  {
+    "id": "shirts-green-greenshirt3",
+    "file": "shirts-green-greenshirt3.png",
+    "slot": "shirt",
+    "group": "Green",
+    "name": "greenShirt3",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/Green/greenShirt3.png"
+  },
+  {
+    "id": "shirts-green-greenshirt4",
+    "file": "shirts-green-greenshirt4.png",
+    "slot": "shirt",
+    "group": "Green",
+    "name": "greenShirt4",
+    "width": 161,
+    "height": 174,
+    "original": "Shirts/Green/greenShirt4.png"
+  },
+  {
+    "id": "shirts-green-greenshirt5",
+    "file": "shirts-green-greenshirt5.png",
+    "slot": "shirt",
+    "group": "Green",
+    "name": "greenShirt5",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/Green/greenShirt5.png"
+  },
+  {
+    "id": "shirts-green-greenshirt6",
+    "file": "shirts-green-greenshirt6.png",
+    "slot": "shirt",
+    "group": "Green",
+    "name": "greenShirt6",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/Green/greenShirt6.png"
+  },
+  {
+    "id": "shirts-green-greenshirt7",
+    "file": "shirts-green-greenshirt7.png",
+    "slot": "shirt",
+    "group": "Green",
+    "name": "greenShirt7",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/Green/greenShirt7.png"
+  },
+  {
+    "id": "shirts-green-greenshirt8",
+    "file": "shirts-green-greenshirt8.png",
+    "slot": "shirt",
+    "group": "Green",
+    "name": "greenShirt8",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/Green/greenShirt8.png"
+  },
+  {
+    "id": "shirts-grey-greyarm-long",
+    "file": "shirts-grey-greyarm-long.png",
+    "slot": "sleeve",
+    "group": "Grey",
+    "name": "greyArm_long",
+    "width": 171,
+    "height": 142,
+    "original": "Shirts/Grey/greyArm_long.png"
+  },
+  {
+    "id": "shirts-grey-greyarm-short",
+    "file": "shirts-grey-greyarm-short.png",
+    "slot": "sleeve",
+    "group": "Grey",
+    "name": "greyArm_short",
+    "width": 118,
+    "height": 96,
+    "original": "Shirts/Grey/greyArm_short.png"
+  },
+  {
+    "id": "shirts-grey-greyarm-shorter",
+    "file": "shirts-grey-greyarm-shorter.png",
+    "slot": "sleeve",
+    "group": "Grey",
+    "name": "greyArm_shorter",
+    "width": 66,
+    "height": 86,
+    "original": "Shirts/Grey/greyArm_shorter.png"
+  },
+  {
+    "id": "shirts-grey-greyshirt1",
+    "file": "shirts-grey-greyshirt1.png",
+    "slot": "shirt",
+    "group": "Grey",
+    "name": "greyShirt1",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/Grey/greyShirt1.png"
+  },
+  {
+    "id": "shirts-grey-greyshirt2",
+    "file": "shirts-grey-greyshirt2.png",
+    "slot": "shirt",
+    "group": "Grey",
+    "name": "greyShirt2",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/Grey/greyShirt2.png"
+  },
+  {
+    "id": "shirts-grey-greyshirt3",
+    "file": "shirts-grey-greyshirt3.png",
+    "slot": "shirt",
+    "group": "Grey",
+    "name": "greyShirt3",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/Grey/greyShirt3.png"
+  },
+  {
+    "id": "shirts-grey-greyshirt4",
+    "file": "shirts-grey-greyshirt4.png",
+    "slot": "shirt",
+    "group": "Grey",
+    "name": "greyShirt4",
+    "width": 161,
+    "height": 174,
+    "original": "Shirts/Grey/greyShirt4.png"
+  },
+  {
+    "id": "shirts-grey-greyshirt5",
+    "file": "shirts-grey-greyshirt5.png",
+    "slot": "shirt",
+    "group": "Grey",
+    "name": "greyShirt5",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/Grey/greyShirt5.png"
+  },
+  {
+    "id": "shirts-grey-greyshirt6",
+    "file": "shirts-grey-greyshirt6.png",
+    "slot": "shirt",
+    "group": "Grey",
+    "name": "greyShirt6",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/Grey/greyShirt6.png"
+  },
+  {
+    "id": "shirts-grey-greyshirt7",
+    "file": "shirts-grey-greyshirt7.png",
+    "slot": "shirt",
+    "group": "Grey",
+    "name": "greyShirt7",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/Grey/greyShirt7.png"
+  },
+  {
+    "id": "shirts-grey-greyshirt8",
+    "file": "shirts-grey-greyshirt8.png",
+    "slot": "shirt",
+    "group": "Grey",
+    "name": "greyShirt8",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/Grey/greyShirt8.png"
+  },
+  {
+    "id": "shirts-navy-navyarm-long",
+    "file": "shirts-navy-navyarm-long.png",
+    "slot": "sleeve",
+    "group": "Navy",
+    "name": "navyArm_long",
+    "width": 171,
+    "height": 142,
+    "original": "Shirts/Navy/navyArm_long.png"
+  },
+  {
+    "id": "shirts-navy-navyarm-short",
+    "file": "shirts-navy-navyarm-short.png",
+    "slot": "sleeve",
+    "group": "Navy",
+    "name": "navyArm_short",
+    "width": 118,
+    "height": 96,
+    "original": "Shirts/Navy/navyArm_short.png"
+  },
+  {
+    "id": "shirts-navy-navyarm-shorter",
+    "file": "shirts-navy-navyarm-shorter.png",
+    "slot": "sleeve",
+    "group": "Navy",
+    "name": "navyArm_shorter",
+    "width": 67,
+    "height": 86,
+    "original": "Shirts/Navy/navyArm_shorter.png"
+  },
+  {
+    "id": "shirts-navy-navyshirt1",
+    "file": "shirts-navy-navyshirt1.png",
+    "slot": "shirt",
+    "group": "Navy",
+    "name": "navyShirt1",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/Navy/navyShirt1.png"
+  },
+  {
+    "id": "shirts-navy-navyshirt2",
+    "file": "shirts-navy-navyshirt2.png",
+    "slot": "shirt",
+    "group": "Navy",
+    "name": "navyShirt2",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/Navy/navyShirt2.png"
+  },
+  {
+    "id": "shirts-navy-navyshirt3",
+    "file": "shirts-navy-navyshirt3.png",
+    "slot": "shirt",
+    "group": "Navy",
+    "name": "navyShirt3",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/Navy/navyShirt3.png"
+  },
+  {
+    "id": "shirts-navy-navyshirt4",
+    "file": "shirts-navy-navyshirt4.png",
+    "slot": "shirt",
+    "group": "Navy",
+    "name": "navyShirt4",
+    "width": 161,
+    "height": 174,
+    "original": "Shirts/Navy/navyShirt4.png"
+  },
+  {
+    "id": "shirts-navy-navyshirt5",
+    "file": "shirts-navy-navyshirt5.png",
+    "slot": "shirt",
+    "group": "Navy",
+    "name": "navyShirt5",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/Navy/navyShirt5.png"
+  },
+  {
+    "id": "shirts-navy-navyshirt6",
+    "file": "shirts-navy-navyshirt6.png",
+    "slot": "shirt",
+    "group": "Navy",
+    "name": "navyShirt6",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/Navy/navyShirt6.png"
+  },
+  {
+    "id": "shirts-navy-navyshirt7",
+    "file": "shirts-navy-navyshirt7.png",
+    "slot": "shirt",
+    "group": "Navy",
+    "name": "navyShirt7",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/Navy/navyShirt7.png"
+  },
+  {
+    "id": "shirts-navy-navyshirt8",
+    "file": "shirts-navy-navyshirt8.png",
+    "slot": "shirt",
+    "group": "Navy",
+    "name": "navyShirt8",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/Navy/navyShirt8.png"
+  },
+  {
+    "id": "shirts-pine-pinearm-long",
+    "file": "shirts-pine-pinearm-long.png",
+    "slot": "sleeve",
+    "group": "Pine",
+    "name": "pineArm_long",
+    "width": 171,
+    "height": 142,
+    "original": "Shirts/Pine/pineArm_long.png"
+  },
+  {
+    "id": "shirts-pine-pinearm-short",
+    "file": "shirts-pine-pinearm-short.png",
+    "slot": "sleeve",
+    "group": "Pine",
+    "name": "pineArm_short",
+    "width": 118,
+    "height": 96,
+    "original": "Shirts/Pine/pineArm_short.png"
+  },
+  {
+    "id": "shirts-pine-pinearm-shorter",
+    "file": "shirts-pine-pinearm-shorter.png",
+    "slot": "sleeve",
+    "group": "Pine",
+    "name": "pineArm_shorter",
+    "width": 67,
+    "height": 86,
+    "original": "Shirts/Pine/pineArm_shorter.png"
+  },
+  {
+    "id": "shirts-pine-pineshirt1",
+    "file": "shirts-pine-pineshirt1.png",
+    "slot": "shirt",
+    "group": "Pine",
+    "name": "pineShirt1",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/Pine/pineShirt1.png"
+  },
+  {
+    "id": "shirts-pine-pineshirt2",
+    "file": "shirts-pine-pineshirt2.png",
+    "slot": "shirt",
+    "group": "Pine",
+    "name": "pineShirt2",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/Pine/pineShirt2.png"
+  },
+  {
+    "id": "shirts-pine-pineshirt3",
+    "file": "shirts-pine-pineshirt3.png",
+    "slot": "shirt",
+    "group": "Pine",
+    "name": "pineShirt3",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/Pine/pineShirt3.png"
+  },
+  {
+    "id": "shirts-pine-pineshirt4",
+    "file": "shirts-pine-pineshirt4.png",
+    "slot": "shirt",
+    "group": "Pine",
+    "name": "pineShirt4",
+    "width": 161,
+    "height": 174,
+    "original": "Shirts/Pine/pineShirt4.png"
+  },
+  {
+    "id": "shirts-pine-pineshirt5",
+    "file": "shirts-pine-pineshirt5.png",
+    "slot": "shirt",
+    "group": "Pine",
+    "name": "pineShirt5",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/Pine/pineShirt5.png"
+  },
+  {
+    "id": "shirts-pine-pineshirt6",
+    "file": "shirts-pine-pineshirt6.png",
+    "slot": "shirt",
+    "group": "Pine",
+    "name": "pineShirt6",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/Pine/pineShirt6.png"
+  },
+  {
+    "id": "shirts-pine-pineshirt7",
+    "file": "shirts-pine-pineshirt7.png",
+    "slot": "shirt",
+    "group": "Pine",
+    "name": "pineShirt7",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/Pine/pineShirt7.png"
+  },
+  {
+    "id": "shirts-pine-pineshirt8",
+    "file": "shirts-pine-pineshirt8.png",
+    "slot": "shirt",
+    "group": "Pine",
+    "name": "pineShirt8",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/Pine/pineShirt8.png"
+  },
+  {
+    "id": "shirts-red-redarm-long",
+    "file": "shirts-red-redarm-long.png",
+    "slot": "sleeve",
+    "group": "Red",
+    "name": "redArm_long",
+    "width": 171,
+    "height": 142,
+    "original": "Shirts/Red/redArm_long.png"
+  },
+  {
+    "id": "shirts-red-redarm-short",
+    "file": "shirts-red-redarm-short.png",
+    "slot": "sleeve",
+    "group": "Red",
+    "name": "redArm_short",
+    "width": 118,
+    "height": 96,
+    "original": "Shirts/Red/redArm_short.png"
+  },
+  {
+    "id": "shirts-red-redarm-shorter",
+    "file": "shirts-red-redarm-shorter.png",
+    "slot": "sleeve",
+    "group": "Red",
+    "name": "redArm_shorter",
+    "width": 66,
+    "height": 86,
+    "original": "Shirts/Red/redArm_shorter.png"
+  },
+  {
+    "id": "shirts-red-redshirt1",
+    "file": "shirts-red-redshirt1.png",
+    "slot": "shirt",
+    "group": "Red",
+    "name": "redShirt1",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/Red/redShirt1.png"
+  },
+  {
+    "id": "shirts-red-redshirt2",
+    "file": "shirts-red-redshirt2.png",
+    "slot": "shirt",
+    "group": "Red",
+    "name": "redShirt2",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/Red/redShirt2.png"
+  },
+  {
+    "id": "shirts-red-redshirt3",
+    "file": "shirts-red-redshirt3.png",
+    "slot": "shirt",
+    "group": "Red",
+    "name": "redShirt3",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/Red/redShirt3.png"
+  },
+  {
+    "id": "shirts-red-redshirt4",
+    "file": "shirts-red-redshirt4.png",
+    "slot": "shirt",
+    "group": "Red",
+    "name": "redShirt4",
+    "width": 161,
+    "height": 174,
+    "original": "Shirts/Red/redShirt4.png"
+  },
+  {
+    "id": "shirts-red-redshirt5",
+    "file": "shirts-red-redshirt5.png",
+    "slot": "shirt",
+    "group": "Red",
+    "name": "redShirt5",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/Red/redShirt5.png"
+  },
+  {
+    "id": "shirts-red-redshirt6",
+    "file": "shirts-red-redshirt6.png",
+    "slot": "shirt",
+    "group": "Red",
+    "name": "redShirt6",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/Red/redShirt6.png"
+  },
+  {
+    "id": "shirts-red-redshirt7",
+    "file": "shirts-red-redshirt7.png",
+    "slot": "shirt",
+    "group": "Red",
+    "name": "redShirt7",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/Red/redShirt7.png"
+  },
+  {
+    "id": "shirts-red-redshirt8",
+    "file": "shirts-red-redshirt8.png",
+    "slot": "shirt",
+    "group": "Red",
+    "name": "redShirt8",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/Red/redShirt8.png"
+  },
+  {
+    "id": "shirts-white-armwhite-long",
+    "file": "shirts-white-armwhite-long.png",
+    "slot": "sleeve",
+    "group": "White",
+    "name": "armWhite_long",
+    "width": 171,
+    "height": 142,
+    "original": "Shirts/White/armWhite_long.png"
+  },
+  {
+    "id": "shirts-white-armwhite-short",
+    "file": "shirts-white-armwhite-short.png",
+    "slot": "sleeve",
+    "group": "White",
+    "name": "armWhite_short",
+    "width": 118,
+    "height": 96,
+    "original": "Shirts/White/armWhite_short.png"
+  },
+  {
+    "id": "shirts-white-armwhite-shorter",
+    "file": "shirts-white-armwhite-shorter.png",
+    "slot": "sleeve",
+    "group": "White",
+    "name": "armWhite_shorter",
+    "width": 67,
+    "height": 86,
+    "original": "Shirts/White/armWhite_shorter.png"
+  },
+  {
+    "id": "shirts-white-whiteshirt1",
+    "file": "shirts-white-whiteshirt1.png",
+    "slot": "shirt",
+    "group": "White",
+    "name": "whiteShirt1",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/White/whiteShirt1.png"
+  },
+  {
+    "id": "shirts-white-whiteshirt2",
+    "file": "shirts-white-whiteshirt2.png",
+    "slot": "shirt",
+    "group": "White",
+    "name": "whiteShirt2",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/White/whiteShirt2.png"
+  },
+  {
+    "id": "shirts-white-whiteshirt3",
+    "file": "shirts-white-whiteshirt3.png",
+    "slot": "shirt",
+    "group": "White",
+    "name": "whiteShirt3",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/White/whiteShirt3.png"
+  },
+  {
+    "id": "shirts-white-whiteshirt4",
+    "file": "shirts-white-whiteshirt4.png",
+    "slot": "shirt",
+    "group": "White",
+    "name": "whiteShirt4",
+    "width": 161,
+    "height": 174,
+    "original": "Shirts/White/whiteShirt4.png"
+  },
+  {
+    "id": "shirts-white-whiteshirt5",
+    "file": "shirts-white-whiteshirt5.png",
+    "slot": "shirt",
+    "group": "White",
+    "name": "whiteShirt5",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/White/whiteShirt5.png"
+  },
+  {
+    "id": "shirts-white-whiteshirt6",
+    "file": "shirts-white-whiteshirt6.png",
+    "slot": "shirt",
+    "group": "White",
+    "name": "whiteShirt6",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/White/whiteShirt6.png"
+  },
+  {
+    "id": "shirts-white-whiteshirt7",
+    "file": "shirts-white-whiteshirt7.png",
+    "slot": "shirt",
+    "group": "White",
+    "name": "whiteShirt7",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/White/whiteShirt7.png"
+  },
+  {
+    "id": "shirts-white-whiteshirt8",
+    "file": "shirts-white-whiteshirt8.png",
+    "slot": "shirt",
+    "group": "White",
+    "name": "whiteShirt8",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/White/whiteShirt8.png"
+  },
+  {
+    "id": "shirts-yellow-armyellow-long",
+    "file": "shirts-yellow-armyellow-long.png",
+    "slot": "sleeve",
+    "group": "Yellow",
+    "name": "armYellow_long",
+    "width": 171,
+    "height": 142,
+    "original": "Shirts/Yellow/armYellow_long.png"
+  },
+  {
+    "id": "shirts-yellow-armyellow-short",
+    "file": "shirts-yellow-armyellow-short.png",
+    "slot": "sleeve",
+    "group": "Yellow",
+    "name": "armYellow_short",
+    "width": 118,
+    "height": 96,
+    "original": "Shirts/Yellow/armYellow_short.png"
+  },
+  {
+    "id": "shirts-yellow-armyellow-shorter",
+    "file": "shirts-yellow-armyellow-shorter.png",
+    "slot": "sleeve",
+    "group": "Yellow",
+    "name": "armYellow_shorter",
+    "width": 66,
+    "height": 86,
+    "original": "Shirts/Yellow/armYellow_shorter.png"
+  },
+  {
+    "id": "shirts-yellow-shirtyellow1",
+    "file": "shirts-yellow-shirtyellow1.png",
+    "slot": "shirt",
+    "group": "Yellow",
+    "name": "shirtYellow1",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/Yellow/shirtYellow1.png"
+  },
+  {
+    "id": "shirts-yellow-shirtyellow2",
+    "file": "shirts-yellow-shirtyellow2.png",
+    "slot": "shirt",
+    "group": "Yellow",
+    "name": "shirtYellow2",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/Yellow/shirtYellow2.png"
+  },
+  {
+    "id": "shirts-yellow-shirtyellow3",
+    "file": "shirts-yellow-shirtyellow3.png",
+    "slot": "shirt",
+    "group": "Yellow",
+    "name": "shirtYellow3",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/Yellow/shirtYellow3.png"
+  },
+  {
+    "id": "shirts-yellow-shirtyellow4",
+    "file": "shirts-yellow-shirtyellow4.png",
+    "slot": "shirt",
+    "group": "Yellow",
+    "name": "shirtYellow4",
+    "width": 161,
+    "height": 174,
+    "original": "Shirts/Yellow/shirtYellow4.png"
+  },
+  {
+    "id": "shirts-yellow-shirtyellow5",
+    "file": "shirts-yellow-shirtyellow5.png",
+    "slot": "shirt",
+    "group": "Yellow",
+    "name": "shirtYellow5",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/Yellow/shirtYellow5.png"
+  },
+  {
+    "id": "shirts-yellow-shirtyellow6",
+    "file": "shirts-yellow-shirtyellow6.png",
+    "slot": "shirt",
+    "group": "Yellow",
+    "name": "shirtYellow6",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/Yellow/shirtYellow6.png"
+  },
+  {
+    "id": "shirts-yellow-shirtyellow7",
+    "file": "shirts-yellow-shirtyellow7.png",
+    "slot": "shirt",
+    "group": "Yellow",
+    "name": "shirtYellow7",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/Yellow/shirtYellow7.png"
+  },
+  {
+    "id": "shirts-yellow-shirtyellow8",
+    "file": "shirts-yellow-shirtyellow8.png",
+    "slot": "shirt",
+    "group": "Yellow",
+    "name": "shirtYellow8",
+    "width": 153,
+    "height": 174,
+    "original": "Shirts/Yellow/shirtYellow8.png"
+  },
+  {
+    "id": "shoes-black-blackshoe1",
+    "file": "shoes-black-blackshoe1.png",
+    "slot": "shoes",
+    "group": "Black",
+    "name": "blackShoe1",
+    "width": 94,
+    "height": 42,
+    "original": "Shoes/Black/blackShoe1.png"
+  },
+  {
+    "id": "shoes-black-blackshoe2",
+    "file": "shoes-black-blackshoe2.png",
+    "slot": "shoes",
+    "group": "Black",
+    "name": "blackShoe2",
+    "width": 94,
+    "height": 42,
+    "original": "Shoes/Black/blackShoe2.png"
+  },
+  {
+    "id": "shoes-black-blackshoe3",
+    "file": "shoes-black-blackshoe3.png",
+    "slot": "shoes",
+    "group": "Black",
+    "name": "blackShoe3",
+    "width": 94,
+    "height": 42,
+    "original": "Shoes/Black/blackShoe3.png"
+  },
+  {
+    "id": "shoes-black-blackshoe4",
+    "file": "shoes-black-blackshoe4.png",
+    "slot": "shoes",
+    "group": "Black",
+    "name": "blackShoe4",
+    "width": 94,
+    "height": 42,
+    "original": "Shoes/Black/blackShoe4.png"
+  },
+  {
+    "id": "shoes-black-blackshoe5",
+    "file": "shoes-black-blackshoe5.png",
+    "slot": "shoes",
+    "group": "Black",
+    "name": "blackShoe5",
+    "width": 94,
+    "height": 42,
+    "original": "Shoes/Black/blackShoe5.png"
+  },
+  {
+    "id": "shoes-blue-blueshoe1",
+    "file": "shoes-blue-blueshoe1.png",
+    "slot": "shoes",
+    "group": "Blue",
+    "name": "blueShoe1",
+    "width": 94,
+    "height": 42,
+    "original": "Shoes/Blue/blueShoe1.png"
+  },
+  {
+    "id": "shoes-blue-blueshoe2",
+    "file": "shoes-blue-blueshoe2.png",
+    "slot": "shoes",
+    "group": "Blue",
+    "name": "blueShoe2",
+    "width": 94,
+    "height": 42,
+    "original": "Shoes/Blue/blueShoe2.png"
+  },
+  {
+    "id": "shoes-blue-blueshoe3",
+    "file": "shoes-blue-blueshoe3.png",
+    "slot": "shoes",
+    "group": "Blue",
+    "name": "blueShoe3",
+    "width": 94,
+    "height": 42,
+    "original": "Shoes/Blue/blueShoe3.png"
+  },
+  {
+    "id": "shoes-blue-blueshoe4",
+    "file": "shoes-blue-blueshoe4.png",
+    "slot": "shoes",
+    "group": "Blue",
+    "name": "blueShoe4",
+    "width": 94,
+    "height": 42,
+    "original": "Shoes/Blue/blueShoe4.png"
+  },
+  {
+    "id": "shoes-blue-blueshoe5",
+    "file": "shoes-blue-blueshoe5.png",
+    "slot": "shoes",
+    "group": "Blue",
+    "name": "blueShoe5",
+    "width": 94,
+    "height": 42,
+    "original": "Shoes/Blue/blueShoe5.png"
+  },
+  {
+    "id": "shoes-brown-1-brownshoe1",
+    "file": "shoes-brown-1-brownshoe1.png",
+    "slot": "shoes",
+    "group": "Brown 1",
+    "name": "brownShoe1",
+    "width": 94,
+    "height": 42,
+    "original": "Shoes/Brown 1/brownShoe1.png"
+  },
+  {
+    "id": "shoes-brown-1-brownshoe2",
+    "file": "shoes-brown-1-brownshoe2.png",
+    "slot": "shoes",
+    "group": "Brown 1",
+    "name": "brownShoe2",
+    "width": 94,
+    "height": 42,
+    "original": "Shoes/Brown 1/brownShoe2.png"
+  },
+  {
+    "id": "shoes-brown-1-brownshoe3",
+    "file": "shoes-brown-1-brownshoe3.png",
+    "slot": "shoes",
+    "group": "Brown 1",
+    "name": "brownShoe3",
+    "width": 94,
+    "height": 42,
+    "original": "Shoes/Brown 1/brownShoe3.png"
+  },
+  {
+    "id": "shoes-brown-1-brownshoe4",
+    "file": "shoes-brown-1-brownshoe4.png",
+    "slot": "shoes",
+    "group": "Brown 1",
+    "name": "brownShoe4",
+    "width": 94,
+    "height": 42,
+    "original": "Shoes/Brown 1/brownShoe4.png"
+  },
+  {
+    "id": "shoes-brown-1-brownshoe5",
+    "file": "shoes-brown-1-brownshoe5.png",
+    "slot": "shoes",
+    "group": "Brown 1",
+    "name": "brownShoe5",
+    "width": 94,
+    "height": 42,
+    "original": "Shoes/Brown 1/brownShoe5.png"
+  },
+  {
+    "id": "shoes-brown-2-brown2shoe1",
+    "file": "shoes-brown-2-brown2shoe1.png",
+    "slot": "shoes",
+    "group": "Brown 2",
+    "name": "brown2Shoe1",
+    "width": 94,
+    "height": 42,
+    "original": "Shoes/Brown 2/brown2Shoe1.png"
+  },
+  {
+    "id": "shoes-brown-2-brown2shoe2",
+    "file": "shoes-brown-2-brown2shoe2.png",
+    "slot": "shoes",
+    "group": "Brown 2",
+    "name": "brown2Shoe2",
+    "width": 94,
+    "height": 42,
+    "original": "Shoes/Brown 2/brown2Shoe2.png"
+  },
+  {
+    "id": "shoes-brown-2-brown2shoe3",
+    "file": "shoes-brown-2-brown2shoe3.png",
+    "slot": "shoes",
+    "group": "Brown 2",
+    "name": "brown2Shoe3",
+    "width": 94,
+    "height": 42,
+    "original": "Shoes/Brown 2/brown2Shoe3.png"
+  },
+  {
+    "id": "shoes-brown-2-brown2shoe4",
+    "file": "shoes-brown-2-brown2shoe4.png",
+    "slot": "shoes",
+    "group": "Brown 2",
+    "name": "brown2Shoe4",
+    "width": 94,
+    "height": 42,
+    "original": "Shoes/Brown 2/brown2Shoe4.png"
+  },
+  {
+    "id": "shoes-brown-2-brown2shoe5",
+    "file": "shoes-brown-2-brown2shoe5.png",
+    "slot": "shoes",
+    "group": "Brown 2",
+    "name": "brown2Shoe5",
+    "width": 94,
+    "height": 42,
+    "original": "Shoes/Brown 2/brown2Shoe5.png"
+  },
+  {
+    "id": "shoes-grey-greyshoe1",
+    "file": "shoes-grey-greyshoe1.png",
+    "slot": "shoes",
+    "group": "Grey",
+    "name": "greyShoe1",
+    "width": 94,
+    "height": 42,
+    "original": "Shoes/Grey/greyShoe1.png"
+  },
+  {
+    "id": "shoes-grey-greyshoe2",
+    "file": "shoes-grey-greyshoe2.png",
+    "slot": "shoes",
+    "group": "Grey",
+    "name": "greyShoe2",
+    "width": 94,
+    "height": 42,
+    "original": "Shoes/Grey/greyShoe2.png"
+  },
+  {
+    "id": "shoes-grey-greyshoe3",
+    "file": "shoes-grey-greyshoe3.png",
+    "slot": "shoes",
+    "group": "Grey",
+    "name": "greyShoe3",
+    "width": 94,
+    "height": 42,
+    "original": "Shoes/Grey/greyShoe3.png"
+  },
+  {
+    "id": "shoes-grey-greyshoe4",
+    "file": "shoes-grey-greyshoe4.png",
+    "slot": "shoes",
+    "group": "Grey",
+    "name": "greyShoe4",
+    "width": 94,
+    "height": 42,
+    "original": "Shoes/Grey/greyShoe4.png"
+  },
+  {
+    "id": "shoes-grey-greyshoe5",
+    "file": "shoes-grey-greyshoe5.png",
+    "slot": "shoes",
+    "group": "Grey",
+    "name": "greyShoe5",
+    "width": 94,
+    "height": 42,
+    "original": "Shoes/Grey/greyShoe5.png"
+  },
+  {
+    "id": "shoes-red-redshoe1",
+    "file": "shoes-red-redshoe1.png",
+    "slot": "shoes",
+    "group": "Red",
+    "name": "redShoe1",
+    "width": 94,
+    "height": 42,
+    "original": "Shoes/Red/redShoe1.png"
+  },
+  {
+    "id": "shoes-red-redshoe2",
+    "file": "shoes-red-redshoe2.png",
+    "slot": "shoes",
+    "group": "Red",
+    "name": "redShoe2",
+    "width": 94,
+    "height": 42,
+    "original": "Shoes/Red/redShoe2.png"
+  },
+  {
+    "id": "shoes-red-redshoe3",
+    "file": "shoes-red-redshoe3.png",
+    "slot": "shoes",
+    "group": "Red",
+    "name": "redShoe3",
+    "width": 94,
+    "height": 42,
+    "original": "Shoes/Red/redShoe3.png"
+  },
+  {
+    "id": "shoes-red-redshoe4",
+    "file": "shoes-red-redshoe4.png",
+    "slot": "shoes",
+    "group": "Red",
+    "name": "redShoe4",
+    "width": 94,
+    "height": 42,
+    "original": "Shoes/Red/redShoe4.png"
+  },
+  {
+    "id": "shoes-red-redshoe5",
+    "file": "shoes-red-redshoe5.png",
+    "slot": "shoes",
+    "group": "Red",
+    "name": "redShoe5",
+    "width": 94,
+    "height": 42,
+    "original": "Shoes/Red/redShoe5.png"
+  },
+  {
+    "id": "shoes-tan-tanshoe1",
+    "file": "shoes-tan-tanshoe1.png",
+    "slot": "shoes",
+    "group": "Tan",
+    "name": "tanShoe1",
+    "width": 94,
+    "height": 42,
+    "original": "Shoes/Tan/tanShoe1.png"
+  },
+  {
+    "id": "shoes-tan-tanshoe2",
+    "file": "shoes-tan-tanshoe2.png",
+    "slot": "shoes",
+    "group": "Tan",
+    "name": "tanShoe2",
+    "width": 94,
+    "height": 42,
+    "original": "Shoes/Tan/tanShoe2.png"
+  },
+  {
+    "id": "shoes-tan-tanshoe3",
+    "file": "shoes-tan-tanshoe3.png",
+    "slot": "shoes",
+    "group": "Tan",
+    "name": "tanShoe3",
+    "width": 94,
+    "height": 42,
+    "original": "Shoes/Tan/tanShoe3.png"
+  },
+  {
+    "id": "shoes-tan-tanshoe4",
+    "file": "shoes-tan-tanshoe4.png",
+    "slot": "shoes",
+    "group": "Tan",
+    "name": "tanShoe4",
+    "width": 94,
+    "height": 42,
+    "original": "Shoes/Tan/tanShoe4.png"
+  },
+  {
+    "id": "shoes-tan-tanshoe5",
+    "file": "shoes-tan-tanshoe5.png",
+    "slot": "shoes",
+    "group": "Tan",
+    "name": "tanShoe5",
+    "width": 94,
+    "height": 42,
+    "original": "Shoes/Tan/tanShoe5.png"
+  },
+  {
+    "id": "skin-tint-1-tint1-arm",
+    "file": "skin-tint-1-tint1-arm.png",
+    "slot": "arm",
+    "group": "Tint 1",
+    "name": "tint1_arm",
+    "width": 170,
+    "height": 136,
+    "original": "Skin/Tint 1/tint1_arm.png"
+  },
+  {
+    "id": "skin-tint-1-tint1-hand",
+    "file": "skin-tint-1-tint1-hand.png",
+    "slot": "hand",
+    "group": "Tint 1",
+    "name": "tint1_hand",
+    "width": 61,
+    "height": 71,
+    "original": "Skin/Tint 1/tint1_hand.png"
+  },
+  {
+    "id": "skin-tint-1-tint1-head",
+    "file": "skin-tint-1-tint1-head.png",
+    "slot": "head",
+    "group": "Tint 1",
+    "name": "tint1_head",
+    "width": 173,
+    "height": 168,
+    "original": "Skin/Tint 1/tint1_head.png"
+  },
+  {
+    "id": "skin-tint-1-tint1-leg",
+    "file": "skin-tint-1-tint1-leg.png",
+    "slot": "leg",
+    "group": "Tint 1",
+    "name": "tint1_leg",
+    "width": 93,
+    "height": 164,
+    "original": "Skin/Tint 1/tint1_leg.png"
+  },
+  {
+    "id": "skin-tint-1-tint1-neck",
+    "file": "skin-tint-1-tint1-neck.png",
+    "slot": "neck",
+    "group": "Tint 1",
+    "name": "tint1_neck",
+    "width": 96,
+    "height": 37,
+    "original": "Skin/Tint 1/tint1_neck.png"
+  },
+  {
+    "id": "skin-tint-2-tint2-arm",
+    "file": "skin-tint-2-tint2-arm.png",
+    "slot": "arm",
+    "group": "Tint 2",
+    "name": "tint2_arm",
+    "width": 170,
+    "height": 136,
+    "original": "Skin/Tint 2/tint2_arm.png"
+  },
+  {
+    "id": "skin-tint-2-tint2-hand",
+    "file": "skin-tint-2-tint2-hand.png",
+    "slot": "hand",
+    "group": "Tint 2",
+    "name": "tint2_hand",
+    "width": 61,
+    "height": 71,
+    "original": "Skin/Tint 2/tint2_hand.png"
+  },
+  {
+    "id": "skin-tint-2-tint2-head",
+    "file": "skin-tint-2-tint2-head.png",
+    "slot": "head",
+    "group": "Tint 2",
+    "name": "tint2_head",
+    "width": 173,
+    "height": 168,
+    "original": "Skin/Tint 2/tint2_head.png"
+  },
+  {
+    "id": "skin-tint-2-tint2-leg",
+    "file": "skin-tint-2-tint2-leg.png",
+    "slot": "leg",
+    "group": "Tint 2",
+    "name": "tint2_leg",
+    "width": 93,
+    "height": 164,
+    "original": "Skin/Tint 2/tint2_leg.png"
+  },
+  {
+    "id": "skin-tint-2-tint2-neck",
+    "file": "skin-tint-2-tint2-neck.png",
+    "slot": "neck",
+    "group": "Tint 2",
+    "name": "tint2_neck",
+    "width": 96,
+    "height": 37,
+    "original": "Skin/Tint 2/tint2_neck.png"
+  },
+  {
+    "id": "skin-tint-3-tint3-arm",
+    "file": "skin-tint-3-tint3-arm.png",
+    "slot": "arm",
+    "group": "Tint 3",
+    "name": "tint3_arm",
+    "width": 170,
+    "height": 136,
+    "original": "Skin/Tint 3/tint3_arm.png"
+  },
+  {
+    "id": "skin-tint-3-tint3-hand",
+    "file": "skin-tint-3-tint3-hand.png",
+    "slot": "hand",
+    "group": "Tint 3",
+    "name": "tint3_hand",
+    "width": 61,
+    "height": 71,
+    "original": "Skin/Tint 3/tint3_hand.png"
+  },
+  {
+    "id": "skin-tint-3-tint3-head",
+    "file": "skin-tint-3-tint3-head.png",
+    "slot": "head",
+    "group": "Tint 3",
+    "name": "tint3_head",
+    "width": 173,
+    "height": 168,
+    "original": "Skin/Tint 3/tint3_head.png"
+  },
+  {
+    "id": "skin-tint-3-tint3-leg",
+    "file": "skin-tint-3-tint3-leg.png",
+    "slot": "leg",
+    "group": "Tint 3",
+    "name": "tint3_leg",
+    "width": 93,
+    "height": 164,
+    "original": "Skin/Tint 3/tint3_leg.png"
+  },
+  {
+    "id": "skin-tint-3-tint3-neck",
+    "file": "skin-tint-3-tint3-neck.png",
+    "slot": "neck",
+    "group": "Tint 3",
+    "name": "tint3_neck",
+    "width": 96,
+    "height": 37,
+    "original": "Skin/Tint 3/tint3_neck.png"
+  },
+  {
+    "id": "skin-tint-4-tint4-arm",
+    "file": "skin-tint-4-tint4-arm.png",
+    "slot": "arm",
+    "group": "Tint 4",
+    "name": "tint4_arm",
+    "width": 170,
+    "height": 136,
+    "original": "Skin/Tint 4/tint4_arm.png"
+  },
+  {
+    "id": "skin-tint-4-tint4-hand",
+    "file": "skin-tint-4-tint4-hand.png",
+    "slot": "hand",
+    "group": "Tint 4",
+    "name": "tint4_hand",
+    "width": 61,
+    "height": 71,
+    "original": "Skin/Tint 4/tint4_hand.png"
+  },
+  {
+    "id": "skin-tint-4-tint4-head",
+    "file": "skin-tint-4-tint4-head.png",
+    "slot": "head",
+    "group": "Tint 4",
+    "name": "tint4_head",
+    "width": 173,
+    "height": 168,
+    "original": "Skin/Tint 4/tint4_head.png"
+  },
+  {
+    "id": "skin-tint-4-tint4-leg",
+    "file": "skin-tint-4-tint4-leg.png",
+    "slot": "leg",
+    "group": "Tint 4",
+    "name": "tint4_leg",
+    "width": 93,
+    "height": 164,
+    "original": "Skin/Tint 4/tint4_leg.png"
+  },
+  {
+    "id": "skin-tint-4-tint4-neck",
+    "file": "skin-tint-4-tint4-neck.png",
+    "slot": "neck",
+    "group": "Tint 4",
+    "name": "tint4_neck",
+    "width": 96,
+    "height": 37,
+    "original": "Skin/Tint 4/tint4_neck.png"
+  },
+  {
+    "id": "skin-tint-5-tint5-arm",
+    "file": "skin-tint-5-tint5-arm.png",
+    "slot": "arm",
+    "group": "Tint 5",
+    "name": "tint5_arm",
+    "width": 170,
+    "height": 136,
+    "original": "Skin/Tint 5/tint5_arm.png"
+  },
+  {
+    "id": "skin-tint-5-tint5-hand",
+    "file": "skin-tint-5-tint5-hand.png",
+    "slot": "hand",
+    "group": "Tint 5",
+    "name": "tint5_hand",
+    "width": 61,
+    "height": 71,
+    "original": "Skin/Tint 5/tint5_hand.png"
+  },
+  {
+    "id": "skin-tint-5-tint5-head",
+    "file": "skin-tint-5-tint5-head.png",
+    "slot": "head",
+    "group": "Tint 5",
+    "name": "tint5_head",
+    "width": 173,
+    "height": 168,
+    "original": "Skin/Tint 5/tint5_head.png"
+  },
+  {
+    "id": "skin-tint-5-tint5-leg",
+    "file": "skin-tint-5-tint5-leg.png",
+    "slot": "leg",
+    "group": "Tint 5",
+    "name": "tint5_leg",
+    "width": 93,
+    "height": 164,
+    "original": "Skin/Tint 5/tint5_leg.png"
+  },
+  {
+    "id": "skin-tint-5-tint5-neck",
+    "file": "skin-tint-5-tint5-neck.png",
+    "slot": "neck",
+    "group": "Tint 5",
+    "name": "tint5_neck",
+    "width": 96,
+    "height": 37,
+    "original": "Skin/Tint 5/tint5_neck.png"
+  },
+  {
+    "id": "skin-tint-6-tint6-arm",
+    "file": "skin-tint-6-tint6-arm.png",
+    "slot": "arm",
+    "group": "Tint 6",
+    "name": "tint6_arm",
+    "width": 170,
+    "height": 136,
+    "original": "Skin/Tint 6/tint6_arm.png"
+  },
+  {
+    "id": "skin-tint-6-tint6-hand",
+    "file": "skin-tint-6-tint6-hand.png",
+    "slot": "hand",
+    "group": "Tint 6",
+    "name": "tint6_hand",
+    "width": 61,
+    "height": 71,
+    "original": "Skin/Tint 6/tint6_hand.png"
+  },
+  {
+    "id": "skin-tint-6-tint6-head",
+    "file": "skin-tint-6-tint6-head.png",
+    "slot": "head",
+    "group": "Tint 6",
+    "name": "tint6_head",
+    "width": 173,
+    "height": 168,
+    "original": "Skin/Tint 6/tint6_head.png"
+  },
+  {
+    "id": "skin-tint-6-tint6-leg",
+    "file": "skin-tint-6-tint6-leg.png",
+    "slot": "leg",
+    "group": "Tint 6",
+    "name": "tint6_leg",
+    "width": 93,
+    "height": 164,
+    "original": "Skin/Tint 6/tint6_leg.png"
+  },
+  {
+    "id": "skin-tint-6-tint6-neck",
+    "file": "skin-tint-6-tint6-neck.png",
+    "slot": "neck",
+    "group": "Tint 6",
+    "name": "tint6_neck",
+    "width": 96,
+    "height": 37,
+    "original": "Skin/Tint 6/tint6_neck.png"
+  },
+  {
+    "id": "skin-tint-7-tint7-arm",
+    "file": "skin-tint-7-tint7-arm.png",
+    "slot": "arm",
+    "group": "Tint 7",
+    "name": "tint7_arm",
+    "width": 170,
+    "height": 136,
+    "original": "Skin/Tint 7/tint7_arm.png"
+  },
+  {
+    "id": "skin-tint-7-tint7-hand",
+    "file": "skin-tint-7-tint7-hand.png",
+    "slot": "hand",
+    "group": "Tint 7",
+    "name": "tint7_hand",
+    "width": 61,
+    "height": 71,
+    "original": "Skin/Tint 7/tint7_hand.png"
+  },
+  {
+    "id": "skin-tint-7-tint7-head",
+    "file": "skin-tint-7-tint7-head.png",
+    "slot": "head",
+    "group": "Tint 7",
+    "name": "tint7_head",
+    "width": 173,
+    "height": 168,
+    "original": "Skin/Tint 7/tint7_head.png"
+  },
+  {
+    "id": "skin-tint-7-tint7-leg",
+    "file": "skin-tint-7-tint7-leg.png",
+    "slot": "leg",
+    "group": "Tint 7",
+    "name": "tint7_leg",
+    "width": 93,
+    "height": 164,
+    "original": "Skin/Tint 7/tint7_leg.png"
+  },
+  {
+    "id": "skin-tint-7-tint7-neck",
+    "file": "skin-tint-7-tint7-neck.png",
+    "slot": "neck",
+    "group": "Tint 7",
+    "name": "tint7_neck",
+    "width": 96,
+    "height": 37,
+    "original": "Skin/Tint 7/tint7_neck.png"
+  },
+  {
+    "id": "skin-tint-8-tint8-arm",
+    "file": "skin-tint-8-tint8-arm.png",
+    "slot": "arm",
+    "group": "Tint 8",
+    "name": "tint8_arm",
+    "width": 170,
+    "height": 136,
+    "original": "Skin/Tint 8/tint8_arm.png"
+  },
+  {
+    "id": "skin-tint-8-tint8-hand",
+    "file": "skin-tint-8-tint8-hand.png",
+    "slot": "hand",
+    "group": "Tint 8",
+    "name": "tint8_hand",
+    "width": 61,
+    "height": 71,
+    "original": "Skin/Tint 8/tint8_hand.png"
+  },
+  {
+    "id": "skin-tint-8-tint8-head",
+    "file": "skin-tint-8-tint8-head.png",
+    "slot": "head",
+    "group": "Tint 8",
+    "name": "tint8_head",
+    "width": 173,
+    "height": 168,
+    "original": "Skin/Tint 8/tint8_head.png"
+  },
+  {
+    "id": "skin-tint-8-tint8-leg",
+    "file": "skin-tint-8-tint8-leg.png",
+    "slot": "leg",
+    "group": "Tint 8",
+    "name": "tint8_leg",
+    "width": 93,
+    "height": 164,
+    "original": "Skin/Tint 8/tint8_leg.png"
+  },
+  {
+    "id": "skin-tint-8-tint8-neck",
+    "file": "skin-tint-8-tint8-neck.png",
+    "slot": "neck",
+    "group": "Tint 8",
+    "name": "tint8_neck",
+    "width": 96,
+    "height": 37,
+    "original": "Skin/Tint 8/tint8_neck.png"
+  }
+]

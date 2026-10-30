@@ -1,17 +1,17 @@
 import { test, expect } from '../fixtures/app.mjs'
 
 test('heart and stars use the supplied icons, never together', async ({ page, app }) => {
-  app.allowedPages = ['/cat']
+  app.allowedPages = ['/pet']
   await page.addInitScript(() => { Math.random = () => .5 })
   await page.emulateMedia({ reducedMotion: 'reduce' })
   await page.clock.install()
-  await page.goto('/cat')
+  await page.goto('/pet')
   await page.locator('.pet-room').scrollIntoViewIfNeeded()
   await page.clock.runFor(11500)
-  await expect(page.locator('.cat-emotion')).toHaveAttribute('src', '/pets/liuyi/emotions/stars.png')
+  await expect(page.locator('.cat-emotion')).toHaveAttribute('src', '/pet/liuyi/emotions/stars.png')
   await page.locator('.cat-touch').click()
   await expect(page.locator('.cat-emotion')).toHaveCount(1)
-  await expect(page.locator('.cat-emotion')).toHaveAttribute('src', '/pets/liuyi/emotions/heart.png')
+  await expect(page.locator('.cat-emotion')).toHaveAttribute('src', '/pet/liuyi/emotions/heart.png')
   await page.clock.runFor(3000)
   await expect(page.locator('.cat-emotion')).toHaveCount(0)
 })
@@ -21,7 +21,7 @@ test('autonomous bathroom trip locks feeding, pauses offscreen and returns once'
   await page.addInitScript(() => { Math.random = () => .5 })
   await page.emulateMedia({ reducedMotion: 'reduce' })
   await page.clock.install()
-  await page.goto('/cat')
+  await page.goto('/pet')
   await page.locator('.pet-room').scrollIntoViewIfNeeded()
   await page.clock.runFor(235000)
   for (let second = 0; second < 180 && !(await page.locator('.room-caption').textContent()).includes('上厕所去了'); second++) await page.clock.runFor(1000)

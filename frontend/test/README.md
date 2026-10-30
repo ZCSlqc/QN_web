@@ -20,7 +20,7 @@ npm run test:e2e
 
 可用 `QN_TEST_PORT` 更换测试端口。使用本机已有 Chrome 时，通过 `CHROMIUM_EXECUTABLE_PATH` 指定路径，测试代码不绑定某台电脑。
 
-截图、失败追踪及 HTML 报告输出到根目录 `artifacts/frontend-test-results/` 和 `artifacts/frontend-test-report/`，不提交到 Git。
+截图、失败追踪及 HTML 报告默认输出到系统临时目录 `QN_web-tests/`，不在项目中重新创建 `artifacts/`，不提交到 Git。可通过 `QN_TEST_ARTIFACTS_DIR` 指定输出目录。
 
 ```bash
 npm run test:e2e -- --headed

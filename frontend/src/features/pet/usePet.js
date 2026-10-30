@@ -23,6 +23,16 @@ export function usePet(onFed, scene = null) {
     finally { weatherSaving.value = false }
   }
   const showAllActivity = ref(false)
+  const history = ref([]), historyCursor = ref(null), historyLoading = ref(false), historyError = ref('')
+  async function loadHistory(more = false) {
+    if (historyLoading.value) return
+    historyLoading.value = true; historyError.value = ''
+    try {
+      const { data } = await request.get('/pet/activity', { params: more && historyCursor.value ? { cursor: historyCursor.value } : {}, signal: controller.signal })
+      if (!disposed) { history.value = more ? [...history.value, ...data.data] : data.data; historyCursor.value = data.next_cursor }
+    } catch (e) { if (!disposed) historyError.value = message(e) }
+    finally { historyLoading.value = false }
+  }
   const controller = new AbortController()
   let disposed = false, pollTimer, key = '', generation = 0
   let sceneVisible = !scene, sceneObserver
@@ -46,7 +56,7 @@ export function usePet(onFed, scene = null) {
     refreshing.value = true
     if (!background && !pet.value) loading.value = true
     try {
-      const res = await request.get('/pet', { params: { all_activity: showAllActivity.value }, signal: controller.signal })
+      const res = await request.get('/pet', { signal: controller.signal })
       if (!disposed && generation === version) { pet.value = res.data; restorePending(res.data.viewer_id); error.value = '' }
     } catch (e) {
       if (!disposed) error.value = message(e)
@@ -76,7 +86,7 @@ export function usePet(onFed, scene = null) {
       if ([401, 403].includes(e.response?.status)) { pet.value.can_feed = false; pet.value.can_spend_personal = false }
     } finally {
       feeding.value = false
-      if (!disposed && showAllActivity.value && !pendingFood.value) void load()
+      if (!disposed && showAllActivity.value && !pendingFood.value) void loadHistory()
     }
   }
   function clearAuth() {
@@ -85,7 +95,9 @@ export function usePet(onFed, scene = null) {
   }
   async function poll() {
     clearTimeout(pollTimer)
-    if (!document.hidden && sceneVisible) await load(true)
+    const bounds = scene?.value?.getBoundingClientRect()
+    const inViewport = !bounds || Math.max(0, Math.min(innerHeight, bounds.bottom) - Math.max(0, bounds.top)) >= bounds.height * .1
+    if (!document.hidden && sceneVisible && inViewport) await load(true)
     if (!disposed) pollTimer = setTimeout(poll, 30000)
   }
   function visibility() { if (!document.hidden) void poll() }
@@ -93,7 +105,7 @@ export function usePet(onFed, scene = null) {
     void load()
     if (scene?.value) {
       sceneObserver = new IntersectionObserver(([entry]) => {
-        const wasVisible = sceneVisible; sceneVisible = entry.isIntersecting
+        const wasVisible = sceneVisible; sceneVisible = entry.isIntersecting && entry.intersectionRatio >= .1
         if (sceneVisible && !wasVisible) void poll()
       }, { threshold: 0.1 })
       sceneObserver.observe(scene.value)
@@ -109,5 +121,5 @@ export function usePet(onFed, scene = null) {
     window.removeEventListener('auth-expired', clearAuth)
     window.removeEventListener('profile-updated', visibility)
   })
-  return { weatherSaving, weatherError, setWeather, pet, loading, refreshing, error, feedError, feeding, pendingFood, load, feed, showAllActivity }
+  return { weatherSaving, weatherError, setWeather, pet, loading, refreshing, error, feedError, feeding, pendingFood, load, feed, showAllActivity, history, historyCursor, historyLoading, historyError, loadHistory }
 }

@@ -2,7 +2,7 @@ import { test, expect } from '../fixtures/app.mjs'
 
 test('admin backpack only shows total and compact copy, never visitor rewards', async ({ page, app }) => {
   app.admin = true; app.petCanFeed = true
-  await page.goto('/cat')
+  await page.goto('/pet')
   await expect(page.getByRole('heading', { name: '我们的小背包' })).toBeVisible()
   await expect(page.locator('.pantry-card')).toContainText('两个人一起攒，一起花')
   await expect(page.locator('.pantry-sources')).toHaveText('上传新照片 → 猫条 | 完成心愿 → 猫粮 | 完成旅程 → 罐头')
@@ -12,10 +12,10 @@ test('admin backpack only shows total and compact copy, never visitor rewards', 
 })
 
 test('visitor interactions and reward are together; link directly opens blessing dialog', async ({ page, app }) => {
-  app.allowedPages = ['/index', '/cat']
-  await page.goto('/cat')
-  await expect(page.locator('.hello-card .visitor-treats')).toBeVisible()
-  await expect(page.locator('.pantry-card')).toHaveCount(0)
+  app.allowedPages = ['/index', '/pet']
+  await page.goto('/pet')
+  await expect(page.locator('.pantry-card .gift-reward-note')).toBeVisible()
+  await expect(page.getByRole('heading', { name: '你带来的礼物' })).toBeVisible()
   await page.getByRole('link', { name: '去送祝福，攒根猫条 →' }).click()
   await expect(page.getByRole('dialog', { name: '留下你的祝福' })).toBeVisible()
   await page.getByRole('textbox', { name: '祝福内容' }).fill('每天都有小小的开心。')
@@ -25,7 +25,7 @@ test('visitor interactions and reward are together; link directly opens blessing
 
 test('an uncertain feed survives refresh and is isolated per account', async ({ page, app }) => {
   app.admin = true; app.petCanFeed = true; app.petFailAfterFeedOnce = true
-  await page.goto('/cat')
+  await page.goto('/pet')
   await page.getByRole('button', { name: '投喂猫罐头', exact: true }).click()
   await expect(page.getByRole('button', { name: '确认这次投喂' })).toBeVisible()
   expect(app.petInventory.can).toBe(1)

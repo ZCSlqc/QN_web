@@ -1,18 +1,18 @@
 import { test, expect } from '../fixtures/app.mjs'
 
 test('cat sounds require interaction, do not overlap and remember mute', async ({ page, app }) => {
-  app.allowedPages = ['/cat']
+  app.allowedPages = ['/pet']
   await page.addInitScript(() => {
     window.catSounds = []
     HTMLMediaElement.prototype.play = function () { window.catSounds.push(this.src); return Promise.resolve() }
     HTMLMediaElement.prototype.pause = function () {}
   })
-  await page.goto('/cat')
+  await page.goto('/pet')
   await expect(page.locator('.cat-frame')).toBeVisible()
   expect(await page.evaluate(() => window.catSounds)).toHaveLength(0)
   await page.locator('.cat-touch').click()
   await expect.poll(() => page.evaluate(() => window.catSounds.length)).toBe(1)
-  expect(await page.evaluate(() => window.catSounds[0])).toContain('/pets/liuyi/sounds/pet.mp3')
+  expect(await page.evaluate(() => window.catSounds[0])).toContain('/pet/liuyi/sounds/pet.mp3')
   await page.getByRole('button', { name: '逗猫棒', exact: true }).click()
   expect(await page.evaluate(() => window.catSounds)).toHaveLength(1)
   await page.getByRole('button', { name: '关闭猫咪音效', exact: true }).click()

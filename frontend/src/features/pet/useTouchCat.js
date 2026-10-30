@@ -14,7 +14,7 @@ export function useTouchCat({ scene, action, activeToy, busy, pet, hand, moveToy
     if (event.cancelable) event.preventDefault()
   }
   function start(event) {
-    if (event.pointerType !== 'touch' || !event.isPrimary || gesture || busy.value) return
+    if (!event.isPrimary || gesture || busy.value || (event.pointerType === 'mouse' && event.button !== 0)) return
     if (event.target.closest('.scene-tools, .room-topline, .weather-control, .sleeping-cat')) return
     const kind = teasing() ? 'teaser' : event.target.closest('.cat-touch') ? 'pet' : null
     if (!kind) return
@@ -30,7 +30,7 @@ export function useTouchCat({ scene, action, activeToy, busy, pet, hand, moveToy
     hand.value = { ...hand.value, visible: false }
     if (previous.element?.hasPointerCapture(previous.id)) previous.element.releasePointerCapture(previous.id)
   }
-  function move(event) { if (event.pointerType === 'touch') update(event) }
+  function move(event) { update(event) }
   const ignoreClick = () => Date.now() - lastTouch < 700
   watch(action, value => {
     if (!gesture) return

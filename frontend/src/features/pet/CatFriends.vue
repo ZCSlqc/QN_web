@@ -3,7 +3,7 @@
     <h3 id="cat-friends-title">六一的好朋友们，欢迎你来看六一</h3>
     <div class="friends-row" tabindex="0" aria-label="好朋友照片，可左右滑动">
       <figure v-for="friend in friends" :key="friend.file">
-        <img :src="`/pets/liuyi/friends/${friend.file}.webp`" :alt="friend.name" loading="lazy" decoding="async" />
+        <img :src="`/pet/liuyi/friends/${friend.file}.webp`" :alt="friend.name" loading="lazy" decoding="async" />
         <figcaption>{{ friend.name }}</figcaption>
       </figure>
     </div>

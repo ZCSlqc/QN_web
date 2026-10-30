@@ -1,8 +1,8 @@
 <template>
   <AppDialog :model-value="true" title="旅行回忆" width="800px" :busy="busy" @update:model-value="!$event && $emit('close')">
     <div class="memory">
-      <header><div><p class="eyebrow">OUR JOURNEY</p><h2>{{ record.name.join('、') }}</h2><p>{{ date(record.departure_date) }} — {{ date(record.return_date) }}</p></div><button :disabled="busy" aria-label="关闭回忆" @click="$emit('close')">✕</button></header>
-      <label v-if="related.length > 1" class="memory-switch">其他旅行回忆<select :value="record.id" :disabled="busy" @change="$emit('view', related.find(item => String(item.id) === $event.target.value))"><option v-for="item in related" :key="item.id" :value="item.id">{{ date(item.departure_date) }} · {{ item.name.join('、') }}</option></select></label>
+      <header><div><p class="eyebrow">OUR JOURNEY</p><h2>{{ detail.name.join('、') }}</h2><p>{{ date(detail.departure_date) }} — {{ date(detail.return_date) }}</p></div><button :disabled="busy" aria-label="关闭回忆" @click="$emit('close')">✕</button></header>
+      <label v-if="related.length > 1" class="memory-switch">其他旅行回忆<select :value="detail.id" :disabled="busy" @change="$emit('view', related.find(item => String(item.id) === $event.target.value))"><option v-for="item in related" :key="item.id" :value="item.id">{{ date(item.departure_date) }} · {{ item.name.join('、') }}</option></select></label>
       <section class="memory-photos" :class="{ dragging }" aria-label="旅程照片" @dragover.prevent="dragging = isAdmin && !busy" @dragleave="leaveDrop" @drop.prevent.stop="dropFiles">
         <div class="photo-heading"><h3>这一程的照片 <small v-if="photos.length">{{ photos.length }} 张</small></h3><label v-if="isAdmin" class="upload-label" :class="{ disabled: busy }">添加照片<input ref="uploadInput" type="file" accept="image/jpeg,image/png,image/webp" multiple :disabled="busy" @change="chooseFiles" /></label></div>
         <div v-if="uploadErrors.length" class="upload-error-summary" role="alert"><strong>照片未能上传</strong><p v-for="item in uploadErrors" :key="item.key">{{ item.file.name }}：{{ item.error }}</p></div>
@@ -15,7 +15,7 @@
           <figure v-for="(photo, index) in photos" :key="photo.id" :data-photo-id="photo.id" :class="{ 'sort-active': isAdmin && photos.length > 1, 'sort-dragging': dragId === photo.id }" :draggable="false" @dragstart="startDrag($event, photo.id)" @dragover.prevent.stop @drop.prevent.stop="dropOrder(photo.id)" @dragend="dragId = null" @pointerdown="touchSortStart($event, photo.id)" @pointermove="touchSortMove" @pointerup="finishSort" @pointercancel="cancelGesture">
             <button class="photo-preview" :disabled="working || (!sorting && busy)" :aria-label="`放大第${index + 1}张照片`" @click="previewClick(index)"><JourneyPhoto :src="photo.small_url || photo.thumbnail_url" :alt="photo.caption || '旅程照片'" /></button>
             <figcaption v-if="photo.caption">{{ photo.caption }}</figcaption>
-            <details v-if="isAdmin" class="photo-menu" @pointerdown.stop>
+            <details v-if="isAdmin" class="photo-menu" @pointerdown.stop @toggle="closeOtherMenus">
               <summary :aria-label="`照片${index + 1}的操作`">⋯</summary>
               <div><button :disabled="busy" @click="photoMenuAction($event, () => editCaption(photo))">编辑说明</button><button v-if="index > 0" :disabled="busy" @click="photoMenuAction($event, () => makeCover(index))">设为封面</button><button :disabled="busy" @click="photoMenuAction($event, () => deletePhoto(photo))">删除照片</button></div>
             </details>
@@ -24,13 +24,14 @@
         <ul v-if="queue.length" class="upload-queue"><li v-for="item in queue" :key="item.key"><span>{{ item.file.name }}</span><span>{{ item.status }}</span><span v-if="item.error" class="upload-error" role="alert">{{ item.error }}</span><button v-if="item.status === '上传失败'" :disabled="busy" @click="upload([item])">重试</button></li></ul>
         <p v-if="isAdmin" class="muted">{{ dragging ? '松开即可上传照片' : '可将图片拖入此区域，或点击添加照片。支持多选 JPG、PNG、WebP，每张不超过 15MB。' }}</p>
       </section>
+      <p v-if="detailError" role="alert">完整回忆加载失败 <button @click="loadDetail">重试</button></p>
       <dl class="memory-details">
-        <template v-if="record.checkin_points"><dt>打卡点（景点 / 地区）</dt><dd>{{ record.checkin_points }}</dd></template>
-        <template v-if="record.event"><dt>大事件</dt><dd>{{ record.event }}</dd></template>
-        <template v-if="record.notes"><dt>旅途感想</dt><dd>{{ record.notes }}</dd></template>
-        <template v-if="record.planning_reason"><dt>当时想去的原因</dt><dd>{{ record.planning_reason }}</dd></template>
+        <template v-if="detail.checkin_points"><dt>打卡点（景点 / 地区）</dt><dd>{{ detail.checkin_points }}</dd></template>
+        <template v-if="detail.event"><dt>大事件</dt><dd>{{ detail.event }}</dd></template>
+        <template v-if="detail.notes"><dt>旅途感想</dt><dd>{{ detail.notes }}</dd></template>
+        <template v-if="detail.planning_reason"><dt>当时想去的原因</dt><dd>{{ detail.planning_reason }}</dd></template>
       </dl>
-      <footer v-if="isAdmin"><button :disabled="busy" @click="$emit('plan', record)">预定旅程</button><button :disabled="busy" @click="$emit('new', record)">再次到访</button><button class="primary" :disabled="busy" @click="$emit('edit', record)">编辑旅程</button></footer>
+      <footer v-if="isAdmin"><button :disabled="busy" @click="$emit('plan', detail)">预定旅程</button><button :disabled="busy" @click="$emit('new', detail)">再次到访</button><button class="primary" :disabled="busy" @click="$emit('edit', detail)">编辑旅程</button></footer>
     </div>
     <JourneyPhotoViewer v-if="viewerIndex !== null" :photos="photos" :initial-index="viewerIndex" @close="closeViewer" />
   </AppDialog>
@@ -44,6 +45,14 @@ import JourneyPhotoViewer from './JourneyPhotoViewer.vue'
 import request from '../../utils/request'
 import { invalidatePrivatePhoto } from './privatePhotoCache'
 const props = defineProps({ record: { type: Object, required: true }, isAdmin: Boolean, chooseOnOpen: Boolean, related: { type: Array, default: () => [] } })
+const detail = ref(props.record)
+const detailError = ref(false)
+async function loadDetail() {
+  if (!props.record._summary) return
+  detailError.value = false
+  try { const { data } = await request.get(`/journeys/${props.record.id}`, { signal: controller.signal }); detail.value = data.data }
+  catch { if (!controller.signal.aborted) detailError.value = true }
+}
 const emit = defineEmits(['close', 'edit', 'new', 'plan', 'view', 'photos-updated'])
 const photos = ref([]), queue = ref([]), loading = ref(true), loadError = ref(false), working = ref(false)
 const uploadInput = ref(null)
@@ -56,6 +65,7 @@ const busy = computed(() => working.value || sorting.value || viewerIndex.value 
 function beginSort() { originalPhotos = [...photos.value]; sorting.value = true }
 function cancelGesture() { if (sorting.value) photos.value = [...originalPhotos]; sorting.value = false; stopTouchSort() }
 function previewClick(index) { if (Date.now() >= suppressClickUntil && !sorting.value) viewPhotos(index) }
+function closeOtherMenus(event) { if (event.target.open) event.target.closest('.photo-grid').querySelectorAll('details[open]').forEach(menu => { if (menu !== event.target) menu.open = false }) }
 function photoMenuAction(event, callback) { event.currentTarget.closest('details').open = false; callback() }
 function makeCover(index) { if (busy.value) return; beginSort(); moveBy(index, -index); void saveOrder() }
 function moveBy(index, delta) { const list = [...photos.value]; const [item] = list.splice(index, 1); list.splice(index + delta, 0, item); photos.value = list }
@@ -131,7 +141,17 @@ async function saveOrder(offerUndo = true) {
     clearTimeout(undoTimer)
     undoPhotos.value = offerUndo ? [...originalPhotos] : null
     if (offerUndo) undoTimer = setTimeout(() => { undoPhotos.value = null }, 10000)
-  } catch (error) { photos.value = [...originalPhotos]; sorting.value = false; ElMessage.error(error.response?.data?.detail || '顺序保存失败，已恢复原顺序') }
+  } catch (error) {
+    const intended = photos.value.map(photo => photo.id)
+    try {
+      const { data } = await request.get(endpoint, { signal: controller.signal })
+      photos.value = data.data
+      emit('photos-updated')
+      if (JSON.stringify(data.data.map(photo => photo.id)) === JSON.stringify(intended)) ElMessage.success('照片顺序已保存')
+      else ElMessage.error(error.response?.data?.detail || '保存未完成，已读取当前顺序')
+    } catch { photos.value = [...originalPhotos]; ElMessage.error('暂时无法确认保存结果，请刷新照片列表后再排序') }
+    sorting.value = false
+  }
   finally { working.value = false }
 }
 const uploadErrors = computed(() => queue.value.filter(item => item.error))
@@ -163,7 +183,7 @@ async function upload(items) {
     if (controller.signal.aborted) break
     item.status = '上传中…'; item.error = ''
     const body = new FormData(); body.append('file', item.file); body.append('request_key', item.key)
-    try { await request.post(endpoint, body, { signal: controller.signal, timeout: 120000 }); item.status = '已上传' }
+    try { await request.post(endpoint, body, { signal: controller.signal, timeout: 120000 }); item.status = '已上传'; setTimeout(() => { if (!controller.signal.aborted) queue.value = queue.value.filter(entry => entry.key !== item.key) }, 2000) }
     catch (error) {
       item.status = '上传失败'
       const detail = error.response?.data?.detail
@@ -210,7 +230,7 @@ function viewPhotos(index) { if (!busy.value) viewerIndex.value = index }
 function closeViewer() { viewerIndex.value = null }
 onMounted(() => {
   document.addEventListener('touchmove', preventSortScroll, { passive: false, capture: true })
-  void loadPhotos()
+  void loadPhotos(); void loadDetail()
   if (props.chooseOnOpen && props.isAdmin) void nextTick(() => uploadInput.value?.click())
 })
 onUnmounted(() => { clearTimeout(undoTimer); document.removeEventListener('touchmove', preventSortScroll, { capture: true }); stopTouchSort(); controller.abort(); closeViewer() })

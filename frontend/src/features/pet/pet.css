@@ -346,3 +346,11 @@
  .petting-hand { width: 105px; height: 105px; }
  .scene-tools button { min-width: 44px; min-height: 44px; }
 }
+
+/* Scene artwork is interactive scenery, never a browser drag source. */
+.pet-room, .pet-room :deep(img) { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+.pet-room :deep(img) { -webkit-user-drag: none; }
+
+.gift-reward-note { margin: 12px 0 16px; color: var(--color-text-light); font-size: 12px; line-height: 1.8; }
+.gift-reward-note a { display: block; color: var(--color-rose-dark); margin-top: 5px; }
+.food-item.owner-only { filter: grayscale(1); opacity: .55; }

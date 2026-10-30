@@ -2,7 +2,7 @@ import { test, expect } from '../fixtures/app.mjs'
 
 test('the cat changes pose instead of shaking; bubbles disappear and repeated touches do not restart', async ({ page, app }) => {
   app.admin = true; app.petCanFeed = true
-  await page.goto('/cat')
+  await page.goto('/pet')
   await expect(page.locator('.cat-frame')).toBeVisible()
   await expect(page.locator('.speech-bubble')).toHaveCount(0)
   await page.getByRole('button', { name: '摸摸头', exact: true }).click()
@@ -18,12 +18,12 @@ test('the cat changes pose instead of shaking; bubbles disappear and repeated to
 
 test('provided food icons are used and feeding produces one reaction without repeat spending', async ({ page, app }, testInfo) => {
   app.admin = true; app.petCanFeed = true
-  await page.goto('/cat')
+  await page.goto('/pet')
   await expect(page.locator('.food-item .pet-food-icon')).toHaveCount(3)
   await page.getByRole('button', { name: '投喂猫粮', exact: true }).click()
   await expect(page.locator('.cat-sprite')).toHaveAttribute('data-pose', '3')
   await expect(page.getByRole('button', { name: '投喂猫粮', exact: true })).toBeDisabled()
-  await expect(page.locator('.scene-food-image').last()).toHaveAttribute('src', '/pets/liuyi/food/bowl-full.webp')
+  await expect(page.locator('.scene-food-image').last()).toHaveAttribute('src', '/pet/liuyi/food/bowl-full.webp')
   expect(app.petInventory.kibble).toBe(2)
   expect(app.petFeeds).toHaveLength(1)
   await expect(page.locator('.cat-sprite')).toHaveAttribute('data-pose', '0', { timeout: 12000 })
@@ -35,11 +35,12 @@ test('provided food icons are used and feeding produces one reaction without rep
 test('toy follows pointer while play stays local; small screens retain readable layout', async ({ page, app }, testInfo) => {
   app.admin = true; app.petCanFeed = true
   await page.setViewportSize({ width: 390, height: 844 })
-  await page.goto('/cat')
+  await page.goto('/pet')
   await page.getByRole('button', { name: '逗一逗', exact: true }).click()
-  await expect(page.locator('.cat-sprite')).toHaveAttribute('data-pose', '2')
   await page.locator('.pet-room').scrollIntoViewIfNeeded()
   const room = await page.locator('.pet-room').boundingBox()
+  await page.mouse.move(room.x + room.width * 0.5, room.y + room.height * 0.6)
+  await expect(page.locator('.cat-sprite')).toHaveAttribute('data-pose', '2')
   await page.mouse.move(room.x + room.width * 0.25, room.y + room.height * 0.6)
   await expect.poll(() => page.locator('.cat-toy').evaluate(el => el.style.left)).toBe('25%')
   expect(app.petFeeds).toHaveLength(0)
@@ -52,24 +53,24 @@ test('toy follows pointer while play stays local; small screens retain readable 
 
 test('provided icons, realistic food props and hand cursors match each interaction', async ({ page, app }, testInfo) => {
   app.admin = true; app.petCanFeed = true
-  await page.goto('/cat')
-  await expect(page.locator('.food-item.treat .pet-food-icon')).toHaveAttribute('src', '/pets/liuyi/icons/cat-treat.png')
-  await expect(page.locator('.food-item.kibble .pet-food-icon')).toHaveAttribute('src', '/pets/liuyi/icons/cat-food.png')
-  await expect(page.locator('.food-item.can .pet-food-icon')).toHaveAttribute('src', '/pets/liuyi/icons/cat-can.png')
-  await expect(page.locator('.scene-food-image')).toHaveAttribute('src', '/pets/liuyi/food/bowl-empty.webp')
+  await page.goto('/pet')
+  await expect(page.locator('.food-item.treat .pet-food-icon')).toHaveAttribute('src', '/pet/liuyi/icons/cat-treat.png')
+  await expect(page.locator('.food-item.kibble .pet-food-icon')).toHaveAttribute('src', '/pet/liuyi/icons/cat-food.png')
+  await expect(page.locator('.food-item.can .pet-food-icon')).toHaveAttribute('src', '/pet/liuyi/icons/cat-can.png')
+  await expect(page.locator('.scene-food-image')).toHaveAttribute('src', '/pet/liuyi/food/bowl-empty.webp')
   await page.locator('.cat-touch').hover()
   await expect(page.locator('.cat-touch')).toHaveCSS('cursor', 'none')
   await page.mouse.down()
   await expect(page.locator('.cat-touch')).toHaveCSS('cursor', 'none')
   await page.mouse.up()
   await page.getByRole('button', { name: '投喂猫条', exact: true }).click()
-  await expect(page.locator('.scene-treat')).toHaveAttribute('src', '/pets/liuyi/food/treat-open.webp')
+  await expect(page.locator('.scene-treat')).toHaveAttribute('src', '/pet/liuyi/food/treat-open.webp')
   await expect(page.locator('.scene-treat')).toBeHidden({ timeout: 12000 })
   await page.getByRole('button', { name: '投喂猫罐头', exact: true }).click()
-  await expect(page.locator('.scene-food-image').last()).toHaveAttribute('src', '/pets/liuyi/food/can-open.webp')
+  await expect(page.locator('.scene-food-image').last()).toHaveAttribute('src', '/pet/liuyi/food/can-open.webp')
   await page.locator('.pet-room').scrollIntoViewIfNeeded()
   await page.screenshot({ path: testInfo.outputPath('pet-realistic-food.png') })
-  await expect(page.locator('.scene-food-image').last()).toHaveAttribute('src', '/pets/liuyi/food/bowl-empty.webp', { timeout: 12000 })
+  await expect(page.locator('.scene-food-image').last()).toHaveAttribute('src', '/pet/liuyi/food/bowl-empty.webp', { timeout: 12000 })
   await page.getByRole('button', { name: '逗一逗', exact: true }).click()
-  await expect(page.locator('.toy-teaser img')).toHaveAttribute('src', '/pets/liuyi/interaction/hand-teaser.webp')
+  await expect(page.locator('.toy-teaser img')).toHaveAttribute('src', '/pet/liuyi/interaction/hand-teaser.webp')
 })

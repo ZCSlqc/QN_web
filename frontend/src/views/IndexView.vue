@@ -25,7 +25,7 @@
       ============================================================ -->
     <section class="hero" id="home">
       <canvas ref="petalCanvas" class="petal-canvas" aria-hidden="true"></canvas>
-      <img fetchpriority="high" decoding="async" class="hero-bg" src="/backgrounds/home-cover.webp" alt="" />
+      <img fetchpriority="high" decoding="async" class="hero-bg" src="/index/background/home-cover.webp" alt="" />
       <div class="hero-overlay"></div>
 
       <SiteNavigation :light="scrollTop > 300" :is-admin="isAdmin" :has-mailbox="hasMailbox" :current-username="currentUsername" @mailbox-unavailable="hasMailbox = false" />
@@ -56,13 +56,13 @@
       <div class="container">
         <div class="section-header">
           <div class="header-avatars">
-            <img src="/avatars/qiqi.webp" alt="qiqi" class="avatar avatar-left" />
+            <img src="/index/avatars/qiqi.webp" alt="qiqi" class="avatar avatar-left" />
             <div class="header-text">
               <p class="section-eyebrow">The Story of our love</p>
               <h2 class="section-title section-title-script">Our Love Story</h2>
               <div class="section-line"></div>
             </div>
-            <img src="/avatars/nini.webp" alt="nini" class="avatar avatar-right" />
+            <img src="/index/avatars/nini.webp" alt="nini" class="avatar avatar-right" />
           </div>
         </div>
 
@@ -146,7 +146,7 @@
       Section 4：纪念日计时器
       ============================================================ -->
     <section class="date-section" id="date">
-      <img loading="lazy" decoding="async" class="date-bg" src="/backgrounds/anniversary.webp" alt="" />
+      <img loading="lazy" decoding="async" class="date-bg" src="/index/background/anniversary.webp" alt="" />
       <div class="date-overlay"></div>
       <div class="date-content">
         <p class="date-eyebrow">Waiting for Wedding</p>

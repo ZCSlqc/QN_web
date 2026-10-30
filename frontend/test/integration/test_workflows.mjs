@@ -79,7 +79,7 @@ test('real backend: pet food is persisted and the same feed cannot be charged tw
   await page.addInitScript(value => localStorage.setItem('token', value), token)
   const headers = { Authorization: `Bearer ${token}` }
   await page.request.post('/api/photos', { headers, multipart: { file: { name: 'pet-test.webp', mimeType: 'image/webp', buffer: readFileSync(fileURLToPath(new URL('../fixtures/images/photo-one.webp', import.meta.url))) } } })
-  await page.goto('/cat')
+  await page.goto('/pet')
   const before = (await (await page.request.get('/api/pet', { headers })).json()).inventory.treat
   await page.getByRole('button', { name: '投喂猫条', exact: true }).click()
   await expect.poll(async () => (await (await page.request.get('/api/pet', { headers })).json()).inventory.treat).toBe(before - 1)

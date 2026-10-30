@@ -1,0 +1,114 @@
+{
+  "version": 3,
+  "mode": "whole-arm-bindings",
+  "locked": false,
+  "bindings": {
+    "head": {
+      "x": 0,
+      "y": -346,
+      "sx": 0,
+      "sy": -348
+    },
+    "neck": {
+      "x": 0,
+      "y": -356,
+      "sx": 0,
+      "sy": 0
+    },
+    "leftArm": {
+      "x": -69,
+      "y": -306,
+      "sx": 22,
+      "sy": 42
+    },
+    "rightArm": {
+      "x": 69,
+      "y": -306,
+      "sx": 22,
+      "sy": 42
+    },
+    "leftHand": {
+      "x": 154,
+      "y": 126,
+      "sx": 14,
+      "sy": 38
+    },
+    "rightHand": {
+      "x": 154,
+      "y": 126,
+      "sx": 14,
+      "sy": 38
+    },
+    "waist": {
+      "x": 0,
+      "y": -181,
+      "sx": 76.5,
+      "sy": 0
+    },
+    "leftLeg": {
+      "x": -1,
+      "y": 30,
+      "sx": 78,
+      "sy": 8
+    },
+    "rightLeg": {
+      "x": 154,
+      "y": 30,
+      "sx": 78,
+      "sy": 8
+    },
+    "leftShoe": {
+      "x": 40,
+      "y": 166,
+      "sx": 3,
+      "sy": 11
+    },
+    "rightShoe": {
+      "x": 40,
+      "y": 166,
+      "sx": 3,
+      "sy": 11
+    }
+  },
+  "pose": {
+    "head": -1,
+    "leftArm": -44,
+    "rightArm": -44,
+    "leftHand": 57,
+    "rightHand": 57,
+    "leftLeg": 0,
+    "rightLeg": 0,
+    "leftShoe": 0,
+    "rightShoe": 0
+  },
+  "poseConfirmed": false,
+  "basePose": {
+    "head": 0,
+    "leftArm": 0,
+    "rightArm": 0,
+    "leftHand": 0,
+    "rightHand": 0,
+    "leftLeg": 0,
+    "rightLeg": 0,
+    "leftShoe": 0,
+    "rightShoe": 0
+  },
+  "appearance": {
+    "animalHead": null,
+    "formalStyle": null,
+    "formalColor": "navy",
+    "skin": "Tint 1",
+    "hair": "hair-black-blackman1",
+    "shirt": "shirts-blue-blueshirt5",
+    "sleeve": "long",
+    "pants": "pants-navy-pantsnavy3",
+    "leg": "long",
+    "shoes": "shoes-black-blackshoe1",
+    "face": "face-completes-face1",
+    "faceLayout": "face-completes-face1",
+    "eyes": "face-eyes-eyebrown-large",
+    "eyebrows": "face-eyebrows-blackbrow1",
+    "mouth": "face-mouth-mouth-happy",
+    "nose": "1"
+  }
+}

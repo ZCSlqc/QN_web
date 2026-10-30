@@ -7,7 +7,7 @@
       <template v-else-if="authorized">
         <div class="admin-welcome">
           <div><h3>欢迎你{{ currentUsername }}，打理我们的小世界</h3><p>整理留言、心愿，也照顾好每一位来访的朋友。</p></div>
-          <div class="quick-links"><router-link to="/journey">管理旅程 →</router-link><router-link to="/index#album">管理相册 →</router-link></div>
+          <div class="quick-links"><router-link to="/journey">管理旅程 →</router-link><a :href="homeSectionHref('album')" @click.prevent="navigateHomeSection(router, 'album')">管理相册 →</a><router-link to="/wedding/rig">人物核验 →</router-link></div>
         </div>
         <nav class="tab-bar" aria-label="管理栏目">
           <button v-for="item in tabs" :key="item.key" :class="{ active: tab === item.key }" :aria-pressed="tab === item.key" :disabled="busy" @click="selectTab(item.key)">{{ item.label }}</button>
@@ -80,6 +80,7 @@
 import { recentProfile } from '../features/auth/pageAccess'
 import { ref, reactive, computed, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
+import { homeSectionHref, navigateHomeSection } from '../utils/homeNavigation'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import request from '../utils/request'
 import AppDialog from '../components/shared/AppDialog.vue'

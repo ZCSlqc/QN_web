@@ -1,10 +1,15 @@
 import { test as base, expect } from '@playwright/test'
 import { fileURLToPath } from 'node:url'
+import { readFileSync } from 'node:fs'
+
+const weddingCats = JSON.parse(readFileSync(new URL('../../../backend/app/core/wedding_cats.json', import.meta.url), 'utf8'))
 
 const imagePath = fileURLToPath(new URL('./images/photo-one.webp', import.meta.url))
 export const test = base.extend({
   app: async ({ page }, use) => {
     const state = {
+      weddingCats: structuredClone(weddingCats), weddingRole: null, profileUsername:null,weddingPeople:null,weddingPeopleReads:0,
+      weddingWardrobe:{appearance:null,outfits:[],revision:0},wardrobeReads:0,wardrobeWrites:0,
       admin: false, nickname: '', viewerId: '1de66a0c-30b4-417b-a95e-e6daf070bcb1', blessingRequests: new Map(), allowedPages: ['/index'], passwordResets: [],
       plans: [],
       letterRewarded: false, mailbox: false, mailboxUsername: '测试甲', mailboxPartner: '测试乙', mailboxLetters: [], mailboxFailAfterSendOnce: false,
@@ -29,10 +34,39 @@ export const test = base.extend({
       const req = route.request(), url = new URL(req.url()), path = url.pathname.replace(/^\/api/, '')
       if (state.fail.has(path)) return route.abort()
       const json = data => route.fulfill({ json: data })
+      if (path === '/wedding/cats') return json({ cats: state.weddingCats })
+      if(path==='/wedding/people'){
+        state.weddingPeopleReads++;
+        const username=state.profileUsername||(state.admin?'测试管理员':'测试访客');
+        const people=structuredClone(state.weddingPeople||[
+          {username:state.weddingRole==='groom'?username:'owner-groom',name:state.weddingRole==='groom'&&state.nickname?state.nickname:'琪琪',role:'groom',persona:'guest',appearance:null},
+          {username:state.weddingRole==='bride'?username:'owner-bride',name:state.weddingRole==='bride'&&state.nickname?state.nickname:'妮妮',role:'bride',persona:'guest',appearance:null},
+          {username:'shenqidayang',name:'shenqidayang',role:null,persona:'calm-girl',appearance:null},
+          {username:'lqc',name:'lqc',role:null,persona:'lively-boy',appearance:null},
+        ]);
+        if(!people.some(p=>p.username===username))people.push({username,name:state.nickname||username,role:state.weddingRole,persona:'guest',appearance:state.weddingWardrobe.appearance});
+        return json({people});
+      }
+      if(path==='/wedding/wardrobe'){
+        if(req.method()==='GET')state.wardrobeReads++;
+        if(req.method()==='PUT'){state.weddingWardrobe.appearance=req.postDataJSON().appearance;state.weddingWardrobe.revision++;state.wardrobeWrites++;}
+        return route.fulfill({json:state.weddingWardrobe,headers:{ETag:`"wardrobe-${state.weddingWardrobe.revision}"`}})
+      }
+      if(path==='/wedding/wardrobe/outfits'&&req.method()==='POST'){
+        const item={...req.postDataJSON(),id:`outfit-${state.weddingWardrobe.revision+1}`};state.weddingWardrobe.outfits.push(item);state.weddingWardrobe.revision++;return json(state.weddingWardrobe)
+      }
+      if(path.startsWith('/wedding/wardrobe/outfits/')&&req.method()==='DELETE'){
+        const id=path.split('/').at(-1);state.weddingWardrobe.outfits=state.weddingWardrobe.outfits.filter(p=>p.id!==id);state.weddingWardrobe.revision++;return json(state.weddingWardrobe)
+      }
       if (path === '/pet/weather') return state.admin ? json({ weather: state.weather = field(req, 'weather') }) : route.fulfill({ status: 403 })
+      if (path === '/pet/activity') {
+        const offset = url.searchParams.get('cursor') ? state.petFeeds.findIndex(item => String(item.id) === url.searchParams.get('cursor')) + 1 : 0
+        const data = state.petFeeds.slice(offset, offset + 20)
+        return json({ data, next_cursor: offset + 20 < state.petFeeds.length ? String(data.at(-1).id) : null })
+      }
       if (path === '/pet' || path === '/pet/feed' || path === '/pet/reward-feed') {
-        const petState = () => ({ weather: state.weather, viewer_id: state.viewerId, is_admin: state.admin, can_spend_personal: !state.admin && state.allowedPages.includes('/cat'), own_inventory: { ...state.petInventory }, partner_inventory: { treat: 0, kibble: 0, can: 0 }, partner_name: '测试乙', id: 'liuyi', name: '六一', joined_at: '2026-10-28 12:00:00', can_feed: state.petCanFeed,
-          personal_treats: state.personalTreats, reward_claimed_today: state.rewardClaimed, inventory: state.admin ? { ...state.petInventory } : null, feed_count: state.petFeeds.length, last_fed_at: state.petFeeds[0]?.created_at || null, activity: state.petFeeds })
+        const petState = () => ({ weather: state.weather, viewer_id: state.viewerId, is_admin: state.admin, can_spend_personal: !state.admin && state.allowedPages.includes('/pet'), own_inventory: { ...state.petInventory }, partner_inventory: { treat: 0, kibble: 0, can: 0 }, partner_name: '测试乙', id: 'liuyi', name: '六一', joined_at: '2026-10-28 12:00:00', can_feed: state.petCanFeed,
+          personal_treats: state.personalTreats, reward_claimed_today: state.rewardClaimed, inventory: state.admin ? { ...state.petInventory } : null, feed_count: state.petFeeds.length, last_fed_at: state.petFeeds[0]?.created_at || null, activity: state.petFeeds.slice(0, 3) })
         if (path === '/pet') return json(petState())
         const personal = path === '/pet/reward-feed'
         if (!personal && !state.petCanFeed) return route.fulfill({ status: 403, json: { detail: '投喂只对情侣双方开放' } })
@@ -47,7 +81,7 @@ export const test = base.extend({
         return json({ event_id: event.id, replayed: false, pet: petState() })
       }
       if (path === '/account/nickname') { state.nickname = field(req, 'nickname'); return json({ nickname: state.nickname, display_name: state.nickname }) }
-      if (path === '/me') return json({ nickname: state.nickname, display_name: state.nickname || (state.admin ? '测试管理员' : '测试访客'), username: state.mailbox ? state.mailboxUsername : state.admin ? '测试管理员' : '测试访客', is_admin: state.admin, allowed_pages: state.allowedPages, has_mailbox: state.mailbox })
+      if (path === '/me') return json({ nickname: state.nickname, display_name: state.nickname || state.profileUsername || (state.admin ? '测试管理员' : '测试访客'), username: state.profileUsername || (state.mailbox ? state.mailboxUsername : state.admin ? '测试管理员' : '测试访客'), is_admin: state.admin, wedding_role:state.weddingRole, allowed_pages: state.allowedPages, has_mailbox: state.mailbox })
       if (path.startsWith('/mailbox/')) {
         if (!state.mailbox) return route.fulfill({ status: 403, json: { detail: '此信箱仅限情侣双方使用' } })
         const own = letter => letter.sender_name === state.mailboxUsername
@@ -149,6 +183,7 @@ export const test = base.extend({
         return json({ status: 'success' })
       }
       if (/^\/journeys\/[^/]+\/photos$/.test(path) && req.method() === 'GET') return json({ data: [] })
+      if (path === '/journey-search') return json({ ids: state.journeys.filter(j => JSON.stringify(j).includes(url.searchParams.get('q'))).map(j => j.id) })
       if (path === '/journeys') return json({ data: state.journeys })
       if (path === '/table_data') return json({ data: state.todos.filter(todo => !todo.done) })
       if (path === '/table_done_list') return json({ data: state.todos.filter(todo => todo.done) })

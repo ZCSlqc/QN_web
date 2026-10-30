@@ -23,6 +23,8 @@ def test_page_allowlist_parser_is_exact_and_defaults_closed(api, monkeypatch):
     assert configured_user_pages() == frozenset(['/index'])
     monkeypatch.setenv('QN_USER_PAGE_ALLOWLIST', '["/index", "/journey"]')
     assert configured_user_pages() == frozenset(['/index', '/journey'])
+    monkeypatch.setenv('QN_USER_PAGE_ALLOWLIST', '["/cat"]')
+    assert '/pet' not in configured_user_pages()
     for value in ['["*"]', '["/index?all=true"]', '["/index/../admin"]', '"/index"']:
         monkeypatch.setenv('QN_USER_PAGE_ALLOWLIST', value)
         with pytest.raises(ValueError):

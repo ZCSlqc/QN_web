@@ -2,7 +2,7 @@
 
 # 六一的小窝
 
-入口：导航“爱的小窝”，路由 `/cat`。页面在 `src/views/PetView.vue`，请求/同步在 `usePet.js`，未确认投喂在 `pendingFeed.js`。
+入口：导航“爱的小窝”，路由 `/pet`。页面在 `src/views/PetView.vue`，请求/同步在 `usePet.js`，未确认投喂在 `pendingFeed.js`。
 
 ## 页面分工
 
@@ -30,7 +30,7 @@
 
 ## 素材与范围
 
-`public/pets/liuyi/` 为透明WebP；写实版参考 `../QN_web_materials/cat/六一.jpeg`，插画版参考 `../QN_web_materials/cat/六一A.jpeg`。原始输出在 `../QN_web_materials/cat/generated/`。两套形象共用六一的数据，选择只在当前浏览器记住。
+`public/pet/liuyi/` 为透明WebP；写实版参考 `../QN_web_materials/cat/六一.jpeg`，插画版参考 `../QN_web_materials/cat/六一A.jpeg`。原始输出在 `../QN_web_materials/cat/generated/`。两套形象共用六一的数据，选择只在当前浏览器记住。
 
 不做离线惩罚、死亡、商城或每日签到压力。两种形象共用四帧步态、互动和睡觉状态。
 
@@ -47,14 +47,14 @@
 - `pet.css` 集中页面样式。减少动态效果模式禁用过渡和装饰动画，仍可主动切换姿态。
 - 奖励说明：`上传新照片 → 猫条 | 完成心愿 → 猫粮 | 完成旅程 → 罐头`。
 
-动作参考原图保留在外部归档 `../QN_web_materials/cat/generated/*-poses.png`；网页使用单独对齐的 `public/pets/liuyi/*-pose-0..3.webp`，原静态图作为加载失败时的回退。素材预处理脚本为 `node frontend/scripts/prepare-pet-poses.cjs`。
+动作参考原图保留在外部归档 `../QN_web_materials/cat/generated/*-poses.png`；网页使用单独对齐的 `public/pet/liuyi/*-pose-0..3.webp`，原静态图作为加载失败时的回退。素材预处理脚本为 `node frontend/scripts/prepare-pet-poses.cjs`。
 
 
 ## 食物图标与写实场景素材
 
-界面图标采用用户提供的 `docs/猫条.png`、`docs/猫粮.png`、`docs/猫罐头.png`，原文件不改。发布资源重命名为 `public/pets/liuyi/icons/cat-treat.png`、`cat-food.png`、`cat-can.png`，由 `FoodIcon.vue` 用于背包、访客投喂按钮及日常记录。
+界面图标采用用户提供的 `docs/猫条.png`、`docs/猫粮.png`、`docs/猫罐头.png`，原文件不改。发布资源重命名为 `public/pet/liuyi/icons/cat-treat.png`、`cat-food.png`、`cat-can.png`，由 `FoodIcon.vue` 用于背包、访客投喂按钮及日常记录。
 
-`FeedingProps.vue` 单独控制场景物件：空碗 `bowl-empty.webp`、满粮碗 `bowl-full.webp`、打开罐头 `can-open.webp`、撕开猫条 `treat-open.webp`，均位于 `public/pets/liuyi/food/`。原始生成 PNG 保留在 `../QN_web_materials/cat/generated/food/`；页面加载压缩后且保留 alpha 的 WebP，避免加载多MB原图。空碗和满碗采用相同参考、视角和布局；素材预加载后交叉显示，投喂完成恢复空碗。素材失败时保留简单碗形回退。
+`FeedingProps.vue` 单独控制场景物件：空碗 `bowl-empty.webp`、满粮碗 `bowl-full.webp`、打开罐头 `can-open.webp`、撕开猫条 `treat-open.webp`，均位于 `public/pet/liuyi/food/`。原始生成 PNG 保留在 `../QN_web_materials/cat/generated/food/`；页面加载压缩后且保留 alpha 的 WebP，避免加载多MB原图。空碗和满碗采用相同参考、视角和布局；素材预加载后交叉显示，投喂完成恢复空碗。素材失败时保留简单碗形回退。
 
 鼠标靠近猫身时显示场景内的写实抚摸手，按住轻划触发眯眼。真实手图层不拦截事件，离开猫咪区域恢复默认光标；触屏不显示悬浮手。逗猫棒使用手持棒的写实透明图片，玩具老鼠使用原 icon。
 
@@ -64,11 +64,11 @@
 - `useCatLife.js`：清醒60–90秒后自主回猫窝睡觉，睡眠同样持续60–90秒。窝口仅显示闭眼枕着爪子的头，轻微呼吸和 zzZ；点击睡猫、摸头、玩具或成功投喂可唤醒。
 - 老鼠沿地面跑动、停顿、转向，六一跟随，到达后伸爪；每轮12秒。切换玩具、睡觉、投喂、离开视口会清理本轮定时器。
 - 页面隐藏时暂停；减少动态效果模式不自动散步、不连续追逐，保留主动交互。
-- 睡姿：`public/pets/liuyi/liuyi-{realistic,illustrated}-sleep.webp`；手：`public/pets/liuyi/interaction/hand-{pet,teaser}.webp`。原始图和生成说明见外部归档 `../QN_web_materials/cat/generated/`。
+- 睡姿：`public/pet/liuyi/liuyi-{realistic,illustrated}-sleep.webp`；手：`public/pet/liuyi/interaction/hand-{pet,teaser}.webp`。原始图和生成说明见外部归档 `../QN_web_materials/cat/generated/`。
 - 预处理：`node frontend/scripts/prepare-cat-walk.cjs`、`node frontend/scripts/prepare-cat-life.cjs`，仅做透明图片的尺寸、帧基线与 WebP 发布处理。
 - 回归：`test/e2e/test_pet_life.mjs` 覆盖切换风格保留步态、睡觉唤醒投喂、真实手、老鼠地面运动及320px屏幕。
 
-鼠标仅使用普通箭头、按钮点击手和真实图片手；逗猫棒模式隐藏场景内系统光标，按钮仍可点击。旧 `public/pets/liuyi/cursors` 已删除。玩具老鼠原图朝左，向右时翻转，场景尺寸84×64px（原尺寸两倍）。猫条居中放在餐盘上方。
+鼠标仅使用普通箭头、按钮点击手和真实图片手；逗猫棒模式隐藏场景内系统光标，按钮仍可点击。旧 `public/pet/liuyi/cursors` 已删除。玩具老鼠原图朝左，向右时翻转，场景尺寸84×64px（原尺寸两倍）。猫条居中放在餐盘上方。
 
 ## 昼夜、进食与作息
 
@@ -87,7 +87,7 @@
 - 再点当前玩具可收起；持续移动逗猫棒会延长互动，停止移动后结束。日常记录不再显示食物属于谁。
 - 回归：backend/test/test_pet.py 与 frontend/test/e2e/test_pet_weather.mjs。
 
-天气按钮改为窗台下方一排三个小图标：`public/pets/liuyi/weather/sunny.png`、`cloudy.png`、`rainy.png`，分别复制自 `../QN_web_materials/cat/1/晴天 (1).png`、`阴天 (1).png`、`雨情信息.png`，原文件保留。支持阴天及旧晴雨设置表的无损升级。窗外云朵分层缓慢漂移，雨丝有不同长度、速度和透明度，少量玻璃水滴缓慢滑落；夜间使用灰蓝雨丝并遮住月亮。
+天气按钮改为窗台下方一排三个小图标：`public/pet/liuyi/weather/sunny.png`、`cloudy.png`、`rainy.png`，分别复制自 `../QN_web_materials/cat/1/晴天 (1).png`、`阴天 (1).png`、`雨情信息.png`，原文件保留。支持阴天及旧晴雨设置表的无损升级。窗外云朵分层缓慢漂移，雨丝有不同长度、速度和透明度，少量玻璃水滴缓慢滑落；夜间使用灰蓝雨丝并遮住月亮。
 
 回窝缩小按实际移动距离插值，同时向窝口上移，不再入睡前瞬间缩小；暂停恢复保留同一段移动进度。天气按钮无圆形背景，位于六一后方，允许自然遮挡；雨天使用乌云，夜雨云层进一步变暗。
 
@@ -103,7 +103,7 @@
 
 ## 情绪图标与自主外出
 
-- 图标原图保留在 `../QN_web_materials/cat/1`，发布文件为 `public/pets/liuyi/emotions/heart.png`、`idea.png`、`stars.png`，分别用于摸摸舒服、准备散步/喝水、闲置发呆；同一时刻只显示一种，吃罐头不再显示爱心。
+- 图标原图保留在 `../QN_web_materials/cat/1`，发布文件为 `public/pet/liuyi/emotions/heart.png`、`idea.png`、`stars.png`，分别用于摸摸舒服、准备散步/喝水、闲置发呆；同一时刻只显示一种，吃罐头不再显示爱心。
 - `useCatMoments.js` 管理发呆提示和自主上厕所：可见场景内每3–5分钟尝试一次，忙碌时延后8秒重试，只有空闲时出发。向右走出画面，停留8–12秒，再从右侧回来。离开、外出和返回期间暂停摸头、玩具以及所有投喂入口，状态文字分别显示出去一下、上厕所去了、回来啦。
 - 离开视口/隐藏页面会保留外出剩余时间与行走回调，恢复后继续；卸载清理计时器。不创建库存记录、不扣粮，不在后台反复触发。
 - 回窝最终缩到原长宽42%；真实手和逗猫棒以图片中心对齐鼠标。
@@ -126,6 +126,6 @@
 
 信箱写信区正文默认4行，常规桌面/手机尺寸无需弹窗滚动；长正文仍可在输入框内滚动，矮屏保留可访问的滚动回退。发送按钮为“寄给ta”，成功自动关闭，失败保留草稿。
 
-发送反馈分两段顺序播放：新信发送成功关闭弹窗后，`public/feedback/letter-sent.png` 先飞到导航信箱；祝福用 `public/feedback/blessing-sent.png` 飞到左侧LOVE。第一段结束后，只有实际获得猫条才播放第二段食物入库动画。两张原图来自项目外../QN_web_materials/cat/1，保留原文件；成功但当天无新奖励仍播放送达，重试响应不重复播放。减少动态效果模式使用同样顺序的淡入淡出提示。
+发送反馈分两段顺序播放：新信发送成功关闭弹窗后，`public/shared/feedback/letter-sent.png` 先飞到导航信箱；祝福用 `public/shared/feedback/blessing-sent.png` 飞到左侧LOVE。第一段结束后，只有实际获得猫条才播放第二段食物入库动画。两张原图来自项目外../QN_web_materials/cat/1，保留原文件；成功但当天无新奖励仍播放送达，重试响应不重复播放。减少动态效果模式使用同样顺序的淡入淡出提示。
 
 库存直接使用主人分账户背包与访客猫条表，不执行旧库存转换。历史奖励流水保留，防止重复领奖；每次启动每位主人三种食物各补足至1，不累加。

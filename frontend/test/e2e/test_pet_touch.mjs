@@ -14,8 +14,8 @@ async function gesture(page, start, end, during) {
 }
 
 test('touch stroking shows a hand, stays in place and releases scrolling', async ({ page, app }) => {
-  app.allowedPages = ['/index', '/cat']
-  await page.goto('/cat')
+  app.allowedPages = ['/index', '/pet']
+  await page.goto('/pet')
   await page.locator('.cat-touch').scrollIntoViewIfNeeded()
   await expect(page.locator('.cat-frame')).toBeVisible()
   const box = await page.locator('.cat-touch').boundingBox()
@@ -33,8 +33,8 @@ test('touch stroking shows a hand, stays in place and releases scrolling', async
 })
 
 test('touch teaser follows the finger, survives release and exits on its button', async ({ page, app }) => {
-  app.allowedPages = ['/index', '/cat']
-  await page.goto('/cat')
+  app.allowedPages = ['/index', '/pet']
+  await page.goto('/pet')
   await page.getByRole('button', { name: '逗猫棒', exact: true }).tap()
   const box = await page.locator('.pet-room').boundingBox()
   const scroll = await page.evaluate(() => scrollY)

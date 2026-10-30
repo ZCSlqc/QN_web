@@ -16,7 +16,7 @@ import { ElMessage } from 'element-plus'
 const audio = ref(null)
 const playing = ref(false)
 const pending = ref(false)
-const musicSrc = `${import.meta.env.BASE_URL}audio/city-of-stars.mp3`
+const musicSrc = `${import.meta.env.BASE_URL}shared/audio/city-of-stars.mp3`
 let disposed = false
 let errorReported = false
 function reportError(error) {
@@ -61,4 +61,5 @@ onUnmounted(() => { disposed = true; audio.value?.pause() })
 .music-state { position: absolute; bottom: -2px; right: -2px; display: grid; place-items: center; width: 19px; height: 19px; border-radius: 50%; background: #fff4f2; color: #85485d; font-size: 11px; border: 1px solid #ddbbc5; }
 @keyframes record-spin { to { transform: rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) { .record { animation: none; } }
+@media(max-width:600px){.wedding-music{right:14px;bottom:max(128px,calc(env(safe-area-inset-bottom) + 116px))}.wedding-music .music-button{width:44px;height:44px}}
 </style>

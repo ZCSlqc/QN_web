@@ -33,7 +33,7 @@ export function useCatWater({ scene, action, pose, walk, reset, say, feeding }) 
     if (value === 'idle') schedule()
   })
   onMounted(() => {
-    observer = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; if (visible) schedule(); else suspend() }, { threshold: .2 })
+    observer = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting && entry.intersectionRatio >= .2; if (visible) schedule(); else suspend() }, { threshold: .2 })
     if (scene.value) observer.observe(scene.value)
     document.addEventListener('visibilitychange', visibility)
   })

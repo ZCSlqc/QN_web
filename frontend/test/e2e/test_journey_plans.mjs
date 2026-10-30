@@ -1,3 +1,4 @@
+import { artifactPath } from '../artifactPath.mjs';
 import { test, expect } from '../fixtures/app.mjs'
 
 async function ready(page) {
@@ -128,5 +129,5 @@ test('top plan layer supports actual map clicks without blocking other cities; m
   await expect(page.locator('.el-picker-panel')).toBeVisible()
   await expect(page.locator('.el-picker__popper')).toHaveCSS('opacity', '1')
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
-  await page.screenshot({ path: '../artifacts/journey-plan-mobile.png' })
+  await page.screenshot({ path: artifactPath('journey-plan-mobile.png') })
 })

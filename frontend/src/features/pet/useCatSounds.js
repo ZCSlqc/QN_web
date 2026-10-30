@@ -9,7 +9,7 @@ export function useCatSounds(scene, action) {
   function play(name) {
     if (disposed || !enabled.value || !unlocked || !visible || document.hidden || Date.now() - lastPlayed < 8000 || (voice && !voice.ended)) return
     stop()
-    const audio = new Audio(`/pets/liuyi/sounds/${name}.mp3`)
+    const audio = new Audio(`/pet/liuyi/sounds/${name}.mp3`)
     voice = audio; audio.volume = .28; audio.preload = 'none'
     lastPlayed = Date.now()
     void audio.play().catch(() => { if (voice === audio) voice = null })
@@ -31,7 +31,7 @@ export function useCatSounds(scene, action) {
   })
   function visibility() { if (document.hidden) stop() }
   onMounted(() => {
-    observer = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; if (!visible) stop() }, { threshold: .2 })
+    observer = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting && entry.intersectionRatio >= .2; if (!visible) stop() }, { threshold: .2 })
     if (scene.value) observer.observe(scene.value)
     document.addEventListener('pointerdown', unlock, { capture: true })
     document.addEventListener('keydown', unlock, { capture: true })

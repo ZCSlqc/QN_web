@@ -2,7 +2,7 @@
   <Teleport to="body">
     <div v-if="arrivalNotice" class="food-reward-notice" role="status">已放入小窝</div>
     <div v-if="reward" ref="token" class="food-reward-flight" :class="{ 'reward-reduced': reduced, 'message-flight': reward.kind }" :data-stage="reward.kind || 'food'" role="status" aria-live="polite">
-      <img v-if="reward.kind" :src="`/feedback/${reward.kind}-sent.png`" class="message-flight-icon" alt="" />
+      <img v-if="reward.kind" :src="`/shared/feedback/${reward.kind}-sent.png`" class="message-flight-icon" alt="" />
       <template v-else><FoodIcon :kind="reward.food" /><strong>+{{ reward.amount }}</strong></template><span>{{ label }}</span>
     </div>
   </Teleport>
@@ -44,7 +44,7 @@ async function play() {
   if (disposed || current !== generation || !token.value) return
   const target = isDelivery
     ? [...document.querySelectorAll(reward.value.kind === 'letter' ? '.mailbox-trigger' : '.nav-logo')].find(visible) || [...document.querySelectorAll('.nav-logo')].find(visible)
-    : [...document.querySelectorAll('a[href="/cat"]')].find(visible) || [...document.querySelectorAll('.nav-toggle')].find(visible)
+    : [...document.querySelectorAll('a[href="/pet"]')].find(visible) || [...document.querySelectorAll('.nav-toggle')].find(visible)
   const startX = innerWidth / 2, startY = innerHeight / 2
   const box = target?.getBoundingClientRect()
   const dx = box ? box.x + box.width / 2 - startX : 0, dy = box ? box.y + box.height / 2 - startY : 0

@@ -14,7 +14,7 @@
 <script setup>
 import { ref, computed, watch, onUnmounted } from 'vue'
 const props = defineProps({ action: { type: String, default: 'idle' } })
-const paths = { empty: '/pets/liuyi/food/bowl-empty.webp', full: '/pets/liuyi/food/bowl-full.webp', can: '/pets/liuyi/food/can-open.webp', treat: '/pets/liuyi/food/treat-open.webp' }
+const paths = { empty: '/pet/liuyi/food/bowl-empty.webp', full: '/pet/liuyi/food/bowl-full.webp', can: '/pet/liuyi/food/can-open.webp', treat: '/pet/liuyi/food/treat-open.webp' }
 const ready = ref(new Set()), failed = ref(new Set())
 const floorSource = computed(() => props.action === 'kibble' ? paths.full : props.action === 'can' ? paths.can : paths.empty)
 let disposed = false

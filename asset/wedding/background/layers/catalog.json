@@ -1,0 +1,63 @@
+{
+  "reference": "/wedding/background/garden-orthographic.webp",
+  "notes": "Generated extractions: full-canvas alignment is approximate and requires overlay review before integration. Original background still contains these objects; clean plate is not yet made.",
+  "layers": [
+    {
+      "id": "foreground",
+      "image": "/wedding/background/layers/foreground.webp",
+      "width": 1672,
+      "height": 941,
+      "world": {
+        "x": 0,
+        "y": 0,
+        "width": 1600,
+        "height": 900
+      },
+      "alphaBounds": {
+        "x": 0,
+        "y": 587,
+        "width": 1672,
+        "height": 354
+      },
+      "status": "extracted-preview"
+    },
+    {
+      "id": "table-left",
+      "image": "/wedding/background/layers/table-left.webp",
+      "width": 1672,
+      "height": 941,
+      "world": {
+        "x": 0,
+        "y": 0,
+        "width": 1600,
+        "height": 900
+      },
+      "alphaBounds": {
+        "x": 38,
+        "y": 282,
+        "width": 151,
+        "height": 180
+      },
+      "status": "extracted-preview"
+    },
+    {
+      "id": "table-right",
+      "image": "/wedding/background/layers/table-right.webp",
+      "width": 1672,
+      "height": 941,
+      "world": {
+        "x": 0,
+        "y": 0,
+        "width": 1600,
+        "height": 900
+      },
+      "alphaBounds": {
+        "x": 1532,
+        "y": 348,
+        "width": 140,
+        "height": 207
+      },
+      "status": "extracted-preview"
+    }
+  ]
+}

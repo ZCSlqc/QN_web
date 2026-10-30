@@ -10,6 +10,14 @@ CREATE TABLE IF NOT EXISTS user (
     nickname TEXT NOT NULL DEFAULT ''
 );
 
+CREATE TABLE IF NOT EXISTS wedding_wardrobes (
+    user_id TEXT PRIMARY KEY REFERENCES user(id) ON DELETE CASCADE,
+    appearance TEXT,
+    outfits TEXT NOT NULL DEFAULT '[]',
+    revision INTEGER NOT NULL DEFAULT 0,
+    updated_at TEXT NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS things (
     id TEXT PRIMARY KEY NOT NULL DEFAULT (lower(hex(randomblob(4)) || '-' || hex(randomblob(2)) || '-4' || substr(hex(randomblob(2)),2) || '-' || substr('89ab', (random() & 3)+1, 1) || substr(hex(randomblob(2)),2) || '-' || hex(randomblob(6)))),
     entry      TEXT    NOT NULL UNIQUE,
@@ -182,3 +190,24 @@ CREATE INDEX IF NOT EXISTS photos_content_hash ON photos(content_hash,removed);
 CREATE INDEX IF NOT EXISTS photos_journey ON photos(journey_id,removed,created_at);
 
 CREATE UNIQUE INDEX IF NOT EXISTS photos_source_filename ON photos(source, filename);
+
+-- Wedding NPC configuration is independent of pet food/inventory records.
+CREATE TABLE IF NOT EXISTS wedding_cat_npcs (
+    id TEXT PRIMARY KEY CHECK(id IN ('liuyi','anan','guagua','huahua','heihei')),
+    name TEXT NOT NULL,
+    personality TEXT NOT NULL CHECK(personality IN ('clingy','lazy','shy','playful','alert')),
+    rest_weight INTEGER NOT NULL CHECK(rest_weight BETWEEN 0 AND 100),
+    explore_weight INTEGER NOT NULL CHECK(explore_weight BETWEEN 0 AND 100),
+    social_weight INTEGER NOT NULL CHECK(social_weight BETWEEN 0 AND 100),
+    approach_weight INTEGER NOT NULL CHECK(approach_weight BETWEEN 0 AND 100),
+    speed INTEGER NOT NULL CHECK(speed BETWEEN 20 AND 100),
+    roam_radius INTEGER NOT NULL CHECK(roam_radius BETWEEN 60 AND 350),
+    rest_min INTEGER NOT NULL CHECK(rest_min BETWEEN 2 AND 30),
+    rest_max INTEGER NOT NULL CHECK(rest_max BETWEEN 2 AND 40),
+    home_x INTEGER NOT NULL,
+    home_y INTEGER NOT NULL,
+    sort_order INTEGER NOT NULL,
+    updated_at TEXT NOT NULL,
+    CHECK(rest_weight + explore_weight + social_weight + approach_weight = 100),
+    CHECK(rest_min <= rest_max)
+);

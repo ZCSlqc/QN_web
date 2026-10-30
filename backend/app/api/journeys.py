@@ -1,4 +1,4 @@
-from app.core.uuid_ids import inserted_id
+from app.core.uuid_ids import inserted_id, SYSTEM_ID
 import json
 import datetime
 from typing import Optional
@@ -34,14 +34,32 @@ def validate_journey(adcodes, name, departure_date, return_date, notes):
 
 
 @router.get("/journeys")
-def get_journeys():
+def get_journeys(summary: bool = False):
     with get_db() as conn:
-        rows = conn.execute("SELECT * FROM journeys ORDER BY created_at DESC, rowid DESC").fetchall()
-        photos = conn.execute('SELECT * FROM photos WHERE journey_id IS NOT NULL AND removed=0 ORDER BY display_order ASC,created_at ASC,rowid ASC').fetchall()
+        selection = "id,name,adcodes,departure_date,return_date,created_at,updated_at,substr(notes,1,160) AS notes,substr(checkin_points,1,200) AS checkin_points,substr(event,1,120) AS event" if summary else '*'
+        rows = conn.execute(f"SELECT {selection} FROM journeys ORDER BY created_at DESC, rowid DESC").fetchall()
+        photos = conn.execute('WITH ranked AS (SELECT *,ROW_NUMBER() OVER (PARTITION BY journey_id ORDER BY display_order,created_at,rowid) AS rank,COUNT(*) OVER (PARTITION BY journey_id) AS total FROM photos WHERE journey_id IS NOT NULL AND removed=0) SELECT * FROM ranked WHERE rank<=2 ORDER BY journey_id,rank').fetchall()
         grouped = {}
         for photo in photos:
             grouped.setdefault(photo['journey_id'], []).append(photo_payload(photo))
-    return {"data": [journey_payload(row) | {'photo_count': len(grouped.get(row['id'], [])), 'cover': next(iter(grouped.get(row['id'], [])), None), 'cover_photos': grouped.get(row['id'], [])[:2]} for row in rows]}
+        counts = {photo['journey_id']: photo['total'] for photo in photos}
+    return {"data": [journey_payload(row) | {'_summary': summary, 'photo_count': counts.get(row['id'], 0), 'cover': next(iter(grouped.get(row['id'], [])), None), 'cover_photos': grouped.get(row['id'], [])} for row in rows]}
+
+
+@router.get('/journeys/{journey_id}')
+def get_journey(journey_id: str):
+    with get_db() as conn:
+        row = conn.execute('SELECT * FROM journeys WHERE id=?', (journey_id,)).fetchone()
+    if not row:
+        raise HTTPException(404, '旅程记录不存在')
+    return {'data': journey_payload(row)}
+
+
+@router.get('/journey-search')
+def search_journeys(q: str = ''):
+    with get_db() as conn:
+        rows = conn.execute("SELECT id FROM journeys WHERE instr(name || ' ' || COALESCE(checkin_points,'') || ' ' || COALESCE(event,'') || ' ' || COALESCE(notes,''), ?) > 0", (q.strip(),)).fetchall()
+    return {'ids': [row['id'] for row in rows]}
 
 
 @router.get('/journeys/{journey_id}/photos')
@@ -154,6 +172,9 @@ def delete_journey(journey_id: str, current_user: str = Depends(require_admin)):
     with get_db() as conn:
         conn.execute('BEGIN IMMEDIATE')
         photo_ids = [row['id'] for row in conn.execute('SELECT id FROM photos WHERE journey_id=?', (journey_id,))]
+        for plan in conn.execute('SELECT id FROM journey_plans WHERE converted_journey_id=?', (journey_id,)).fetchall():
+            conn.execute("INSERT OR IGNORE INTO idempotent_operations(operation,user_id,request_key,fingerprint,result_id) VALUES ('deleted_plan_conversion',?,?,?,?)", (SYSTEM_ID,plan['id'],'deleted',journey_id))
+        conn.execute('DELETE FROM journey_plans WHERE converted_journey_id=?', (journey_id,))
         conn.execute('UPDATE photos SET removed=1 WHERE journey_id=?', (journey_id,))
         result = conn.execute("DELETE FROM journeys WHERE id=?", (journey_id,))
         if not result.rowcount:
@@ -231,6 +252,8 @@ def convert_plan(plan_id: str, name: str = Form(...), adcodes: str = Form(...),
         conn.execute('BEGIN IMMEDIATE')
         plan = conn.execute('SELECT * FROM journey_plans WHERE id=?', (plan_id,)).fetchone()
         if not plan:
+            if conn.execute("SELECT 1 FROM idempotent_operations WHERE operation='deleted_plan_conversion' AND user_id=? AND request_key=?", (SYSTEM_ID,plan_id)).fetchone():
+                raise HTTPException(410, '这条预定已转换，关联旅程已删除，不能重复转换')
             raise HTTPException(404, '预定旅程不存在')
         if plan['converted_journey_id'] is not None:
             return {'status': 'success', 'id': plan['converted_journey_id']}

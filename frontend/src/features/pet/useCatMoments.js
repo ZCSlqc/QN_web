@@ -60,7 +60,7 @@ export function useCatMoments({ scene, action, walk, reset, say, feeding }) {
   function visibility() { if (document.hidden) pause(); else { schedule(); idleMood() } }
   onMounted(() => {
     observer = new IntersectionObserver(([entry]) => {
-      visible = entry.isIntersecting
+      visible = entry.isIntersecting && entry.intersectionRatio >= .2
       if (!visible) pause()
       else { schedule(); idleMood() }
     }, { threshold: .2 })

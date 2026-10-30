@@ -1,0 +1,99 @@
+[
+  {
+    "id": "formal-template-shirt",
+    "file": "shirt.svg",
+    "slot": "shirt",
+    "width": 153,
+    "height": 174,
+    "formalTemplate": true,
+    "source": "vector_shirts.svg",
+    "paths": [
+      0
+    ],
+    "viewBox": [
+      26.821886,
+      25.35,
+      50.756226,
+      57.901283
+    ]
+  },
+  {
+    "id": "formal-template-sleeve-long",
+    "file": "sleeve-long.svg",
+    "slot": "sleeve",
+    "width": 171,
+    "height": 142,
+    "formalTemplate": true,
+    "source": "vector_shirts.svg",
+    "paths": [
+      7,
+      8,
+      9
+    ],
+    "viewBox": [
+      278.07663,
+      25.35,
+      56.92337,
+      47.15
+    ]
+  },
+  {
+    "id": "formal-template-sleeve-shorter",
+    "file": "sleeve-shorter.svg",
+    "slot": "sleeve",
+    "width": 66,
+    "height": 86,
+    "formalTemplate": true,
+    "source": "vector_shirts.svg",
+    "paths": [
+      13,
+      14,
+      15
+    ],
+    "viewBox": [
+      278.07663,
+      125.35,
+      21.97977,
+      28.5
+    ]
+  },
+  {
+    "id": "formal-template-leg",
+    "file": "leg.svg",
+    "slot": "leg",
+    "width": 111,
+    "height": 166,
+    "formalTemplate": true,
+    "source": "vector_pants.svg",
+    "paths": [
+      12,
+      13,
+      14
+    ],
+    "viewBox": [
+      121.25,
+      96.08767,
+      36.60001,
+      55.11233
+    ]
+  },
+  {
+    "id": "formal-template-pants",
+    "file": "pants.svg",
+    "slot": "pants",
+    "width": 153,
+    "height": 47,
+    "formalTemplate": true,
+    "source": "vector_pants.svg",
+    "paths": [
+      0,
+      1
+    ],
+    "viewBox": [
+      106.8,
+      40.85,
+      50.9,
+      15.25
+    ]
+  }
+]

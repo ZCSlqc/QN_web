@@ -12,7 +12,7 @@ def pet_pair(api, monkeypatch):
         result = client.post('/register_process', data={'username': name, 'userpwd': 'cat-password', 'checkcode': module.settings.CHECK_CODE})
         auth[name] = {'Authorization': 'Bearer ' + result.json()['token']}
     monkeypatch.setattr(module.settings, 'ADMIN_USERS', frozenset({'养猫甲', '养猫乙'}))
-    monkeypatch.setattr(module.settings, 'USER_PAGE_ALLOWLIST', frozenset({'/index', '/cat'}))
+    monkeypatch.setattr(module.settings, 'USER_PAGE_ALLOWLIST', frozenset({'/index', '/pet'}))
     return client, module, auth
 
 
@@ -40,7 +40,7 @@ def test_shared_weather_is_validated_persistent_and_admin_only(pet_pair):
 
 def test_backpack_is_admin_only_and_new_food_is_not_seeded(pet_pair):
     client, module, auth = pet_pair
-    assert client.get('/pet').json()['inventory'] is None
+    assert client.get('/pet').status_code == 401
     assert client.get('/pet', headers=auth['访客']).json()['inventory'] is None
     admin = client.get('/pet', headers=auth['养猫甲']).json()
     assert admin['inventory'] == {'treat': 0, 'kibble': 0, 'can': 0}
@@ -120,4 +120,4 @@ def test_invalid_food_does_not_change_inventory(pet_pair):
     client, _, auth = pet_pair
     for data in [{'food': 'unknown', 'request_key': uuid.uuid4().hex}, {'food': 'treat', 'request_key': 'bad'}]:
         assert client.post('/pet/feed', data=data, headers=auth['养猫甲']).status_code == 400
-    assert client.get('/pet').json()['feed_count'] == 0
+    assert client.get('/pet', headers=auth['养猫甲']).json()['feed_count'] == 0

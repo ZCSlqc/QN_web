@@ -1,9 +1,9 @@
 import { test, expect } from '../fixtures/app.mjs'
 
 test('walk keeps its position across styles; petting stops it and shows a real hand', async ({ page, app }) => {
-  app.allowedPages = ['/index', '/cat']
+  app.allowedPages = ['/index', '/pet']
   await page.clock.install()
-  await page.goto('/cat')
+  await page.goto('/pet')
   const room = page.locator('.pet-room')
   await room.scrollIntoViewIfNeeded()
   await expect(page.locator('.cat-frame')).toBeVisible()
@@ -22,9 +22,9 @@ test('walk keeps its position across styles; petting stops it and shows a real h
 
 test('sleep shows only head at the home; style and feeding wake-up share the state', async ({ page, app }, testInfo) => {
   app.admin = true; app.petCanFeed = true
-  app.allowedPages = ['/index', '/cat']
+  app.allowedPages = ['/index', '/pet']
   await page.clock.install()
-  await page.goto('/cat')
+  await page.goto('/pet')
   await expect(page.getByRole('button', { name: '休息一下', exact: true })).toHaveCount(0)
   await page.emulateMedia({ reducedMotion: 'reduce' })
   await expect(page.locator('.cat-wrap')).toHaveClass(/\bidle\b/)
@@ -45,9 +45,9 @@ test('sleep shows only head at the home; style and feeding wake-up share the sta
 })
 
 test('mouse runs along the floor; toy changes cancel chasing; mobile sleep fits', async ({ page, app }, testInfo) => {
-  app.allowedPages = ['/index', '/cat']
+  app.allowedPages = ['/index', '/pet']
   await page.clock.install()
-  await page.goto('/cat')
+  await page.goto('/pet')
   await page.getByRole('button', { name: '玩具老鼠', exact: true }).click()
   const mouse = page.locator('.toy-mouse')
   await expect(mouse).toBeVisible()

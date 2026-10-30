@@ -2,7 +2,7 @@ import { test, expect } from '../fixtures/app.mjs'
 
 test('owners choose persistent weather; visitors see rain without controls', async ({ page, app }, testInfo) => {
   app.admin = true
-  await page.goto('/cat')
+  await page.goto('/pet')
   await expect(page.locator('.weather-control button')).toHaveCount(3)
   await expect(page.getByRole('button', { name: '晴天', exact: true })).toHaveCSS('background-color', 'rgba(0, 0, 0, 0)')
   await page.getByRole('button', { name: '阴天', exact: true }).click()
@@ -14,7 +14,7 @@ test('owners choose persistent weather; visitors see rain without controls', asy
   await page.reload()
   await expect(page.locator('.pet-room')).toHaveClass(/rainy-room/)
   await page.screenshot({ path: testInfo.outputPath('rain-room.png') })
-  app.admin = false; app.allowedPages = ['/cat']
+  app.admin = false; app.allowedPages = ['/pet']
   await page.reload()
   await expect(page.getByRole('button', { name: '雨天', exact: true })).toHaveAttribute('aria-pressed', 'true')
   for (const name of ['晴天', '阴天', '雨天']) await expect(page.getByRole('button', { name, exact: true })).toBeDisabled()
@@ -31,7 +31,7 @@ test('owners choose persistent weather; visitors see rain without controls', asy
 test('weather remains clickable where the cat overlaps it without triggering petting', async ({ page, app }) => {
   app.admin = true
   await page.setViewportSize({ width: 320, height: 844 })
-  await page.goto('/cat')
+  await page.goto('/pet')
   await page.locator('.pet-room').scrollIntoViewIfNeeded()
   await expect(page.locator('.cat-frame')).toBeVisible()
   const rain = page.getByRole('button', { name: '雨天', exact: true })
@@ -45,28 +45,34 @@ test('weather remains clickable where the cat overlaps it without triggering pet
 })
 
 test('sleep remaining time survives leaving the scene', async ({ page, app }) => {
-  app.allowedPages = ['/cat']
+  app.allowedPages = ['/pet']
   await page.addInitScript(() => { Math.random = () => .5 })
   await page.emulateMedia({ reducedMotion: 'reduce' })
   await page.clock.install()
-  await page.goto('/cat')
+  await page.goto('/pet')
   await page.locator('.pet-room').scrollIntoViewIfNeeded()
   await page.clock.runFor(80000)
   await expect(page.locator('.sleeping-cat')).toBeVisible()
   await page.clock.runFor(40000)
+  // The compact desktop layout can keep the room visible at the page footer.
+  // Leave a full viewport below it so this exercises a truly hidden scene.
+  await page.locator('.pet-footer').evaluate(el => { el.style.marginTop = '100vh' })
   await page.locator('.pet-footer').scrollIntoViewIfNeeded()
+  await expect.poll(() => page.locator('.pet-room').evaluate(el => el.getBoundingClientRect().bottom)).toBeLessThan(0)
   await page.waitForTimeout(200)
   await page.clock.runFor(120000)
   await page.locator('.pet-room').scrollIntoViewIfNeeded()
   await page.waitForTimeout(200)
   await expect(page.locator('.sleeping-cat')).toBeVisible()
-  await page.clock.runFor(32000)
+  await page.clock.runFor(28000)
+  await expect(page.locator('.sleeping-cat')).toBeVisible()
+  await page.clock.runFor(8000)
   await expect(page.locator('.sleeping-cat')).toHaveCount(0)
 })
 
 test('paid meal resumes after walking is interrupted offscreen', async ({ page, app }) => {
   app.admin = true; app.petCanFeed = true
-  await page.goto('/cat')
+  await page.goto('/pet')
   await page.waitForFunction(() => document.querySelector('.pet-room')?.__vueParentComponent?.setupState.walk.ready.value.realistic)
   await page.locator('.pet-room').click({ position: { x: 230, y: 490 } })
   await expect(page.locator('.cat-sprite')).toHaveAttribute('data-walking', 'true')

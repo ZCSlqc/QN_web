@@ -60,7 +60,7 @@
         <input id="photo-caption" v-model="caption" maxlength="100" :disabled="uploading" placeholder="记录这一刻的心情…" class="caption-input" />
         <p v-if="summary" class="upload-summary" role="status">{{ summary }}</p>
         <footer>
-          <button class="upload-secondary" :disabled="uploading" @click="showUpload = false">{{ queue.length && pendingCount === 0 ? '完成' : '取消' }}</button>
+          <button class="upload-secondary" :disabled="uploading" @click="showUpload = false">{{ (queue.length || summary) && pendingCount === 0 ? '完成' : '取消' }}</button>
           <button class="upload-primary" :disabled="uploading || !pendingCount || !isAdmin" @click="uploadFiles">{{ uploading ? '正在上传…' : `上传${pendingCount ? ` ${pendingCount} 张` : ''}` }}</button>
         </footer>
       </div>
@@ -181,6 +181,14 @@ async function uploadFiles() {
   if (!props.isAdmin) { showUpload.value = false; return }
   const completed = queue.value.filter(item => item.status === 'done').length
   summary.value = `已上传 ${completed} 张${pendingCount.value ? `，还有 ${pendingCount.value} 张未完成，可重试或移除。` : '，照片已加入相册。'}`
+  const completedKeys = new Set(queue.value.filter(item => item.status === 'done').map(item => item.key))
+  setTimeout(() => {
+    if (disposed) return
+    queue.value = queue.value.filter(item => {
+      if (completedKeys.has(item.key)) { URL.revokeObjectURL(item.preview); return false }
+      return true
+    })
+  }, 2000)
 }
 async function deletePhoto(photo) {
   if (deleting.value !== null || uploading.value || !canEdit.value) return

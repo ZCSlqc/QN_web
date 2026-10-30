@@ -59,6 +59,8 @@ class Settings:
     CHECK_CODE = os.environ.get("QN_CHECK_CODE", "").strip()
     CHECK_CODE_FROM_ENV = CHECK_CODE_FROM_ENV
     ADMIN_USERS = configured_owners()
+    WEDDING_GROOM_USER = os.environ.get('QN_WEDDING_GROOM_USER', '李琪淳').strip()
+    WEDDING_BRIDE_USER = os.environ.get('QN_WEDDING_BRIDE_USER', '郑丹妮').strip()
     USER_PAGE_ALLOWLIST = configured_user_pages()
 
     # JWT 配置

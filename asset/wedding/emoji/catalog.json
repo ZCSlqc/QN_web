@@ -1,0 +1,524 @@
+[
+  {
+    "id": "emoji-smile",
+    "name": "暖暖微笑",
+    "label": "暖暖微笑",
+    "featured": false,
+    "slot": "emojiHead",
+    "file": "smile.webp",
+    "width": 256,
+    "height": 256,
+    "contentSize": 224,
+    "anchor": {
+      "x": 128,
+      "y": 248
+    },
+    "backFile": "yellow-back.webp",
+    "original": "artifacts/emojiHead/812462da-83d5-41e3-baa5-7dd5ee169e9a.webp",
+    "source": "wedding/emoji/sources/smile.webp"
+  },
+  {
+    "id": "emoji-laugh",
+    "name": "笑弯了眼",
+    "label": "笑弯了眼",
+    "featured": false,
+    "slot": "emojiHead",
+    "file": "laugh.webp",
+    "width": 256,
+    "height": 256,
+    "contentSize": 224,
+    "anchor": {
+      "x": 128,
+      "y": 248
+    },
+    "backFile": "yellow-back.webp",
+    "original": "artifacts/emojiHead/9317c0a3-26fd-464e-bf3b-2a721259fc29.webp",
+    "source": "wedding/emoji/sources/laugh.webp"
+  },
+  {
+    "id": "emoji-grin",
+    "name": "开怀大笑",
+    "label": "开怀大笑",
+    "featured": false,
+    "slot": "emojiHead",
+    "file": "grin.webp",
+    "width": 256,
+    "height": 256,
+    "contentSize": 224,
+    "anchor": {
+      "x": 128,
+      "y": 248
+    },
+    "backFile": "yellow-back.webp",
+    "original": "artifacts/emojiHead/3f3a04ec-aac3-4725-a51c-2ebb9687bfaf.webp",
+    "source": "wedding/emoji/sources/grin.webp"
+  },
+  {
+    "id": "emoji-wink",
+    "name": "默契眨眼",
+    "label": "默契眨眼",
+    "featured": false,
+    "slot": "emojiHead",
+    "file": "wink.webp",
+    "width": 256,
+    "height": 256,
+    "contentSize": 224,
+    "anchor": {
+      "x": 128,
+      "y": 248
+    },
+    "backFile": "yellow-back.webp",
+    "original": "artifacts/emojiHead/7e110a44-acff-4386-8781-46d4628d2a5e.webp",
+    "source": "wedding/emoji/sources/wink.webp"
+  },
+  {
+    "id": "emoji-yummy",
+    "name": "美味满足",
+    "label": "美味满足",
+    "featured": false,
+    "slot": "emojiHead",
+    "file": "yummy.webp",
+    "width": 256,
+    "height": 256,
+    "contentSize": 224,
+    "anchor": {
+      "x": 128,
+      "y": 248
+    },
+    "backFile": "yellow-back.webp",
+    "original": "artifacts/emojiHead/02ca344a-ce50-4467-9760-b3e46305ce24.webp",
+    "source": "wedding/emoji/sources/yummy.webp"
+  },
+  {
+    "id": "emoji-tongue",
+    "name": "开心吐舌",
+    "label": "开心吐舌",
+    "featured": false,
+    "slot": "emojiHead",
+    "file": "tongue.webp",
+    "width": 256,
+    "height": 256,
+    "contentSize": 224,
+    "anchor": {
+      "x": 128,
+      "y": 248
+    },
+    "backFile": "yellow-back.webp",
+    "original": "artifacts/emojiHead/212d186e-25ff-48fc-a572-8a740506fa5a.webp",
+    "source": "wedding/emoji/sources/tongue.webp"
+  },
+  {
+    "id": "emoji-wink-tongue",
+    "name": "调皮眨眼",
+    "label": "调皮眨眼",
+    "featured": false,
+    "slot": "emojiHead",
+    "file": "wink-tongue.webp",
+    "width": 256,
+    "height": 256,
+    "contentSize": 224,
+    "anchor": {
+      "x": 128,
+      "y": 248
+    },
+    "backFile": "yellow-back.webp",
+    "original": "artifacts/emojiHead/6b30959c-9c83-4498-acee-b94d9ae2e7f1.webp",
+    "source": "wedding/emoji/sources/wink-tongue.webp"
+  },
+  {
+    "id": "emoji-goofy",
+    "name": "搞怪吐舌",
+    "label": "搞怪吐舌",
+    "featured": true,
+    "slot": "emojiHead",
+    "file": "goofy.webp",
+    "width": 256,
+    "height": 256,
+    "contentSize": 224,
+    "anchor": {
+      "x": 128,
+      "y": 248
+    },
+    "backFile": "yellow-back.webp",
+    "original": "artifacts/emojiHead/75149bfe-a125-4a0f-a886-cd8f4257f35b.webp",
+    "source": "wedding/emoji/sources/goofy.webp"
+  },
+  {
+    "id": "emoji-drooling",
+    "name": "馋到流口水",
+    "label": "馋到流口水",
+    "featured": false,
+    "slot": "emojiHead",
+    "file": "drooling.webp",
+    "width": 256,
+    "height": 256,
+    "contentSize": 224,
+    "anchor": {
+      "x": 128,
+      "y": 248
+    },
+    "backFile": "yellow-back.webp",
+    "original": "artifacts/emojiHead/1f3850e8-4387-4e13-b5dc-3c31f96aba51.webp",
+    "source": "wedding/emoji/sources/drooling.webp"
+  },
+  {
+    "id": "emoji-pucker",
+    "name": "嘟嘴亲亲",
+    "label": "嘟嘴亲亲",
+    "featured": false,
+    "slot": "emojiHead",
+    "file": "pucker.webp",
+    "width": 256,
+    "height": 256,
+    "contentSize": 224,
+    "anchor": {
+      "x": 128,
+      "y": 248
+    },
+    "backFile": "yellow-back.webp",
+    "original": "artifacts/emojiHead/2553b944-e93b-4f59-8334-d006e288994f.webp",
+    "source": "wedding/emoji/sources/pucker.webp"
+  },
+  {
+    "id": "emoji-kiss",
+    "name": "飞吻",
+    "label": "飞吻",
+    "featured": true,
+    "slot": "emojiHead",
+    "file": "kiss.webp",
+    "width": 256,
+    "height": 256,
+    "contentSize": 224,
+    "anchor": {
+      "x": 128,
+      "y": 248
+    },
+    "backFile": "yellow-back.webp",
+    "original": "artifacts/emojiHead/be372800-4e03-4895-a211-3a304d178a9b.webp",
+    "source": "wedding/emoji/sources/kiss.webp"
+  },
+  {
+    "id": "emoji-loved",
+    "name": "被爱包围",
+    "label": "被爱包围",
+    "featured": true,
+    "slot": "emojiHead",
+    "file": "loved.webp",
+    "width": 256,
+    "height": 256,
+    "contentSize": 224,
+    "anchor": {
+      "x": 128,
+      "y": 248
+    },
+    "backFile": "yellow-back.webp",
+    "original": "artifacts/emojiHead/21dae628-b75a-4622-b08a-71d04ac74e13.webp",
+    "source": "wedding/emoji/sources/loved.webp"
+  },
+  {
+    "id": "emoji-heart-eyes",
+    "name": "心动眼神",
+    "label": "心动眼神",
+    "featured": false,
+    "slot": "emojiHead",
+    "file": "heart-eyes.webp",
+    "width": 256,
+    "height": 256,
+    "contentSize": 224,
+    "anchor": {
+      "x": 128,
+      "y": 248
+    },
+    "backFile": "yellow-back.webp",
+    "original": "artifacts/emojiHead/c1769a83-bb73-4c75-af27-dfdcb8d1aaab.webp",
+    "source": "wedding/emoji/sources/heart-eyes.webp"
+  },
+  {
+    "id": "emoji-star-eyes",
+    "name": "满眼星星",
+    "label": "满眼星星",
+    "featured": true,
+    "slot": "emojiHead",
+    "file": "star-eyes.webp",
+    "width": 256,
+    "height": 256,
+    "contentSize": 224,
+    "anchor": {
+      "x": 128,
+      "y": 248
+    },
+    "backFile": "yellow-back.webp",
+    "original": "artifacts/emojiHead/e6a35279-aaa8-43d6-89e4-8b55d1cbc898.webp",
+    "source": "wedding/emoji/sources/star-eyes.webp"
+  },
+  {
+    "id": "emoji-happy-tears",
+    "name": "感动泪目",
+    "label": "感动泪目",
+    "featured": true,
+    "slot": "emojiHead",
+    "file": "happy-tears.webp",
+    "width": 256,
+    "height": 256,
+    "contentSize": 224,
+    "anchor": {
+      "x": 128,
+      "y": 248
+    },
+    "backFile": "yellow-back.webp",
+    "original": "artifacts/emojiHead/767a5d12-432f-4926-9e9a-02cd9533296d.webp",
+    "source": "wedding/emoji/sources/happy-tears.webp"
+  },
+  {
+    "id": "emoji-single-tear",
+    "name": "含泪微笑",
+    "label": "含泪微笑",
+    "featured": false,
+    "slot": "emojiHead",
+    "file": "single-tear.webp",
+    "width": 256,
+    "height": 256,
+    "contentSize": 224,
+    "anchor": {
+      "x": 128,
+      "y": 248
+    },
+    "backFile": "yellow-back.webp",
+    "original": "artifacts/emojiHead/e454812e-cdd4-4d73-b183-35811ea6a6e6.webp",
+    "source": "wedding/emoji/sources/single-tear.webp"
+  },
+  {
+    "id": "emoji-blank",
+    "name": "突然呆住",
+    "label": "突然呆住",
+    "featured": false,
+    "slot": "emojiHead",
+    "file": "blank.webp",
+    "width": 256,
+    "height": 256,
+    "contentSize": 224,
+    "anchor": {
+      "x": 128,
+      "y": 248
+    },
+    "backFile": "yellow-back.webp",
+    "original": "artifacts/emojiHead/2fc8e2d7-f7de-4da7-a393-5ef7837500b7.webp",
+    "source": "wedding/emoji/sources/blank.webp"
+  },
+  {
+    "id": "emoji-invisible",
+    "name": "隐身一下",
+    "label": "隐身一下",
+    "featured": false,
+    "slot": "emojiHead",
+    "file": "invisible.webp",
+    "width": 256,
+    "height": 256,
+    "contentSize": 224,
+    "anchor": {
+      "x": 128,
+      "y": 248
+    },
+    "backFile": "invisible-back.webp",
+    "original": "artifacts/emojiHead/f54eb055-704b-4fd2-815e-44050148a9ef.webp",
+    "source": "wedding/emoji/sources/invisible.webp"
+  },
+  {
+    "id": "emoji-glasses",
+    "name": "眼镜学霸",
+    "label": "眼镜学霸",
+    "featured": false,
+    "slot": "emojiHead",
+    "file": "glasses.webp",
+    "width": 256,
+    "height": 256,
+    "contentSize": 224,
+    "anchor": {
+      "x": 128,
+      "y": 248
+    },
+    "backFile": "yellow-back.webp",
+    "original": "artifacts/emojiHead/5edc315a-7950-47c6-abc7-b92e4319ab6d.webp",
+    "source": "wedding/emoji/sources/glasses.webp"
+  },
+  {
+    "id": "emoji-monocle",
+    "name": "认真研究",
+    "label": "认真研究",
+    "featured": false,
+    "slot": "emojiHead",
+    "file": "monocle.webp",
+    "width": 256,
+    "height": 256,
+    "contentSize": 224,
+    "anchor": {
+      "x": 128,
+      "y": 248
+    },
+    "backFile": "yellow-back.webp",
+    "original": "artifacts/emojiHead/fd10cdb9-fee9-428c-b4c5-b3f724036e0c.webp",
+    "source": "wedding/emoji/sources/monocle.webp"
+  },
+  {
+    "id": "emoji-disguise",
+    "name": "胡子伪装",
+    "label": "胡子伪装",
+    "featured": false,
+    "slot": "emojiHead",
+    "file": "disguise.webp",
+    "width": 256,
+    "height": 256,
+    "contentSize": 224,
+    "anchor": {
+      "x": 128,
+      "y": 248
+    },
+    "backFile": "yellow-back.webp",
+    "original": "artifacts/emojiHead/58898fdd-d114-46b7-a17e-3aba51fff6da.webp",
+    "source": "wedding/emoji/sources/disguise.webp"
+  },
+  {
+    "id": "emoji-cool",
+    "name": "墨镜大佬",
+    "label": "墨镜大佬",
+    "featured": true,
+    "slot": "emojiHead",
+    "file": "cool.webp",
+    "width": 256,
+    "height": 256,
+    "contentSize": 224,
+    "anchor": {
+      "x": 128,
+      "y": 248
+    },
+    "backFile": "yellow-back.webp",
+    "original": "artifacts/emojiHead/ddcac224-e7ab-4a2d-aa4c-50fb5f283398.webp",
+    "source": "wedding/emoji/sources/cool.webp"
+  },
+  {
+    "id": "emoji-money",
+    "name": "发财啦",
+    "label": "发财啦",
+    "featured": false,
+    "slot": "emojiHead",
+    "file": "money.webp",
+    "width": 256,
+    "height": 256,
+    "contentSize": 224,
+    "anchor": {
+      "x": 128,
+      "y": 248
+    },
+    "backFile": "yellow-back.webp",
+    "original": "artifacts/emojiHead/3f07805c-4513-4d16-bd0f-f2593f2bdfc5.webp",
+    "source": "wedding/emoji/sources/money.webp"
+  },
+  {
+    "id": "emoji-angel",
+    "name": "乖乖天使",
+    "label": "乖乖天使",
+    "featured": false,
+    "slot": "emojiHead",
+    "file": "angel.webp",
+    "width": 256,
+    "height": 256,
+    "contentSize": 224,
+    "anchor": {
+      "x": 128,
+      "y": 248
+    },
+    "backFile": "yellow-back.webp",
+    "original": "artifacts/emojiHead/18224430-4aaf-4b32-b88d-bb5319375459.webp",
+    "source": "wedding/emoji/sources/angel.webp"
+  },
+  {
+    "id": "emoji-party",
+    "name": "派对主角",
+    "label": "派对主角",
+    "featured": true,
+    "slot": "emojiHead",
+    "file": "party.webp",
+    "width": 256,
+    "height": 256,
+    "contentSize": 224,
+    "anchor": {
+      "x": 128,
+      "y": 248
+    },
+    "backFile": "party-back.webp",
+    "original": "artifacts/emojiHead/fb00755b-8d5e-4e49-868f-5509db956945.webp",
+    "source": "wedding/emoji/sources/party.webp"
+  },
+  {
+    "id": "emoji-little-devil",
+    "name": "小恶魔",
+    "label": "小恶魔",
+    "featured": false,
+    "slot": "emojiHead",
+    "file": "little-devil.webp",
+    "width": 256,
+    "height": 256,
+    "contentSize": 224,
+    "anchor": {
+      "x": 128,
+      "y": 248
+    },
+    "backFile": "little-devil-back.webp",
+    "original": "artifacts/emojiHead/19719e38-09a3-4c7b-b0ec-c526df4dfefb.webp",
+    "source": "wedding/emoji/sources/little-devil.webp"
+  },
+  {
+    "id": "emoji-freezing",
+    "name": "冻得发抖",
+    "label": "冻得发抖",
+    "featured": false,
+    "slot": "emojiHead",
+    "file": "freezing.webp",
+    "width": 256,
+    "height": 256,
+    "contentSize": 224,
+    "anchor": {
+      "x": 128,
+      "y": 248
+    },
+    "backFile": "freezing-back.webp",
+    "original": "artifacts/emojiHead/5b2f9ed1-8e08-4f1e-bbf0-bbb36082ed4e.webp",
+    "source": "wedding/emoji/sources/freezing.webp"
+  },
+  {
+    "id": "emoji-mind-blown",
+    "name": "惊到冒烟",
+    "label": "惊到冒烟",
+    "featured": true,
+    "slot": "emojiHead",
+    "file": "mind-blown.webp",
+    "width": 256,
+    "height": 256,
+    "contentSize": 224,
+    "anchor": {
+      "x": 128,
+      "y": 248
+    },
+    "backFile": "mind-blown-back.webp",
+    "original": "artifacts/emojiHead/46fc5286-ecf7-427f-905a-5b9abea9300f.webp",
+    "source": "wedding/emoji/sources/mind-blown.webp"
+  },
+  {
+    "id": "emoji-secret",
+    "name": "秘密",
+    "label": "秘密",
+    "featured": false,
+    "slot": "emojiHead",
+    "file": "secret.webp",
+    "width": 256,
+    "height": 256,
+    "contentSize": 224,
+    "anchor": {
+      "x": 128,
+      "y": 248
+    },
+    "backFile": "secret-back.webp",
+    "original": "artifacts/emojiHead/0de862d7-c7b9-40b6-a84c-2ca0b591586b.webp",
+    "source": "wedding/emoji/sources/secret.webp"
+  }
+]

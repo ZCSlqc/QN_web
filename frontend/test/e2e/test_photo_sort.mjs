@@ -3,7 +3,7 @@ import { test, expect } from '../fixtures/app.mjs'
 test('direct dragging saves automatically and the compact menu sets a cover', async ({ page, app }) => {
   app.admin = true
   let saved, uploads = 0
-  const photos = [1,2,3].map(id => ({ id: String(id), caption: `照片${id}`, thumbnail_url: '/avatars/qiqi.webp' }))
+  const photos = [1,2,3].map(id => ({ id: String(id), caption: `照片${id}`, thumbnail_url: '/index/avatars/qiqi.webp' }))
   await page.route('**/api/journeys/1/photos', route => {
     if (route.request().method() === 'POST') uploads++
     return route.fulfill({ json: { data: photos } })
@@ -24,7 +24,7 @@ test('direct dragging saves automatically and the compact menu sets a cover', as
 
 test('failed automatic save restores order and normal photo controls', async ({ page, app }) => {
   app.admin = true
-  const photos = [1,2].map(id => ({ id: String(id), caption: `照片${id}`, thumbnail_url: '/avatars/qiqi.webp' }))
+  const photos = [1,2].map(id => ({ id: String(id), caption: `照片${id}`, thumbnail_url: '/index/avatars/qiqi.webp' }))
   await page.route('**/api/journeys/1/photos', route => route.fulfill({ json: { data: photos } }))
   await page.route('**/api/journeys/1/photo-order', route => route.fulfill({ status: 409, json: { detail: '照片列表已变化，请刷新' } }))
   await page.goto('/journey')
@@ -33,4 +33,19 @@ test('failed automatic save restores order and normal photo controls', async ({ 
   await expect(page.locator('.el-message--error')).toContainText('照片列表已变化')
   await expect(page.locator('.photo-grid figure').first()).toHaveAttribute('data-photo-id','1')
   await expect(page.getByRole('button', { name: '关闭回忆' })).toBeEnabled()
+})
+
+test('lost save response is confirmed by reading server order', async ({ page, app }) => {
+  app.admin = true
+  let photos = [1,2].map(id => ({ id: String(id), caption: `照片${id}`, thumbnail_url: '/index/avatars/qiqi.webp' }))
+  await page.route('**/api/journeys/1/photos', route => route.fulfill({ json: { data: photos } }))
+  await page.route('**/api/journeys/1/photo-order', route => {
+    photos = route.request().postDataJSON().ids.map(id => photos.find(photo => photo.id === id))
+    return route.abort()
+  })
+  await page.goto('/journey')
+  await page.getByRole('button', { name: '翻开这段回忆 →' }).click()
+  await page.locator('[data-photo-id="1"]').dragTo(page.locator('[data-photo-id="2"]'))
+  await expect(page.locator('.el-message--success')).toContainText('照片顺序已保存')
+  await expect(page.locator('.photo-grid figure').first()).toHaveAttribute('data-photo-id','2')
 })

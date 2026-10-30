@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="210" viewBox="-150 -190 300 210"><!-- Derived from original Kenney modular SVG geometry. No nonuniform scaling. --><path d="M-72 -183 H72 Q89 -104 115 -28 Q0 -9 -115 -28 Q-89 -104 -72 -183Z" fill="#dec299" /><g style="fill:#dec299"><svg x="-76.5" y="-190" xmlns="http://www.w3.org/2000/svg" width="153" height="47" viewBox="106.8 40.85 50.9 15.25">
+<!-- Original Kenney SVG paths; crop only, no silhouette changes. -->
+<path fill="#dec299" d="M156 44.05 Q145.05 48.15 132.25 47.55 119.45 48.15 108.5 44.05 L108.5 40.85 Q120.1 42.75 131.75 42.7 L132.25 42.7 132.75 42.7 Q144.4 42.75 156 40.85 L156 44.05"/>
+<path fill="#dec299" d="M156 44.05 L157.7 48.45 Q147.9 56.1 132.5 56.1 116.6 56.1 106.8 48.45 L108.5 44.05 Q119.45 48.15 132.25 47.55 145.05 48.15 156 44.05"/>
+</svg>
+</g><path d="M-57 -171 L-39 -171 L-67 -23 L-96 -26Z" fill="#ae8465" /><path d="M34 -171 L45 -171 L74 -23 L48 -19Z" fill="#fff1d3" /><path d="M-113 -34 Q0 -15 113 -34 L115 -28 Q0 -9 -115 -28Z" fill="#f8e7bf" /></svg>

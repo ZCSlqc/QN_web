@@ -6,6 +6,7 @@ import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { fileURLToPath } from 'node:url'
 import { staticTransfer } from './scripts/static-transfer.mjs'
+import { publicCache } from './scripts/public-cache.mjs'
 
 export default defineConfig(({ mode }) => {
   // Read server-side configuration without exposing it as VITE_* client variables.
@@ -16,7 +17,7 @@ export default defineConfig(({ mode }) => {
     return value
   }
   return {
-  plugins: [vue(), staticTransfer()],
+  plugins: [vue(), staticTransfer(), publicCache()],
 
   resolve: {
     alias: {
@@ -26,6 +27,8 @@ export default defineConfig(({ mode }) => {
   },
 
   server: {
+    // Avoid localhost resolving to IPv6-only ::1 on Windows.
+    host: '127.0.0.1',
     allowedHosts: (process.env.QN_ALLOWED_HOSTS || env.QN_ALLOWED_HOSTS || '').split(',').map(host => host.trim()).filter(Boolean),
     port: port('QN_FRONTEND_PORT', 7721),
     strictPort: true,  // 前端开发服务器端口

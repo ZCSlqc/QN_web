@@ -24,7 +24,9 @@ const routes = [
   { path: '/register', name: 'Register', component: Register },
   { path: '/index',    name: 'Index',    component: Index },
   { path: '/journey',  name: 'Journey',  component: Journey },
-  { path: '/cat',      name: 'Pet',      component: Pet },
+  { path: '/wedding', name: 'Wedding', component: () => import('../views/WeddingView.vue') },
+  { path: '/wedding/rig', name: 'WeddingRig', component: () => import('../views/WeddingRigView.vue'), meta:{adminOnly:true} },
+  { path: '/pet',      name: 'Pet',      component: Pet },
   { path: '/admin',    name: 'Admin',    component: Admin },
   { path: '/:pathMatch(.*)*', redirect: '/index' },
 ]
@@ -51,7 +53,8 @@ router.beforeEach(async (to) => {
       return authPage ? true : { path: '/login', replace: true }
     }
     setPageAccess(data)
-    if (authPage || (to.path !== '/index' && !canVisitPage(to.path, data.is_admin))) return { path: '/index', replace: true }
+    if(to.meta.adminOnly&&data.is_admin!==true)return {path:'/index',replace:true}
+    if (authPage || (to.path !== '/index' && !canVisitPage(to.path === '/wedding/rig' ? '/wedding' : to.path, data.is_admin))) return { path: '/index', replace: true }
     return true
   } catch {
     setPageAccess(null)

@@ -10,6 +10,7 @@ def guest(client, module, name='guest'):
 def test_daily_reward_retry_timezone_and_individual_balances(api, monkeypatch):
     client, module = api
     import app.api.blessings as blessings
+    monkeypatch.setattr(module.settings, 'USER_PAGE_ALLOWLIST', frozenset(['/index', '/pet']))
     headers = guest(client, module)
     other = guest(client, module, 'other')
     monkeypatch.setattr(blessings, 'bj_time', lambda: '2026-10-28 23:59:59')
@@ -34,7 +35,8 @@ def test_daily_reward_retry_timezone_and_individual_balances(api, monkeypatch):
 
 def test_concurrent_awards_and_reward_feeding_never_double_spend(api, monkeypatch):
     client, module = api
-    monkeypatch.setattr(module.settings, 'USER_PAGE_ALLOWLIST', frozenset(['/index', '/cat']))
+    monkeypatch.setattr(module.settings, 'USER_PAGE_ALLOWLIST', frozenset(['/index', '/pet']))
+    monkeypatch.setattr(module.settings, 'USER_PAGE_ALLOWLIST', frozenset(['/index', '/pet']))
     headers = guest(client, module)
     def comment(i):
         return client.post('/blessings', data={'content': f'祝福{i}'}, headers=headers).json()['treat_reward']

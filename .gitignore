@@ -63,3 +63,8 @@ Thumbs.db
 Desktop.ini
 
 # asset/, frontend/public/, lockfiles and test fixtures are intentionally tracked.
+
+# Regenerable photo previews; keep original files and upload thumbnails versioned.
+/backend/uploads/**/small.webp
+/backend/uploads/**/cover.webp
+/backend/uploads/**/display.webp

@@ -197,7 +197,17 @@ const saving = ref(false)
 function newRequestKey() { return Array.from(crypto.getRandomValues(new Uint8Array(16)), b => b.toString(16).padStart(2, '0')).join('') }
 let journeyRequestKey = newRequestKey()
 const search = ref('')
-watch(search, () => { showAll.value = false })
+const searchMatches = ref(null)
+let searchTimer, searchGeneration = 0
+watch(search, value => {
+  showAll.value = false; searchMatches.value = null; clearTimeout(searchTimer)
+  const version = ++searchGeneration
+  if (!value.trim()) return
+  searchTimer = setTimeout(async () => {
+    try { const { data } = await axios.get('/journey-search', { params: { q: value.trim() }, signal: controller.signal }); if (!disposed && version === searchGeneration) searchMatches.value = new Set(data.ids) }
+    catch { if (!disposed && version === searchGeneration) ElMessage.error('完整搜索暂不可用，当前仅搜索摘要') }
+  }, 250)
+})
 const modalVisible = ref(false)
 const currentAdcode = ref('')
 const formName = ref([])
@@ -232,7 +242,7 @@ async function loadCityOptions() {
   if (citiesLoading.value) return
   citiesLoading.value = true; citiesError.value = false
   try {
-    const [cities, provinces] = await Promise.all([readGeo('/maps/china/city.geojson'), readGeo('/maps/china/province.geojson')])
+    const [cities, provinces] = await Promise.all([readGeo('/journey/maps/china/city.geojson'), readGeo('/journey/maps/china/province.geojson')])
     if (disposed) return
     const options = new Map()
     provinceOptions.value = provinces.features.filter(f => /^\d{6}$/.test(String(f.properties.adcode)))
@@ -262,7 +272,7 @@ function matchesClicked(record) {
 const cityRecords = computed(() => journeys.value.filter(matchesClicked))
 const cityPlans = computed(() => plans.value.filter(matchesClicked))
 const plannedCities = computed(() => new Set(plans.value.flatMap(journeyCodes)))
-const filteredJourneys = computed(() => journeys.value.filter(j => `${journeyNames(j).join(' ')} ${j.checkin_points || ''} ${j.event || ''} ${j.notes || ''}`.includes(search.value.trim())))
+const filteredJourneys = computed(() => journeys.value.filter(j => searchMatches.value ? searchMatches.value.has(j.id) : `${journeyNames(j).join(' ')} ${j.checkin_points || ''} ${j.event || ''} ${j.notes || ''}`.includes(search.value.trim())))
 function formatJourneyDate(value) {
   const match = /^(\d{4})-(\d{2})(?:-(\d{2}))?$/.exec(value || '')
   if (!match) return value || ''
@@ -362,7 +372,12 @@ function memoryNewPlan(record) {
   if (!matchesClicked(record)) { currentAdcode.value = journeyCodes(record)[0]; clickedName.value = record.name[0] }
   memoryRecord.value = null; newPlan(); void loadCityOptions(); modalVisible.value = true
 }
-function editRecord(record) {
+async function editRecord(record) {
+  if (record._summary) {
+    try { const { data } = await axios.get(`/journeys/${record.id}`, { signal: controller.signal }); if (!disposed) return editRecord(data.data) }
+    catch { if (!disposed) ElMessage.error('完整回忆加载失败，请重试') }
+    return
+  }
   memoryRecord.value = null
   planning.value = false; convertingId.value = null; editingPlanId.value = null
   formReason.value = record.planning_reason || ''
@@ -457,7 +472,7 @@ function applyStyles(rebuildVisited = true) {
 async function fetchJourneys() {
   loading.value = true; loadError.value = false
   try {
-    const [res, planRes] = await Promise.all([axios.get('/journeys', { signal: controller.signal }), axios.get('/journey-plans', { signal: controller.signal })])
+    const [res, planRes] = await Promise.all([axios.get('/journeys', { params: { summary: true }, signal: controller.signal }), axios.get('/journey-plans', { signal: controller.signal })])
     if (disposed) return
     journeys.value = res.data.data || []
     plans.value = planRes.data.data || []
@@ -509,8 +524,8 @@ async function loadCities() {
   if (disposed || cityPending || cityGroup || !map) return
   cityPending = true
   try {
-    const data = await readGeo('/maps/china/city.geojson')
-    if (!provinceData) provinceData = await readGeo('/maps/china/province.geojson')
+    const data = await readGeo('/journey/maps/china/city.geojson')
+    if (!provinceData) provinceData = await readGeo('/journey/maps/china/province.geojson')
     if (disposed) return
     // The city file splits municipalities and Hong Kong/Macao into districts; replace those
     // with the whole-region province shapes so each region is one click.
@@ -572,7 +587,7 @@ function syncMapLayers() {
 }
 async function loadProvinces() {
   try {
-    const data = await readGeo('/maps/china/province.geojson')
+    const data = await readGeo('/journey/maps/china/province.geojson')
     if (disposed) return
     provinceData = data
     provinceGroup = L.geoJSON(data, { pane: 'provinces', style: defaultStyle,
@@ -593,7 +608,7 @@ async function loadProvinces() {
 async function loadOutline() {
   outlineError.value = false
   try {
-    const data = await readGeo('/maps/china/outline.geojson')
+    const data = await readGeo('/journey/maps/china/outline.geojson')
     if (disposed) return
     outlineGroup = L.geoJSON(data, {
       pane: 'countryOutline', interactive: false,
@@ -628,6 +643,7 @@ onMounted(() => {
   void loadOutline()
 })
 onUnmounted(() => {
+  clearTimeout(searchTimer); searchGeneration++
   screenQuery.removeEventListener('change', updateScreen)
   disposed = true; controller.abort()
   basemapAttempt++

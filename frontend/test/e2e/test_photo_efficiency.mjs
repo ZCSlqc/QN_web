@@ -9,8 +9,7 @@ test('private image memory cache reuses reads and isolates accounts', async ({ p
   await page.goto('/index')
   await page.evaluate(async () => {
     const { privatePhoto } = await import('/src/features/journey/privatePhotoCache.js')
-    await privatePhoto('/api/photos/cache-test/small')
-    await privatePhoto('/api/photos/cache-test/small')
+    await Promise.all([privatePhoto('/api/photos/cache-test/small'), privatePhoto('/api/photos/cache-test/small')])
   })
   expect(downloads).toBe(1)
   await page.evaluate(async () => {
@@ -29,6 +28,8 @@ test('private image memory cache reuses reads and isolates accounts', async ({ p
 
 test('page identity is reused and cat polling pauses offscreen', async ({ page, app }) => {
   app.admin = true
+  await page.emulateMedia({ reducedMotion: 'reduce' })
+  await page.setViewportSize({ width: 1440, height: 700 })
   let profiles = 0, petReads = 0
   page.on('request', request => {
     const path = new URL(request.url()).pathname
@@ -36,12 +37,13 @@ test('page identity is reused and cat polling pauses offscreen', async ({ page, 
     if (path === '/api/pet') petReads++
   })
   await page.clock.install()
-  await page.goto('/cat')
+  await page.goto('/pet')
   await expect(page.locator('.pet-room')).toBeVisible()
   await expect.poll(() => petReads).toBeGreaterThan(0)
+  await expect(page.locator('.pantry-card')).toBeVisible()
   expect(profiles).toBe(1)
   await page.locator('.pet-footer').scrollIntoViewIfNeeded()
-  await page.waitForTimeout(150)
+  await expect.poll(() => page.locator('.pet-room').evaluate(el => el.getBoundingClientRect().bottom)).toBeLessThan(0)
   const before = petReads
   await page.clock.fastForward(61000)
   expect(petReads).toBe(before)
@@ -53,7 +55,7 @@ test.describe('mobile sorting', () => {
   test.use({ viewport: { width: 390, height: 700 }, isMobile: true, hasTouch: true })
   test('swipe scrolls, long press sorts, undo restores', async ({ page, app }) => {
     app.admin = true
-    const photos = Array.from({ length: 18 }, (_, index) => ({ id: String(index), thumbnail_url: '/avatars/qiqi.webp' }))
+    const photos = Array.from({ length: 18 }, (_, index) => ({ id: String(index), thumbnail_url: '/index/avatars/qiqi.webp' }))
     let saved
     await page.route('**/api/journeys/1/photos', route => route.fulfill({ json: { data: photos } }))
     await page.route('**/api/journeys/1/photo-order', route => { saved = route.request().postDataJSON(); return route.fulfill({ json: { status: 'success' } }) })

@@ -1,0 +1,942 @@
+{
+  "license": "Kenney CC0",
+  "sources": [
+    "Vector/vector_shirts.svg",
+    "Vector/vector_skin.svg",
+    "Vector/vector_pants.svg"
+  ],
+  "joint": {
+    "x": 108,
+    "y": 71.75500343005113,
+    "radius": 26.42611049954218,
+    "sleeveRadius": 31.27605502361815,
+    "cut": 35.93711778653814,
+    "skin": {
+      "x": 108,
+      "y": 71.75500343005113,
+      "radius": 26.42611049954218,
+      "contacts": [
+        {
+          "x": 125.19531576446039,
+          "y": 51.68860285858557
+        },
+        {
+          "x": 94.27890427599382,
+          "y": 94.33975156383984
+        }
+      ],
+      "diameter": [
+        {
+          "x": 123.50940499961915,
+          "y": 50.35879646031461
+        },
+        {
+          "x": 92.49059500038085,
+          "y": 93.15121039978766
+        }
+      ]
+    },
+    "sleeve": {
+      "x": 105.4863407391391,
+      "y": 75.22275566155811,
+      "radius": 31.27605502361815,
+      "contacts": [
+        {
+          "x": 125.74138133804645,
+          "y": 51.39157969021752
+        },
+        {
+          "x": 89.20017533669223,
+          "y": 101.9239248180674
+        }
+      ],
+      "diameter": [
+        {
+          "x": 123.84216363483426,
+          "y": 49.89973483737004
+        },
+        {
+          "x": 87.13051784344393,
+          "y": 100.54577648574619
+        }
+      ]
+    },
+    "diameterLine": {
+      "point": {
+        "x": 108,
+        "y": 71.75500343005113
+      },
+      "direction": {
+        "x": -0.5868970009751472,
+        "y": 0.8096616023045542
+      }
+    },
+    "centerSeparation": 4.282964909829795,
+    "cutEndpoints": [
+      {
+        "x": 123.50940499961915,
+        "y": 50.35879646031461
+      },
+      {
+        "x": 92.49059500038085,
+        "y": 93.15121039978766
+      }
+    ],
+    "centerRule": "separate medial circles constrained to a common cut diameter line",
+    "radiusRule": "equal shortest distance to both original contours for each circle"
+  },
+  "assets": [
+    {
+      "file": "Derived/templates/shirt.svg",
+      "source": "original SVG path crops, unchanged"
+    },
+    {
+      "file": "Derived/templates/pants.svg",
+      "source": "original SVG path crops, unchanged"
+    },
+    {
+      "file": "Derived/templates/leg.svg",
+      "source": "original SVG path crops, unchanged"
+    },
+    {
+      "file": "Derived/templates/sleeve-long.svg",
+      "source": "original SVG path crops, unchanged"
+    },
+    {
+      "file": "Derived/templates/sleeve-shorter.svg",
+      "source": "original SVG path crops, unchanged"
+    },
+    {
+      "file": "Derived/rig/tint-1-upper.svg",
+      "source": "vector_skin.svg arm contour; original tint; skin inscribed circle, separate sleeve pivot"
+    },
+    {
+      "file": "Derived/rig/tint-1-lower.svg",
+      "source": "vector_skin.svg arm contour; original tint; skin inscribed circle, separate sleeve pivot"
+    },
+    {
+      "file": "Derived/rig/tint-2-upper.svg",
+      "source": "vector_skin.svg arm contour; original tint; skin inscribed circle, separate sleeve pivot"
+    },
+    {
+      "file": "Derived/rig/tint-2-lower.svg",
+      "source": "vector_skin.svg arm contour; original tint; skin inscribed circle, separate sleeve pivot"
+    },
+    {
+      "file": "Derived/rig/tint-3-upper.svg",
+      "source": "vector_skin.svg arm contour; original tint; skin inscribed circle, separate sleeve pivot"
+    },
+    {
+      "file": "Derived/rig/tint-3-lower.svg",
+      "source": "vector_skin.svg arm contour; original tint; skin inscribed circle, separate sleeve pivot"
+    },
+    {
+      "file": "Derived/rig/tint-4-upper.svg",
+      "source": "vector_skin.svg arm contour; original tint; skin inscribed circle, separate sleeve pivot"
+    },
+    {
+      "file": "Derived/rig/tint-4-lower.svg",
+      "source": "vector_skin.svg arm contour; original tint; skin inscribed circle, separate sleeve pivot"
+    },
+    {
+      "file": "Derived/rig/tint-5-upper.svg",
+      "source": "vector_skin.svg arm contour; original tint; skin inscribed circle, separate sleeve pivot"
+    },
+    {
+      "file": "Derived/rig/tint-5-lower.svg",
+      "source": "vector_skin.svg arm contour; original tint; skin inscribed circle, separate sleeve pivot"
+    },
+    {
+      "file": "Derived/rig/tint-6-upper.svg",
+      "source": "vector_skin.svg arm contour; original tint; skin inscribed circle, separate sleeve pivot"
+    },
+    {
+      "file": "Derived/rig/tint-6-lower.svg",
+      "source": "vector_skin.svg arm contour; original tint; skin inscribed circle, separate sleeve pivot"
+    },
+    {
+      "file": "Derived/rig/tint-7-upper.svg",
+      "source": "vector_skin.svg arm contour; original tint; skin inscribed circle, separate sleeve pivot"
+    },
+    {
+      "file": "Derived/rig/tint-7-lower.svg",
+      "source": "vector_skin.svg arm contour; original tint; skin inscribed circle, separate sleeve pivot"
+    },
+    {
+      "file": "Derived/rig/tint-8-upper.svg",
+      "source": "vector_skin.svg arm contour; original tint; skin inscribed circle, separate sleeve pivot"
+    },
+    {
+      "file": "Derived/rig/tint-8-lower.svg",
+      "source": "vector_skin.svg arm contour; original tint; skin inscribed circle, separate sleeve pivot"
+    },
+    {
+      "file": "Derived/rig/sleeve-blue-upper.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/rig/sleeve-blue-lower.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/rig/sleeve-green-upper.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/rig/sleeve-green-lower.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/rig/sleeve-grey-upper.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/rig/sleeve-grey-lower.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/rig/sleeve-navy-upper.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/rig/sleeve-navy-lower.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/rig/sleeve-pine-upper.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/rig/sleeve-pine-lower.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/rig/sleeve-red-upper.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/rig/sleeve-red-lower.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/rig/sleeve-white-upper.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/rig/sleeve-white-lower.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/rig/sleeve-yellow-upper.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/rig/sleeve-yellow-lower.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/formal/cardigan-oat-outer-front.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/formal/cardigan-oat-outer-back.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/rig/formal-cardigan-oat-upper.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/rig/formal-cardigan-oat-lower.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/formal/cardigan-sage-outer-front.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/formal/cardigan-sage-outer-back.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/rig/formal-cardigan-sage-upper.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/rig/formal-cardigan-sage-lower.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/formal/cardigan-rose-outer-front.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/formal/cardigan-rose-outer-back.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/rig/formal-cardigan-rose-upper.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/rig/formal-cardigan-rose-lower.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/formal/jacket-blue-outer-front.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/formal/jacket-blue-outer-back.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/rig/formal-jacket-blue-upper.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/rig/formal-jacket-blue-lower.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/formal/jacket-sand-outer-front.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/formal/jacket-sand-outer-back.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/rig/formal-jacket-sand-upper.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/rig/formal-jacket-sand-lower.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/formal/jacket-olive-outer-front.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/formal/jacket-olive-outer-back.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/rig/formal-jacket-olive-upper.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/rig/formal-jacket-olive-lower.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/formal/bridal-white-outer-front.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/formal/bridal-white-skirt-front.svg",
+      "source": "vector_pants.svg waistband paths 0/1, native waist width; skirt extension from lower corners"
+    },
+    {
+      "file": "Derived/formal/bridal-white-outer-back.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/formal/bridal-white-skirt-back.svg",
+      "source": "vector_pants.svg waistband paths 0/1, native waist width; skirt extension from lower corners"
+    },
+    {
+      "file": "Derived/rig/formal-bridal-white-upper.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/rig/formal-bridal-white-lower.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/formal/bridal-ivory-outer-front.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/formal/bridal-ivory-skirt-front.svg",
+      "source": "vector_pants.svg waistband paths 0/1, native waist width; skirt extension from lower corners"
+    },
+    {
+      "file": "Derived/formal/bridal-ivory-outer-back.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/formal/bridal-ivory-skirt-back.svg",
+      "source": "vector_pants.svg waistband paths 0/1, native waist width; skirt extension from lower corners"
+    },
+    {
+      "file": "Derived/rig/formal-bridal-ivory-upper.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/rig/formal-bridal-ivory-lower.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/formal/bridal-blush-outer-front.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/formal/bridal-blush-skirt-front.svg",
+      "source": "vector_pants.svg waistband paths 0/1, native waist width; skirt extension from lower corners"
+    },
+    {
+      "file": "Derived/formal/bridal-blush-outer-back.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/formal/bridal-blush-skirt-back.svg",
+      "source": "vector_pants.svg waistband paths 0/1, native waist width; skirt extension from lower corners"
+    },
+    {
+      "file": "Derived/rig/formal-bridal-blush-upper.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/rig/formal-bridal-blush-lower.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/formal/bridal-lace-white-outer-front.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/formal/bridal-lace-white-skirt-front.svg",
+      "source": "vector_pants.svg waistband paths 0/1, native waist width; skirt extension from lower corners"
+    },
+    {
+      "file": "Derived/formal/bridal-lace-white-outer-back.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/formal/bridal-lace-white-skirt-back.svg",
+      "source": "vector_pants.svg waistband paths 0/1, native waist width; skirt extension from lower corners"
+    },
+    {
+      "file": "Derived/rig/formal-bridal-lace-white-upper.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/rig/formal-bridal-lace-white-lower.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/formal/bridal-lace-pearl-outer-front.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/formal/bridal-lace-pearl-skirt-front.svg",
+      "source": "vector_pants.svg waistband paths 0/1, native waist width; skirt extension from lower corners"
+    },
+    {
+      "file": "Derived/formal/bridal-lace-pearl-outer-back.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/formal/bridal-lace-pearl-skirt-back.svg",
+      "source": "vector_pants.svg waistband paths 0/1, native waist width; skirt extension from lower corners"
+    },
+    {
+      "file": "Derived/rig/formal-bridal-lace-pearl-upper.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/rig/formal-bridal-lace-pearl-lower.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/formal/bridal-lace-cream-outer-front.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/formal/bridal-lace-cream-skirt-front.svg",
+      "source": "vector_pants.svg waistband paths 0/1, native waist width; skirt extension from lower corners"
+    },
+    {
+      "file": "Derived/formal/bridal-lace-cream-outer-back.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/formal/bridal-lace-cream-skirt-back.svg",
+      "source": "vector_pants.svg waistband paths 0/1, native waist width; skirt extension from lower corners"
+    },
+    {
+      "file": "Derived/rig/formal-bridal-lace-cream-upper.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/rig/formal-bridal-lace-cream-lower.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/formal/morning-black-outer-front.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/formal/morning-black-outer-back.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/rig/formal-morning-black-upper.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/rig/formal-morning-black-lower.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/formal/morning-slate-outer-front.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/formal/morning-slate-outer-back.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/rig/formal-morning-slate-upper.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/rig/formal-morning-slate-lower.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/formal/morning-ivory-outer-front.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/formal/morning-ivory-outer-back.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/rig/formal-morning-ivory-upper.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/rig/formal-morning-ivory-lower.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/formal/waistcoat-sage-outer-front.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/formal/waistcoat-sage-outer-back.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/rig/formal-waistcoat-sage-upper.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/rig/formal-waistcoat-sage-lower.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/formal/waistcoat-camel-outer-front.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/formal/waistcoat-camel-outer-back.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/rig/formal-waistcoat-camel-upper.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/rig/formal-waistcoat-camel-lower.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/formal/waistcoat-navy-outer-front.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/formal/waistcoat-navy-outer-back.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/rig/formal-waistcoat-navy-upper.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/rig/formal-waistcoat-navy-lower.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/formal/suit-navy-outer-front.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/formal/suit-navy-outer-back.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/rig/formal-suit-navy-upper.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/rig/formal-suit-navy-lower.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/formal/suit-charcoal-outer-front.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/formal/suit-charcoal-outer-back.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/rig/formal-suit-charcoal-upper.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/rig/formal-suit-charcoal-lower.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/formal/suit-ivory-outer-front.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/formal/suit-ivory-outer-back.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/rig/formal-suit-ivory-upper.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/rig/formal-suit-ivory-lower.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/formal/tuxedo-midnight-outer-front.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/formal/tuxedo-midnight-outer-back.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/rig/formal-tuxedo-midnight-upper.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/rig/formal-tuxedo-midnight-lower.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/formal/tuxedo-ivory-outer-front.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/formal/tuxedo-ivory-outer-back.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/rig/formal-tuxedo-ivory-upper.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/rig/formal-tuxedo-ivory-lower.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/formal/tuxedo-wine-outer-front.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/formal/tuxedo-wine-outer-back.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/rig/formal-tuxedo-wine-upper.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/rig/formal-tuxedo-wine-lower.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/formal/dress-champagne-outer-front.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/formal/dress-champagne-skirt-front.svg",
+      "source": "vector_pants.svg waistband paths 0/1, native waist width; skirt extension from lower corners"
+    },
+    {
+      "file": "Derived/formal/dress-champagne-outer-back.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/formal/dress-champagne-skirt-back.svg",
+      "source": "vector_pants.svg waistband paths 0/1, native waist width; skirt extension from lower corners"
+    },
+    {
+      "file": "Derived/rig/formal-dress-champagne-upper.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/rig/formal-dress-champagne-lower.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/formal/dress-rose-outer-front.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/formal/dress-rose-skirt-front.svg",
+      "source": "vector_pants.svg waistband paths 0/1, native waist width; skirt extension from lower corners"
+    },
+    {
+      "file": "Derived/formal/dress-rose-outer-back.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/formal/dress-rose-skirt-back.svg",
+      "source": "vector_pants.svg waistband paths 0/1, native waist width; skirt extension from lower corners"
+    },
+    {
+      "file": "Derived/rig/formal-dress-rose-upper.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/rig/formal-dress-rose-lower.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/formal/dress-blue-outer-front.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/formal/dress-blue-skirt-front.svg",
+      "source": "vector_pants.svg waistband paths 0/1, native waist width; skirt extension from lower corners"
+    },
+    {
+      "file": "Derived/formal/dress-blue-outer-back.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/formal/dress-blue-skirt-back.svg",
+      "source": "vector_pants.svg waistband paths 0/1, native waist width; skirt extension from lower corners"
+    },
+    {
+      "file": "Derived/rig/formal-dress-blue-upper.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/rig/formal-dress-blue-lower.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/formal/qipao-red-outer-front.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/formal/qipao-red-skirt-front.svg",
+      "source": "vector_pants.svg waistband paths 0/1, native waist width; skirt extension from lower corners"
+    },
+    {
+      "file": "Derived/formal/qipao-red-outer-back.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/formal/qipao-red-skirt-back.svg",
+      "source": "vector_pants.svg waistband paths 0/1, native waist width; skirt extension from lower corners"
+    },
+    {
+      "file": "Derived/rig/formal-qipao-red-upper.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/rig/formal-qipao-red-lower.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/formal/qipao-jade-outer-front.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/formal/qipao-jade-skirt-front.svg",
+      "source": "vector_pants.svg waistband paths 0/1, native waist width; skirt extension from lower corners"
+    },
+    {
+      "file": "Derived/formal/qipao-jade-outer-back.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/formal/qipao-jade-skirt-back.svg",
+      "source": "vector_pants.svg waistband paths 0/1, native waist width; skirt extension from lower corners"
+    },
+    {
+      "file": "Derived/rig/formal-qipao-jade-upper.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/rig/formal-qipao-jade-lower.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/formal/qipao-navy-outer-front.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/formal/qipao-navy-skirt-front.svg",
+      "source": "vector_pants.svg waistband paths 0/1, native waist width; skirt extension from lower corners"
+    },
+    {
+      "file": "Derived/formal/qipao-navy-outer-back.svg",
+      "source": "vector_shirts.svg path 0, native neckline/shoulders; attached hem and small decorations"
+    },
+    {
+      "file": "Derived/formal/qipao-navy-skirt-back.svg",
+      "source": "vector_pants.svg waistband paths 0/1, native waist width; skirt extension from lower corners"
+    },
+    {
+      "file": "Derived/rig/formal-qipao-navy-upper.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/rig/formal-qipao-navy-lower.svg",
+      "source": "vector_shirts.svg paths 7,8,9; sleeve inscribed circle; diameter collinear with skin circle"
+    },
+    {
+      "file": "Derived/accessories/veil-back.svg",
+      "source": "vector_skin.svg head path 3 crown and shoulder anchors; translucent rear drape"
+    },
+    {
+      "file": "Derived/accessories/veil-front.svg",
+      "source": "vector_skin.svg head path 3; narrow crown edge and small floral pins"
+    },
+    {
+      "file": "Derived/accessories/wreath-front.svg",
+      "source": "vector_skin.svg head crown and original hair anchors; fixed-size seated head accessory"
+    },
+    {
+      "file": "Derived/accessories/crown-front.svg",
+      "source": "vector_skin.svg head crown and original hair anchors; fixed-size seated head accessory"
+    },
+    {
+      "file": "Derived/accessories/cap-front.svg",
+      "source": "vector_skin.svg head crown and original hair anchors; fixed-size seated head accessory"
+    },
+    {
+      "file": "Derived/accessories/top-hat-front.svg",
+      "source": "vector_skin.svg head crown and original hair anchors; fixed-size seated head accessory"
+    },
+    {
+      "file": "Derived/accessories/fedora-front.svg",
+      "source": "vector_skin.svg head crown and original hair anchors; fixed-size seated head accessory"
+    },
+    {
+      "file": "Derived/accessories/wreath-back.svg",
+      "source": "vector_skin.svg head crown and original hair anchors; fixed-size seated head accessory"
+    },
+    {
+      "file": "Derived/accessories/crown-back.svg",
+      "source": "vector_skin.svg head crown and original hair anchors; fixed-size seated head accessory"
+    },
+    {
+      "file": "Derived/accessories/cap-back.svg",
+      "source": "vector_skin.svg head crown and original hair anchors; fixed-size seated head accessory"
+    },
+    {
+      "file": "Derived/accessories/top-hat-back.svg",
+      "source": "vector_skin.svg head crown and original hair anchors; fixed-size seated head accessory"
+    },
+    {
+      "file": "Derived/accessories/fedora-back.svg",
+      "source": "vector_skin.svg head crown and original hair anchors; fixed-size seated head accessory"
+    },
+    {
+      "file": "Derived/shoes/oxford-black.svg",
+      "source": "original shoes 94x42 frame and inner ankle (0,12.823551); independent flat-color shoe contours; no leg scaling"
+    },
+    {
+      "file": "Derived/shoes/oxford-ivory.svg",
+      "source": "original shoes 94x42 frame and inner ankle (0,12.823551); independent flat-color shoe contours; no leg scaling"
+    },
+    {
+      "file": "Derived/shoes/oxford-red.svg",
+      "source": "original shoes 94x42 frame and inner ankle (0,12.823551); independent flat-color shoe contours; no leg scaling"
+    },
+    {
+      "file": "Derived/shoes/oxford-nude.svg",
+      "source": "original shoes 94x42 frame and inner ankle (0,12.823551); independent flat-color shoe contours; no leg scaling"
+    },
+    {
+      "file": "Derived/shoes/ballet-black.svg",
+      "source": "original shoes 94x42 frame and inner ankle (0,12.823551); independent flat-color shoe contours; no leg scaling"
+    },
+    {
+      "file": "Derived/shoes/ballet-ivory.svg",
+      "source": "original shoes 94x42 frame and inner ankle (0,12.823551); independent flat-color shoe contours; no leg scaling"
+    },
+    {
+      "file": "Derived/shoes/ballet-red.svg",
+      "source": "original shoes 94x42 frame and inner ankle (0,12.823551); independent flat-color shoe contours; no leg scaling"
+    },
+    {
+      "file": "Derived/shoes/ballet-nude.svg",
+      "source": "original shoes 94x42 frame and inner ankle (0,12.823551); independent flat-color shoe contours; no leg scaling"
+    },
+    {
+      "file": "Derived/shoes/stiletto-black.svg",
+      "source": "original shoes 94x42 frame and inner ankle (0,12.823551); independent flat-color shoe contours; no leg scaling"
+    },
+    {
+      "file": "Derived/shoes/stiletto-ivory.svg",
+      "source": "original shoes 94x42 frame and inner ankle (0,12.823551); independent flat-color shoe contours; no leg scaling"
+    },
+    {
+      "file": "Derived/shoes/stiletto-red.svg",
+      "source": "original shoes 94x42 frame and inner ankle (0,12.823551); independent flat-color shoe contours; no leg scaling"
+    },
+    {
+      "file": "Derived/shoes/stiletto-nude.svg",
+      "source": "original shoes 94x42 frame and inner ankle (0,12.823551); independent flat-color shoe contours; no leg scaling"
+    },
+    {
+      "file": "Derived/shoes/block-heel-black.svg",
+      "source": "original shoes 94x42 frame and inner ankle (0,12.823551); independent flat-color shoe contours; no leg scaling"
+    },
+    {
+      "file": "Derived/shoes/block-heel-ivory.svg",
+      "source": "original shoes 94x42 frame and inner ankle (0,12.823551); independent flat-color shoe contours; no leg scaling"
+    },
+    {
+      "file": "Derived/shoes/block-heel-red.svg",
+      "source": "original shoes 94x42 frame and inner ankle (0,12.823551); independent flat-color shoe contours; no leg scaling"
+    },
+    {
+      "file": "Derived/shoes/block-heel-nude.svg",
+      "source": "original shoes 94x42 frame and inner ankle (0,12.823551); independent flat-color shoe contours; no leg scaling"
+    },
+    {
+      "file": "Derived/shoes/ankle-strap-black.svg",
+      "source": "original shoes 94x42 frame and inner ankle (0,12.823551); independent flat-color shoe contours; no leg scaling"
+    },
+    {
+      "file": "Derived/shoes/ankle-strap-ivory.svg",
+      "source": "original shoes 94x42 frame and inner ankle (0,12.823551); independent flat-color shoe contours; no leg scaling"
+    },
+    {
+      "file": "Derived/shoes/ankle-strap-red.svg",
+      "source": "original shoes 94x42 frame and inner ankle (0,12.823551); independent flat-color shoe contours; no leg scaling"
+    },
+    {
+      "file": "Derived/shoes/ankle-strap-nude.svg",
+      "source": "original shoes 94x42 frame and inner ankle (0,12.823551); independent flat-color shoe contours; no leg scaling"
+    }
+  ]
+}

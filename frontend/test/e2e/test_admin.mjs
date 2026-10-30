@@ -12,6 +12,9 @@ test('administrator protection, user search and complete blessing text', async (
   await page.getByRole('button', { name: '祝福管理' }).click()
   await page.getByRole('button', { name: '展开全文' }).first().click()
   await expect(page.locator('.blessing-content p').first()).not.toHaveClass(/collapsed/)
+  await page.getByRole('link', { name: '人物核验 →', exact: true }).click()
+  await expect(page).toHaveURL(/\/wedding\/rig$/)
+  await expect(page.locator('.stage image')).toBeVisible()
 })
 
 test('share code stays masked, persists edits, and environment-controlled values are read-only', async ({ page, app }) => {

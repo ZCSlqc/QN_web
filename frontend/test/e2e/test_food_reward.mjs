@@ -9,14 +9,14 @@ test('sending a letter automatically closes the mailbox before its reward', asyn
   await page.locator('#mail-body').fill('想你啦。')
   await page.getByRole('button', { name: '寄给ta', exact: true }).click()
   await expect(page.locator('.mailbox-panel')).toBeHidden()
-  await expect(page.locator('.message-flight-icon')).toHaveAttribute('src', '/feedback/letter-sent.png')
+  await expect(page.locator('.message-flight-icon')).toHaveAttribute('src', '/shared/feedback/letter-sent.png')
   await expect(page.locator('.mailbox-trigger')).toHaveClass(/pet-reward-arrived/)
   await expect(page.locator('.food-reward-flight strong')).toHaveText('+1')
 })
 
 test('receipts aggregate while a dialog is open, then fly after it closes', async ({ page, app }) => {
   app.admin = true
-  await page.goto('/cat')
+  await page.goto('/pet')
   await expect(page.locator('.pet-nav-link')).toBeVisible()
   await page.evaluate(async () => {
     const dialog = document.createElement('div'); dialog.id = 'reward-test-dialog'; dialog.setAttribute('role', 'dialog'); dialog.style.cssText = 'position:fixed;width:100px;height:100px;top:100px'; document.body.append(dialog)
@@ -30,7 +30,7 @@ test('receipts aggregate while a dialog is open, then fly after it closes', asyn
   await expect(page.locator('.food-reward-flight')).toHaveCount(0)
   await page.evaluate(() => document.querySelector('#reward-test-dialog').remove())
   await expect(page.locator('.food-reward-flight strong')).toHaveText('+3')
-  await expect(page.locator('.food-reward-flight img')).toHaveAttribute('src', '/pets/liuyi/icons/cat-treat.png')
+  await expect(page.locator('.food-reward-flight img')).toHaveAttribute('src', '/pet/liuyi/icons/cat-treat.png')
   await expect(page.locator('.pet-nav-link')).toHaveClass(/pet-reward-arrived/)
   await expect(page.locator('.food-reward-flight')).toHaveCount(0)
 })
@@ -39,7 +39,7 @@ test('mobile rewards target the menu and reduced motion shows an arrival notice'
   app.admin = true
   await page.setViewportSize({ width: 390, height: 844 })
   await page.emulateMedia({ reducedMotion: 'reduce' })
-  await page.goto('/cat')
+  await page.goto('/pet')
   await page.evaluate(async () => {
     const { announceFoodReward } = await import('/src/features/pet/rewardFeedback.js')
     announceFoodReward({ data: { food_reward: { food: 'can', amount: 1 } } })

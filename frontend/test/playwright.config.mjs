@@ -1,5 +1,6 @@
 import { defineConfig } from '@playwright/test'
 import { fileURLToPath } from 'node:url'
+import { artifactPath } from './artifactPath.mjs'
 
 const frontendRoot = fileURLToPath(new URL('../', import.meta.url))
 const port = Number(process.env.QN_TEST_PORT || 7731)
@@ -11,8 +12,8 @@ export default defineConfig({
   expect: { timeout: 8000 },
   fullyParallel: false,
   workers: 1,
-  outputDir: `../../artifacts/frontend-test-results/${runId}`,
-  reporter: [['list'], ['html', { outputFolder: `../../artifacts/frontend-test-report/${runId}`, open: 'never' }]],
+  outputDir: artifactPath(`frontend-test-results/${runId}`),
+  reporter: [['list'], ['html', { outputFolder: artifactPath(`frontend-test-report/${runId}`), open: 'never' }]],
   use: {
     baseURL: `http://127.0.0.1:${port}`,
     viewport: { width: 1440, height: 1000 },

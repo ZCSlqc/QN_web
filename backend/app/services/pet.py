@@ -19,7 +19,7 @@ def can_feed(username):
     return bool(username and len(settings.ADMIN_USERS) == 2 and username in settings.ADMIN_USERS)
 
 
-def state(conn, username, activity_limit=20):
+def state(conn, username, activity_limit=3):
     environment = conn.execute('SELECT weather FROM pet_environment WHERE pet_id=?', (PET_ID,)).fetchone()
     profile = conn.execute('SELECT name,created_at FROM pets WHERE id=?', (PET_ID,)).fetchone()
     members = caretakers(conn)
@@ -39,7 +39,7 @@ def state(conn, username, activity_limit=20):
     claimed = conn.execute('SELECT 1 FROM pet_blessing_rewards WHERE user_id=? AND reward_day=?', (viewer_id, bj_time()[:10])).fetchone()
     return {'id': PET_ID, 'name': profile['name'], 'joined_at': profile['created_at'], 'can_feed': can_feed(username) and len(members) == 2,
             'viewer_id': viewer_id, 'is_admin': is_admin, 'weather': environment['weather'] if environment else 'sunny',
-            'can_spend_personal': bool(viewer and not is_admin and '/cat' in settings.USER_PAGE_ALLOWLIST),
+            'can_spend_personal': bool(viewer and not is_admin and '/pet' in settings.USER_PAGE_ALLOWLIST),
             'inventory': inventory if is_admin else None, 'own_inventory': own if is_admin else None,
             'partner_inventory': partner if is_admin else None, 'partner_name': partner_name if is_admin else '',
             'personal_treats': personal['treats'] if personal and not is_admin else 0, 'reward_claimed_today': bool(claimed),
@@ -47,10 +47,31 @@ def state(conn, username, activity_limit=20):
 
 
 
-def get_state(username, activity_limit=20):
+def get_state(username, activity_limit=3):
     with get_db() as conn:
-        conn.execute('BEGIN IMMEDIATE')
+        conn.execute('BEGIN')
         return state(conn, username, activity_limit)
+
+
+def get_activity(cursor=None, limit=20):
+    with get_db() as conn:
+        conn.execute('BEGIN')
+        params = [PET_ID]
+        condition = ''
+        if cursor:
+            anchor = conn.execute("SELECT rowid,created_at FROM pet_ledger WHERE id=? AND pet_id=? AND kind IN ('feed','reward_feed')", (cursor, PET_ID)).fetchone()
+            if not anchor:
+                raise HTTPException(400, '记录已变化，请刷新日常列表')
+            condition = ' AND (created_at < ? OR (created_at=? AND rowid<?))'
+            params += [anchor['created_at'], anchor['created_at'], anchor['rowid']]
+        rows = conn.execute("SELECT id,actor_id,actor_name,kind,food,quantity,created_at,inventory_owner_id FROM pet_ledger WHERE pet_id=? AND kind IN ('feed','reward_feed')" + condition + ' ORDER BY created_at DESC,rowid DESC LIMIT ?', (*params, limit+1)).fetchall()
+        items = []
+        for row in rows[:limit]:
+            item = dict(row)
+            item['actor_name'] = display_name(conn, user_id=row['actor_id'], fallback=row['actor_name'])
+            item['inventory_owner_name'] = display_name(conn, user_id=row['inventory_owner_id']) if row['inventory_owner_id'] else ''
+            items.append(item)
+    return {'data': items, 'next_cursor': items[-1]['id'] if len(rows)>limit else None}
 
 
 def set_weather(username, weather):

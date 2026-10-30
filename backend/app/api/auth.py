@@ -35,6 +35,7 @@ def me(current_user: Optional[str] = Depends(get_current_user)):
         "nickname": nickname,
         "display_name": nickname or current_user,
         "is_admin": is_admin,
+        "wedding_role": ('groom' if current_user == settings.WEDDING_GROOM_USER else 'bride' if current_user == settings.WEDDING_BRIDE_USER else None) if is_admin else None,
         "allowed_pages": sorted(settings.USER_PAGE_ALLOWLIST) if current_user else [],
         "has_mailbox": bool(current_user and len(settings.ADMIN_USERS) == 2 and current_user in settings.ADMIN_USERS),
         "login_count": login_count,
