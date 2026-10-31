@@ -24,7 +24,7 @@ frontend/
   test/integration/      # 真实临时后端端到端测试
   test/fixtures/         # 测试数据及请求拦截
 scripts/dev.py           # 跨平台开发启动器
-artifacts/               # 测试报告、临时文件、备份，不提交 Git
+frontend/dist/           # 正式构建输出，不提交 Git
 旅行记录.md              # 旅行记录来源文档
 ```
 
@@ -51,6 +51,8 @@ QN_ADMIN_USERS='["管理员用户名1", "管理员用户名2"]'
 QN_CHECK_CODE=your-registration-share-code
 QN_BACKEND_PORT=1277
 QN_FRONTEND_PORT=7721
+QN_PUBLIC_URL=http://frp-way.com:35509
+QN_ALLOWED_HOSTS=frp-way.com
 ```
 
 预留的管理员/情侣账号不能在公开注册页注册。首次部署通过本地命令创建，密码通过交互输入：
@@ -61,9 +63,9 @@ uv run python scripts/create_account.py "管理员用户名1"
 uv run python run.py
 ```
 
-另一个终端运行 `cd frontend && npm run dev`，访问 `http://localhost:7721`。
+另一个终端运行 `cd frontend && npm run dev`，本机访问 `http://127.0.0.1:7721`。外部访问使用 `http://frp-way.com:35509`，由 Sakura Frp 转发到本机前端。
 
-也可以在根目录执行 `python scripts/dev.py`（使用项目 `.venv` 启动后端）；Linux/macOS 可执行 `./start.sh`。启动器在前台运行，Ctrl+C 只停止自己创建的后端和前端进程。端口被占用时直接退出，不杀其他项目进程。支持 `--backend-port`、`--frontend-port`。旧 `stop.sh` 仅提示操作方式，不再按进程名称批量停止服务。
+也可以在根目录执行 `python scripts/dev.py`（使用项目 `.venv` 启动后端）；Linux/macOS 可执行 `./start.sh`。启动器在前台运行，Ctrl+C 只停止自己创建的后端和前端进程。端口被占用时直接退出，不杀其他项目进程。支持 `--backend-port`、`--frontend-port`；配置 `QN_PUBLIC_URL` 时会同时打印 Sakura Frp 外部入口。旧 `stop.sh` 仅提示操作方式，不再按进程名称批量停止服务。
 
 ## 页面
 
@@ -103,6 +105,8 @@ uv run python run.py
 | `QN_BACKEND_PORT` | 后端端口，默认 `1277` |
 | `QN_FRONTEND_PORT` | 前端端口，默认 `7721` |
 | `QN_API_TARGET` | Vite 开发代理目标，默认 `http://127.0.0.1:1277` |
+| `QN_PUBLIC_URL` | Sakura Frp 外部入口，默认示例 `http://frp-way.com:35509` |
+| `QN_ALLOWED_HOSTS` | 前端允许的外部 Host，填域名列表，不带协议和端口 |
 
 真实 `.db`、上传文件、密钥和 `.env` 均不进入 Git。Git 显示 `backend/couple.db` 删除表示取消跟踪，磁盘数据仍保留。新机器不能依靠 Git 获取真实数据库，需要从私有备份恢复。
 
@@ -133,6 +137,15 @@ npm run test:integration
 
 ### 本地电脑通过 Sakura Frp 提供正式构建版
 
+Sakura Frp 的本地目标固定为 `127.0.0.1:7721`，公网入口使用 `frp-way.com:35509`。前端和后端都只绑定本机回环地址，后端 `1277` 不直接暴露公网。首次配置或更换机器时，在 `.env` 设置：
+
+```dotenv
+QN_BACKEND_PORT=1277
+QN_FRONTEND_PORT=7721
+QN_PUBLIC_URL=http://frp-way.com:35509
+QN_ALLOWED_HOSTS=frp-way.com
+```
+
 停止原来的开发前后端后，分别启动两个终端：
 
 ```bash
@@ -147,8 +160,7 @@ npm run serve
 ```
 
 两端继续读取根目录 `.env` 中的 `QN_BACKEND_PORT=1277` 和 `QN_FRONTEND_PORT=7721`。前端正式服务要求 Node.js 20.12+。
-Sakura Frp 本地目标保持 `127.0.0.1:7721`，自动HTTPS负责外部TLS；`QN_ALLOWED_HOSTS` 填实际外部域名，不含协议或端口。
-正式入口仅提供构建目录、支持页面刷新、压缩、缓存和音频分段请求；不启动 Vite 开发服务。修改页面后需重新执行 `npm run build`。
+正式入口仅提供构建目录、支持页面刷新、压缩、缓存和音频分段请求；不启动 Vite 开发服务。修改页面后需重新执行 `npm run build`。启动后从浏览器打开 `http://frp-way.com:35509`，本机调试仍使用 `http://127.0.0.1:7721`。
 
 ### 云服务器
 

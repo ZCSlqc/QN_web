@@ -125,7 +125,10 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
   const server = createFrontendServer({ directory, apiTarget: process.env.QN_API_TARGET || `http://127.0.0.1:${backendPort}`,
     allowedHosts: (process.env.QN_ALLOWED_HOSTS || '').split(',').map(s => s.trim()).filter(Boolean) })
   server.on('error', error => { console.error(error.code === 'EADDRINUSE' ? `Port ${port} is occupied; stop the development frontend first.` : error.message); process.exitCode = 1 })
-  server.listen(port, '127.0.0.1', () => console.log(`Built website: http://127.0.0.1:${port} (API → ${backendPort})`))
+  server.listen(port, '127.0.0.1', () => {
+    console.log(`Built website: http://127.0.0.1:${port} (API → 127.0.0.1:${backendPort})`)
+    if (process.env.QN_PUBLIC_URL) console.log(`External: ${process.env.QN_PUBLIC_URL} (Sakura Frp → 127.0.0.1:${port})`)
+  })
   const stop = () => { server.close(); server.closeIdleConnections() }
   process.on('SIGINT', stop); process.on('SIGTERM', stop)
 }

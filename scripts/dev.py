@@ -62,6 +62,7 @@ def main():
     parser.add_argument('--backend-port', type=int, default=configured_port('QN_BACKEND_PORT', 1277, config))
     parser.add_argument('--frontend-port', type=int, default=configured_port('QN_FRONTEND_PORT', 7721, config))
     args = parser.parse_args()
+    public_url = os.environ.get('QN_PUBLIC_URL') or config.get('QN_PUBLIC_URL') or ''
     def terminated(signum, frame):
         raise KeyboardInterrupt
     signal.signal(signal.SIGTERM, terminated)
@@ -86,6 +87,8 @@ def main():
         children.append(frontend)
         wait_ready(f'http://127.0.0.1:{args.frontend_port}', frontend)
         print(f'Ready: http://127.0.0.1:{args.frontend_port} — Ctrl+C stops these two services.', flush=True)
+        if public_url:
+            print(f'External: {public_url} (Sakura Frp → 127.0.0.1:{args.frontend_port})', flush=True)
         while all(process.poll() is None for process in children):
             time.sleep(0.5)
     except KeyboardInterrupt:

@@ -2,9 +2,9 @@
 
 Vue 3 + Vite。`npm run dev` 开发，`npm run build` 构建，`npm run preview` 预览产物。
 
-对外穿透使用 `npm run build` 后运行 `npm run serve`（Node.js 20.12+，当前环境24）。正式入口读取根目录 `.env`，监听 `127.0.0.1:QN_FRONTEND_PORT`，将 `/api` 转发到后端；与开发服务占用同一个端口，切换前先停止开发前端。
+对外穿透使用 `npm run build` 后运行 `npm run serve`（Node.js 20.12+，当前环境24）。正式入口读取根目录 `.env`，只监听 `127.0.0.1:QN_FRONTEND_PORT`，将 `/api` 转发到 `127.0.0.1:QN_BACKEND_PORT`；Sakura Frp 再把 `frp-way.com:35509` 转到本机前端端口。与开发服务占用同一个端口，切换前先停止开发前端。
 
-本机开发：在 `frontend` 目录运行 `npm run dev`，默认地址为 `http://127.0.0.1:7721`。人物动作核验页为 `/wedding/rig`，登录管理员后可从后台“人物核验”进入；普通用户不能访问，`/rip` 未注册。显式监听 IPv4，避免 Windows 将 localhost 解析到仅 IPv6 的 ::1。端口被占用时会明确报错，不自动换端口；后端需另行启动。
+本机开发：在 `frontend` 目录运行 `npm run dev`，默认地址为 `http://127.0.0.1:7721`。需要从外部访问时，打开 `http://frp-way.com:35509`；该地址由 Sakura Frp 转发到本机 `127.0.0.1:7721`。人物动作核验页为 `/wedding/rig`，登录管理员后可从后台“人物核验”进入；普通用户不能访问，`/rip` 未注册。显式监听 IPv4，避免 Windows 将 localhost 解析到仅 IPv6 的 ::1。端口被占用时会明确报错，不自动换端口；后端需另行启动。
 正式入口不提供开发模块或HMR，支持SPA深链接、Brotli/gzip、构建文件长期缓存、公开图片条件缓存和音乐Range请求。私密API响应保持后端的缓存策略。
 `npm run build` 会自动执行 `postbuild`，为HTML、JS、CSS和地图等文本资源生成 `.br` / `.gz` 文件，正式入口优先读取这些文件，避免每个请求重复压缩。原图和音频不重新编码。
 压缩脚本复用仍有效的压缩文件。开发与预览服务对 `index`、`pet`、`journey`、`wedding`、`shared` 下的公开图片使用 ETag 条件缓存，对地图和 SVG 使用 gzip；Vite 模块导入与 API 请求仍由各自服务处理。资源内容不变时重建会保留发布文件修改时间；正式构建的 public 副本也继承源文件时间，避免每次发版让图片缓存失效。
